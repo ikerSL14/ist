@@ -1,0 +1,4734 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>IST</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="x-icon" href="https://i.ibb.co/j954X7F4/logochico.png">
+    <script src="https://kit.fontawesome.com/46e8cbfbf8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    
+    <style>
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00131f; /* Fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-content {
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 8px solid #c0dde4; /* Color de fondo */
+    border-top: 8px solid #ffffff; /* Color del "movimiento" */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner-box {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.circle-border {
+  width: 150px;
+  height: 150px;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgb(203, 238, 247);
+  background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(203, 238, 247,1) 100%);
+  animation: spin .8s linear 0s infinite;
+}
+
+.circle-core {
+  width: 100%;
+  height: 100%;
+  background-color: #1d2630;
+  background-image: url('https://i.ibb.co/fzVPpQxr/IST2.png');
+  background-size: contain; /* O 'cover' según prefieras */
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: spin-reverse .8s linear infinite; /* animación inversa */
+  border-radius: 50%;
+}
+
+/* Agrega esta animación inversa */
+@keyframes spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+/* Elimina cursor por defecto en todo el documento */
+html, body, * {
+  cursor: none !important;
+}
+
+        body{
+            background: linear-gradient(-45deg, 
+    rgb(0, 0, 0), 
+    rgba(2, 183, 255, 0.2), 
+    rgb(0, 0, 0), 
+    rgba(2, 104, 187, 0.2)
+);
+	background-size: 400% 400%;
+	 background-attachment: fixed; /* ¡Clave! */
+    min-height: 100vh; /* Cambia height: 100% por esto */
+    animation: gradient 20s ease infinite;
+    overflow-x: clip; /* Alternativa moderna a hidden */
+     -webkit-background-attachment: fixed; /* Safari */
+        }
+        html{
+            height: 100%;
+        }
+        
+		html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", serif;
+    background-color: #000;
+    scroll-behavior: smooth;
+}
+body {
+    padding-right:0px !important;
+    margin-right:0px !important;
+}
+
+body.modal-open {
+    overflow-y: auto !important;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+        .header-image {
+    background-image: url('images/header4.jpeg'); /* Ruta de tu imagen de cabecera */
+    height: 300px; /* Ajusta la altura según sea necesario */
+    background-size: cover; /* Ajusta el tamaño para que se ajuste sin recortar */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    position: relative; /* Necesario para posicionar el overlay */
+    margin-top: 4rem;
+    display: flex; /* Usamos flexbox para centrar elementos */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.overlay {
+    position: absolute; /* Posiciona el overlay sobre la imagen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con opacidad para oscurecer */
+    filter: blur(5px); /* Aplica desenfoque */
+    z-index: 1; /* Asegura que el overlay esté por encima de la imagen */
+}
+
+.logo-circle2 {
+    width: 200px; /* Ajusta el tamaño según sea necesario */
+    height: 200px; /* Ajusta el tamaño según sea necesario */
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+	padding:0;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    position: relative; /* Para centrarlo en la imagen */
+    z-index: 2; /* Asegura que el logo esté por encima del overlay */
+	/* Sombra del círculo del logo */
+    box-shadow: 0 0px 15px rgba(192, 221, 228, 0.925); /* Ajusta los valores según sea necesario */
+    transition: all 0.3s ease-in-out;
+}
+.logo-circle2:hover{
+    box-shadow: 0 0px 30px rgba(192, 221, 228, 0.925); /* Ajusta los valores según sea necesario */
+}
+
+.logo-circle2 img {
+    width: 100%;
+    height: auto;
+    
+    background-size: cover !important; /* Hace que la imagen cubra todo el espacio sin deformarse demasiado */
+	background-position:center !important; /* Centra la imagen horizontalmente */
+	background-repeat:no-repeat !important; 
+}
+.circle-shadow {
+    width: 25px; /* Ajusta el tamaño según sea necesario */
+    height: auto; /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%;
+    display: flex;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.circle-shadow:hover {
+    box-shadow: 0 0px 15px rgba(192, 221, 228, 0.925);
+}
+.infost {
+    
+    transition: all 0.3s ease-in-out;
+}
+.infost:hover{
+    filter:drop-shadow(0 0px 5px rgba(192, 221, 228, 0.925));
+    transform:scale(1.1);
+}
+
+        .content {
+            text-align: center;
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        .btn-custom {
+    display: block; /* Asegura que cada botón ocupe toda la línea */
+    transition: all 0.3s ease; /* Transición suave para todos los cambios */
+    max-width: 200px; /* Ajusta el ancho máximo según sea necesario */
+    width: 100%; /* Hace que el botón ocupe el 100% del contenedor disponible hasta el max-width */
+    margin-left: auto; /* Centra horizontalmente */
+    margin-right: auto; /* Centra horizontalmente */
+}
+
+.black {
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+.black2 {
+    background-color: #000 !important;
+    border-color: #ffffff !important;
+}
+.green {
+    background-color: #78C257 !important;
+    border-color: #78C257 !important;
+}
+/* Efectos de hover */
+.btn-primary:hover {
+	border-color: #00539c !important;
+    background-color: #00539c !important; /* Azul oscuro, ajusta según sea necesario */
+    transform: scale(1.05); /* Aumenta el tamaño del botón */
+}
+
+.black:hover {
+	border-color: #03213b !important;
+    background-color: #03213b !important; /* Azul muy oscuro, ajusta según sea necesario */
+    transform: scale(1.05); /* Aumenta el tamaño del botón */
+}
+.black2:hover {
+	border-color: #ffffff !important;
+    background-color: #ffffff !important; /* Azul muy oscuro, ajusta según sea necesario */
+    color: #000 !important;
+    transform: scale(1.05); /* Aumenta el tamaño del botón */
+}
+.green:hover {
+	border-color: #528f36 !important;
+    background-color: #528f36 !important; /* Azul muy oscuro, ajusta según sea necesario */
+    color: #ffffff !important;
+    transform: scale(1.05); /* Aumenta el tamaño del botón */
+}
+p, label{
+    color: white;
+}
+h1, h2, h4{
+    color: #c0dde4;
+}
+.logo-circle {
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px; /* Ajusta el tamaño según sea necesario */
+    background-color: rgb(0, 0, 0); /* Color de fondo blanco */
+    border-radius: 50%; /* Hace que el div sea circular */
+    display: flex; /* Usamos flexbox para centrar la imagen */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    overflow: hidden; /* Asegura que la imagen no sobresalga del círculo */
+}
+.logo-circle img {
+    width: 100%;
+    height: auto;
+    
+    background-size: cover !important; /* Hace que la imagen cubra todo el espacio sin deformarse demasiado */
+	background-position:center !important; /* Centra la imagen horizontalmente */
+	background-repeat:no-repeat !important; 
+}
+.nav-link:hover{
+    background-color: transparent !important;
+    color: #c0dde4 !important;
+}
+.nav-link{
+    padding: 1.1rem 1rem !important;
+    color: rgba(255, 255, 255, 0.726) !important;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+/* Línea animada debajo del texto */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c0dde4, transparent);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.ws{
+    box-shadow: 0 0px 15px rgba(61, 219, 47, 0.925); /* Ajusta los valores según sea necesario */
+    transition: all 0.3s ease-in-out;
+}
+.ws:hover{
+box-shadow: 0 0px 30px rgba(44, 243, 26, 0.925); /* Ajusta los valores según sea necesario */
+}
+.ws2{
+    border:2px solid rgba(255, 255, 255, 0.089) !important
+}
+
+        .infocontainer {
+    background: linear-gradient(to bottom, #00131f, #000000);
+    margin-top: 3rem;
+    margin-bottom: 8rem;
+    padding: 2rem;
+    width: 100%; /* Esto asegura que ocupe todo el ancho */
+    border-radius: 3%;
+    transition: all 0.3s ease-in-out;
+}
+.info{
+    text-align:justify;
+}
+.navbar{
+    background: transparent !important;
+    backdrop-filter: blur(10px) !important;
+    border: 0.1px solid rgba(255, 255, 255, 0.089) !important;
+    width: 100% !important;
+}
+body.modal-open {
+    padding-right: 0px !important;
+}
+
+.navbar {
+    padding-right: 16px !important;
+}
+
+.infocontainer2{
+    background: rgba(255, 255, 255, 0.048); /* Degradado de #00131f a negro */
+    border: 2px solid rgba(255,255,255,.5);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(10px);
+    margin-top: 3rem; 
+    margin-bottom: 8rem;
+    padding: 2rem; 
+    width:40%;
+    border-radius: 3%;
+    box-shadow: 0 25px 45px rgba(0,0,0, 0.2); /* Ajusta los valores según sea necesario */
+    transition: all 0.3s ease-in-out;
+}
+/* Ajuste para pantallas más pequeñas */
+@media (max-width: 768px) {
+    body {
+        /* Versión móvil con soporte completo */
+        background-attachment: scroll;
+        animation: gradientMobile 20s ease infinite;
+    }
+    
+    @keyframes gradientMobile {
+        0% { background-position: 0% 20%; }
+        50% { background-position: 100% 80%; }
+        100% { background-position: 0% 20%; }
+    }
+    #isth4{
+        margin: 3rem 4rem 0 auto;
+    }
+    #isth5{
+        margin: 3rem 4rem 0 auto;
+        font-size: 1rem;
+    }
+    #istr{
+        margin-left: -3.9rem;
+    }
+    .infocontainer2 {
+        width: 80%;
+    }
+    h5{
+        font-size:12px;
+    }
+    .info{
+        text-align:justify;
+        margin-right: 4rem;
+    }
+    .modal-body2 img {
+        width: 20% !important;  /* Ajusta el tamaño de las imágenes a un 40% en pantallas pequeñas */
+        height: auto;
+    }
+    .modal-serv{
+    width: 85% !important;
+    margin: 0 auto !important;
+}
+.navbar{
+    width: 100% !important;
+}
+.alin{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.image-box{
+    margin-left: 0rem !important;
+}
+.ist-info-section{
+  margin-top: 7rem !important;
+}
+.ist-info-main-title{
+  font-size:30px !important;
+}
+}
+
+/* Mantener un tamaño fijo para imágenes en pantallas grandes */
+.modal-body2 img {
+    width: 50%;  /* Ajuste general para pantallas más grandes */
+    height: auto;
+}
+
+
+.tech-icon {
+    width: 70px;  /* Ajusta el tamaño según necesites */
+    height: auto; /* Mantiene la proporción */
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.tech-icon:hover {
+    transform: scale(1.1); /* Efecto de agrandado al pasar el cursor */
+}
+#serv, #contacto {
+    scroll-margin-top: 100px; /* Ajusta según la altura del navbar */
+}
+#info {
+    scroll-margin-top: 160px; /* Ajusta según la altura del navbar */
+}
+#sobre-nosotros {
+  scroll-margin-top: 400px !important;
+}
+.azul{
+    background-color: #000c13 !important;
+}
+
+/* Estilos para el cuadro de imagen (ajustado para ser más grande) */
+.image-box {
+    width: 300px; /* Aumenta el tamaño del cuadro */
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image-box:hover {
+    transform: scale(1.1); /* Efecto de expansión */
+}
+
+.image-box img {
+    width: 100%; /* Ajusta el tamaño de la imagen */
+    height: auto;
+}
+.close{
+    color:#fff !important;
+}
+.what{
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none !important;
+}
+.what:hover{
+    color: #00ff6a !important;
+    cursor: pointer !important;
+}
+.face{
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none !important;
+}
+.face:hover{
+    color: #008cff !important;
+    cursor: pointer !important;
+}
+.servi{
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none !important;
+}
+.servi:hover{
+    color: #b0d8f8 !important;
+}
+.modal-footer{
+    border-top: none !important;
+}
+.modal-serv{
+    background: linear-gradient(to bottom, #00131f, #000000);
+    border-color: #b0d8f83b;
+}
+.modal-header{
+    border-bottom: 1px solid #b0d8f83b !important;
+}
+.btn-secondary{
+    background-color: #00539c !important;
+    border-color: #00539c !important;
+    transition: all 0.3s ease-in-out;
+}
+.btn-secondary:hover{
+    background-color: #00253b !important;
+    border-color: #00253b !important;
+}
+.center{
+    margin: 10rem auto !important;
+}
+
+
+/* Animación desde la derecha */
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Clases para aplicar las animaciones */
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    opacity: 0; /* Oculto hasta que empiece la animación */
+}
+
+.slide-in-right {
+    animation: slideInRight 1.2s ease-out forwards;
+    opacity: 0;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Clase para aplicar la animación */
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Clases para aplicar al hacer scroll */
+.fade-in { animation: fadeIn 1s ease forwards; }
+.fade-in-left { animation: fadeInLeft 1s ease forwards; }
+.fade-in-right { animation: fadeInRight 1s ease forwards; }
+
+/* Ocultar al inicio */
+.hidden-animate {
+    opacity: 0;
+}
+.slider{
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+    mask-image: linear-gradient(to right,
+    transparent,
+    #000 10% 90%,
+    transparent);
+}
+.slider .list{
+    display: flex;
+    width: 100%;
+    min-width: calc(var(--width) * var(--quantity));
+    position: relative;
+}
+.slider .list .item{
+    width: var(--width);
+    height: var(--height);
+    border-radius:20px;
+    position: absolute;
+    left: 100%;
+    animation: autoRun 10s linear infinite;
+    animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1));
+    transition:filter 0.5s;
+}
+.slider .list .item img{
+    width: 100%;
+    height:100%;
+    
+}
+@keyframes autoRun{
+    from{
+        left: 100%;
+    }to{
+        left: calc(var(--width)*-1);
+    }
+}
+.slider:hover .item{
+    animation-play-state: paused!important;
+    filter: grayscale(1);
+}
+.slider .item:hover{
+    filter: grayscale(0);
+}
+#listaservices .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Fondo base (estado normal) */
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Fondo hover */
+.service-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-item:hover::after {
+    opacity: 1;
+}
+
+/* Activo: otro gradiente */
+.service-item.active::before {
+    background: linear-gradient(to bottom, #00253b 0%, #004080 100%);
+}
+
+.service-item i {
+    color: #d5eaf0 !important;
+    transition: color 0.3s ease;
+    position: relative; /* Para que esté sobre el fondo */
+    z-index: 1;
+    font-size: 1.5rem;
+    min-width: 30px;
+    margin-right: 10px;
+}
+
+.service-item span {
+    position: relative; /* Para que el texto esté sobre el fondo */
+    z-index: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Máximo 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    width: 100%;
+}
+
+/* Hover: cambia colores */
+.service-item:hover {
+    color: #001f3f !important;
+    border-color: #001f3f !important;
+}
+
+.service-item:hover i {
+    color: #001f3f !important;
+}
+.service-item.active:hover::after {
+  opacity: 0 !important;
+}
+/* Estado activo */
+.service-item.active {
+    color: white !important;
+    background: linear-gradient(to bottom, #00253b 0%, #004080 100%);
+    border-color: #0056b3 !important;
+}
+
+
+.service-item.active i {
+    color: white !important;
+}
+.service-item{
+    height: 120px; /* Altura fija para todos */
+    display: flex;
+    align-items: center;
+     padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    color: #d5eaf0;
+    background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
+    border-color: #b0d8f83b !important;
+    cursor: pointer;
+    overflow: hidden; /* Necesario para contener el pseudo-elemento */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#service-card img {
+    object-fit: cover;
+    height: 250px;
+}
+.background-image-container {
+position: relative;
+  z-index: 2; /* Encima de las partículas */
+}
+
+/* Capa de partículas */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.particles-container {
+  position: relative;
+  width: 100%;
+  min-height: 600px; /* o el alto que necesites */
+  overflow: visible;
+}
+.custom-br {
+  display: block;
+  margin-bottom: 8px; /* o el valor que quieras */
+}
+.custom-br2 {
+  display: block;
+  margin-bottom: 5px; /* o el valor que quieras */
+}
+.mi-boton {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #c0dde4;
+  border: 1px solid #b0d8f83b;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  text-align: center;
+  z-index: 0;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  background: transparent;
+}
+
+.mi-boton::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
+  border-radius: 5px;
+  z-index: -2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.mi-boton::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+  border-radius: 5px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mi-boton:hover::after {
+  opacity: 1;
+}
+
+.mi-boton:hover {
+  color: #001f3f;
+  border-color: #001f3f;
+}
+.mi-boton:hover,
+.mi-boton:focus,
+.mi-boton:active {
+  text-decoration: none; /* Asegura que no aparezca al pasar el cursor o al hacer foco */
+}
+#serv {
+  scroll-margin-top: 75px; /* Ajusta este valor según la altura de tu navbar + espacio extra */
+  margin-top:15rem !important; 
+}
+#contacto{
+  scroll-margin-top: 75px; 
+}
+#info-button {
+  background: none !important;
+  border: none !important;
+  color: #b0d8f8;
+  font-size: 24px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover solo cuando el botón está habilitado */
+#info-button:not(:disabled):hover {
+  background-color: #b0d8f8 !important;
+  color: #000c13 !important;
+}
+
+/* Asegurar que el ícono también cambie de color */
+#info-button:not(:disabled):hover i {
+  color: #000c13 !important;
+}
+
+/* Opcional: ícono con transición */
+#info-button i {
+  transition: color 0.3s ease;
+}
+#servicios-section{
+  margin-bottom: 2rem;
+}
+@media (max-width: 500px) {
+  #servicios-section{
+    width: 90% !important;
+    margin-bottom: 6rem !important;
+  }
+}
+@media (max-width: 575.98px) {
+  .service-item {
+    flex-direction: column !important; /* columna en móviles */
+    align-items: center !important;    /* centrar horizontalmente */
+    text-align: center;                 /* centrar texto */
+  }
+  .tech-icon{
+    width: 50px !important;
+  }
+  #listaservices{
+    margin-right:1rem;
+    margin-left:1rem;
+  }
+  .services-section{
+    height: 70rem !important;
+  }
+  .service-item i {
+    margin-right: 0 !important;  /* quitar margen derecho */
+    margin-bottom: 0.3rem;       /* espacio debajo del ícono */
+    font-size: 1.5rem;           /* puedes ajustar tamaño del ícono */
+  }
+  
+  .service-item span {
+    white-space: normal;         /* permitir salto de línea en texto */
+    font-size: 1rem !important;             /* ajustar tamaño texto si quieres */
+  }
+}
+@media (max-width: 575.98px) {
+    .mi-boton{
+        margin-right:2rem;
+    }
+  .col-md-6.text-center {
+    width: 90% !important;
+    min-height: 300px; /* o menos si quieres */
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  #carouselExampleIndicators {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 2rem !important; /* opcional */
+  }
+  #carouselExampleIndicators .carousel-inner {
+    max-height: 300px;
+    overflow: hidden;
+  }
+  
+  #carouselExampleIndicators .carousel-item img {
+    object-fit: cover; /* para que la imagen se ajuste bien */
+    height: 300px;
+    width: 100%;
+  }
+  .ist-info-heading{
+    justify-content: center !important;
+  }
+  .ist-info-contact{
+    justify-content: center;
+  }
+  .ist-info-heading{
+    justify-content: center;
+  }
+  .ist-info-main-title{
+    text-align: center;
+  }
+  .ist-info-description{
+    text-align: justify;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .social-links{
+        margin-bottom:20px;
+    }
+
+    #rustrow{
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 100%;
+    }
+    #rustrow .image-box{
+      width: 225px;
+      height: 150px !important;
+    }
+  /* Contenedor padre del carrusel */
+  
+  /* Ajustar márgenes internos del carrusel */
+  #carouselExampleIndicators {
+    margin-left: 0 !important;  /* Quitar margen extra */
+    margin-right: 0 !important;
+    margin-top: 0;
+    border-radius: 10px !important;
+  }
+
+  /* Asegurar que el carrusel no se achique */
+  #carouselExampleIndicators .carousel-inner {
+    min-height: 150px;  /* Altura mínima */
+  }
+
+  #carouselExampleIndicators .carousel-item img {
+    object-fit: contain !important; /* Ajustar imagen sin recortar */
+    height: auto !important;
+    max-height: 150px !important;
+    width: 100% !important;
+  }
+
+  /* Centrar verticalmente el texto del carousel */
+  #carouselExampleIndicators .carousel-caption {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    bottom: auto !important;
+  }
+    #servicios-section{
+    max-width:850px !important;
+  }
+  #servicios-section2.container{
+    max-width: 950px !important;
+  }
+  .carousel-inner{
+    min-height: 200px !important;
+  }
+  #carouselExampleIndicators .carousel-item img{
+    min-height: 210px !important;
+    max-height: 210px !important;
+    object-fit: cover !important;
+  }
+}
+@media (max-width: 768px) {
+    #contactos{
+        margin-bottom:30rem !important;
+    }
+    #iconosparte{
+        margin-bottom:3rem !important;
+    }
+  /* Cambiar alineación del contenedor a centro */
+  #servicios-section2 .col-md-6.d-flex.flex-column.align-items-start {
+    align-items: center !important; /* Centrar horizontalmente */
+    text-align: center;              /* Centrar texto */
+    margin-left: 0 !important;       /* Quitar margen izquierdo */
+    margin-right: 0 !important;      /* Quitar margen derecho */
+  }
+
+  /* Ajustar el párrafo para que no tenga margen izquierdo */
+  #servicios-section2 p.custom-br2 {
+    margin-left: 0 !important;
+  }
+
+  /* Si tienes un botón dentro, centrarlo también */
+  #servicios-section2 .btn {
+    align-self: center !important;
+  }
+  .services-section{
+    height: 60rem;
+    min-height: 1300px !important;
+  }
+  #servicios-section{
+    margin-bottom:6rem !important;
+    margin-top:10rem !important;
+  }
+}
+@media (max-width: 363px) {
+  .hide-on-small {
+    display: none;
+  }
+}
+/* Contenedor íconos */
+.new-contact-icons-row {
+  background: #23213a;
+  padding: 2rem 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Bloques individuales */
+.new-contact-icon-block {
+  min-width: 150px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #b0d8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Íconos */
+.new-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #000c13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.8rem;
+  box-shadow: 0 2px 8px rgba(192, 221, 228, 0.15);
+  transition: all 0.3s;
+  margin-bottom: 0.5rem;
+}
+
+/* Colores específicos */
+.new-icon-circle.new-whatsapp {
+  background-color: #06c55c;
+}
+
+.new-icon-circle.new-facebook {
+  background-color: #1877f3;
+}
+
+.new-icon-circle.new-location {
+  background-color: #e53935;
+}
+
+/* Texto */
+.new-contact-text {
+  font-size: 1.2rem;
+  color: #c0dde4;
+  font-weight: 500;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+/* Hover: cambia color de texto e ícono */
+.new-contact-icon-block:hover .new-icon-circle {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.new-contact-icon-block:hover .new-contact-text {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  .new-icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  .new-contact-text {
+    font-size: 1rem;
+  }
+  .d-none {
+    display: block !important;
+  }
+   .service-item {
+        height: 100px; /* Altura ligeramente menor en móviles */
+        padding: 10px;
+    }
+    
+    .service-item i {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 487px){
+    .contact-icons-row{
+        gap:3rem !important;
+    }
+}
+.contact-icons-row {
+  gap: 8rem; /* aumenta el espacio entre los bloques */
+}
+div.seccion {
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Slider styles con prefijo bizslider- */
+    .bizslider-main {
+      position: relative;
+      width: 90vw;
+      max-width: 900px;
+      height: 100%;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      overflow: visible;
+      background: #222;
+      border-radius: 10px;
+      margin: 0 auto;
+    }
+    .bizslider-list {
+      position: relative;
+      height: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #b0d8f857;
+    }
+    .bizslider-item {
+      width: 200px;
+      height: 300px;
+      list-style-type: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      border: 1px solid #b0d8f857;
+      background-position: center;
+      background-size: cover;
+      border-radius: 20px;
+      box-shadow: 0 20px 30px rgba(255,255,255,0.3) inset;
+      transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+      
+      &:nth-child(1), &:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    
+  }
+  
+  &:nth-child(3) { left: 50%; }
+  &:nth-child(4) { left: calc(50% + 220px); }
+  &:nth-child(5) { left: calc(50% + 440px); }
+  &:nth-child(6) { left: calc(50% + 660px); opacity: 0; }
+    }
+    .bizslider-item:nth-of-type(2) .bizslider-content {
+      display: block;
+      animation: bizshow 0.75s ease-in-out 0.3s forwards;
+    }
+    @keyframes bizshow {
+      0% {
+        filter: blur(5px);
+        transform: translateY(calc(-50% + 75px));
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+    
+.bizslider-content {
+  width: min(30vw,400px);
+  position: absolute;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+  font: 400 0.85rem helvetica,sans-serif;
+  color: white;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  opacity: 0;
+  display: none;
+
+  & .title {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+  }
+
+  & .description {
+    font-family: 'Figtree', sans-serif;
+    line-height: 1.7;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  & button {
+    width: fit-content;
+    background-color: rgba(0,0,0,0.1);
+    color: white;
+    border: 2px solid white;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    cursor: pointer;
+  }
+
+  & .tech-icons{
+    display: flex;
+  gap: 1rem; /* espacio entre logos */
+  margin-top: 1rem;
+  align-items: center;
+  }
+  & .tech-icons img{
+    width: 32px;  /* tamaño de los logos */
+  height: 32px;
+  object-fit: contain;
+  cursor: default;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); /* sombra sutil */
+  transition: transform 0.3s ease;
+  }
+  & .tech-icons img:hover{
+    transform: scale(1.2);
+  }
+}
+.bizslider-nav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  user-select: none;
+  display: flex;
+  gap:0.5rem;
+
+  & .btn {
+    
+    color: #b0d8f8;
+    border: 2px solid #b0d8f88f;
+    margin: 0 0.25rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow:hidden;
+    position: relative;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0; /* Para que pseudoelementos queden detrás */
+  transition: color 0.3s ease, border-color 0.3s ease;
+
+  &::before{
+    content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #000c13 0%, #003553 100%);
+  border-radius: 50%;
+  z-index: -2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  }
+  &::after{
+    content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  }
+  &:hover::after{
+    opacity: 1;
+  }
+
+    &:hover {
+      color: #001f3f;
+  border-color: #001f3f;
+    }
+  }
+}
+
+@media (width > 650px) and (width < 900px) {
+  .bizslider-content {
+    & .title        { font-size: 1rem; }
+    & .description  { font-size: 0.7rem; }
+    & button        { font-size: 0.7rem; }
+  }
+  .item {
+    width: 160px;
+    height: 270px;
+
+    &:nth-child(3) { left: 50%; }
+    &:nth-child(4) { left: calc(50% + 170px); }
+    &:nth-child(5) { left: calc(50% + 340px); }
+    &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
+  }
+}
+
+@media (width < 650px) {
+  .bizslider-content {
+    & .title        { font-size: 0.9rem; }
+    & .description  { font-size: 0.65rem; }
+    & button        { font-size: 0.7rem; }
+  }
+  .item {
+    width: 130px;
+    height: 220px;
+
+    &:nth-child(3) { left: 50%; }
+    &:nth-child(4) { left: calc(50% + 140px); }
+    &:nth-child(5) { left: calc(50% + 280px); }
+    &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
+  }
+}
+#particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      
+    }
+    .services-section {
+  position: relative;
+  overflow: hidden; /* para que partículas no se salgan */
+  min-height: 600px; /* o el alto mínimo que necesites */
+}
+#servicios-section {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 0;
+  width:90%;
+  color: #b0d8f8; /* ejemplo */
+}
+
+            .footer {
+    background: linear-gradient(to right, #00080c, #022e44);
+    color: #ffffff;
+    padding: 70px 0 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #305e7c, #c0dde4);
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(10deg, #84a0a7, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-about {
+    color: #a4b5c6;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.footer h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 30px;
+    height: 2px;
+    background: #3498db;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #a4b5c6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: #3498db;
+    transform: translateY(-3px);
+    color: #fff;
+}
+#socialw:hover{
+    background: #23be2b;
+}
+#socialf:hover{
+    background: #1b4aad;
+}
+#sociall:hover{
+    background: #be2323;
+}
+
+.footer-newsletter {
+    position: relative;
+    margin-top: 20px;
+}
+
+.footer-newsletter input {
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    outline: none;
+    padding-right: 50px;
+}
+
+.footer-newsletter input::placeholder {
+    color: #a4b5c6;
+}
+
+.newsletter-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    width: 40px;
+    border-radius: 50%;
+    background: #3498db;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background: #2980b9;
+}
+#eduros:hover{
+    color: #0ca9b4;
+}
+#teecreator:hover{
+    color: #ff00aa;
+}
+#adorarte:hover{
+    color: #d1c304;
+}
+#edukids:hover{
+    color: #4c00ff;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #a4b5c6;
+}
+
+.footer-bottom-links {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #a4b5c6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #3498db;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        margin-bottom: 40px;
+    }
+    
+}
+.contact-icon {
+  cursor: pointer;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 8px auto;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+/* Colores base */
+.whatsapp {
+  background-color: #25D366;
+}
+
+.facebook {
+  background-color: #104dcf;
+}
+
+.email {
+  background-color: #205d79; /* gris */
+}
+
+.location {
+  background-color: #dc3545; /* rojo bootstrap */
+}
+
+/* Hover más oscuro */
+.whatsapp:hover {
+  background-color: #079647;
+}
+
+.facebook:hover {
+  background-color: #083494;
+}
+
+.email:hover {
+  background-color: #0a445f;
+}
+
+.location:hover {
+  background-color: #991522;
+}
+.contact-container {
+  max-width: 900px;
+  width: 100%;
+  height:450px;
+  background: radial-gradient(circle, #082d42 0%, #000102 100%);
+  color: #b0d8f8; /* para que el texto sea visible */
+  margin-bottom:6rem;
+  border:1px solid #b0d8f83b !important;
+}
+.to-top {
+    position: fixed;
+    bottom: 16px;
+    right: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background-color: #00253b5b;
+    color: #bae0ffcc;
+    text-decoration: none;
+    opacity: 0;
+    border: 1px solid #b0d8f8;
+    pointer-events: none;
+    transition: all 0.4s;
+    z-index: 9999;
+    /* ¡Nueva propiedad clave! */
+    transform: translateZ(0); /* Crea un nuevo contexto de apilamiento */
+}
+.to-top:hover{
+    text-decoration: none;
+    background-color: #000c13bb;
+    color: #c0dde4;
+    border-color: #c0dde4;
+}
+
+.to-top.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* Mantiene el scrollbar del body VISIBLE */
+body.modal-open {
+    overflow: visible !important;  /* ← clave */
+    padding-right: 0 !important;
+}
+
+/* Scroll INVISIBLE pero FUNCIONAL en el modal */
+.modal {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow-y: auto;  /* Permite scroll con rueda */
+}
+
+/* Oculta scrollbar en Chrome/Safari */
+.modal::-webkit-scrollbar {
+    display: none;
+}
+.tech-icons-hero {
+  position: absolute;
+  bottom: 0; /* pegados abajo del hero */
+  left: 0;
+  right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  z-index: 3;
+}
+.gradient-border {
+  position: absolute;
+  top: -28px;
+  width: calc(60% + 56px);
+  height: calc(100% + 56px);
+  border: 3px solid transparent;
+  
+  /* Degradado adaptado a tus colores */
+  background: linear-gradient(-135deg, #305e7c 0%,#c0dde4 52%, rgba(255,255,255,0) 81%) border-box;
+  
+  /* Truco para que solo se vea el borde */
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  
+  border-radius: 20px; /* Ajusta la curvatura */
+  z-index: 0; /* Debajo de la imagen */
+}
+
+.image-box {
+  position: relative;
+  z-index: 1; /* Encima del borde degradado */
+  cursor: pointer;
+}
+/* Contenedor principal de la sección */
+.ist-info-section {
+    position: relative;
+    top: -20px;
+    color: #fff;
+    font-family: 'Figtree', sans-serif;
+}
+
+/* Encabezado pequeño "Información" */
+.ist-info-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    justify-content: flex-start;
+}
+
+.ist-info-title {
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #5e99c0, #c0dde4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.ist-info-line {
+    flex: none;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, #5e99c0, #c0dde4);
+    border-radius: 2px;
+}
+
+/* Frase principal */
+.ist-info-main-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+/* Descripción */
+.ist-info-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #c0dde4;
+    font-family: "Space Grotesk", sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+/* Línea divisoria */
+.ist-info-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(255,255,255,0.2);
+    margin-bottom: 1.5rem;
+}
+
+/* Bloque de contacto */
+.ist-info-contact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Icono de llamada */
+.ist-call-icon {
+    background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+                linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+    border: 2px solid transparent; /* importante para que se vea el degradado */
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+/* Texto de contacto */
+.ist-contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.ist-contact-sub {
+    font-size: 0.85rem;
+    color: #00aaff;
+    font-weight: 600;
+}
+
+.ist-contact-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Separador vertical */
+.ist-info-separator {
+    width: 1px;
+    height: 40px;
+    background-color: #fff;
+    opacity: 0.6;
+}
+/* Botón degradado con borde y relleno animado */
+.ist-gradient-btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+
+    border: 3px solid transparent;
+    background:
+      linear-gradient(to right, #5e99c0, #f4fdff) padding-box,
+      linear-gradient(135deg, #01293d, #0a71ad) border-box;
+
+    color: #003344;
+    transition: color 0.3s ease, background 0.35s ease;
+    
+    /* Este es el cambio clave: */
+    z-index: 0;
+}
+
+/* Aquí va esta regla para que el texto esté siempre encima */
+.ist-gradient-btn::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background: linear-gradient(to right, #01293d, #0a71ad);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+    z-index: 1; /* Poner pseudo-elemento detrás del texto */
+    border-radius: calc(30px - 2px);
+}
+/* Esto hace que el texto esté delante del pseudo-elemento */
+.ist-gradient-btn span {
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+}
+/* Texto siempre arriba */
+.ist-gradient-btn > * {
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+}
+
+/* Hover: cambiar color texto y fondo y borde */
+.ist-gradient-btn:hover {
+    color: #ffffff;
+    background:
+      linear-gradient(to right, #5e99c0, #f4fdff) padding-box,
+      linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+}
+
+/* Activar relleno */
+.ist-gradient-btn:hover::before {
+    transform: scaleX(1);
+}
+
+/* Focus accesible */
+.ist-gradient-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,170,255,0.12);
+}
+
+/* Sin subrayado en active/visited */
+.ist-gradient-btn:active,
+.ist-gradient-btn:visited {
+    text-decoration: none;
+}
+
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    
+    
+    
+}
+.ist-gradient-btn,
+.ist-gradient-btn span {
+    text-decoration: none !important;
+}
+#colcarrusel {
+    position: relative;
+    border-radius: 10px;
+    padding: 10px; /* Espacio entre el borde degradado y el carrusel */
+    background: transparent; /* Fondo transparente */
+    overflow: hidden; /* Para que el pseudo-elemento no se salga del borde redondeado */
+    z-index:3;
+}
+
+
+#colcarrusel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(-135deg, #305e7c, #c0dde4, transparent) border-box;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; /* Permite interactuar con el carrusel */
+    z-index: 1;
+}
+
+#carouselExampleIndicators {
+    position: relative;
+    z-index: 2; /* Asegura que el carrusel esté por encima del pseudo-elemento */
+    background: #000; /* Fondo del carrusel (opcional) */
+    border-radius: 8px; /* Un poco menos que el contenedor para que no se solape */
+}
+#servicios-section2 {
+  position: relative; /* Necesario para que el pseudo-elemento se posicione respecto a la sección */
+  background: transparent; /* Que se vea el degradado del body */
+}
+#servicios-section2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100%;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at right center, /* centro en la derecha */
+    rgba(2, 111, 138, 0.5) 0%,
+    rgba(1, 150, 187, 0.315) 20%,
+    rgba(192, 221, 228, 0) 70%
+  );
+
+  filter: blur(100px);
+  z-index:0;
+}
+/* Fondo fijo estilo "ventana" */
+#caracteristicas-section {
+  background-image: url('https://images.unsplash.com/photo-1569403617727-13af6b24d342?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Cambia por tu imagen */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0;
+  margin-top:10rem;
+  margin-bottom: 15rem;
+  color: white;
+  position: relative;
+}
+
+/* Oscurecer un poco para mejor lectura */
+#caracteristicas-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+/* Correct iOS not supporting fixed BGs */
+.unfix-ios-bg {
+    @supports (-webkit-touch-callout: none) {
+        background-attachment: initial !important;
+    }
+}
+/* Contenido sobre el overlay */
+#caracteristicas-section .container {
+  position: relative;
+  z-index: 2;
+  margin-bottom:2.5rem;
+}
+
+/* Estilo de los círculos con íconos */
+.feature-circle {
+  width: 100px;
+  height: 100px;
+  background: rgba(2, 69, 114, 0.15);
+  border: 2px solid rgba(239, 252, 255, 0.644);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.feature-circle:hover {
+  background: rgba(201, 255, 252, 0.205);
+  border-color: rgb(195, 241, 255);
+  transform: scale(1.1);
+}
+.feature-circle:hover i{
+  color: rgb(195, 241, 255);
+}
+/* Títulos de características */
+.feature h5 {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.caracteristicas-titulo {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #ffffff 40%, #ffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5rem;
+}
+#eleccion{
+  font-size:4rem;
+  margin-bottom:2rem;
+  background: linear-gradient(90deg, #ffffff 40%, #5d80a1  100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Estilos optimizados */
+/* Sección de proyectos con imagen de fondo */
+.proyectos-section {
+  padding: 6rem 0;
+  font-family: 'Figtree', sans-serif;
+  width: 100%;
+  position: relative; /* Necesario para el pseudo-elemento */
+  z-index: 1;
+  overflow: hidden; /* Asegura que el fondo no se desborde */
+}
+
+/* Fondo con pseudo-elemento para mejor control */
+.proyectos-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://i.ibb.co/k29YpGcV/fondo10.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efecto parallax opcional */
+  z-index: -1; /* Lo envía al fondo */
+  opacity: 0.9; /* Ajusta la opacidad según necesites */
+  filter: brightness(0.4); /* Mejora el contraste del contenido */
+  @supports (-webkit-touch-callout: none) {
+        background-attachment: initial !important;
+    }
+}
+
+.proyectos-titulo {
+  
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff 20%, #5d80a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.proyectos-contenedor {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  
+  /* Máscara de degradado mejorada */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
+}
+.proyectos-contenedor::-webkit-scrollbar {
+  display: none; /* Oculta scrollbar en Chrome/Safari */
+}
+
+.proyecto-item {
+  position: relative;
+  scroll-snap-align: start;
+  flex: 0 0 85%; /* Ancho inicial para móviles */
+  min-width: 280px;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.28, 0.62, 0.4, 0.95);
+  cursor: pointer;
+  will-change: transform;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* Margen izquierdo solo para el primer elemento */
+  &:first-child {
+    margin-left: 5rem;
+  }
+}
+
+/* Logo corregido - Versión mejorada */
+.proyecto-logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Eliminamos el fondo y añadimos contenedor circular para la imagen */
+}
+
+.proyecto-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Para PNG con transparencia */
+  border-radius: 50%; /* Hacemos circular solo la imagen */
+  transition: all 0.5s ease;
+  /* Para imágenes sin transparencia (JPG) */
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.2); /* Solo visible en imágenes opacas */
+  backdrop-filter: blur(5px);
+}
+
+/* Versión alternativa si prefieres marco blanco solo para imágenes opacas */
+.proyecto-logo img:not([src$=".png"]) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px;
+}
+
+/* Efecto hover */
+.proyecto-item:hover .proyecto-logo img {
+  transform: scale(0.9) translateY(-10px);
+  opacity: 0;
+}
+
+.proyecto-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.7s ease;
+/* Filtros iniciales (imagen oscura) */
+  filter: brightness(0.5) contrast(1.1);
+  -webkit-filter: brightness(0.5) contrast(1.1);
+  
+  /* Capa oscura adicional para más control */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: all 0.5s ease;
+  }
+}
+
+/* Info - Versión corregida */
+.proyecto-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem;
+  background: linear-gradient(to top, rgba(5, 30, 50, 0.95) 40%, transparent 100%);
+  color: white;
+  /* Eliminamos transform y trabajamos solo con opacidad y posición inicial */
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado hover */
+.proyecto-item:hover .proyecto-info {
+  opacity: 1;
+  height: auto;
+  padding-bottom: 2.5rem; /* Mantenemos el padding */
+  overflow: visible;
+}
+
+/* Ajustamos el contenido para que aparezca progresivamente */
+.proyecto-info h3,
+.proyecto-info p,
+.proyecto-boton {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: 
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.3s ease;
+  transition-delay: 0.2s; /* Retrasamos la aparición del contenido */
+}
+
+.proyecto-item:hover .proyecto-info h3,
+.proyecto-item:hover .proyecto-info p,
+.proyecto-item:hover .proyecto-boton {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.proyecto-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.proyecto-info p {
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.proyecto-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+                linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+    border: 2px solid transparent; /* importante para que se vea el degradado */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+
+/* Efectos hover mejorados */
+.proyecto-item:hover {
+  flex: 2.5;
+  min-width: 55%;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.proyecto-item:hover .proyecto-logo {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.9);
+}
+
+.proyecto-item:hover .proyecto-info {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+/* Efecto hover - imagen brillante */
+.proyecto-item:hover .proyecto-imagen {
+  filter: brightness(1) contrast(1);
+  -webkit-filter: brightness(1) contrast(1);
+  
+  &::after {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+/* Efecto más suave para el contenedor */
+.proyectos-contenedor {
+  transition: all 0.5s ease;
+}
+/* Estilos para el scroll horizontal */
+.proyectos-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px; /* Espacio para los indicadores */
+}
+/* Indicador visual */
+/* Indicadores mejorados */
+.scroll-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  
+  /* Eliminar cualquier línea visible */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+}
+.scroll-indicator.left {
+  left: 0;
+  &::after {
+    background: linear-gradient(
+      to left,
+      transparent 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+}
+.scroll-indicator.right {
+  right: 0;
+}
+
+.proyectos-contenedor.scrollable ~ .scroll-indicator.right {
+  opacity: 1;
+}
+
+/* Mostrar indicadores solo cuando sea necesario */
+.proyectos-contenedor.can-scroll-left ~ .scroll-indicator.left,
+.proyectos-contenedor.can-scroll-right ~ .scroll-indicator.right {
+  opacity: 1;
+}
+
+/* Adaptación para desktop */
+@media (min-width: 768px) {
+  .proyecto-item {
+    flex: 0 0 calc(33% - 1rem);
+    &:first-child {
+      margin-left: 40px;
+    }
+  }
+  
+  .proyectos-contenedor {
+    padding: 1rem 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .proyecto-item {
+    flex: 0 0 calc(25% - 1rem);
+  }
+}
+/* Proyecto falso para margen */
+.proyecto-item.fake-spacer {
+  visibility: hidden;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  flex: 0 0 20px !important;
+  height: 100%;
+  pointer-events: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  
+  /* Anula todos los efectos hover */
+  &:hover {
+    min-width: 20px !important;
+    max-width: 20px !important;
+    flex: 0 0 20px !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  
+  /* Oculta todo el contenido interno */
+  & > * {
+    display: none !important;
+  }
+}
+
+/* Asegura que el primer proyecto real no tenga margen izquierdo */
+.proyecto-item:not(.fake-spacer) {
+  margin-left: 0;
+}
+/* Estilo para el logo de RustDesk */
+.rustdesk-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border: 3px solid #2a9fd6;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.rustdesk-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Botón estilo RustDesk */
+.btn-rustdesk {
+  background-color: #2a9fd6;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  padding: 10px 25px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-rustdesk:hover {
+  background-color: #1e87b8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 159, 214, 0.3);
+}
+
+/* Cajas de imagen */
+.image-box {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-box img {
+  transition: transform 0.5s ease;
+}
+
+.image-box:hover {
+  transform: translateY(-5px);
+}
+
+#infoimagebox:hover img{
+  transform: scale(1) !important;
+}
+.image-box:hover img {
+  transform: scale(1.05);
+}
+/* Estilos para la sección */
+#sobre-nosotros {
+  position: relative;
+  overflow: hidden;
+}
+#infoimagebox:hover{
+  transform: scale(1.05) !important;
+}
+
+@media (max-width: 397px){
+  .ist-info-separator{
+    visibility: hidden;
+  }
+  .ist-info-contact{
+    justify-content: center;
+  }
+  .ist-info-heading{
+    justify-content: center;
+  }
+  .ist-info-main-title{
+    text-align: center;
+  }
+  .ist-info-description{
+    text-align: justify;
+  }
+}
+@media (max-width: 431px){
+  #infoimagebox {
+    width: 250px;
+    height: 100%;
+  }
+}
+@media (min-width: 757px) and (max-width: 992px) {
+  #gborder {
+    margin-right: 2rem !important;
+    width: calc(60% + 106px) !important;
+  }
+  #infoimagebox {
+    margin-right: 2rem !important;
+  }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 992px) {
+
+  .proyecto-item:hover{
+    min-width: calc(100% + 20px) !important;
+  }
+  #sobre-nosotros .row {
+    flex-direction: column-reverse;
+  }
+  
+  #sobre-nosotros .col-lg-6 {
+    margin-bottom: 2rem;
+  }
+  #sobre-nosotros .image-box{
+    margin-right:3rem !important;
+    width: 90% !important;
+    height: auto !important;
+  }
+  .slogan{
+    justify-content: center;
+    text-align: center;
+  }
+  
+}
+.slogan {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(90deg, #98bad6 20%, #ffffff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1.5rem 0;
+  display: inline-block;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.slogan::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #98bad6 20%, #ffffff 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.slogan:hover::after {
+  transform: scaleX(1);
+}
+ /* Estilos para las tarjetas de contacto */
+    /* Estilos actualizados para las tarjetas con borde degradado */
+/* Estilos actualizados para las tarjetas con borde degradado */
+.contact-card {
+    display: flex;
+    align-items: center;
+    background: 
+        linear-gradient(135deg, rgb(4, 49, 80), rgb(0, 13, 20)) padding-box,
+        linear-gradient(135deg, #5e99c0, #dceff3) border-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom:2rem;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.location-card {
+    display: flex;
+    align-items: center;
+    background: 
+        linear-gradient(135deg, rgb(4, 49, 80), rgb(0, 13, 20)) padding-box,
+        linear-gradient(135deg, #5e99c0, #dceff3) border-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    
+    .contact-icon-container {
+        margin-right: 15px;
+    }
+    
+    .gradient-icon-bg {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #5e99c0, #f4fdff);
+    }
+    #fbk{
+     background: linear-gradient(135deg, #074197, #398fff); 
+    }
+    #fbk i{
+     color: white;
+    }
+    #whp{
+     background: linear-gradient(135deg, #079726, #39ff4a); 
+    }
+    #whp i{
+     color: white;
+    }
+    
+    .gradient-icon-bg i {
+        color: #01293d;
+        font-size: 1.2rem;
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .contact-label {
+        font-family: 'Space Grotesk', sans-serif;
+        color: #c0dde4;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    
+    .contact-value {
+        font-family: 'Space Grotesk', sans-serif;
+        color: #ffffff;
+        font-size: 1rem;
+    }
+    
+    /* Estilo para el mapa con borde degradado */
+    .gradient-border-map {
+        background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+                    linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 2px;
+        height: 300px;
+    }
+    /* Contenedor principal del mapa con borde degradado */
+    .map-container-degradado {
+        position: relative;
+        border-radius: 10px;
+        padding: 30px; /* Espacio entre el borde degradado y el mapa */
+        background: transparent;
+        overflow: hidden;
+        width: 100%;
+        height: 400px; /* Ajusta según necesites */
+        margin: 0 auto;
+        z-index: 1;
+    }
+
+    /* Pseudo-elemento para el borde degradado */
+    .map-container-degradado::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 3px solid transparent;
+        border-radius: 10px;
+        background: linear-gradient(-135deg, #305e7c, #c0dde4, transparent) border-box;
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Estilo para el mapa interno */
+    #contactMap {
+        border-radius: 6px; /* Un poco menos que el contenedor */
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+    .contact-intro-text {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #c0dde4;
+    line-height: 1.6;
+    margin-bottom: 3rem !important;
+    font-size: 1.1rem;
+}
+.social-icons-row {
+    display: flex;
+    margin-left:1rem;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+.social-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-icon-circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    padding: 2px;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.social-icon-circle i {
+    font-size: 1.2rem;
+    color: #01293d;
+    z-index: 1;
+}
+
+.social-icon-circle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Colores específicos para hover */
+.facebook-icon:hover i {
+    color: #1877f2; /* Azul Facebook */
+}
+
+.whatsapp-icon:hover i {
+    color: #25d366; /* Verde WhatsApp */
+}
+@media (max-width: 767px) {
+    #titulo-slide {
+        font-size: 2rem !important; /* Tamaño más apropiado para móvil */
+        line-height: 1.2;
+    }
+    #izqs{
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .btn-custom {
+        width: 100%; /* Botón más ancho en móvil */
+        max-width: 250px; /* Pero con un límite */
+    }
+    
+    .d-flex.align-items-center {
+        flex-direction: column; /* Opcional: apila botón e ícono verticalmente */
+        gap: 1rem; /* Espacio entre elementos */
+    }
+    
+    .infost {
+        margin-left: 0 !important; /* Elimina margen izquierdo en modo apilado */
+    }
+    .seccion-ti{
+      min-height: 1000px !important;
+    }
+    .logo-circle2{
+      margin-top:3rem !important;
+    }
+    #serv{
+      margin-top:7rem !important;
+    }
+    #eleccion{
+      font-size:3rem !important;
+    }
+    .caracteristicas-titulo{
+      font-size:1.5rem;
+    }
+    #servdist, #servpers{
+      margin-top:2rem;
+    }
+    .h5s{
+      font-size:1.1rem;
+    }
+    .mi-boton{
+      margin-right:2rem;
+    }
+    #rustcont{
+      text-align: center;
+    }
+    #rustrow{
+      justify-content:center !important;
+      align-items: center !important;
+      width:90%;
+    }
+    #rustrow .image-box{
+      width: auto !important;
+      height: auto !important;
+    }
+    .social-icons-row{
+      justify-content:center;
+      margin-bottom:2rem;
+    }
+}
+@media (max-width:426px) {
+  .cursor-dot, .cursor-outline{
+    display: none;
+  }
+  .proyectos-scroll-wrapper{
+    padding: 0 10px !important;
+  }
+  .slogan{
+    font-size: 1.2rem !important;
+  }
+  #slogantext{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  #contactoh2{
+    font-size:2.5rem !important;
+  }
+}
+.cursor-dot{
+  width: 5px;
+  height: 5px;
+  background-color: #c0dde4;
+}
+.cursor-outline{
+  width: 30px;
+  height: 30px;
+  border: 2px solid hsla(194, 94%, 81%, 0.5);
+}
+.cursor-dot,
+.cursor-outline{
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    
+<div id="top"></div>
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: none !important; padding-top: 0 !important; padding-bottom: 0 !important;" >
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <div class="logo-circle">
+                <img src="https://i.ibb.co/fzVPpQxr/IST2.png" alt="Logo">
+            </div>
+          </a><img src="https://i.ibb.co/hFwZH5PT/ISTlogoazul.png" style="height: 60px">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#top">Descargar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#info">Información</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#serv">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Sección: Inicio-->
+<div class="seccion-ti" style="position: relative; width: 100%; min-height: 800px; display: flex; align-items: flex-start; padding-top:5.6rem; justify-content: center; overflow: hidden; 
+    ">
+   <!-- Fondos apilados para transición -->
+  <div id="bg-slide-1" style="
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('https://i.ibb.co/7xL69wdn/fondo3.jpg');
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  "></div>
+  
+  <div id="bg-slide-2" style="
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  "></div>
+  <!-- Contenido principal -->
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="row align-items-center" style="min-height: 480px;">
+      <!-- Izquierda: texto y botón -->
+      <div id="izqs" class="col-md-6 text-left text-md-left text-center order-md-1 order-2" style="color: #c0dde4;">
+    <!-- Título -->
+    <h1 id="titulo-slide" class="text-center text-md-left" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; transition: opacity 0.8s ease;">
+        <label>I</label>nnovamos <span style="color:white;">S</span>oluciones<br class="d-none d-md-block"><span style="color:white;">T</span>ecnológicas para tu tranquilidad
+    </h1>
+    
+    <!-- Párrafo -->
+    <p class="text-center text-md-left" style="font-size: 1.2rem; color: #e0f7fa; margin-bottom: 2rem;">
+        Utilizamos la tecnología de RustDesk para poder manejar tu equipo a distancia
+    </p>
+    
+    <!-- Contenedor del botón -->
+    <div class="d-flex justify-content-center justify-content-md-start align-items-center" style="margin-top: 1.5rem;">
+        <!-- Botón de descarga -->
+        <a id="btn-download" href="#" style="display: none;">
+            <button class="btn btn-primary btn-custom" style="min-width: 200px;">
+                <i id="os-icon" class="bi bi-laptop" style="margin-right:1rem;"></i>
+                Descargar
+            </button>
+        </a>
+        
+        <!-- Logo informativo -->
+        <img src="https://i.ibb.co/rq9fNnW/infost.png" alt="Logo pequeño" class="infost ms-2"
+             style="margin-left: 1rem;width: 25px; height: auto; cursor: pointer;" 
+             data-toggle="modal" data-target="#infoModal"
+             title="Información">
+    </div>
+</div>
+      <!-- Derecha: imagen centrada -->
+      <div class="col-md-6 d-flex justify-content-center align-items-center order-md-2 order-1"> <div class="logo-circle2" style="margin-bottom: 5rem !important;">
+                <!-- Añade aquí tu imagen del logo -->
+                <img src='https://i.ibb.co/fzVPpQxr/IST2.png' alt='' width='90%' height='auto'>
+            </div></div>
+    </div>
+  </div>
+   <!-- Bloque de tech icons flotando dentro del hero -->
+<div id="techicons" class="tech-icons-hero container">
+  <div class="row justify-content-center">
+    <div class="col-4 col-sm-2 text-center">
+      <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows" class="tech-icon">
+    </div>
+    <div class="col-4 col-sm-2 text-center">
+      <img src="https://i.ibb.co/VcWv775Q/macos.png" alt="macOS" class="tech-icon">
+    </div>
+    <div class="col-4 col-sm-2 text-center">
+      <img src="https://i.ibb.co/HLBXWDyJ/apple.png" alt="Apple" class="tech-icon">
+    </div>
+    <div class="col-4 col-sm-2 text-center">
+      <img src="https://i.ibb.co/NqKw5YG/mysql.png" alt="MySQL" class="tech-icon">
+    </div>
+    <div class="col-4 col-sm-2 text-center">
+      <img src="https://i.ibb.co/HTzjvgQd/python.png" alt="Python" class="tech-icon">
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  const slides = [
+    {
+      img: "fondo3.jpg",
+      titulo: "<label>I</label>nnovamos <span style='color:white;'>S</span>oluciones<br><span style='color:white;'>T</span>ecnológicas para tu tranquilidad"
+
+    },
+    {
+      img: "fondo4.jpg",
+      titulo: "<label>I</label>ntegramos <span style='color:white;'>S</span>ervicios<br><span style='color:white;'>T</span>ransformadores e innovadores"
+    },
+    {
+      img: "fondo5.png",
+      titulo: "<label>I</label>mpulsamos <span style='color:white;'>S</span>istemas<br><span style='color:white;'>T</span>ecnológicos con calidad y soporte"
+    }
+  ];
+
+  let index = 0;
+  const bg1 = document.getElementById("bg-slide-1");
+  const bg2 = document.getElementById("bg-slide-2");
+  const titulo = document.getElementById("titulo-slide");
+
+  // Para alternar cuál bg está visible
+  let showingBg1 = true;
+
+  function changeSlide() {
+  index = (index + 1) % slides.length;
+
+  // Fade out inmediato textos
+  titulo.style.opacity = 0;
+
+  // Cambiar fondo y hacer crossfade inmediatamente
+  if (showingBg1) {
+    bg2.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('${slides[index].img}')`;
+    bg2.style.opacity = 1;
+    bg1.style.opacity = 0;
+  } else {
+    bg1.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('${slides[index].img}')`;
+    bg1.style.opacity = 1;
+    bg2.style.opacity = 0;
+  }
+  showingBg1 = !showingBg1;
+
+  // Después de 1s (duración de la transición de fondo) cambiar textos y hacer fade in
+  setTimeout(() => {
+    titulo.innerHTML = slides[index].titulo;
+    titulo.style.opacity = 1;
+  }, 1000);
+}
+
+  // Cambiar cada 15 segundos
+  setInterval(changeSlide, 15000);
+</script>
+
+<!-- Pantalla de carga -->
+<div id="loader">
+    <div class="loader-content">
+        <div class="spinner-box">
+            <div class="circle-border">
+              <div class="circle-core"></div>
+            </div>  
+          </div>
+      <p id="loading-text" style="font-family: 'Montserrat', serif; font-weight:300; color: #c0dde4;">Cargando... 0%</p>
+    </div>
+  </div>
+  
+<!-- Modal de Info -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="infoModalLabel">Sistema detectado: <span id="modal-os-name">Desconocido</span> </h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Detectamos que tu sistema operativo es <strong><span id="modal-os-detail">Desconocido</span></strong>.</p>
+                        <p>Siéntete libre de hacer clic en descargar, pues dicha función realizará lo adecuado acorde a tu sistema.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <!-- Iconos o imágenes -->
+                            <img id="modal-os-img" src="https://i.ibb.co/Lh6SXfhg/rustdesk.png" alt="OS Image" width="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        const platform = navigator.platform.toLowerCase();
+        const userAgent = navigator.userAgent.toLowerCase();
+    
+        const btnDownload = document.getElementById('btn-download');
+        const osIcon = document.getElementById('os-icon');
+        const modalOsName = document.getElementById('modal-os-name');
+        const modalOsDetail = document.getElementById('modal-os-detail');
+        const modalOsImg = document.getElementById('modal-os-img');
+    
+        let os = 'desconocido';
+        let iconClass = 'bi-question-circle';
+        let downloadLink = '#';
+        let osImage = 'https://i.ibb.co/Lh6SXfhg/rustdesk.png';
+        let btnClass = 'btn-primary'; // clase por defecto
+
+        if (platform.includes('win')) {
+            os = 'Windows';
+            iconClass = 'bi-windows';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.exe';
+            osImage = 'https://cdn-icons-png.flaticon.com/512/732/732225.png';
+        } else if (platform.includes('mac')) {
+            os = 'macOS';
+            iconClass = 'bi-apple';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.dmg';
+            osImage = 'https://i.ibb.co/VcWv775Q/macos.png';
+            btnClass = 'black2';
+        } else if (userAgent.includes('android')) {
+            os = 'Android';
+            iconClass = 'bi-android2';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-universal-signed.apk';
+            osImage = 'https://cdn-icons-png.flaticon.com/512/888/888857.png';
+            btnClass = 'green';
+        } else if (/iphone|ipad|ipod/.test(userAgent)) {
+            os = 'iOS';
+            iconClass = 'bi-apple';
+            downloadLink = 'https://apps.apple.com/us/app/rustdesk-remote-desktop/id1581225015';
+            osImage = 'https://i.ibb.co/HLBXWDyJ/apple.png';
+            btnClass = 'black2';
+        }
+        // Actualizar clases del botón
+        const btn = btnDownload.querySelector('button');
+        btn.classList.add(btnClass);
+        // Mostrar botón y personalizar
+        btnDownload.href = downloadLink;
+        btnDownload.style.display = 'flex';
+        osIcon.className = `bi ${iconClass}`;
+    
+        // Llenar contenido del modal
+        modalOsName.textContent = os;
+        modalOsDetail.textContent = os;
+        modalOsImg.src = osImage;
+
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.5s ease';
+
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500); // Esperamos medio segundo para que se desvanezca bonito
+    };
+    // Datos de servicios: nombre, descripción e imagen (puedes cambiar las URLs)
+const serviciosData = {
+    aceleracion: {
+        title: "Aceleración de equipo",
+        description: "Optimiza el rendimiento de tu computadora para que funcione más rápido y sin interrupciones.",
+        image: "https://i.ibb.co/f5bhV65/W3.jpg",
+        modalId: "#modalAceleracion"
+    },
+    office: {
+        title: "Instalación de Office",
+        description: "Instalamos y configuramos Microsoft Office para que puedas trabajar con todas sus herramientas.",
+        image: "office.png",
+        modalId: "#modalOffice"
+    },
+    programas: {
+        title: "Instalación de programas",
+        description: "Instalamos cualquier software que necesites de forma segura y rápida.",
+        image: "https://i.ibb.co/7xPCxDQC/select.png",
+        modalId: "#modalProgramas"
+    },
+    diseno: {
+        title: "Diseños publicitarios",
+        description: "Creamos diseños atractivos para promocionar tu negocio y captar más clientes.",
+        image: "https://i.ibb.co/YF7CJ9L1/T1.png",
+        modalId: "#modalDiseno"
+    },
+    sitios: {
+        title: "Diseño de sitios web",
+        description: "Desarrollamos páginas web profesionales, responsivas y fáciles de usar.",
+        image: "https://i.ibb.co/4RqbM97V/P5.jpg",
+        modalId: "#modalSitios"
+    },
+    videos: {
+        title: "Edición de videos",
+        description: "Editamos tus videos para que tengan un acabado profesional y atractivo.",
+        image: "https://i.ibb.co/SwjFZBMQ/videov.png",
+        modalId: "#modalVideos"
+    },
+    software: {
+        title: "Desarrollo de software",
+        description: "Creamos aplicaciones personalizadas para cubrir las necesidades de tu negocio.",
+        image: "https://i.ibb.co/3mw2nxhB/is4.jpg",
+        modalId: "#modalSoftware"
+    },
+    formateo: {
+        title: "Formateo/Instalación",
+        description: "Formateamos tu equipo y reinstalamos sistemas operativos para un rendimiento óptimo.",
+        image: "https://i.ibb.co/2HJ6rxN/P6.jpg",
+        modalId: "#modalFormateo"
+    },
+    mantenimiento: {
+        title: "Mantenimiento",
+        description: "Realizamos mantenimiento preventivo y correctivo para prolongar la vida útil de tus equipos.",
+        image: "https://i.ibb.co/PG8SkpfR/is1.jpg",
+        modalId: "#modalMantenimiento"
+    },
+    mejoras: {
+        title: "Mejoras de equipo",
+        description: "Actualizamos y mejoramos el hardware para que tu equipo rinda mejor.",
+        image: "https://i.ibb.co/bM9Nkz9x/is5.jpg",
+        modalId: "#modalMejoras"
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+const contenedor = document.querySelector('.proyectos-contenedor');
+  
+  function checkScroll() {
+    // Verificar posición del scroll
+    const canScrollLeft = contenedor.scrollLeft > 0;
+    const canScrollRight = 
+      contenedor.scrollLeft < (contenedor.scrollWidth - contenedor.clientWidth - 1);
+    
+    // Actualizar clases
+    contenedor.classList.toggle('can-scroll-left', canScrollLeft);
+    contenedor.classList.toggle('can-scroll-right', canScrollRight);
+  }
+  
+  // Configurar eventos
+  contenedor.addEventListener('scroll', checkScroll);
+  window.addEventListener('resize', checkScroll);
+  
+  // Verificar estado inicial
+  checkScroll();
+  
+  // Arrastre con mouse (mejorado)
+  let isDragging = false;
+  let startX, scrollLeft;
+  
+  contenedor.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - contenedor.offsetLeft;
+    scrollLeft = contenedor.scrollLeft;
+    contenedor.style.cursor = 'grabbing';
+    contenedor.style.userSelect = 'none';
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    contenedor.style.cursor = 'grab';
+    contenedor.style.userSelect = '';
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if(!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - contenedor.offsetLeft;
+    const walk = (x - startX) * 2;
+    contenedor.scrollLeft = scrollLeft - walk;
+  });
+    const serviceItems = document.querySelectorAll(".service-item");
+    const serviceImage = document.getElementById("service-image");
+    const serviceTitle = document.getElementById("service-title");
+    const serviceDescription = document.getElementById("service-description");
+    const infoButton = document.getElementById("info-button");
+    const wifiIcon = document.getElementById("wifi-icon");
+
+    function clearActive() {
+        serviceItems.forEach(item => item.classList.remove("active"));
+    }
+    let servicioSeleccionado = null;
+    serviceItems.forEach(item => {
+        item.addEventListener("click", () => {
+            const key = item.getAttribute("data-service");
+            const service = serviciosData[key];
+
+            if (service) {
+                // Actualizar contenido del cuadro izquierdo
+                serviceImage.src = service.image;
+                serviceImage.alt = service.title;
+                serviceTitle.textContent = service.title;
+                serviceDescription.textContent = service.description;
+                infoButton.disabled = false;
+
+                servicioSeleccionado = key;
+// Mostrar u ocultar icono wifi según servicio
+            const serviciosConWifi = ["aceleracion", "office", "programas", "diseno", "sitios", "videos", "software"];
+            if (serviciosConWifi.includes(key)) {
+                wifiIcon.style.visibility = "visible";
+            } else {
+                wifiIcon.style.visibility = "hidden";
+            }
+                // Resaltar el servicio seleccionado
+                clearActive();
+                item.classList.add("active");
+            }
+        });
+    });
+    infoButton.addEventListener("click", () => {
+    if (!servicioSeleccionado) return;
+
+    const modalSelector = serviciosData[servicioSeleccionado].modalId;
+    if (modalSelector) {
+        // Usando jQuery y Bootstrap 4/5:
+        $(modalSelector).modal('show');
+
+        // Si usas Bootstrap 5 sin jQuery, sería:
+        // const modalElement = document.querySelector(modalSelector);
+        // const modal = new bootstrap.Modal(modalElement);
+        // modal.show();
+    }
+});
+});
+    </script>
+<!-- Sección: Información -->
+<div class="container my-5" style="margin-top:12rem !important;" id="info">
+  <div class="row align-items-start">
+    
+    <!-- Columna izquierda con imagen + borde degradado -->
+    <div id="iibcontainer" class="col-md-6 d-flex justify-content-center position-relative">
+      
+      <!-- Borde degradado -->
+      <div id="gborder" class="gradient-border"></div>
+      
+      <!-- Imagen con modal -->
+      <div id="infoimagebox" class="image-box" data-toggle="modal" data-target="#imageModal">
+        <img src="https://i.ibb.co/0RNs6pbP/IST2025-3.png" alt="Imagen" class="img-fluid">
+      </div>
+    </div>
+
+    <!-- Columna derecha con texto -->
+    <div class="col-md-6">
+      <!-- Columna derecha: Información -->
+<div class="ist-info-section">
+    <!-- Título pequeño de sección -->
+    <div class="ist-info-heading">
+        <span class="ist-info-line"></span>
+        <span class="ist-info-title">Información</span>
+        <span class="ist-info-line"></span>
+    </div>
+
+    <!-- Frase principal -->
+    <h2 class="ist-info-main-title">Déjanos solucionar tus problemas tecnológicos</h2>
+
+    <!-- Descripción -->
+    <p class="ist-info-description">
+        IST prioriza tu bienestar y satisfacción sobre cualquier cosa. 
+        Abordamos tus necesidades con soluciones tecnológicas innovadoras con el fin de 
+        convertir tus desafíos en el camino hacia tu triunfo.
+    </p>
+
+    <!-- Línea divisoria -->
+    <hr class="ist-info-divider">
+
+    <!-- Bloque de contacto -->
+    <div class="ist-info-contact">
+        <!-- Icono de llamada -->
+        <div class="ist-call-icon">
+            <i class="bi bi-telephone-fill"></i>
+        </div>
+        <!-- Texto de contacto -->
+        <div class="ist-contact-text">
+            <span class="ist-contact-sub">Ponte en contacto</span>
+            <span class="ist-contact-number">937 106 3431</span>
+        </div>
+
+        <!-- Separador vertical -->
+        <div class="ist-info-separator"></div>
+
+        <!-- Botón degradado -->
+        <a id="conoceBtn"href="#sobre-nosotros" class="ist-gradient-btn"><span>Conócenos</span><i class="bi bi-arrow-right"></i>
+        </a>
+        <script>
+    document.getElementById('conoceBtn').addEventListener('click', function(e) {
+        e.preventDefault(); // Evita el comportamiento predeterminado
+        const target = document.querySelector('#sobre-nosotros');
+        const offset = 140; // Ajusta este valor según necesites
+        window.scrollTo({
+            top: target.offsetTop - offset,
+            behavior: 'smooth'
+        });
+    });
+</script>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+            <div class="modal-header border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="https://i.ibb.co/0RNs6pbP/IST2025-3.png" alt="Imagen en Modal" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección: Servicios -->
+<div class="ist-info-heading" style="justify-content: center;" id="serv">
+    <span class="ist-info-line"></span>
+    <span class="ist-info-title">Servicios</span>
+    <span class="ist-info-line"></span>
+  </div>
+    <div class="services-section"  style="position: relative; overflow: hidden;">
+<div class="background-image-container" id="particles-js" style="justify-content: center; align-items:center; text-align: center;">
+<!-- Sección dividida en dos partes: izquierda y derecha -->
+<div class="container mt-5 hidden-animate fade-element" style="margin-top: 2rem; position:absolute;" id="servicios-section">
+    <div class="row">
+        <!-- Parte izquierda: cuadro de servicio -->
+        <div class="col-md-6 d-flex flex-column align-items-center" style="margin-bottom: 3rem;">
+            <div id="service-card" class="card" style="width: 100%; max-width: 450px;background: linear-gradient(to bottom, #000c13 70%, #001c2c 100%); border-color:#b0d8f83b;">
+                <img id="service-image" src="https://i.ibb.co/xqT437pv/select.jpg" class="card-img-top" alt="Servicio">
+                <div class="card-body d-flex flex-column">
+                    <h3 id="service-title" class="card-title" style="color:#b0d8f8;">Selecciona un servicio</h3>
+                    <p id="service-description" class="card-text flex-grow-1">Haz clic en alguno de los servicios para ver su descripción aquí.</p>
+                    <!-- Contenedor flex para ícono wifi y botón -->
+    <div class="d-flex justify-content-between align-items-center">
+      <i id="wifi-icon" class="fas fa-wifi" style="color: #008cff; font-size: 24px; visibility: hidden;"></i>
+      <button id="info-button" class="btn" disabled style="background: none; border: none; color: #b0d8f8; font-size: 24px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; padding: 0;">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Derecha: Lista de servicios en 2 columnas -->
+        <div class="col-md-6" id="listaservices">
+            <div class="row">
+                <!-- Columna izquierda de servicios -->
+                <div class="col-6">
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="aceleracion" style="cursor:pointer;">
+                        <!--<i class="fas fa-wifi text-primary mr-3"></i>-->
+                        <i class="fas fa-tachometer-alt text-primary mr-2"></i>
+                        <span>Aceleración de equipo</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="office" style="cursor:pointer;">
+                        
+                        <i class="fas fa-file-word text-primary mr-2"></i>
+                        <span>Instalación de Office</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="programas" style="cursor:pointer;">
+                        
+                        <i class="fas fa-download text-primary mr-2"></i>
+                        <span>Instalación de software / programas</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="diseno" style="cursor:pointer;">
+                       
+                        <i class="fas fa-bullhorn text-primary mr-2"></i>
+                        <span>Diseños publicitarios</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="sitios" style="cursor:pointer;">
+                        
+                        <i class="fas fa-globe text-primary mr-2"></i>
+                        <span>Diseño de sitios web</span>
+                    </div>
+                </div>
+
+                <!-- Columna derecha de servicios -->
+                <div class="col-6">
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="videos" style="cursor:pointer;">
+                        
+                        <i class="fas fa-film text-primary mr-2"></i>
+                        <span>Edición de videos</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="software" style="cursor:pointer;">
+                        
+                        <i class="fas fa-code text-primary mr-2"></i>
+                        <span>Desarrollo de software</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="formateo" style="cursor:pointer;">
+                        <i class="fas fa-sync-alt text-primary mr-3"></i>
+                        <span>Formateo / Instalación de sistemas</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="mantenimiento" style="cursor:pointer;">
+                        <i class="fas fa-tools text-primary mr-3"></i>
+                        <span>Mantenimiento</span>
+                    </div>
+                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="mejoras" style="cursor:pointer;">
+                        <i class="fas fa-microchip text-primary mr-3"></i>
+                        <span>Mejoras de equipo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Incluye particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": { "value": "#c2e9fb" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#c2e9fb" }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": { "enable": false }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": { "enable": false }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#a1c4fb",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+<!-- Sección: Imagen de fondo y datos -->
+<section id="caracteristicas-section" class="unfix-ios-bg">
+  <div class="container text-center">
+    <!-- Texto encima -->
+     <h2 id="eleccion" class="caracteristicas-titulo">¿Por qué elegirnos?</h2>
+    <h2 class="caracteristicas-titulo">Nosotros te garantizamos:</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-6 feature">
+        <div class="feature-circle">
+          <i class="bi bi-lightning-charge-fill"></i>
+        </div>
+        <h5 class="h5s">Rapidez</h5>
+      </div>
+      <div class="col-md-3 col-6 feature">
+        <div class="feature-circle">
+          <i class="bi bi-lightbulb-fill"></i>
+        </div>
+        <h5 class="h5s">Innovación</h5>
+      </div>
+      <div class="col-md-3 col-6 feature" id="servdist">
+        <div class="feature-circle">
+          <i class="bi bi-wifi"></i>
+        </div>
+        <h5 class="h5s">Servicio a distancia</h5>
+      </div>
+      <div class="col-md-3 col-6 feature" id="servpers">
+        <div class="feature-circle">
+          <i class="bi bi-people-fill"></i>
+        </div>
+        <h5 class="h5s">Atención Personalizada</h5>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Sección dividida en dos partes: izquierda y derecha -->
+<div class="container mt-5" style="margin-top: 9rem !important; margin-bottom:2rem;" id="servicios-section2">
+    <div class="row">
+        <!-- Parte izquierda: imagen del logo -->
+        <div id="leyenda" class="col-md-6 d-flex flex-column align-items-start hidden-animate fade-element" style="margin-top: 0rem; margin-bottom: 3rem;">
+            <p style="font-family: 'Figtree', sans-serif; font-weight: 700; font-size:40px;margin-left:2rem;" class="custom-br2">
+                Ni siquiera la distancia <br>Representa algún<br> Impedimento<br>
+                <span class="custom-br" style="font-size:18px; font-weight: 500;color: #c0dde4;"><br>En IST, nuestra filosofía se resume a la frase:<br>"Soluciones, no problemas." Contáctanos<span class="hide-on-small"><br></span>para atender tus necesidades a distancia.</span>
+            </p>
+            <a href="#contacto" class="mi-boton" style="margin-left:2rem;margin-top:2rem;">Contáctanos</a>
+            
+        </div>
+
+        <!-- Parte derecha: Carrusel -->
+        <div id="colcarrusel" class="col-md-6 text-center hidden-animate fade-element" style="margin-bottom:7rem; border-radius:10px; width: 90%;        /* Ajusta ancho */
+  max-width: 700px;  /* Máximo ancho */
+  min-height: 400px; /* Altura mínima */
+  margin-left: auto; /* Centrar horizontalmente */
+  margin-right: auto;
+  padding: 1rem;     /* Espacio interno */">
+            <div id="carouselExampleIndicators" class="carousel slide ws2" data-ride="carousel" style="margin-top: 4rem;margin-left:2rem !important; margin-right:2rem !important; border-radius:10px !important;">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                </ol>
+                <div class="carousel-inner" style="background-color:#000; border-radius:10px !important;">
+                  <div class="carousel-item active">
+                    <img class="w-100" style="opacity:0.4; border-radius: 5px !important;" src="https://i.ibb.co/f5bhV65/W3.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Aceleración de equipo</h5>
+                        <p>Instalación de disco sólido + Instalación de CADDY (Disco duro)</p>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/KcBxsRKf/P1.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Instalación de Office</h5>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/Pvs71M6t/P7.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Diseños publicitarios</h5>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/4RqbM97V/P5.jpg" alt="Fourth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Diseño de sitios web</h5>
+                        <p>HTML/CSS/JS/PHP</p>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/wNJyTrBR/P8.jpg" alt="Fifth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Desarrollo de software</h5>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/2HJ6rxN/P6.jpg" alt="Sixth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Formateo/Instalación de sistema</h5>
+                        <p>Windows 11</p>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/qL7HrXwG/W2.jpg" alt="Seventh slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Formateo/Instalación de sistema</h5>
+                        <p>MacOS Sonoma</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/nNxzSGQx/P2.jpg" alt="Eighth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Mantenimiento</h5>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/v40SY5jz/W1.jpg" alt="Nineth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Mantenimiento/Formateo e Instalación</h5>
+                      <p>Cambio de teclado con falla + Windows 10</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="w-100" style="opacity:0.4;"  src="https://i.ibb.co/cXpdm5rF/P9.jpg" alt="Tenth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Mejora de equipo</h5>
+                      <p>Disco sólido M.2 256GB+ 16GB RAM</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- Sección RustDesk -->
+<!-- Sección RustDesk -->
+<section id="rustdesk-section" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Columna izquierda - Logo RustDesk -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <div class="rustdesk-logo-container">
+          <img src="https://i.ibb.co/GvVMQJt9/rustdesk.png" alt="RustDesk" class="rustdesk-logo img-fluid rounded-circle">
+        </div>
+        <h3 class="mt-3 text-white">RustDesk</h3>
+      </div>
+      
+      <!-- Columna derecha - Contenido -->
+      <div id="rustcont" class="col-md-8" style="margin-bottom:2.5rem;">
+        <h2 class="text-white mb-4" style="font-family: 'Figtree', sans-serif; font-size: 40px; font-weight: 700;">
+          Sin importar donde estés
+        </h2>
+        <p class="mb-4" style="font-family: 'Space Grotesk', sans-serif; color:#c0dde4;">
+          Muchos de nuestros servicios están disponibles a distancia gracias a RustDesk, un software de código abierto. Solo basta con <a href="#top" style="color: #ffffff; font-weight:bold;">descargarlo</a> en tu equipo y abrirlo. Nos pasas los datos de conexión <span style="color: #00aaff;">(ID, Contraseña)</span> y estaremos trabajando en tu equipo a distancia.
+        </p>
+        <a href="https://rustdesk.com" target="_blank" class="btn btn-rustdesk">
+          Sitio oficial <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Galería de imágenes -->
+    <div id="rustrow" class="row mt-5" style="margin-left:1.5rem;">
+      <!-- Imagen 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="image-box" style="height:215px;"data-toggle="modal" data-target="#rustdeskModal1">
+          <img src="https://i.ibb.co/x8FbdMGF/r1.png" alt="Servicio remoto 1" class="img-fluid rounded">
+        </div>
+      </div>
+      
+      <!-- Imagen 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="image-box" style="height:215px;"data-toggle="modal" data-target="#rustdeskModal2">
+          <img src="https://i.ibb.co/dS895xr/r2.png" alt="Servicio remoto 2" class="img-fluid rounded">
+        </div>
+      </div>
+      
+      <!-- Imagen 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="image-box" style="height:215px;"data-toggle="modal" data-target="#rustdeskModal3">
+          <img src="https://i.ibb.co/HDmPb3Fy/r3.jpg" alt="Servicio remoto 3" class="img-fluid rounded">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modales para la galería -->
+<!-- Modal 1 -->
+<div class="modal fade" id="rustdeskModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+      <div class="modal-header border-0">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.ibb.co/x8FbdMGF/r1.png" alt="Servicio remoto 1" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="rustdeskModal2" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Misma estructura que Modal 1 -->
+   <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+      <div class="modal-header border-0">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.ibb.co/dS895xr/r2.png" alt="Servicio remoto 1" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="rustdeskModal3" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Misma estructura que Modal 1 -->
+   <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+      <div class="modal-header border-0">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.ibb.co/HDmPb3Fy/r3.jpg" alt="Servicio remoto 1" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sección Proyectos -->
+<section id="proyectos" class="proyectos-section">
+  <div class="container">
+    <h2 class="proyectos-titulo">
+      Explora algunos de nuestros proyectos
+    </h2>
+    <div class="proyectos-scroll-wrapper">
+      <!-- Indicadores dinámicos -->
+      <div class="scroll-indicator left" aria-hidden="true"></div>
+      <div class="scroll-indicator right" aria-hidden="true"></div>
+    <div class="proyectos-contenedor">
+      <!-- Proyecto falso para margen inicial -->
+  <div class="proyecto-item fake-spacer" aria-hidden="true"></div>
+  
+      <!-- Proyecto 1 -->
+       <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo 1">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/LzT44WRW/pm1.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 22, 27, 0.884) 30%,rgba(2, 60, 68, 0.801) 70%, transparent 100%);">
+          <h3>Edu-Ros</h3>
+          <p>Un sistema web con dashboard/panel de administrador y de padres para un jardín de niños.</p>
+          <a href="http://eduros.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          
+        </div>
+      </div>
+
+      <!-- Proyecto 2-->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/21sfFSjz/p1-2.png" alt="Logo 1">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('pi1.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
+          <h3>FoodRadar</h3>
+          <p>Una plataforma donde puedes localizar negocios de comida, al registrarte como cliente, y poner tu negocio en el mapa, al registrarte como negocio.</p>
+          
+        </div>
+      </div>
+      
+      <!-- Proyecto 3 -->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/RGYZTZZJ/p4.jpg" alt="Logo 2">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/1tmbDjx6/edukidsim.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(14, 0, 27, 0.884) 30%,rgba(9, 2, 68, 0.801) 70%, transparent 100%);">
+          <h3>Edu-Kids</h3>
+          <p>Un proyecto educativo diseñado con sistema de usuarios y administradores y lecciones/minijuegos.</p>
+          <a href="http://edukids.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+      
+      <!-- Proyecto 4 -->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/hJJgtYj5/p2-1.png" alt="Logo 3">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/bgsncgvT/teecreatorimg.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 19, 0.884) 30%,rgba(68, 2, 46, 0.801) 70%, transparent 100%);">
+          <h3>TeeCreator</h3>
+          <p>Un proyecto en el que puedes comprar playeras y personalizarlas, utilizando una interfaz intuitiva y amigable, ideal para tu negocio.</p>
+          <a href="https://teecreator.infinityfreeapp.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+      
+      <!-- Proyecto 5 -->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo 4">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/1GdJsDLV/adorarteimg.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 21, 0, 0.884) 30%,rgba(68, 50, 2, 0.801) 70%, transparent 100%);">
+          <h3>Adorarte</h3>
+          <p>Sistema web con funciones de inscripción a cursos musicales y compra de artículos.</p>
+          <a href="http://adorate.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+      <!-- Proyecto 6 -->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/PZ3D3C2L/pets.jpg" alt="Logo 2">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/s9ZF07TS/petsimg.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 15, 27, 0.884) 30%,rgba(2, 36, 68, 0.801) 70%, transparent 100%);">
+          <h3>PETS</h3>
+          <p>Proyecto que cuenta con un sistema de cuentas, administrador y compra de articulos.</p>
+          <a href="http://vetpets.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+        </div>
+      </div>
+      <!-- Proyecto 7 -->
+      <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/8Lf5JKyR/juchi.png" alt="Logo 2">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/RGXvNq2V/juchiimg.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(2, 27, 0, 0.884) 30%,rgba(2, 68, 2, 0.801) 70%, transparent 100%);">
+          <h3>JuchiJobs</h3>
+          <p>Un nexo entre estudiantes egresados de una universidad y empresas con ofertas laborales.</p>
+          
+        </div>
+      </div>
+
+      <!-- Proyecto 8 -->
+       <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="https://i.ibb.co/xtCvJJzv/earlyj.png" alt="Logo 1">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/3yyNKM0P/earlyimg.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 7, 27, 0.884) 30%,rgba(2, 25, 68, 0.801) 70%, transparent 100%);">
+          <h3>EarlyJob</h3>
+          <p>Sistema web para solicitar/brindar transporte entre empleados de una empresa privada.</p>
+          
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</section>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+<!-- Modal de Aceleración de Equipo -->
+<div class="modal fade" id="modalAceleracion" tabindex="-1" role="dialog" aria-labelledby="modalAceleracionLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalAceleracionLabel">Aceleración de equipo</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Mejora el rendimiento de tu equipo con nuestro servicio de aceleración, donde optimizamos el sistema del equipo y si
+                            es necesario, se mejoran los componentes del equipo para conseguir la velocidad deseada.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <!-- Iconos o imágenes -->
+                            <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows Logo" class="modal-img">
+                            <img src="https://i.ibb.co/VcWv775Q/macos.png" alt="RAM Upgrade" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Instalación de Office -->
+<div class="modal fade" id="modalOffice" tabindex="-1" role="dialog" aria-labelledby="modalOfficeLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalOfficeLabel">Instalación de Office</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Te ofrecemos la instalación de Microsoft Office, incluyendo Word, Excel, PowerPoint, Access, OneNote y Publisher, para mejorar tu productividad.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/QvhyCkQP/office.png" alt="Office Logo" class="modal-img">
+                            <img src="https://i.ibb.co/XxxJTXK8/office2.png" alt="Windows Logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Programas -->
+<div class="modal fade" id="modalProgramas" tabindex="-1" role="dialog" aria-labelledby="modalProgramasLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalProgramasLabel">Instalación de programas</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Necesitas ayuda con la instalación de algun programa? ¡Nosotros te proporcionamos asistencia!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/m5hkZSyT/vegas.png" alt="Vegas Logo" class="modal-img" style="margin-right: 1rem;">
+                            <img src="https://i.ibb.co/CsQ4FHTb/autocad.png" alt="Autocad Logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Diseños -->
+<div class="modal fade" id="modalDiseno" tabindex="-1" role="dialog" aria-labelledby="modalDisenoLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalDisenoLabel">Diseños publicitarios</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Necesitas promocionar tus servicios o trabajo por medio de publicidad? ¡Te ayudamos con el diseño de anuncios publicitarios!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/YF7CJ9L1/T1.png" alt="Publicidad" style="height: 70% !important; width: 100% !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Sitios Web -->
+<div class="modal fade" id="modalSitios" tabindex="-1" role="dialog" aria-labelledby="modalSitiosLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalSitiosLabel">Diseño de sitios web</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Quisieras un sitio web como en el que estás ahora, o el de la imagen, adaptado a tus necesidades? ¡En IST te mostramos propuestas y traemos tus sueños a la vida!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/V0NdLh28/sitio2.png" alt="EarlyJob" class="modal-img" style="height: 70% !important; width: 100% !important;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Videos -->
+<div class="modal fade" id="modalVideos" tabindex="-1" role="dialog" aria-labelledby="modalVideosLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalVideosLabel">Edición de videos</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Si necesitas crear o editar un video, ¡No dudes en consultar por nuestro servicio de edición de videos! tendrás a tu alcance obras de arte en formato mp4 y demás.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/m5hkZSyT/vegas.png" alt="Vegas logo" class="modal-img" style="margin-right: 1rem;">
+                            <img src="https://i.ibb.co/yLn2Gtw/proshow.png" alt="Proshow logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Software -->
+<div class="modal fade" id="modalSoftware" tabindex="-1" role="dialog" aria-labelledby="modalSoftwareLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header d-flex flex-column align-items-start">
+                <!-- Título principal -->
+                <h4 class="modal-title text-white" id="modalSoftwareLabel">Desarrollo de software</h4>
+                <!-- Botón de cierre -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Icono de WiFi y leyenda en una nueva línea -->
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
+                    <span class="text-white">Disponible a distancia</span>
+                </div>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>En IST desarrollamos software acorde a tus necesidades. ¿Necesitas sistemas con base de datos para tu empresa?, ¿Requieres un programa con muchas o pocas funcionalidades?<br>Estás en el lugar correcto.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/HTzjvgQd/python.png" alt="Python logo" class="modal-img">
+                            <img src="https://i.ibb.co/NqKw5YG/mysql.png" alt="Mysql logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Formateo -->
+<div class="modal fade" id="modalFormateo" tabindex="-1" role="dialog" aria-labelledby="modalFormateoLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #fff;" id="modalFormateoLabel">Formateo e Instalación de sistemas</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Quieres vaciar tu información?, ¿Necesitas restaurar el sistema de tu equipo?, ¿Deseas respaldar tu información?, ¿Buscas tener otro sistema operativo? en IST tenemos la solución.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows logo" class="modal-img">
+                            <img src="https://i.ibb.co/VcWv775Q/macos.png" alt="MacOS logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Mantenimiento -->
+<div class="modal fade" id="modalMantenimiento" tabindex="-1" role="dialog" aria-labelledby="modalMantenimientoLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #fff;" id="modalMantenimientoLabel">Mantenimiento</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Tu computadora requiere mantenimiento?, ¿Sientes que requiere limpieza interna?, ¿Algún componente se rompió? ¡IST te ofrece soluciones, dejando tu equipo como nuevo!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/3YQkNkqD/win.png" alt="Windows logo" class="modal-img" style="margin-right: 1rem;">
+                            <img src="https://i.ibb.co/HLBXWDyJ/apple.png" alt="Apple logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Mejoras -->
+<div class="modal fade" id="modalMejoras" tabindex="-1" role="dialog" aria-labelledby="modalMejorasLabel" aria-hidden="true">
+    <div class="modal-dialog center" role="document">
+        <div class="modal-content modal-serv">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: #fff;" id="modalMejorasLabel">Mejoras de equipo</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-body2">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>¿Te hace falta espacio, deseas más velocidad o simplemente quieres mejorar los componentes de tu equipo? ¡Te damos sugerencias y soluciones!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://i.ibb.co/pjsMJS7y/adata.png" alt="Vegas logo" class="modal-img" style="margin-right: 1rem;">
+                            <img src="https://i.ibb.co/RTt3S7c7/ryzen.png" alt="Proshow logo" class="modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sección Sobre Nosotros -->
+<section id="sobre-nosotros" class="py-5" style="margin-top:5rem;">
+  <div class="container">
+    <!-- Título -->
+    <h2 class="text-center text-white mb-5" style="margin-bottom: 5rem !important;font-family: 'Figtree', sans-serif; font-size: 40px; font-weight: 700;">
+      Sobre nosotros
+    </h2>
+    
+    <!-- Logo -->
+    <div class="text-center mb-4">
+      <img src="https://i.ibb.co/qL1Xzfvr/ISTlogoazul2.png" alt="Logo de la empresa" class="img-fluid" style="max-height: 120px;">
+    </div>
+    
+    <!-- Descripción del logo -->
+    <p class="text-center mb-5" style="color: #c0dde4; font-family: 'Figtree', sans-serif; font-size: 1.2rem; margin-top:2rem;">
+      Integración de Servicios y Tecnologías
+    </p>
+    
+    <!-- Contenido dividido -->
+    <div class="row align-items-center" style="margin-top:7rem;">
+      <!-- Columna izquierda - Descripción -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <p id="slogantext"class="text-justify" style="font-family: 'Space Grotesk', sans-serif; color: #c0dde4; line-height: 1.8;">
+          <!-- Slogan con degradado -->
+          <span class="slogan" style="display: block; margin-bottom: 1.5rem; font-size: 2rem;">
+            Innovar > Solucionar > Triunfar
+          </span>
+          Somos un equipo especializado en soluciones tecnológicas integrales, combinando innovación con experiencia para ofrecer servicios de calidad. Nuestro enfoque personalizado y atención al detalle nos permite entregar resultados excepcionales adaptados a cada necesidad.
+          <br><br>
+          Hemos ayudado a cientos de clientes a transformar sus ideas en realidades digitales y sus problemas tecnológicos en recuerdos, por medio
+          de la experiencia y tecnologías como nuestros servicios a distancia, buscando siempre la comodidad y 
+          satisfacción del cliente. 
+        </p>
+      </div>
+      
+      <!-- Columna derecha - Imágenes -->
+      <div class="col-lg-6 d-flex flex-column align-items-center" style="margin-top:4rem;">
+        <!-- Imagen 1 -->
+        <div class="image-box mb-4" data-toggle="modal" data-target="#modalImagen1" style="height:155px; width:400px; margin-left:3rem !important;">
+          <img src="https://i.ibb.co/RkFFFX7p/IST1.png" alt="Nuestro equipo" class="img-fluid rounded" style="width: 100%; height: 250px; object-fit: cover;">
+        </div>
+        
+        <!-- Imagen 2 -->
+        <div class="image-box" data-toggle="modal" data-target="#modalImagen2" style="height:155px; width:400px; margin-left:3rem !important;">
+          <img src="https://i.ibb.co/Jj4K3M9Y/istimg2.png" alt="Nuestras instalaciones" class="img-fluid rounded" style="width: 100%; height: 250px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modales para las imágenes -->
+<!-- Modal Imagen 1 -->
+<div class="modal fade" id="modalImagen1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+      <div class="modal-header border-0">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.ibb.co/RkFFFX7p/IST1.png" alt="Nuestro equipo" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Imagen 2 -->
+<div class="modal fade" id="modalImagen2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark" style="background-color:#00131f !important;">
+      <div class="modal-header border-0">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://i.ibb.co/Jj4K3M9Y/istimg2.png" alt="Nuestras instalaciones" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sección: Contacto -->
+<div class="ist-info-heading" style="margin-top:10rem !important; justify-content: center;" id="contacto">
+    <span class="ist-info-line"></span>
+    <span class="ist-info-title">Contacto</span>
+    <span class="ist-info-line"></span>
+</div>
+<!-- Título -->
+    <h2 id="contactoh2"class="text-center text-white" style="font-family: 'Figtree', sans-serif; font-size: 3rem; font-weight: 700;">
+      Ponte en contacto
+    </h2>
+<!-- Título -->
+<h3 class="text-center" style="margin-bottom:6rem !important;font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif; color: #c0dde4;">
+    Estamos listos para asistirte
+</h3>
+
+<!-- Contenedor principal -->
+<div class="container mt-5 mb-5" style="margin-bottom:12rem !important;">
+    <div class="row">
+        <!-- Sección izquierda - Información de contacto -->
+        <div class="col-md-6 pe-md-5">
+          <!-- Texto introductorio -->
+          <p class="contact-intro-text" style="
+              font-family: 'Space Grotesk', sans-serif;
+              color: #c0dde4;
+              line-height: 1.6;
+              margin-bottom: 2rem;
+              font-size: 1.1rem;
+          ">
+              ¡Te escuchamos! Contáctanos por el medio que te parezca. <br>
+              Así tengas dudas, sugerencias, o solo quieras decir hola, ahí estaremos.
+          </p>
+            <!-- Contenedor de Email -->
+            <div class="contact-card">
+                <div class="contact-icon-container">
+                    <div class="gradient-icon-bg">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">istcompany@gmail.com</span>
+                </div>
+            </div>
+            
+            <!-- Contenedor de Teléfono -->
+            <div class="contact-card" style="margin-bottom:1rem !important;">
+                <div class="contact-icon-container">
+                    <div class="gradient-icon-bg">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-label">Teléfono</span>
+                    <span class="contact-value">937 106 3431</span>
+                </div>
+            </div>
+            
+            <!-- Contenedor de Facebook -->
+            <div class="contact-card" style="margin-bottom:1rem !important; display:none;">
+                <div class="contact-icon-container">
+                    <div class="gradient-icon-bg" id="fbk">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-label">Facebook</span>
+                    <span class="contact-value">@iker.ISL</span>
+                </div>
+            </div>
+            <!-- Fila de íconos sociales -->
+            <div class="social-icons-row">
+                <!-- Ícono de Facebook -->
+                <a href="https://www.facebook.com/iker.ISL" target="_blank" class="social-icon-circle facebook-icon" id="fbk">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                
+                <!-- Ícono de WhatsApp -->
+                <a href="https://wa.me/529371063431" target="_blank" class="social-icon-circle whatsapp-icon" id="whp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Sección derecha - Mapa -->
+        <div class="col-md-6">
+            <!-- Contenedor de Ubicación -->
+            <div class="location-card mb-3">
+                <div class="contact-icon-container">
+                    <div class="gradient-icon-bg">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-label">Ubicación</span>
+                    <span class="contact-value">Cárdenas, Tabasco</span>
+                </div>
+            </div>
+            
+            <!-- Contenedor del mapa con borde degradado -->
+          <div class="map-container-degradado">
+              <div id="contactMap" style="width: 100%; height: 100%;"></div>
+          </div>
+        </div>
+    </div>
+</div>
+<script>
+   // Inicialización del mapa de Leaflet
+    var contactMap = L.map('contactMap').setView([17.98849, -93.37667], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(contactMap);
+    
+    // Añadir marcador
+    var marker = L.marker([17.98849, -93.37667]).addTo(contactMap)
+        .bindPopup('Cárdenas, Tabasco');
+        
+    // Ajustar el mapa cuando se redimensione
+    window.addEventListener('resize', function() {
+        contactMap.invalidateSize();
+    });
+</script>
+<a href="#" class="to-top">
+   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} width="30" height="45" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 7.5-7.5 7.5 7.5" />
+</svg>
+</a>
+<script>document.addEventListener("DOMContentLoaded", () => {
+    const toTop = document.querySelector(".to-top");
+    
+    // Verifica si el botón existe
+    if (!toTop) return;
+
+    // Usa requestAnimationFrame para mejor rendimiento
+    function checkScroll() {
+        if (window.pageYOffset > 250) {
+            toTop.classList.add("active");
+        } else {
+            toTop.classList.remove("active");
+        }
+        requestAnimationFrame(checkScroll);
+    }
+
+    // Inicia el chequeo
+    checkScroll();
+
+    // Scroll suave (versión compatible)
+    toTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+</script>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<script>
+const cursorDot = document.querySelector("[data-cursor-dot]");
+const cursorOutline = document.querySelector("[data-cursor-outline]");
+window.addEventListener("mousemove", function(e) {
+  const posX = e.clientX;
+  const posY = e.clientY;
+  
+  cursorDot.style.left = `${posX}px`;
+  cursorDot.style.top = `${posY}px`;
+
+  cursorOutline.style.left = `${posX}px`;
+  cursorOutline.style.top = `${posY}px`;
+
+  cursorOutline.animate({
+    left: `${posX}px`,
+    top: `${posY}px`
+  }, {duration: 500, fill:"forwards"});
+  
+});
+</script>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 footer-section">
+                <div class="footer-logo"><img src="https://i.ibb.co/qL1Xzfvr/ISTlogoazul2.png" style="height: 22px;"></div>
+                <p class="footer-about">Estamos dedicados a proveer soluciones a través del mejor servicio de tecnologías a nuestros clientes.
+                    Nuestra misión es crear formas innovadoras de hacer la diferencia en la vida de las personas.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/529371063431" target="_blank" class="social-icon" id="socialw"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/iker.ISL" target="_blank" class="social-icon" id="socialf"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.google.com/maps/place/C%C3%A1rdenas,+Tab./@17.9930915,-93.4171027,13z/data=!3m1!4b1!4m6!3m5!1s0x85ec2091e19dbb47:0x494e27205914e68f!8m2!3d18.0012067!4d-93.3732339!16s%2Fm%2F02q6_zf?authuser=0&entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="social-icon" id="sociall"><i class="fas fa-location-dot"></i></a>
+                    <!--<a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>-->
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-section">
+                <h5>Secciones</h5>
+                <ul class="footer-links">
+                    <li><a href="#top">Descargar RustDesk</a></li>
+                    <li><a href="#info">Información</a></li>
+                    <li><a href="#serv">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6 footer-section">
+                <h5>Proyectos</h5>
+                <ul class="footer-links">
+                    <li><a href="http://eduros.great-site.net" target="_blank" id="eduros">Edu-Ros</a></li>
+                    <li><a href="http://teecreator.infinityfreeapp.com" target="_blank" id="teecreator">TeeCreator</a></li>
+                    <li><a href="http://adorate.great-site.net" target="_blank" id="adorarte">Adorarte</a></li>
+                    <li><a href="http://edukids.great-site.net" target="_blank" id="edukids">Edukids</a></li>
+                    <li><a href="http://vetpets.great-site.net" target="_blank">Pets</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 footer-section">
+                <h5>Contáctanos</h5>
+                <!--<p class="footer-about">Ingresa tus datos y envíanos un mensaje.</p>-->
+                <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="a7b4514d-e587-400f-b6a7-6beb1a963678">
+                <div class="footer-newsletter">
+                    <input type="text" placeholder="Ingresa tu nombre" name="name" id="nombre" required>
+                </div>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Ingresa tu email" name="email" id="email" required>
+                </div>
+                <div class="footer-newsletter">
+                    <input type="text" placeholder="Escribe tu mensaje" name="message" id="mensaje" required>
+                    <button class="newsletter-btn">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <ul class="footer-bottom-links">
+                <li><a href="#">Versión 2.0</a></li>
+            </ul>
+            <p>© 2025 IST. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const elements = document.querySelectorAll('.fade-element');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                const el = entry.target;
+                el.classList.remove('hidden-animate');
+
+                if (el.id === "info" || el.id === "serv" || el.id === "servsub" || el.id === "slidert" || el.id === "contacto") {
+                    el.classList.add('fade-in');
+                } else if (el.classList.contains('text-md-left') || el.id === "sliderimg" || el.id === "leyenda") {
+                    el.classList.add('fade-in-left');
+                } else if (el.id === "servicios-section" || el.id === "contactos") {
+                    el.classList.add('fade-in-up');
+                }else {
+                    el.classList.add('fade-in-right');
+                }
+
+                observer.unobserve(el); // Se anima solo una vez
+            }
+        });
+    }, {
+        threshold: 0.2 // Aparece cuando 20% del elemento esté visible
+    });
+
+    elements.forEach(el => observer.observe(el));
+</script>
+<script>
+function actualizarTextosResponsive() {
+  const anchoPantalla = window.innerWidth;
+  
+  const formateoSpan = document.querySelector('.service-item[data-service="formateo"] span');
+  const mantenimientoSpan = document.querySelector('.service-item[data-service="mantenimiento"] span');
+  const programasSpan = document.querySelector('.service-item[data-service="programas"] span');
+  
+  if (anchoPantalla <= 575.98) { // Tamaño móvil
+    if (programasSpan) programasSpan.textContent = "Instalación de software";
+    if (formateoSpan) formateoSpan.textContent = "Formateo / Instalación";
+    if (mantenimientoSpan) mantenimientoSpan.textContent = "Mantenimiento";
+  } else {
+    if (programasSpan) programasSpan.textContent = "Instalación de software / programas";
+    if (formateoSpan) formateoSpan.textContent = "Formateo / Instalación de sistemas";
+    if (mantenimientoSpan) mantenimientoSpan.textContent = "Mantenimiento";
+  }
+}
+
+
+function ajustarAlturaServicios() {
+    const anchoPantalla = window.innerWidth;
+  
+  const formateoSpan = document.querySelector('.service-item[data-service="formateo"] span');
+  const mantenimientoSpan = document.querySelector('.service-item[data-service="mantenimiento"] span');
+  const programasSpan = document.querySelector('.service-item[data-service="programas"] span');
+  
+  if (anchoPantalla <= 575.98) { // Tamaño móvil
+    if (programasSpan) programasSpan.textContent = "Instalación de software";
+    if (formateoSpan) formateoSpan.textContent = "Formateo / Instalación";
+    if (mantenimientoSpan) mantenimientoSpan.textContent = "Mantenimiento de equipos";
+  } else {
+    if (programasSpan) programasSpan.textContent = "Instalación de programas";
+    if (formateoSpan) formateoSpan.textContent = "Formateo / Instalación de sistemas";
+    if (mantenimientoSpan) mantenimientoSpan.textContent = "Mantenimiento de equipos";
+  }
+    const servicios = document.querySelectorAll('.service-item');
+    let maxHeight = 0;
+
+    // Primero resetear alturas para cálculo
+    servicios.forEach(serv => serv.style.height = 'auto');
+
+    // Encontrar la altura máxima
+    servicios.forEach(serv => {
+        maxHeight = Math.max(maxHeight, serv.offsetHeight);
+    });
+
+    // Aplicar a todos
+    servicios.forEach(serv => {
+        serv.style.height = `${maxHeight}px`;
+    });
+}
+
+// Ejecutar al cargar y al redimensionar
+window.addEventListener('load', ajustarAlturaServicios);
+window.addEventListener('resize', ajustarAlturaServicios);
+            </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById('loader');
+        const loadingText = document.getElementById('loading-text');
+        
+        const images = document.images;
+        const totalImages = images.length;
+        let loadedImages = 0;
+    
+        if (totalImages === 0) {
+            finishLoading();
+        }
+    
+        for (let i = 0; i < totalImages; i++) {
+            const img = images[i];
+    
+            if (img.complete) {
+                imageLoaded();
+            } else {
+                img.addEventListener('load', imageLoaded);
+                img.addEventListener('error', imageLoaded); // por si falla
+            }
+        }
+    
+        function imageLoaded() {
+            loadedImages++;
+            let percent = Math.floor((loadedImages / totalImages) * 100);
+            loadingText.textContent = `Cargando... ${percent}%`;
+    
+            if (loadedImages === totalImages) {
+                finishLoading();
+            }
+        }
+    
+        function finishLoading() {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+    });
+    
+    </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

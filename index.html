@@ -2399,6 +2399,78 @@ body.modal-open {
 .proyecto-item:not(.fake-spacer) {
   margin-left: 0;
 }
+
+/* --- Estilos del Modal de Proyectos --- */
+
+/* El fondo oscuro que cubre toda la pantalla */
+.proyectomodal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo negro semitransparente */
+    background-color: rgba(0, 0, 0, 0.144); 
+    /* El efecto borroso mágico */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); /* Soporte para Safari */
+    z-index: 9999; /* Asegura que esté encima de todo */
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Clase para activar la animación de entrada */
+.proyectomodal-overlay.active {
+    opacity: 1;
+}
+
+/* Contenedor de la imagen para centrarla */
+.proyectomodal-container {
+    position: relative;
+    max-width: 75%;
+    max-height: 75%;
+    margin-top:2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La imagen dentro del modal */
+#proyectomodal-img {
+    max-width: 100%;
+    max-height: 85vh; /* Evita que sea más alta que la pantalla */
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animación de la imagen al abrir */
+.proyectomodal-overlay.active #proyectomodal-img {
+    transform: scale(1);
+}
+
+/* Botón de cerrar (X) */
+.proyectomodal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.proyectomodal-close:hover {
+    color: #ff4d4d; /* Color rojo al pasar el mouse */
+}
+
 /* Estilo para el logo de RustDesk */
 .rustdesk-logo {
   width: 150px;
@@ -2855,7 +2927,11 @@ body.modal-open {
 <body>
     
 <div id="top"></div>
-<!-- Barra de navegación -->
+<!-- 
+ ===============================
+ ✏️ Barra de navegación
+ =============================== 
+ -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: none !important; padding-top: 0 !important; padding-bottom: 0 !important;" >
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -2869,7 +2945,7 @@ body.modal-open {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#top">Download</a>
+                    <a class="nav-link" href="#top">Descargar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#info">Información</a>
@@ -2884,7 +2960,11 @@ body.modal-open {
         </div>
     </div>
 </nav>
-<!-- Sección: Inicio-->
+<!-- 
+ ===============================
+  ✏️ Sección: inicio
+ =============================== 
+ -->
 <div class="seccion-ti" style="position: relative; width: 100%; min-height: 800px; display: flex; align-items: flex-start; padding-top:5.6rem; justify-content: center; overflow: hidden; 
     ">
    <!-- Fondos apilados para transición -->
@@ -2950,7 +3030,12 @@ body.modal-open {
             </div></div>
     </div>
   </div>
-   <!-- Bloque de tech icons flotando dentro del hero -->
+
+  <!-- 
+ ===============================
+ ✏️ Subsección: Bloque de tech-icons
+ =============================== 
+ -->
 <div id="techicons" class="tech-icons-hero container">
   <div class="row justify-content-center">
     <div class="col-4 col-sm-2 text-center">
@@ -3025,7 +3110,11 @@ body.modal-open {
   setInterval(changeSlide, 15000);
 </script>
 
-<!-- Pantalla de carga -->
+<!-- 
+ ===============================
+ ✏️ Pantalla de carga
+ =============================== 
+ -->
 <div id="loader">
     <div class="loader-content">
         <div class="spinner-box">
@@ -3295,7 +3384,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
 });
 });
     </script>
-<!-- Sección: Información -->
+<!-- 
+ ===============================
+ ✏️ Sección: Información
+ =============================== 
+ -->
 <div class="container my-5" style="margin-top:12rem !important;" id="info">
   <div class="row align-items-start">
     
@@ -3386,7 +3479,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </div>
 
-<!-- Sección: Servicios -->
+<!-- 
+ ===============================
+ ✏️ Sección: Servicios
+ =============================== 
+ -->
 <div class="ist-info-heading" style="justify-content: center;" id="serv">
     <span class="ist-info-line"></span>
     <span class="ist-info-title">Servicios</span>
@@ -3537,7 +3634,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     });
   </script>
 
-<!-- Sección: Imagen de fondo y datos -->
+<!-- 
+ ===============================
+ ✏️ Sección: Parallax imágen de fondo y datos
+ =============================== 
+ -->
 <section id="caracteristicas-section" class="unfix-ios-bg">
   <div class="container text-center">
     <!-- Texto encima -->
@@ -3573,7 +3674,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
   </div>
 </section>
 
-<!-- Sección dividida en dos partes: izquierda y derecha -->
+<!-- 
+ ===============================
+ ✏️ Sección: Leyenda y Carrusel
+ =============================== 
+ -->
 <div class="container mt-5" style="margin-top: 9rem !important; margin-bottom:2rem;" id="servicios-section2">
     <div class="row">
         <!-- Parte izquierda: imagen del logo -->
@@ -3686,8 +3791,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
     </div>
 </div>
-<!-- Sección RustDesk -->
-<!-- Sección RustDesk -->
+<!-- 
+ ===============================
+ ✏️ Sección: RustDesk
+ =============================== 
+ -->
 <section id="rustdesk-section" class="py-5">
   <div class="container">
     <div class="row align-items-center">
@@ -3790,7 +3898,12 @@ const contenedor = document.querySelector('.proyectos-contenedor');
   </div>
 </div>
 
-<!-- Sección Proyectos -->
+
+<!-- 
+ ===============================
+ ✏️ Sección: Proyectos
+ =============================== 
+ -->
 <section id="proyectos" class="proyectos-section">
   <div class="container">
     <h2 class="proyectos-titulo">
@@ -3803,9 +3916,36 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     <div class="proyectos-contenedor">
       <!-- Proyecto falso para margen inicial -->
   <div class="proyecto-item fake-spacer" aria-hidden="true"></div>
-  
+
       <!-- Proyecto 1 -->
        <div class="proyecto-item">
+        <div class="proyecto-logo">
+          <img src="pstpfp.png" alt="Logo 1">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('persystec.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 8, 0.884) 30%,rgba(68, 2, 16, 0.801) 70%, transparent 100%);">
+          <h3>PerSysTec</h3>
+          <p>Página moderna para un negocio con integración de redes sociales.</p>
+          <a href="https://www.persystec.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          
+        </div>
+      </div>
+
+      <!-- Proyecto 1 -->
+       <div class="proyecto-item" data-modal-img="leoweb2.png">
+        <div class="proyecto-logo">
+          <img src="leoweblogo.png" alt="Logo 1">
+        </div>
+        <div class="proyecto-imagen" style="background-image: url('leoweb.png')"></div>
+        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
+          <h3>LeoWeb</h3>
+          <p>Un sistema web con página principal, panel de usuarios y de administrador para negocio de comida.</p>
+          
+        </div>
+      </div>
+  
+      <!-- Proyecto 1 -->
+       <div class="proyecto-item" data-modal-img="edurosimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo 1">
         </div>
@@ -3832,7 +3972,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
       
       <!-- Proyecto 3 -->
-      <div class="proyecto-item">
+      <div class="proyecto-item" data-modal-img="edukids.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/RGYZTZZJ/p4.jpg" alt="Logo 2">
         </div>
@@ -3845,7 +3985,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
       
       <!-- Proyecto 4 -->
-      <div class="proyecto-item">
+      <div class="proyecto-item" data-modal-img="teecreator.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/hJJgtYj5/p2-1.png" alt="Logo 3">
         </div>
@@ -3858,7 +3998,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
       
       <!-- Proyecto 5 -->
-      <div class="proyecto-item">
+      <div class="proyecto-item" data-modal-img="adorarteimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo 4">
         </div>
@@ -3870,7 +4010,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
       <!-- Proyecto 6 -->
-      <div class="proyecto-item">
+      <div class="proyecto-item" data-modal-img="vetpets.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/PZ3D3C2L/pets.jpg" alt="Logo 2">
         </div>
@@ -3882,7 +4022,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
       <!-- Proyecto 7 -->
-      <div class="proyecto-item">
+      <div class="proyecto-item" data-modal-img="juchijobs.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/8Lf5JKyR/juchi.png" alt="Logo 2">
         </div>
@@ -3910,7 +4050,15 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     
     </div>
   </div>
+
+  <div id="proyectomodal-overlay" class="proyectomodal-overlay">
+  <span class="proyectomodal-close">&times;</span>
+  <div class="proyectomodal-container">
+    <img id="proyectomodal-img" src="" alt="Vista Previa del Proyecto">
+  </div>
+</div>
 </section>
+
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -4267,7 +4415,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
     </div>
 </div>
-<!-- Sección Sobre Nosotros -->
+<!-- 
+ ===============================
+ ✏️ Sección: Sobre nosotros
+ =============================== 
+ -->
 <section id="sobre-nosotros" class="py-5" style="margin-top:5rem;">
   <div class="container">
     <!-- Título -->
@@ -4530,6 +4682,12 @@ window.addEventListener("mousemove", function(e) {
   
 });
 </script>
+
+<!-- 
+ ===============================
+ ✏️ Sección: footer
+ =============================== 
+ -->
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -4723,6 +4881,86 @@ window.addEventListener('resize', ajustarAlturaServicios);
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 500);
+        }
+    });
+
+    // Referencias a los elementos del modal
+    const modal = document.getElementById('proyectomodal-overlay');
+    const modalImg = document.getElementById('proyectomodal-img');
+    const closeBtn = document.querySelector('.proyectomodal-close');
+    
+    // Seleccionamos todos los items de proyecto (menos el espaciador falso)
+    const proyectos = document.querySelectorAll('.proyecto-item:not(.fake-spacer)');
+
+    // Función para extraer la URL limpia del background-image
+    const getBackgroundImageUrl = (element) => {
+        const bg = window.getComputedStyle(element).backgroundImage;
+        // El navegador devuelve: url("http://sitio.com/img.png")
+        // Usamos regex para sacar solo la url limpia sin comillas ni paréntesis
+        return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
+    };
+
+    // Agregar evento click a cada proyecto
+    proyectos.forEach(proyecto => {
+        proyecto.addEventListener('click', (e) => {
+            // Evitar abrir si clickea el botón del enlace
+            if (e.target.closest('.proyecto-boton')) return;
+
+            // 1. VARIABLE PARA LA IMAGEN FINAL
+            let urlFinal = '';
+
+            // 2. BUSCAR IMAGEN PERSONALIZADA (data-modal-img)
+            // Esto es lo nuevo: revisamos si el HTML tiene el atributo especial
+            const imagenPersonalizada = proyecto.getAttribute('data-modal-img');
+
+            if (imagenPersonalizada) {
+                // Si existe, esa es la que usaremos (ej: leoweb2.png)
+                urlFinal = imagenPersonalizada;
+            } else {
+                // 3. SI NO HAY PERSONALIZADA, USAR LA DE FONDO (FALLBACK)
+                const imagenDiv = proyecto.querySelector('.proyecto-imagen');
+                if (imagenDiv) {
+                    const bgUrl = getBackgroundImageUrl(imagenDiv);
+                    if (bgUrl && bgUrl !== 'none') {
+                        urlFinal = bgUrl;
+                    }
+                }
+            }
+
+            // 4. ABRIR EL MODAL SI TENEMOS UNA URL VÁLIDA
+            if (urlFinal) {
+                modalImg.src = urlFinal;
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+        });
+    });
+
+    // Función para cerrar el modal
+    const closeModal = () => {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modalImg.src = ''; // Limpiar src
+        }, 300); // Esperar a que termine la transición CSS
+    };
+
+    // Cerrar con la X
+    closeBtn.addEventListener('click', closeModal);
+
+    // Cerrar haciendo clic fuera de la imagen (en el fondo oscuro)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
         }
     });
     

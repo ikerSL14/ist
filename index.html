@@ -5659,6 +5659,10 @@ window.addEventListener('resize', ajustarAlturaServicios);
         proyecto.id = projectId; // Aseguramos que tenga un ID
 
         proyecto.addEventListener('click', (e) => {
+
+          if (modal.classList.contains('active')) {
+                return; 
+            }
             // Evitar abrir si clickea el botón del enlace
             if (e.target.closest('.proyecto-boton')) return;
             

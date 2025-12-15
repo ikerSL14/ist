@@ -3447,7 +3447,39 @@ body.modal-open {
             }
         }
 
+/* --- Estilos para la Instrucción Móvil --- */
 
+/* La instrucción en sí */
+.proyecto-instruccion-movil {
+    color: #fff;
+    background-color: rgba(3, 107, 185, 0.8); /* Un color de fondo contrastante */
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 25px auto 0;
+    display: none; /* Oculto por defecto */
+    width: max-content;
+    border: 1px solid #1480d8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* La instrucción se hace visible en el umbral móvil */
+@media (max-width: 500px) {
+    .proyecto-instruccion-movil {
+        display: block; /* Muestra el elemento solo en móvil */
+        opacity: 1;
+    }
+}
+
+/* Opcional: Estilo al hacer el primer toque (si quieres indicarlo) */
+.proyecto-item.tapped .proyecto-instruccion-movil {
+    background-color: rgba(255, 193, 7, 0.9); /* Cambia a amarillo/naranja en el primer toque */
+    color: #333;
+}
     </style>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
@@ -4446,7 +4478,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
   <div class="proyecto-item fake-spacer" aria-hidden="true"></div>
 
       <!-- Proyecto 1 -->
-       <div class="proyecto-item">
+       <div class="proyecto-item" id="p-persystec">
         <div class="proyecto-logo">
           <img src="pstpfp.png" alt="Logo 1">
         </div>
@@ -4455,12 +4487,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>PerSysTec</h3>
           <p>Página moderna para un negocio con integración de redes sociales.</p>
           <a href="https://www.persystec.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
 
       <!-- Proyecto 1 -->
-       <div class="proyecto-item" data-modal-img="leoweb2.png">
+       <div class="proyecto-item" id="p-leoweb" data-modal-img="leoweb2.png">
         <div class="proyecto-logo">
           <img src="leoweblogo.png" alt="Logo 1">
         </div>
@@ -4468,12 +4502,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
           <h3>LeoWeb</h3>
           <p>Un sistema web con página principal, panel de usuarios y de administrador para negocio de comida.</p>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
   
       <!-- Proyecto 1 -->
-       <div class="proyecto-item" data-modal-img="edurosimg.png">
+       <div class="proyecto-item" id="p-eduros" data-modal-img="edurosimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo 1">
         </div>
@@ -4482,12 +4518,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>Edu-Ros</h3>
           <p>Un sistema web con dashboard/panel de administrador y de padres para un jardín de niños.</p>
           <a href="http://eduros.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
 
       <!-- Proyecto 2-->
-      <div class="proyecto-item">
+      <div class="proyecto-item" id="p-foodradar">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/21sfFSjz/p1-2.png" alt="Logo 1">
         </div>
@@ -4495,12 +4533,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
           <h3>FoodRadar</h3>
           <p>Una plataforma donde puedes localizar negocios de comida, al registrarte como cliente, y poner tu negocio en el mapa, al registrarte como negocio.</p>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
       
       <!-- Proyecto 3 -->
-      <div class="proyecto-item" data-modal-img="edukids.png">
+      <div class="proyecto-item" id="p-edukids" data-modal-img="edukids.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/RGYZTZZJ/p4.jpg" alt="Logo 2">
         </div>
@@ -4509,11 +4549,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>Edu-Kids</h3>
           <p>Un proyecto educativo diseñado con sistema de usuarios y administradores y lecciones/minijuegos.</p>
           <a href="http://edukids.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
       
       <!-- Proyecto 4 -->
-      <div class="proyecto-item" data-modal-img="teecreator.png">
+      <div class="proyecto-item" id="p-teecreator" data-modal-img="teecreator.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/hJJgtYj5/p2-1.png" alt="Logo 3">
         </div>
@@ -4522,11 +4565,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>TeeCreator</h3>
           <p>Un proyecto en el que puedes comprar playeras y personalizarlas, utilizando una interfaz intuitiva y amigable, ideal para tu negocio.</p>
           <a href="https://teecreator.infinityfreeapp.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
       
       <!-- Proyecto 5 -->
-      <div class="proyecto-item" data-modal-img="adorarteimg.png">
+      <div class="proyecto-item" id="p-adorarte" data-modal-img="adorarteimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo 4">
         </div>
@@ -4535,10 +4581,13 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>Adorarte</h3>
           <p>Sistema web con funciones de inscripción a cursos musicales y compra de artículos.</p>
           <a href="http://adorate.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
       <!-- Proyecto 6 -->
-      <div class="proyecto-item" data-modal-img="vetpets.png">
+      <div class="proyecto-item" id="p-vetpets" data-modal-img="vetpets.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/PZ3D3C2L/pets.jpg" alt="Logo 2">
         </div>
@@ -4547,10 +4596,13 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <h3>PETS</h3>
           <p>Proyecto que cuenta con un sistema de cuentas, administrador y compra de articulos.</p>
           <a href="http://vetpets.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
       <!-- Proyecto 7 -->
-      <div class="proyecto-item" data-modal-img="juchijobs.png">
+      <div class="proyecto-item" id="p-juchijobs" data-modal-img="juchijobs.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/8Lf5JKyR/juchi.png" alt="Logo 2">
         </div>
@@ -4558,12 +4610,14 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="proyecto-info" style="background: linear-gradient(to top, rgba(2, 27, 0, 0.884) 30%,rgba(2, 68, 2, 0.801) 70%, transparent 100%);">
           <h3>JuchiJobs</h3>
           <p>Un nexo entre estudiantes egresados de una universidad y empresas con ofertas laborales.</p>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
 
       <!-- Proyecto 8 -->
-       <div class="proyecto-item">
+       <div class="proyecto-item" id="p-earlyjob">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/xtCvJJzv/earlyj.png" alt="Logo 1">
         </div>
@@ -4571,7 +4625,9 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 7, 27, 0.884) 30%,rgba(2, 25, 68, 0.801) 70%, transparent 100%);">
           <h3>EarlyJob</h3>
           <p>Sistema web para solicitar/brindar transporte entre empleados de una empresa privada.</p>
-          
+          <div class="proyecto-instruccion-movil">
+            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+        </div>
         </div>
       </div>
     </div>
@@ -5541,6 +5597,13 @@ window.addEventListener('resize', ajustarAlturaServicios);
     // Seleccionamos todos los items de proyecto (menos el espaciador falso)
     const proyectos = document.querySelectorAll('.proyecto-item:not(.fake-spacer)');
 
+    // 1. Configuración para Doble Toque en Móvil
+    const MOBILE_MAX_WIDTH = 500; // Umbral de ancho de pantalla
+    let tappedProject = null;     // Almacena el ID del proyecto tocado
+    let tapTimeout = null;        // Almacena el temporizador
+
+    const isMobile = () => window.innerWidth <= MOBILE_MAX_WIDTH;
+
     // Función para extraer la URL limpia del background-image
     const getBackgroundImageUrl = (element) => {
         const bg = window.getComputedStyle(element).backgroundImage;
@@ -5549,67 +5612,101 @@ window.addEventListener('resize', ajustarAlturaServicios);
         return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
     };
 
-    // Agregar evento click a cada proyecto
+    // Función que realmente abre el modal
+    const openModal = (proyecto) => {
+        const imagenPersonalizada = proyecto.getAttribute('data-modal-img');
+        let urlFinal = '';
+
+        if (imagenPersonalizada) {
+            urlFinal = imagenPersonalizada;
+        } else {
+            const imagenDiv = proyecto.querySelector('.proyecto-imagen');
+            if (imagenDiv) {
+                const bgUrl = getBackgroundImageUrl(imagenDiv);
+                if (bgUrl && bgUrl !== 'none') {
+                    urlFinal = bgUrl;
+                }
+            }
+        }
+
+        if (urlFinal) {
+            modalImg.src = urlFinal;
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+    };
+    
+    // Función para manejar el cierre del modal (Mantenida)
+    const closeModal = () => {
+        modal.classList.remove('active');
+        // Limpiar el estado de doble toque al cerrar el modal
+        tappedProject = null; 
+        if (tapTimeout) clearTimeout(tapTimeout);
+        
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modalImg.src = ''; 
+        }, 300); 
+    };
+
+    // 2. Agregar evento click/touch a cada proyecto
     proyectos.forEach(proyecto => {
+        // Necesitas asignar un ID único a tus proyectos en el HTML para que esto funcione
+        // Ejemplo: <div class="proyecto-item" id="p-leoweb">
+        const projectId = proyecto.id || Math.random().toString(36).substring(2); 
+        proyecto.id = projectId; // Aseguramos que tenga un ID
+
         proyecto.addEventListener('click', (e) => {
             // Evitar abrir si clickea el botón del enlace
             if (e.target.closest('.proyecto-boton')) return;
+            
+            // Si NO es móvil, abrir de inmediato (comportamiento de escritorio)
+            if (!isMobile()) {
+                openModal(proyecto);
+                return;
+            }
 
-            // 1. VARIABLE PARA LA IMAGEN FINAL
-            let urlFinal = '';
+            // --- Lógica de Doble Toque (Solo en móvil) ---
 
-            // 2. BUSCAR IMAGEN PERSONALIZADA (data-modal-img)
-            // Esto es lo nuevo: revisamos si el HTML tiene el atributo especial
-            const imagenPersonalizada = proyecto.getAttribute('data-modal-img');
-
-            if (imagenPersonalizada) {
-                // Si existe, esa es la que usaremos (ej: leoweb2.png)
-                urlFinal = imagenPersonalizada;
+            if (tappedProject === projectId) {
+                // DOBLE TOQUE: Es el mismo proyecto y lo tocamos por segunda vez rápido
+                clearTimeout(tapTimeout);
+                tappedProject = null; // Reiniciar estado
+                openModal(proyecto);
+                
             } else {
-                // 3. SI NO HAY PERSONALIZADA, USAR LA DE FONDO (FALLBACK)
-                const imagenDiv = proyecto.querySelector('.proyecto-imagen');
-                if (imagenDiv) {
-                    const bgUrl = getBackgroundImageUrl(imagenDiv);
-                    if (bgUrl && bgUrl !== 'none') {
-                        urlFinal = bgUrl;
-                    }
-                }
+                // PRIMER TOQUE:
+                tappedProject = projectId;
+                
+                // Si quieres un indicador visual aquí para el primer toque, 
+                // puedes agregar una clase CSS (ej: proyecto.classList.add('tapped'))
+                
+                // Establecer un temporizador para reiniciar el estado si no hay segundo toque
+                tapTimeout = setTimeout(() => {
+                    tappedProject = null;
+                    // Opcional: proyecto.classList.remove('tapped')
+                }, 500); // 500ms es un buen estándar para el doble toque
             }
-
-            // 4. ABRIR EL MODAL SI TENEMOS UNA URL VÁLIDA
-            if (urlFinal) {
-                modalImg.src = urlFinal;
-                modal.style.display = 'flex';
-                setTimeout(() => {
-                    modal.classList.add('active');
-                }, 10);
-            }
+            
         });
     });
 
-    // Función para cerrar el modal
-    const closeModal = () => {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.style.display = 'none';
-            modalImg.src = ''; // Limpiar src
-        }, 300); // Esperar a que termine la transición CSS
-    };
-
-    // Cerrar con la X
+    // --- Lógica de Cierre ---
     closeBtn.addEventListener('click', closeModal);
-
-    // Cerrar haciendo clic fuera de la imagen (en el fondo oscuro)
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
+        if (e.target === modal) closeModal();
     });
-    
-    // Cerrar con tecla ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+    // Escuchar el cambio de tamaño para recalcular 'isMobile()'
+    window.addEventListener('resize', () => {
+        // Si el usuario redimensiona a escritorio, limpiamos el estado de toque
+        if (!isMobile()) {
+            tappedProject = null;
+            if (tapTimeout) clearTimeout(tapTimeout);
         }
     });
     

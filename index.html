@@ -4488,7 +4488,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
           <p>Página moderna para un negocio con integración de redes sociales.</p>
           <a href="https://www.persystec.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
           <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
+            <i class="bi bi-cursor-fill"></i> Toca otra vez para ver la imagen
         </div>
         </div>
       </div>
@@ -5670,36 +5670,59 @@ window.addEventListener('resize', ajustarAlturaServicios);
 
             // --- Lógica de Doble Toque (Solo en móvil) ---
 
-            if (tappedProject === projectId) {
-                // DOBLE TOQUE: Es el mismo proyecto y lo tocamos por segunda vez rápido
-                clearTimeout(tapTimeout);
-                tappedProject = null; // Reiniciar estado
-                openModal(proyecto);
-                
-            } else {
-                // PRIMER TOQUE:
-                tappedProject = projectId;
-                
-                // Si quieres un indicador visual aquí para el primer toque, 
-                // puedes agregar una clase CSS (ej: proyecto.classList.add('tapped'))
-                
-                // Establecer un temporizador para reiniciar el estado si no hay segundo toque
-                tapTimeout = setTimeout(() => {
-                    tappedProject = null;
-                    // Opcional: proyecto.classList.remove('tapped')
-                }, 500); // 500ms es un buen estándar para el doble toque
-            }
+            // --- Lógica de un clic extra (Solo en móvil) ---
+
+        if (tappedProject === projectId) {
+            // SEGUNDO TOQUE: Es el mismo proyecto que ya tiene la info visible
+            // ABRIR MODAL INMEDIATAMENTE
+            
+            // NO necesitamos clearTimeout porque lo eliminamos abajo
+            tappedProject = null; // Reiniciar estado
+            openModal(proyecto);
+            
+        } else {
+            // PRIMER TOQUE: Mostrar info (CSS), establecer estado para el siguiente clic.
+            
+            // 1. Limpiar el estado de toque del proyecto anterior (si existe)
+            tappedProject = null;
+            if (tapTimeout) clearTimeout(tapTimeout); // Limpiar el temporizador, si está activo
+
+            // 2. Establecer el nuevo proyecto como tocado
+            tappedProject = projectId;
+            
+            // **** ELIMINACIÓN DEL TEMPORIZADOR ****
+            // Quitamos el setTimeout. El estado 'tappedProject' PERMANECERÁ activo
+            // hasta que el usuario toque el mismo proyecto de nuevo o toque otro.
+        }
             
         });
     });
 
     // --- Lógica de Cierre ---
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    // --- Lógica de Cierre (Modificada para evitar propagación) ---
+    
+    // 1. Cerrar con la X
+    closeBtn.addEventListener('click', (e) => {
+        // **CORRECCIÓN 1:** Detener el evento para que NO afecte los elementos detrás
+        e.stopPropagation(); 
+        closeModal();
     });
+
+    // 2. Cerrar haciendo clic fuera de la imagen (en el fondo oscuro)
+    modal.addEventListener('click', (e) => {
+        // **CORRECCIÓN 2:** Solo si el clic se hizo exactamente en el overlay (el fondo)
+        if (e.target === modal) {
+             // Detener el evento aquí también para mayor seguridad
+            e.stopPropagation(); 
+            closeModal();
+        }
+    });
+    
+    // 3. Cerrar con tecla ESC (Este no burbujea, queda igual)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
     });
     // Escuchar el cambio de tamaño para recalcular 'isMobile()'
     window.addEventListener('resize', () => {

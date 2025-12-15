@@ -3513,6 +3513,9 @@ body.modal-open {
                     <a class="nav-link" href="#serv">Servicios</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#proyectos">Proyectos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#contacto">Contacto</a>
                 </li>
             </ul>
@@ -5601,6 +5604,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
     const MOBILE_MAX_WIDTH = 500; // Umbral de ancho de pantalla
     let tappedProject = null;     // Almacena el ID del proyecto tocado
     let tapTimeout = null;        // Almacena el temporizador
+    let isModalOpen = false; // <-- NUEVA BANDERA
 
     const isMobile = () => window.innerWidth <= MOBILE_MAX_WIDTH;
 
@@ -5632,6 +5636,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
         if (urlFinal) {
             modalImg.src = urlFinal;
             modal.style.display = 'flex';
+            isModalOpen = true; // <-- ESTABLECER ABIERTO AQUÍ
             setTimeout(() => {
                 modal.classList.add('active');
             }, 10);
@@ -5648,6 +5653,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
         setTimeout(() => {
             modal.style.display = 'none';
             modalImg.src = ''; 
+            isModalOpen = false; // <-- LIMPIAR DESPUÉS DE LA TRANSICIÓN
         }, 300); 
     };
 
@@ -5660,7 +5666,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
 
         proyecto.addEventListener('click', (e) => {
 
-          if (modal.classList.contains('active')) {
+          if (isModalOpen) {
                 return; 
             }
             // Evitar abrir si clickea el botón del enlace

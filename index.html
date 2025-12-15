@@ -2457,8 +2457,8 @@ body.modal-open {
 /* Botón de cerrar (X) */
 .proyectomodal-close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 80px;
+    right: 50px;
     color: #fff;
     font-size: 50px;
     font-weight: bold;
@@ -3519,7 +3519,7 @@ body.modal-open {
     transition: opacity 1s ease-in-out;
   "></div>
   <!-- Contenido principal -->
-  <div class="container" style="position: relative; z-index: 2;">
+  <div class="container" style="position: relative; z-index: 1;">
     <div class="row align-items-center" style="min-height: 480px;">
       <!-- Izquierda: texto y botón -->
       <div id="izqs" class="col-md-6 text-left text-md-left text-center order-md-1 order-2" style="color: #c0dde4;">
@@ -3563,7 +3563,7 @@ body.modal-open {
  ✏️ Subsección: Bloque de tech-icons
  =============================== 
  -->
-<div id="techicons" class="tech-icons-hero container">
+<div id="techicons" class="tech-icons-hero container" style="z-index:1">
   <div class="row justify-content-center">
     <div class="col-4 col-sm-2 text-center">
       <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows" class="tech-icon">
@@ -4166,7 +4166,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
  ✏️ Sección: Parallax imágen de fondo y datos
  =============================== 
  -->
-<section id="caracteristicas-section" class="unfix-ios-bg">
+<section id="caracteristicas-section" class="unfix-ios-bg" style="z-index: 0;">
   <div class="container text-center">
     <!-- Texto encima -->
      <h2 id="eleccion" class="caracteristicas-titulo">¿Por qué elegirnos?</h2>
@@ -4224,6 +4224,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
   min-height: 400px; /* Altura mínima */
   margin-left: auto; /* Centrar horizontalmente */
   margin-right: auto;
+  z-index: 0;
   padding: 1rem;     /* Espacio interno */">
             <div id="carouselExampleIndicators" class="carousel slide ws2" data-ride="carousel" style="margin-top: 4rem;margin-left:2rem !important; margin-right:2rem !important; border-radius:10px !important;">
                 <ol class="carousel-indicators">

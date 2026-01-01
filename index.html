@@ -4,3487 +4,23 @@
     <title>IST</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=overused-grotesk:400,500,600,800" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="x-icon" href="https://i.ibb.co/bjtbHFqw/istlogopng.png">
     <script src="https://kit.fontawesome.com/46e8cbfbf8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    
-    <style>
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #00131f; /* Fondo oscuro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.loader-content {
-  text-align: center;
-  color: white;
-  font-family: sans-serif;
-}
-
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 8px solid #c0dde4; /* Color de fondo */
-    border-top: 8px solid #ffffff; /* Color del "movimiento" */
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-.spinner-box {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-}
-
-.circle-border {
-  width: 150px;
-  height: 150px;
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: rgb(203, 238, 247);
-  background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(203, 238, 247,1) 100%);
-  animation: spin .8s linear 0s infinite;
-}
-
-.circle-core {
-  width: 100%;
-  height: 100%;
-  background-color: #1d2630;
-  background-image: url('https://i.ibb.co/fzVPpQxr/IST2.png');
-  background-size: contain; /* O 'cover' según prefieras */
-  background-repeat: no-repeat;
-  background-position: center;
-  animation: spin-reverse .8s linear infinite; /* animación inversa */
-  border-radius: 50%;
-}
-
-/* Agrega esta animación inversa */
-@keyframes spin-reverse {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-/* Elimina cursor por defecto en todo el documento 
-html, body, * {
-  cursor: none !important;
-}*/
-
-        body{
-            background: linear-gradient(-45deg, 
-    rgb(0, 0, 0), 
-    rgba(2, 183, 255, 0.2), 
-    rgb(0, 0, 0), 
-    rgba(2, 104, 187, 0.2)
-);
-	background-size: 400% 400%;
-	 background-attachment: fixed; /* ¡Clave! */
-    min-height: 100vh; /* Cambia height: 100% por esto */
-    animation: gradient 20s ease infinite;
-    overflow-x: clip; /* Alternativa moderna a hidden */
-     -webkit-background-attachment: fixed; /* Safari */
-        }
-        html{
-            height: 100%;
-        }
-        
-		html, body {
-    margin: 0;
-    padding: 0;
-    font-family: "Montserrat", serif;
-    background-color: #000;
-    scroll-behavior: smooth;
-}
-body {
-    padding-right:0px !important;
-    margin-right:0px !important;
-}
-
-body.modal-open {
-    overflow-y: auto !important;
-}
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-        .header-image {
-    background-image: url('images/header4.jpeg'); /* Ruta de tu imagen de cabecera */
-    height: 300px; /* Ajusta la altura según sea necesario */
-    background-size: cover; /* Ajusta el tamaño para que se ajuste sin recortar */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    position: relative; /* Necesario para posicionar el overlay */
-    margin-top: 4rem;
-    display: flex; /* Usamos flexbox para centrar elementos */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
-
-.overlay {
-    position: absolute; /* Posiciona el overlay sobre la imagen */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Color negro con opacidad para oscurecer */
-    filter: blur(5px); /* Aplica desenfoque */
-    z-index: 1; /* Asegura que el overlay esté por encima de la imagen */
-}
-
-.logo-circle2 {
-    width: 200px; /* Ajusta el tamaño según sea necesario */
-    height: 200px; /* Ajusta el tamaño según sea necesario */
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-	padding:0;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    position: relative; /* Para centrarlo en la imagen */
-    z-index: 2; /* Asegura que el logo esté por encima del overlay */
-	/* Sombra del círculo del logo */
-    box-shadow: 0 0px 15px rgba(192, 221, 228, 0.925); /* Ajusta los valores según sea necesario */
-    transition: all 0.3s ease-in-out;
-}
-.logo-circle2:hover{
-    box-shadow: 0 0px 30px rgba(192, 221, 228, 0.925); /* Ajusta los valores según sea necesario */
-}
-
-.logo-circle2 img {
-    width: 100%;
-    height: auto;
-    
-    background-size: cover !important; /* Hace que la imagen cubra todo el espacio sin deformarse demasiado */
-	background-position:center !important; /* Centra la imagen horizontalmente */
-	background-repeat:no-repeat !important; 
-}
-.circle-shadow {
-    width: 25px; /* Ajusta el tamaño según sea necesario */
-    height: auto; /* Ajusta el tamaño según sea necesario */
-    border-radius: 50%;
-    display: flex;
-    transition: box-shadow 0.3s ease-in-out;
-}
-.circle-shadow:hover {
-    box-shadow: 0 0px 15px rgba(192, 221, 228, 0.925);
-}
-.infost {
-    
-    transition: all 0.3s ease-in-out;
-}
-.infost:hover{
-    filter:drop-shadow(0 0px 5px rgba(192, 221, 228, 0.925));
-    transform:scale(1.1);
-}
-
-        .content {
-            text-align: center;
-            margin-top: 20px; /* Espacio superior */
-        }
-
-        .btn-custom {
-    display: block; /* Asegura que cada botón ocupe toda la línea */
-    transition: all 0.3s ease; /* Transición suave para todos los cambios */
-    max-width: 200px; /* Ajusta el ancho máximo según sea necesario */
-    width: 100%; /* Hace que el botón ocupe el 100% del contenedor disponible hasta el max-width */
-    margin-left: auto; /* Centra horizontalmente */
-    margin-right: auto; /* Centra horizontalmente */
-}
-
-.black {
-    background-color: #000 !important;
-    border-color: #000 !important;
-}
-.black2 {
-    background-color: #000 !important;
-    border-color: #ffffff !important;
-}
-.green {
-    background-color: #78C257 !important;
-    border-color: #78C257 !important;
-}
-/* Efectos de hover */
-.btn-primary:hover {
-	border-color: #00539c !important;
-    background-color: #00539c !important; /* Azul oscuro, ajusta según sea necesario */
-    transform: scale(1.05); /* Aumenta el tamaño del botón */
-}
-
-.black:hover {
-	border-color: #03213b !important;
-    background-color: #03213b !important; /* Azul muy oscuro, ajusta según sea necesario */
-    transform: scale(1.05); /* Aumenta el tamaño del botón */
-}
-.black2:hover {
-	border-color: #ffffff !important;
-    background-color: #ffffff !important; /* Azul muy oscuro, ajusta según sea necesario */
-    color: #000 !important;
-    transform: scale(1.05); /* Aumenta el tamaño del botón */
-}
-.green:hover {
-	border-color: #528f36 !important;
-    background-color: #528f36 !important; /* Azul muy oscuro, ajusta según sea necesario */
-    color: #ffffff !important;
-    transform: scale(1.05); /* Aumenta el tamaño del botón */
-}
-p, label{
-    color: white;
-}
-h1, h2, h4{
-    color: #c0dde4;
-}
-.logo-circle {
-    width: 50px; /* Ajusta el tamaño según sea necesario */
-    height: 50px; /* Ajusta el tamaño según sea necesario */
-    background-color: rgb(0, 0, 0); /* Color de fondo blanco */
-    border-radius: 50%; /* Hace que el div sea circular */
-    display: flex; /* Usamos flexbox para centrar la imagen */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    overflow: hidden; /* Asegura que la imagen no sobresalga del círculo */
-}
-.logo-circle img {
-    width: 100%;
-    height: auto;
-    
-    background-size: cover !important; /* Hace que la imagen cubra todo el espacio sin deformarse demasiado */
-	background-position:center !important; /* Centra la imagen horizontalmente */
-	background-repeat:no-repeat !important; 
-}
-.nav-link:hover{
-    background-color: transparent !important;
-    color: #c0dde4 !important;
-}
-.nav-link{
-    padding: 1.1rem 1rem !important;
-    color: rgba(255, 255, 255, 0.726) !important;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
-}
-/* Línea animada debajo del texto */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #c0dde4, transparent);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.ws{
-    box-shadow: 0 0px 15px rgba(61, 219, 47, 0.925); /* Ajusta los valores según sea necesario */
-    transition: all 0.3s ease-in-out;
-}
-.ws:hover{
-box-shadow: 0 0px 30px rgba(44, 243, 26, 0.925); /* Ajusta los valores según sea necesario */
-}
-.ws2{
-    border:2px solid rgba(255, 255, 255, 0.089) !important
-}
-
-        .infocontainer {
-    background: linear-gradient(to bottom, #00131f, #000000);
-    margin-top: 3rem;
-    margin-bottom: 8rem;
-    padding: 2rem;
-    width: 100%; /* Esto asegura que ocupe todo el ancho */
-    border-radius: 3%;
-    transition: all 0.3s ease-in-out;
-}
-.info{
-    text-align:justify;
-}
-.navbar{
-    background: transparent !important;
-    backdrop-filter: blur(10px) !important;
-    border: 0.1px solid rgba(255, 255, 255, 0.089) !important;
-    width: 100% !important;
-}
-body.modal-open {
-    padding-right: 0px !important;
-}
-
-.navbar {
-    padding-right: 16px !important;
-}
-
-.infocontainer2{
-    background: rgba(255, 255, 255, 0.048); /* Degradado de #00131f a negro */
-    border: 2px solid rgba(255,255,255,.5);
-    border-right: 2px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 2px solid rgba(255,255,255,.2);
-    backdrop-filter:blur(10px);
-    margin-top: 3rem; 
-    margin-bottom: 8rem;
-    padding: 2rem; 
-    width:40%;
-    border-radius: 3%;
-    box-shadow: 0 25px 45px rgba(0,0,0, 0.2); /* Ajusta los valores según sea necesario */
-    transition: all 0.3s ease-in-out;
-}
-/* Ajuste para pantallas más pequeñas */
-@media (max-width: 768px) {
-    body {
-        /* Versión móvil con soporte completo */
-        background-attachment: scroll;
-        animation: gradientMobile 20s ease infinite;
-    }
-    
-    @keyframes gradientMobile {
-        0% { background-position: 0% 20%; }
-        50% { background-position: 100% 80%; }
-        100% { background-position: 0% 20%; }
-    }
-    #isth4{
-        margin: 3rem 4rem 0 auto;
-    }
-    #isth5{
-        margin: 3rem 4rem 0 auto;
-        font-size: 1rem;
-    }
-    #istr{
-        margin-left: -3.9rem;
-    }
-    .infocontainer2 {
-        width: 80%;
-    }
-    h5{
-        font-size:12px;
-    }
-    .info{
-        text-align:justify;
-        margin-right: 4rem;
-    }
-    .modal-body2 img {
-        width: 20% !important;  /* Ajusta el tamaño de las imágenes a un 40% en pantallas pequeñas */
-        height: auto;
-    }
-    .modal-serv{
-    width: 85% !important;
-    margin: 0 auto !important;
-}
-.navbar{
-    width: 100% !important;
-}
-.alin{
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-.image-box{
-    margin-left: 0rem !important;
-}
-.ist-info-section{
-  margin-top: 7rem !important;
-}
-.ist-info-main-title{
-  font-size:30px !important;
-}
-}
-
-/* Mantener un tamaño fijo para imágenes en pantallas grandes */
-.modal-body2 img {
-    width: 50%;  /* Ajuste general para pantallas más grandes */
-    height: auto;
-}
-
-
-.tech-icon {
-    width: 70px;  /* Ajusta el tamaño según necesites */
-    height: auto; /* Mantiene la proporción */
-    margin: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.tech-icon:hover {
-    transform: scale(1.1); /* Efecto de agrandado al pasar el cursor */
-}
-#serv, #contacto {
-    scroll-margin-top: 100px; /* Ajusta según la altura del navbar */
-}
-#info {
-    scroll-margin-top: 160px; /* Ajusta según la altura del navbar */
-}
-#sobre-nosotros {
-  scroll-margin-top: 400px !important;
-}
-.azul{
-    background-color: #000c13 !important;
-}
-
-/* Estilos para el cuadro de imagen (ajustado para ser más grande) */
-.image-box {
-    width: 300px; /* Aumenta el tamaño del cuadro */
-    height: 375px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.image-box:hover {
-    transform: scale(1.1); /* Efecto de expansión */
-}
-
-.image-box img {
-    width: 100%; /* Ajusta el tamaño de la imagen */
-    height: auto;
-}
-.close{
-    color:#fff !important;
-}
-.what{
-    color: #fff !important;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none !important;
-}
-.what:hover{
-    color: #00ff6a !important;
-    cursor: pointer !important;
-}
-.face{
-    color: #fff !important;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none !important;
-}
-.face:hover{
-    color: #008cff !important;
-    cursor: pointer !important;
-}
-.servi{
-    color: #fff !important;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none !important;
-}
-.servi:hover{
-    color: #b0d8f8 !important;
-}
-.modal-footer{
-    border-top: none !important;
-}
-.modal-serv{
-    background: linear-gradient(to bottom, #00131f, #000000);
-    border-color: #b0d8f83b;
-}
-.modal-header{
-    border-bottom: 1px solid #b0d8f83b !important;
-}
-.btn-secondary{
-    background-color: #00539c !important;
-    border-color: #00539c !important;
-    transition: all 0.3s ease-in-out;
-}
-.btn-secondary:hover{
-    background-color: #00253b !important;
-    border-color: #00253b !important;
-}
-.center{
-    margin: 10rem auto !important;
-}
-
-
-/* Animación desde la derecha */
-@keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Clases para aplicar las animaciones */
-.fade-in {
-    animation: fadeIn 1.5s ease-in-out forwards;
-    opacity: 0; /* Oculto hasta que empiece la animación */
-}
-
-.slide-in-right {
-    animation: slideInRight 1.2s ease-out forwards;
-    opacity: 0;
-}
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Clase para aplicar la animación */
-.fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-}
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Clases para aplicar al hacer scroll */
-.fade-in { animation: fadeIn 1s ease forwards; }
-.fade-in-left { animation: fadeInLeft 1s ease forwards; }
-.fade-in-right { animation: fadeInRight 1s ease forwards; }
-
-/* Ocultar al inicio */
-.hidden-animate {
-    opacity: 0;
-}
-.slider{
-    width: 100%;
-    height: var(--height);
-    overflow: hidden;
-    mask-image: linear-gradient(to right,
-    transparent,
-    #000 10% 90%,
-    transparent);
-}
-.slider .list{
-    display: flex;
-    width: 100%;
-    min-width: calc(var(--width) * var(--quantity));
-    position: relative;
-}
-.slider .list .item{
-    width: var(--width);
-    height: var(--height);
-    border-radius:20px;
-    position: absolute;
-    left: 100%;
-    animation: autoRun 10s linear infinite;
-    animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1));
-    transition:filter 0.5s;
-}
-.slider .list .item img{
-    width: 100%;
-    height:100%;
-    
-}
-@keyframes autoRun{
-    from{
-        left: 100%;
-    }to{
-        left: calc(var(--width)*-1);
-    }
-}
-.slider:hover .item{
-    animation-play-state: paused!important;
-    filter: grayscale(1);
-}
-.slider .item:hover{
-    filter: grayscale(0);
-}
-#listaservices .row {
-    display: flex;
-    flex-wrap: wrap;
-}
-/* Fondo base (estado normal) */
-.service-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
-    z-index: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Fondo hover */
-.service-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 0.3s ease;
-}
-
-.service-item:hover::after {
-    opacity: 1;
-}
-
-/* Activo: otro gradiente */
-.service-item.active::before {
-    background: linear-gradient(to bottom, #00253b 0%, #004080 100%);
-}
-
-.service-item i {
-    color: #d5eaf0 !important;
-    transition: color 0.3s ease;
-    position: relative; /* Para que esté sobre el fondo */
-    z-index: 1;
-    font-size: 1.5rem;
-    min-width: 30px;
-    margin-right: 10px;
-}
-
-.service-item span {
-    position: relative; /* Para que el texto esté sobre el fondo */
-    z-index: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Máximo 2 líneas */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.4;
-    width: 100%;
-}
-
-/* Hover: cambia colores */
-.service-item:hover {
-    color: #001f3f !important;
-    border-color: #001f3f !important;
-}
-
-.service-item:hover i {
-    color: #001f3f !important;
-}
-.service-item.active:hover::after {
-  opacity: 0 !important;
-}
-/* Estado activo */
-.service-item.active {
-    color: white !important;
-    background: linear-gradient(to bottom, #00253b 0%, #004080 100%);
-    border-color: #0056b3 !important;
-}
-
-
-.service-item.active i {
-    color: white !important;
-}
-.service-item{
-    height: 120px; /* Altura fija para todos */
-    display: flex;
-    align-items: center;
-     padding: 15px;
-    margin-bottom: 15px;
-    position: relative;
-    color: #d5eaf0;
-    background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
-    border-color: #b0d8f83b !important;
-    cursor: pointer;
-    overflow: hidden; /* Necesario para contener el pseudo-elemento */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-#service-card img {
-    object-fit: cover;
-    height: 250px;
-}
-.background-image-container {
-position: relative;
-  z-index: 2; /* Encima de las partículas */
-}
-
-/* Capa de partículas */
-#particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-.particles-container {
-  position: relative;
-  width: 100%;
-  min-height: 600px; /* o el alto que necesites */
-  overflow: visible;
-}
-.custom-br {
-  display: block;
-  margin-bottom: 8px; /* o el valor que quieras */
-}
-.custom-br2 {
-  display: block;
-  margin-bottom: 5px; /* o el valor que quieras */
-}
-.mi-boton {
-  position: relative;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: #c0dde4;
-  border: 1px solid #b0d8f83b;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  overflow: hidden;
-  text-align: center;
-  z-index: 0;
-  transition: color 0.3s ease, border-color 0.3s ease;
-  background: transparent;
-}
-
-.mi-boton::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, #000c13 0%, #001c2c 100%);
-  border-radius: 5px;
-  z-index: -2;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.mi-boton::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
-  border-radius: 5px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.mi-boton:hover::after {
-  opacity: 1;
-}
-
-.mi-boton:hover {
-  color: #001f3f;
-  border-color: #001f3f;
-}
-.mi-boton:hover,
-.mi-boton:focus,
-.mi-boton:active {
-  text-decoration: none; /* Asegura que no aparezca al pasar el cursor o al hacer foco */
-}
-#serv {
-  scroll-margin-top: 75px; /* Ajusta este valor según la altura de tu navbar + espacio extra */
-  margin-top:15rem !important; 
-}
-#contacto{
-  scroll-margin-top: 75px; 
-}
-#info-button {
-  background: none !important;
-  border: none !important;
-  color: #b0d8f8;
-  font-size: 24px;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Hover solo cuando el botón está habilitado */
-#info-button:not(:disabled):hover {
-  background-color: #b0d8f8 !important;
-  color: #000c13 !important;
-}
-
-/* Asegurar que el ícono también cambie de color */
-#info-button:not(:disabled):hover i {
-  color: #000c13 !important;
-}
-
-/* Opcional: ícono con transición */
-#info-button i {
-  transition: color 0.3s ease;
-}
-#servicios-section{
-  margin-bottom: 2rem;
-}
-@media (max-width: 500px) {
-  #servicios-section{
-    width: 90% !important;
-    margin-bottom: 6rem !important;
-  }
-}
-@media (max-width: 575.98px) {
-  .service-item {
-    flex-direction: column !important; /* columna en móviles */
-    align-items: center !important;    /* centrar horizontalmente */
-    text-align: center;                 /* centrar texto */
-  }
-  .tech-icon{
-    width: 50px !important;
-  }
-  #listaservices{
-    margin-right:1rem;
-    margin-left:1rem;
-  }
-  .services-section{
-    height: 70rem !important;
-  }
-  .service-item i {
-    margin-right: 0 !important;  /* quitar margen derecho */
-    margin-bottom: 0.3rem;       /* espacio debajo del ícono */
-    font-size: 1.5rem;           /* puedes ajustar tamaño del ícono */
-  }
-  
-  .service-item span {
-    white-space: normal;         /* permitir salto de línea en texto */
-    font-size: 1rem !important;             /* ajustar tamaño texto si quieres */
-  }
-}
-@media (max-width: 575.98px) {
-    .mi-boton{
-        margin-right:2rem;
-    }
-  .col-md-6.text-center {
-    width: 90% !important;
-    min-height: 300px; /* o menos si quieres */
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  #carouselExampleIndicators {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 2rem !important; /* opcional */
-  }
-  #carouselExampleIndicators .carousel-inner {
-    max-height: 300px;
-    overflow: hidden;
-  }
-  
-  #carouselExampleIndicators .carousel-item img {
-    object-fit: cover; /* para que la imagen se ajuste bien */
-    height: 300px;
-    width: 100%;
-  }
-  .ist-info-heading{
-    justify-content: center !important;
-  }
-  .ist-info-contact{
-    justify-content: center;
-  }
-  .ist-info-heading{
-    justify-content: center;
-  }
-  .ist-info-main-title{
-    text-align: center;
-  }
-  .ist-info-description{
-    text-align: justify;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  
-}
-@media (min-width: 768px) and (max-width: 992px) {
-    .social-links{
-        margin-bottom:20px;
-    }
-
-    #rustrow{
-      margin-left: auto !important;
-      margin-right: auto !important;
-      width: 100%;
-    }
-    #rustrow .image-box{
-      width: 225px;
-      height: 150px !important;
-    }
-  /* Contenedor padre del carrusel */
-  
-  /* Ajustar márgenes internos del carrusel */
-  #carouselExampleIndicators {
-    margin-left: 0 !important;  /* Quitar margen extra */
-    margin-right: 0 !important;
-    margin-top: 0;
-    border-radius: 10px !important;
-  }
-
-  /* Asegurar que el carrusel no se achique */
-  #carouselExampleIndicators .carousel-inner {
-    min-height: 150px;  /* Altura mínima */
-  }
-
-  #carouselExampleIndicators .carousel-item img {
-    object-fit: contain !important; /* Ajustar imagen sin recortar */
-    height: auto !important;
-    max-height: 150px !important;
-    width: 100% !important;
-  }
-
-  /* Centrar verticalmente el texto del carousel */
-  #carouselExampleIndicators .carousel-caption {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    bottom: auto !important;
-  }
-    #servicios-section{
-    max-width:850px !important;
-  }
-  #servicios-section2.container{
-    max-width: 950px !important;
-  }
-  .carousel-inner{
-    min-height: 200px !important;
-  }
-  #carouselExampleIndicators .carousel-item img{
-    min-height: 210px !important;
-    max-height: 210px !important;
-    object-fit: cover !important;
-  }
-}
-@media (max-width: 768px) {
-    #contactos{
-        margin-bottom:30rem !important;
-    }
-    #iconosparte{
-        margin-bottom:3rem !important;
-    }
-  /* Cambiar alineación del contenedor a centro */
-  #servicios-section2 .col-md-6.d-flex.flex-column.align-items-start {
-    align-items: center !important; /* Centrar horizontalmente */
-    text-align: center;              /* Centrar texto */
-    margin-left: 0 !important;       /* Quitar margen izquierdo */
-    margin-right: 0 !important;      /* Quitar margen derecho */
-  }
-
-  /* Ajustar el párrafo para que no tenga margen izquierdo */
-  #servicios-section2 p.custom-br2 {
-    margin-left: 0 !important;
-  }
-
-  /* Si tienes un botón dentro, centrarlo también */
-  #servicios-section2 .btn {
-    align-self: center !important;
-  }
-  .services-section{
-    height: 60rem;
-    min-height: 1300px !important;
-  }
-  #servicios-section{
-    margin-bottom:6rem !important;
-    margin-top:10rem !important;
-  }
-}
-@media (max-width: 363px) {
-  .hide-on-small {
-    display: none;
-  }
-}
-/* Contenedor íconos */
-.new-contact-icons-row {
-  background: #23213a;
-  padding: 2rem 0;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-/* Bloques individuales */
-.new-contact-icon-block {
-  min-width: 150px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  color: #b0d8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Íconos */
-.new-icon-circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #000c13;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font-size: 1.8rem;
-  box-shadow: 0 2px 8px rgba(192, 221, 228, 0.15);
-  transition: all 0.3s;
-  margin-bottom: 0.5rem;
-}
-
-/* Colores específicos */
-.new-icon-circle.new-whatsapp {
-  background-color: #06c55c;
-}
-
-.new-icon-circle.new-facebook {
-  background-color: #1877f3;
-}
-
-.new-icon-circle.new-location {
-  background-color: #e53935;
-}
-
-/* Texto */
-.new-contact-text {
-  font-size: 1.2rem;
-  color: #c0dde4;
-  font-weight: 500;
-  user-select: none;
-  transition: color 0.3s;
-}
-
-/* Hover: cambia color de texto e ícono */
-.new-contact-icon-block:hover .new-icon-circle {
-  filter: brightness(1.2);
-  cursor: pointer;
-}
-
-.new-contact-icon-block:hover .new-contact-text {
-  color: #ffffff;
-  cursor: pointer;
-}
-
-/* Responsive */
-@media (max-width: 767.98px) {
-  .new-icon-circle {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-  .new-contact-text {
-    font-size: 1rem;
-  }
-  .d-none {
-    display: block !important;
-  }
-   .service-item {
-        height: 100px; /* Altura ligeramente menor en móviles */
-        padding: 10px;
-    }
-    
-    .service-item i {
-        font-size: 1.2rem;
-    }
-}
-@media (max-width: 487px){
-    .contact-icons-row{
-        gap:3rem !important;
-    }
-}
-.contact-icons-row {
-  gap: 8rem; /* aumenta el espacio entre los bloques */
-}
-div.seccion {
-      height: 500px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Slider styles con prefijo bizslider- */
-    .bizslider-main {
-      position: relative;
-      width: 90vw;
-      max-width: 900px;
-      height: 100%;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      overflow: visible;
-      background: #222;
-      border-radius: 10px;
-      margin: 0 auto;
-    }
-    .bizslider-list {
-      position: relative;
-      height: 100%;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      border: 1px solid #b0d8f857;
-    }
-    .bizslider-item {
-      width: 200px;
-      height: 300px;
-      list-style-type: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-      border: 1px solid #b0d8f857;
-      background-position: center;
-      background-size: cover;
-      border-radius: 20px;
-      box-shadow: 0 20px 30px rgba(255,255,255,0.3) inset;
-      transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
-      
-      &:nth-child(1), &:nth-child(2) {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    transform: none;
-    border-radius: 0;
-    box-shadow: none;
-    opacity: 1;
-    
-  }
-  
-  &:nth-child(3) { left: 50%; }
-  &:nth-child(4) { left: calc(50% + 220px); }
-  &:nth-child(5) { left: calc(50% + 440px); }
-  &:nth-child(6) { left: calc(50% + 660px); opacity: 0; }
-    }
-    .bizslider-item:nth-of-type(2) .bizslider-content {
-      display: block;
-      animation: bizshow 0.75s ease-in-out 0.3s forwards;
-    }
-    @keyframes bizshow {
-      0% {
-        filter: blur(5px);
-        transform: translateY(calc(-50% + 75px));
-      }
-      100% {
-        opacity: 1;
-        filter: blur(0);
-      }
-    }
-    
-.bizslider-content {
-  width: min(30vw,400px);
-  position: absolute;
-  top: 50%;
-  left: 3rem;
-  transform: translateY(-50%);
-  font: 400 0.85rem helvetica,sans-serif;
-  color: white;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
-  opacity: 0;
-  display: none;
-
-  & .title {
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-  }
-
-  & .description {
-    font-family: 'Figtree', sans-serif;
-    line-height: 1.7;
-    margin: 1rem 0 1.5rem;
-    font-size: 0.8rem;
-  }
-
-  & button {
-    width: fit-content;
-    background-color: rgba(0,0,0,0.1);
-    color: white;
-    border: 2px solid white;
-    border-radius: 0.25rem;
-    padding: 0.75rem;
-    cursor: pointer;
-  }
-
-  & .tech-icons{
-    display: flex;
-  gap: 1rem; /* espacio entre logos */
-  margin-top: 1rem;
-  align-items: center;
-  }
-  & .tech-icons img{
-    width: 32px;  /* tamaño de los logos */
-  height: 32px;
-  object-fit: contain;
-  cursor: default;
-  filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); /* sombra sutil */
-  transition: transform 0.3s ease;
-  }
-  & .tech-icons img:hover{
-    transform: scale(1.2);
-  }
-}
-.bizslider-nav {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  user-select: none;
-  display: flex;
-  gap:0.5rem;
-
-  & .btn {
-    
-    color: #b0d8f8;
-    border: 2px solid #b0d8f88f;
-    margin: 0 0.25rem;
-    padding: 0.75rem;
-    border-radius: 50%;
-    cursor: pointer;
-    overflow:hidden;
-    position: relative;
-    display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0; /* Para que pseudoelementos queden detrás */
-  transition: color 0.3s ease, border-color 0.3s ease;
-
-  &::before{
-    content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, #000c13 0%, #003553 100%);
-  border-radius: 50%;
-  z-index: -2;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  }
-  &::after{
-    content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  }
-  &:hover::after{
-    opacity: 1;
-  }
-
-    &:hover {
-      color: #001f3f;
-  border-color: #001f3f;
-    }
-  }
-}
-
-@media (width > 650px) and (width < 900px) {
-  .bizslider-content {
-    & .title        { font-size: 1rem; }
-    & .description  { font-size: 0.7rem; }
-    & button        { font-size: 0.7rem; }
-  }
-  .item {
-    width: 160px;
-    height: 270px;
-
-    &:nth-child(3) { left: 50%; }
-    &:nth-child(4) { left: calc(50% + 170px); }
-    &:nth-child(5) { left: calc(50% + 340px); }
-    &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
-  }
-}
-
-@media (width < 650px) {
-  .bizslider-content {
-    & .title        { font-size: 0.9rem; }
-    & .description  { font-size: 0.65rem; }
-    & button        { font-size: 0.7rem; }
-  }
-  .item {
-    width: 130px;
-    height: 220px;
-
-    &:nth-child(3) { left: 50%; }
-    &:nth-child(4) { left: calc(50% + 140px); }
-    &:nth-child(5) { left: calc(50% + 280px); }
-    &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
-  }
-}
-#particles-js {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: flex;
-      
-    }
-    .services-section {
-  position: relative;
-  overflow: hidden; /* para que partículas no se salgan */
-  min-height: 600px; /* o el alto mínimo que necesites */
-}
-#servicios-section {
-  position: relative;
-  z-index: 2;
-  padding: 2rem 0;
-  width:90%;
-  color: #b0d8f8; /* ejemplo */
-}
-
-            .footer {
-    background: linear-gradient(to right, #00080c, #022e44);
-    color: #ffffff;
-    padding: 70px 0 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(to right, #305e7c, #c0dde4);
-}
-
-.footer-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    background: linear-gradient(10deg, #84a0a7, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.footer-about {
-    color: #a4b5c6;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-.footer h5 {
-    color: #ffffff;
-    font-weight: 600;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.footer h5::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 30px;
-    height: 2px;
-    background: #3498db;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: #a4b5c6;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.footer-links a:hover {
-    color: #3498db;
-    transform: translateX(5px);
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-icon {
-    width: 35px;
-    height: 35px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-    background: #3498db;
-    transform: translateY(-3px);
-    color: #fff;
-}
-#socialw:hover{
-    background: #23be2b;
-}
-#socialf:hover{
-    background: #1b4aad;
-}
-#sociall:hover{
-    background: #be2323;
-}
-
-.footer-newsletter {
-    position: relative;
-    margin-top: 20px;
-}
-
-.footer-newsletter input {
-    padding: 12px 15px;
-    border-radius: 25px;
-    border: none;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    outline: none;
-    padding-right: 50px;
-}
-
-.footer-newsletter input::placeholder {
-    color: #a4b5c6;
-}
-
-.newsletter-btn {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    bottom: 5px;
-    width: 40px;
-    border-radius: 50%;
-    background: #3498db;
-    border: none;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.newsletter-btn:hover {
-    background: #2980b9;
-}
-#persystec:hover{
-    color: #ff0055;
-}
-#eduros:hover{
-    color: #0ca9b4;
-}
-#teecreator:hover{
-    color: #ff00aa;
-}
-#adorarte:hover{
-    color: #d1c304;
-}
-#edukids:hover{
-    color: #4c00ff;
-}
-
-.footer-bottom {
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    color: #a4b5c6;
-}
-
-.footer-bottom-links {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.footer-bottom-links a {
-    color: #a4b5c6;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-bottom-links a:hover {
-    color: #3498db;
-}
-
-@media (max-width: 768px) {
-    .footer-section {
-        margin-bottom: 40px;
-    }
-    
-}
-.contact-icon {
-  cursor: pointer;
-}
-
-.icon-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 8px auto;
-  transition: background-color 0.3s ease;
-  color: white;
-}
-
-/* Colores base */
-.whatsapp {
-  background-color: #25D366;
-}
-
-.facebook {
-  background-color: #104dcf;
-}
-
-.email {
-  background-color: #205d79; /* gris */
-}
-
-.location {
-  background-color: #dc3545; /* rojo bootstrap */
-}
-
-/* Hover más oscuro */
-.whatsapp:hover {
-  background-color: #079647;
-}
-
-.facebook:hover {
-  background-color: #083494;
-}
-
-.email:hover {
-  background-color: #0a445f;
-}
-
-.location:hover {
-  background-color: #991522;
-}
-.contact-container {
-  max-width: 900px;
-  width: 100%;
-  height:450px;
-  background: radial-gradient(circle, #082d42 0%, #000102 100%);
-  color: #b0d8f8; /* para que el texto sea visible */
-  margin-bottom:6rem;
-  border:1px solid #b0d8f83b !important;
-}
-.to-top {
-    position: fixed;
-    bottom: 16px;
-    right: 32px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    background-color: #00253b5b;
-    color: #bae0ffcc;
-    text-decoration: none;
-    opacity: 0;
-    border: 1px solid #b0d8f8;
-    pointer-events: none;
-    transition: all 0.4s;
-    z-index: 9999;
-    /* ¡Nueva propiedad clave! */
-    transform: translateZ(0); /* Crea un nuevo contexto de apilamiento */
-}
-.to-top:hover{
-    text-decoration: none;
-    background-color: #000c13bb;
-    color: #c0dde4;
-    border-color: #c0dde4;
-}
-
-.to-top.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-/* Mantiene el scrollbar del body VISIBLE */
-body.modal-open {
-    overflow: visible !important;  /* ← clave */
-    padding-right: 0 !important;
-}
-
-/* Scroll INVISIBLE pero FUNCIONAL en el modal */
-.modal {
-    -ms-overflow-style: none;  /* IE/Edge */
-    scrollbar-width: none;  /* Firefox */
-    overflow-y: auto;  /* Permite scroll con rueda */
-}
-
-/* Oculta scrollbar en Chrome/Safari */
-.modal::-webkit-scrollbar {
-    display: none;
-}
-.tech-icons-hero {
-  position: absolute;
-  bottom: 0; /* pegados abajo del hero */
-  left: 0;
-  right: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  z-index: 3;
-}
-.gradient-border {
-  position: absolute;
-  top: -28px;
-  width: calc(60% + 56px);
-  height: calc(100% + 56px);
-  border: 3px solid transparent;
-  
-  /* Degradado adaptado a tus colores */
-  background: linear-gradient(-135deg, #305e7c 0%,#c0dde4 52%, rgba(255,255,255,0) 81%) border-box;
-  
-  /* Truco para que solo se vea el borde */
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  
-  border-radius: 20px; /* Ajusta la curvatura */
-  z-index: 0; /* Debajo de la imagen */
-}
-
-.image-box {
-  position: relative;
-  z-index: 1; /* Encima del borde degradado */
-  cursor: pointer;
-}
-/* Contenedor principal de la sección */
-.ist-info-section {
-    position: relative;
-    top: -20px;
-    color: #fff;
-    font-family: 'Figtree', sans-serif;
-}
-
-/* Encabezado pequeño "Información" */
-.ist-info-heading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-    justify-content: flex-start;
-}
-
-.ist-info-title {
-    font-size: 1rem;
-    font-weight: 600;
-    background: linear-gradient(to right, #5e99c0, #c0dde4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-}
-
-.ist-info-line {
-    flex: none;
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(to right, #5e99c0, #c0dde4);
-    border-radius: 2px;
-}
-
-/* Frase principal */
-.ist-info-main-title {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-/* Descripción */
-.ist-info-description {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #c0dde4;
-    font-family: "Space Grotesk", sans-serif;
-    margin-bottom: 1.5rem;
-}
-
-/* Línea divisoria */
-.ist-info-divider {
-    border: none;
-    height: 1px;
-    background-color: rgba(255,255,255,0.2);
-    margin-bottom: 1.5rem;
-}
-
-/* Bloque de contacto */
-.ist-info-contact {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-/* Icono de llamada */
-.ist-call-icon {
-    background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
-                linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
-    border: 2px solid transparent; /* importante para que se vea el degradado */
-    color: #ffffff;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    border-radius: 50%;
-}
-
-/* Texto de contacto */
-.ist-contact-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.ist-contact-sub {
-    font-size: 0.85rem;
-    color: #00aaff;
-    font-weight: 600;
-}
-
-.ist-contact-number {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-/* Separador vertical */
-.ist-info-separator {
-    width: 1px;
-    height: 40px;
-    background-color: #fff;
-    opacity: 0.6;
-}
-/* Botón degradado con borde y relleno animado */
-.ist-gradient-btn {
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-
-    border: 3px solid transparent;
-    background:
-      linear-gradient(to right, #5e99c0, #f4fdff) padding-box,
-      linear-gradient(135deg, #01293d, #0a71ad) border-box;
-
-    color: #003344;
-    transition: color 0.3s ease, background 0.35s ease;
-    
-    /* Este es el cambio clave: */
-    z-index: 0;
-}
-
-/* Aquí va esta regla para que el texto esté siempre encima */
-.ist-gradient-btn::before {
-    content: "";
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
-    background: linear-gradient(to right, #01293d, #0a71ad);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
-    z-index: 1; /* Poner pseudo-elemento detrás del texto */
-    border-radius: calc(30px - 2px);
-}
-/* Esto hace que el texto esté delante del pseudo-elemento */
-.ist-gradient-btn span {
-    position: relative;
-    z-index: 2;
-    text-decoration: none;
-}
-/* Texto siempre arriba */
-.ist-gradient-btn > * {
-    position: relative;
-    z-index: 1;
-    text-decoration: none;
-}
-
-/* Hover: cambiar color texto y fondo y borde */
-.ist-gradient-btn:hover {
-    color: #ffffff;
-    background:
-      linear-gradient(to right, #5e99c0, #f4fdff) padding-box,
-      linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
-}
-
-/* Activar relleno */
-.ist-gradient-btn:hover::before {
-    transform: scaleX(1);
-}
-
-/* Focus accesible */
-.ist-gradient-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0,170,255,0.12);
-}
-
-/* Sin subrayado en active/visited */
-.ist-gradient-btn:active,
-.ist-gradient-btn:visited {
-    text-decoration: none;
-}
-
-
-
-/* Responsivo */
-@media (max-width: 768px) {
-    
-    
-    
-}
-.ist-gradient-btn,
-.ist-gradient-btn span {
-    text-decoration: none !important;
-}
-#colcarrusel {
-    position: relative;
-    border-radius: 10px;
-    padding: 10px; /* Espacio entre el borde degradado y el carrusel */
-    background: transparent; /* Fondo transparente */
-    overflow: hidden; /* Para que el pseudo-elemento no se salga del borde redondeado */
-    z-index:3;
-}
-
-
-#colcarrusel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    background: linear-gradient(-135deg, #305e7c, #c0dde4, transparent) border-box;
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) padding-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    pointer-events: none; /* Permite interactuar con el carrusel */
-    z-index: 1;
-}
-
-#carouselExampleIndicators {
-    position: relative;
-    z-index: 2; /* Asegura que el carrusel esté por encima del pseudo-elemento */
-    background: #000; /* Fondo del carrusel (opcional) */
-    border-radius: 8px; /* Un poco menos que el contenedor para que no se solape */
-}
-#servicios-section2 {
-  position: relative; /* Necesario para que el pseudo-elemento se posicione respecto a la sección */
-  background: transparent; /* Que se vea el degradado del body */
-}
-#servicios-section2::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50vw;
-  height: 100%;
-  pointer-events: none;
-
-  background: radial-gradient(
-    circle at right center, /* centro en la derecha */
-    rgba(2, 111, 138, 0.5) 0%,
-    rgba(1, 150, 187, 0.315) 20%,
-    rgba(192, 221, 228, 0) 70%
-  );
-
-  filter: blur(100px);
-  z-index:0;
-}
-/* Fondo fijo estilo "ventana" */
-#caracteristicas-section {
-  background-image: url('https://images.unsplash.com/photo-1569403617727-13af6b24d342?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Cambia por tu imagen */
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  padding: 5rem 0;
-  margin-top:10rem;
-  margin-bottom: 15rem;
-  color: white;
-  position: relative;
-}
-
-/* Oscurecer un poco para mejor lectura */
-#caracteristicas-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-/* Correct iOS not supporting fixed BGs */
-.unfix-ios-bg {
-    @supports (-webkit-touch-callout: none) {
-        background-attachment: initial !important;
-    }
-}
-/* Contenido sobre el overlay */
-#caracteristicas-section .container {
-  position: relative;
-  z-index: 2;
-  margin-bottom:2.5rem;
-}
-
-/* Estilo de los círculos con íconos */
-.feature-circle {
-  width: 100px;
-  height: 100px;
-  background: rgba(2, 69, 114, 0.15);
-  border: 2px solid rgba(239, 252, 255, 0.644);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  margin: 0 auto 1rem;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover */
-.feature-circle:hover {
-  background: rgba(201, 255, 252, 0.205);
-  border-color: rgb(195, 241, 255);
-  transform: scale(1.1);
-}
-.feature-circle:hover i{
-  color: rgb(195, 241, 255);
-}
-/* Títulos de características */
-.feature h5 {
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-.caracteristicas-titulo {
-  font-family: 'Figtree', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  background: linear-gradient(90deg, #ffffff 40%, #ffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 5rem;
-}
-#eleccion{
-  font-size:4rem;
-  margin-bottom:2rem;
-  background: linear-gradient(90deg, #ffffff 40%, #5d80a1  100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-/* Estilos optimizados */
-/* Sección de proyectos con imagen de fondo */
-.proyectos-section {
-  padding: 6rem 0;
-  font-family: 'Figtree', sans-serif;
-  width: 100%;
-  position: relative; /* Necesario para el pseudo-elemento */
-  z-index: 1;
-  overflow: hidden; /* Asegura que el fondo no se desborde */
-}
-
-/* Fondo con pseudo-elemento para mejor control */
-.proyectos-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('https://i.ibb.co/k29YpGcV/fondo10.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Efecto parallax opcional */
-  z-index: -1; /* Lo envía al fondo */
-  opacity: 0.9; /* Ajusta la opacidad según necesites */
-  filter: brightness(0.4); /* Mejora el contraste del contenido */
-  @supports (-webkit-touch-callout: none) {
-        background-attachment: initial !important;
-    }
-}
-
-.proyectos-titulo {
-  
-  font-size: 2.8rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #ffffff 20%, #5d80a1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 4rem;
-  text-align: center;
-}
-
-.proyectos-contenedor {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  
-  /* Máscara de degradado mejorada */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 40px,
-    black calc(100% - 40px),
-    transparent 100%
-  );
-}
-.proyectos-contenedor::-webkit-scrollbar {
-  display: none; /* Oculta scrollbar en Chrome/Safari */
-}
-
-.proyecto-item {
-  position: relative;
-  scroll-snap-align: start;
-  flex: 0 0 85%; /* Ancho inicial para móviles */
-  min-width: 280px;
-  height: 500px;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.7s cubic-bezier(0.28, 0.62, 0.4, 0.95);
-  cursor: pointer;
-  will-change: transform;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  /* Margen izquierdo solo para el primer elemento */
-  &:first-child {
-    margin-left: 5rem;
-  }
-}
-
-/* Logo corregido - Versión mejorada */
-.proyecto-logo {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  width: 70px;
-  height: 70px;
-  z-index: 2;
-  transition: all 0.5s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Eliminamos el fondo y añadimos contenedor circular para la imagen */
-}
-
-.proyecto-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Para PNG con transparencia */
-  border-radius: 50%; /* Hacemos circular solo la imagen */
-  transition: all 0.5s ease;
-  /* Para imágenes sin transparencia (JPG) */
-  padding: 5px;
-  background: rgba(255, 255, 255, 0.2); /* Solo visible en imágenes opacas */
-  backdrop-filter: blur(5px);
-}
-
-/* Versión alternativa si prefieres marco blanco solo para imágenes opacas */
-.proyecto-logo img:not([src$=".png"]) {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 8px;
-}
-
-/* Efecto hover */
-.proyecto-item:hover .proyecto-logo img {
-  transform: scale(0.9) translateY(-10px);
-  opacity: 0;
-}
-
-.proyecto-imagen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.7s ease;
-/* Filtros iniciales (imagen oscura) */
-  filter: brightness(0.5) contrast(1.1);
-  -webkit-filter: brightness(0.5) contrast(1.1);
-  
-  /* Capa oscura adicional para más control */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    transition: all 0.5s ease;
-  }
-}
-
-/* Info - Versión corregida */
-.proyecto-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 2.5rem;
-  background: linear-gradient(to top, rgba(5, 30, 50, 0.95) 40%, transparent 100%);
-  color: white;
-  /* Eliminamos transform y trabajamos solo con opacidad y posición inicial */
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: 
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Estado hover */
-.proyecto-item:hover .proyecto-info {
-  opacity: 1;
-  height: auto;
-  padding-bottom: 2.5rem; /* Mantenemos el padding */
-  overflow: visible;
-}
-
-/* Ajustamos el contenido para que aparezca progresivamente */
-.proyecto-info h3,
-.proyecto-info p,
-.proyecto-boton {
-  transform: translateY(10px);
-  opacity: 0;
-  transition: 
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.3s ease;
-  transition-delay: 0.2s; /* Retrasamos la aparición del contenido */
-}
-
-.proyecto-item:hover .proyecto-info h3,
-.proyecto-item:hover .proyecto-info p,
-.proyecto-item:hover .proyecto-boton {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.proyecto-info h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.8rem;
-}
-
-.proyecto-info p {
-  margin-bottom: 1.8rem;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-.proyecto-boton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
-                linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
-    border: 2px solid transparent; /* importante para que se vea el degradado */
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(2px);
-}
-
-/* Efectos hover mejorados */
-.proyecto-item:hover {
-  flex: 2.5;
-  min-width: 55%;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-.proyecto-item:hover .proyecto-logo {
-  opacity: 0;
-  transform: translateY(-30px) scale(0.9);
-}
-
-.proyecto-item:hover .proyecto-info {
-  transform: translateY(0);
-  opacity: 1;
-  transition-delay: 0.1s;
-}
-
-/* Efecto hover - imagen brillante */
-.proyecto-item:hover .proyecto-imagen {
-  filter: brightness(1) contrast(1);
-  -webkit-filter: brightness(1) contrast(1);
-  
-  &::after {
-    background: rgba(0, 0, 0, 0);
-  }
-}
-
-/* Efecto más suave para el contenedor */
-.proyectos-contenedor {
-  transition: all 0.5s ease;
-}
-/* Estilos para el scroll horizontal */
-.proyectos-scroll-wrapper {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 40px; /* Espacio para los indicadores */
-}
-/* Indicador visual */
-/* Indicadores mejorados */
-.scroll-indicator {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 60px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-  
-  /* Eliminar cualquier línea visible */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
-  }
-}
-.scroll-indicator.left {
-  left: 0;
-  &::after {
-    background: linear-gradient(
-      to left,
-      transparent 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
-  }
-}
-.scroll-indicator.right {
-  right: 0;
-}
-
-.proyectos-contenedor.scrollable ~ .scroll-indicator.right {
-  opacity: 1;
-}
-
-/* Mostrar indicadores solo cuando sea necesario */
-.proyectos-contenedor.can-scroll-left ~ .scroll-indicator.left,
-.proyectos-contenedor.can-scroll-right ~ .scroll-indicator.right {
-  opacity: 1;
-}
-
-/* Adaptación para desktop */
-@media (min-width: 768px) {
-  .proyecto-item {
-    flex: 0 0 calc(33% - 1rem);
-    &:first-child {
-      margin-left: 40px;
-    }
-  }
-  
-  .proyectos-contenedor {
-    padding: 1rem 40px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .proyecto-item {
-    flex: 0 0 calc(25% - 1rem);
-  }
-}
-/* Proyecto falso para margen */
-.proyecto-item.fake-spacer {
-  visibility: hidden;
-  min-width: 20px !important;
-  max-width: 20px !important;
-  flex: 0 0 20px !important;
-  height: 100%;
-  pointer-events: none;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-  
-  /* Anula todos los efectos hover */
-  &:hover {
-    min-width: 20px !important;
-    max-width: 20px !important;
-    flex: 0 0 20px !important;
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
-  }
-  
-  /* Oculta todo el contenido interno */
-  & > * {
-    display: none !important;
-  }
-}
-
-/* Asegura que el primer proyecto real no tenga margen izquierdo */
-.proyecto-item:not(.fake-spacer) {
-  margin-left: 0;
-}
-
-/* --- Estilos del Modal de Proyectos --- */
-
-/* El fondo oscuro que cubre toda la pantalla */
-.proyectomodal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Fondo negro semitransparente */
-    background-color: rgba(0, 0, 0, 0.144); 
-    /* El efecto borroso mágico */
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px); /* Soporte para Safari */
-    z-index: 9999 !important; /* Asegura que esté encima de todo */
-    display: none; /* Oculto por defecto */
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* Clase para activar la animación de entrada */
-.proyectomodal-overlay.active {
-    opacity: 1;
-}
-
-/* Contenedor de la imagen para centrarla */
-.proyectomodal-container {
-    position: relative;
-    max-width: 75%;
-    max-height: 75%;
-    margin-top:2rem;
-    z-index:9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* La imagen dentro del modal */
-#proyectomodal-img {
-    max-width: 100%;
-    max-height: 85vh; /* Evita que sea más alta que la pantalla */
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Animación de la imagen al abrir */
-.proyectomodal-overlay.active #proyectomodal-img {
-    transform: scale(1);
-}
-
-/* Botón de cerrar (X) */
-.proyectomodal-close {
-    position: absolute;
-    top: 80px;
-    right: 50px;
-    color: #fff;
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10000;
-    transition: color 0.3s;
-    line-height: 1;
-}
-
-.proyectomodal-close:hover {
-    color: #ff4d4d; /* Color rojo al pasar el mouse */
-}
-
-/* Estilo para el logo de RustDesk */
-.rustdesk-logo {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  border: 3px solid #2a9fd6;
-  padding: 15px;
-  transition: transform 0.3s ease;
-}
-
-.rustdesk-logo:hover {
-  transform: scale(1.05);
-}
-
-/* Botón estilo RustDesk */
-.btn-rustdesk {
-  background-color: #2a9fd6;
-  color: white;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  padding: 10px 25px;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.btn-rustdesk:hover {
-  background-color: #1e87b8;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(42, 159, 214, 0.3);
-}
-
-/* Cajas de imagen */
-.image-box {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.image-box img {
-  transition: transform 0.5s ease;
-}
-
-.image-box:hover {
-  transform: translateY(-5px);
-}
-
-#infoimagebox:hover img{
-  transform: scale(1) !important;
-}
-.image-box:hover img {
-  transform: scale(1.05);
-}
-/* Estilos para la sección */
-#sobre-nosotros {
-  position: relative;
-  overflow: hidden;
-}
-#infoimagebox:hover{
-  transform: scale(1.05) !important;
-}
-
-@media (max-width: 397px){
-  .ist-info-separator{
-    visibility: hidden;
-  }
-  .ist-info-contact{
-    justify-content: center;
-  }
-  .ist-info-heading{
-    justify-content: center;
-  }
-  .ist-info-main-title{
-    text-align: center;
-  }
-  .ist-info-description{
-    text-align: justify;
-  }
-}
-@media (max-width: 431px){
-  #infoimagebox {
-    width: 250px;
-    height: 100%;
-  }
-}
-@media (min-width: 757px) and (max-width: 992px) {
-  #gborder {
-    margin-right: 2rem !important;
-    width: calc(60% + 106px) !important;
-  }
-  #infoimagebox {
-    margin-right: 2rem !important;
-  }
-}
-
-/* Ajustes responsivos */
-@media (max-width: 992px) {
-  .proyectomodal-container{
-    max-width: 90%;
-    max-height: 100%;
-  }
-
-  .proyecto-item:hover{
-    min-width: calc(100% + 20px) !important;
-  }
-  #sobre-nosotros .row {
-    flex-direction: column-reverse;
-  }
-  
-  #sobre-nosotros .col-lg-6 {
-    margin-bottom: 2rem;
-  }
-  #sobre-nosotros .image-box{
-    margin-right:3rem !important;
-    width: 90% !important;
-    height: auto !important;
-  }
-  .slogan{
-    justify-content: center;
-    text-align: center;
-  }
-  
-}
-.slogan {
-  font-family: 'Figtree', sans-serif;
-  font-weight: 700;
-  background: linear-gradient(90deg, #98bad6 20%, #ffffff 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 1.5rem 0;
-  display: inline-block;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
-.slogan::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #98bad6 20%, #ffffff 100%);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.slogan:hover::after {
-  transform: scaleX(1);
-}
- /* Estilos para las tarjetas de contacto */
-    /* Estilos actualizados para las tarjetas con borde degradado */
-/* Estilos actualizados para las tarjetas con borde degradado */
-.contact-card {
-    display: flex;
-    align-items: center;
-    background: 
-        linear-gradient(135deg, rgb(4, 49, 80), rgb(0, 13, 20)) padding-box,
-        linear-gradient(135deg, #5e99c0, #dceff3) border-box;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 15px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    margin-bottom:2rem;
-}
-
-.contact-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.location-card {
-    display: flex;
-    align-items: center;
-    background: 
-        linear-gradient(135deg, rgb(4, 49, 80), rgb(0, 13, 20)) padding-box,
-        linear-gradient(135deg, #5e99c0, #dceff3) border-box;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 15px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-    
-    .contact-icon-container {
-        margin-right: 15px;
-    }
-    
-    .gradient-icon-bg {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #5e99c0, #f4fdff);
-    }
-    #fbk{
-     background: linear-gradient(135deg, #074197, #398fff); 
-    }
-    #fbk i{
-     color: white;
-    }
-    #whp{
-     background: linear-gradient(135deg, #079726, #39ff4a); 
-    }
-    #whp i{
-     color: white;
-    }
-    
-    .gradient-icon-bg i {
-        color: #01293d;
-        font-size: 1.2rem;
-    }
-    
-    .contact-info {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .contact-label {
-        font-family: 'Space Grotesk', sans-serif;
-        color: #c0dde4;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
-    
-    .contact-value {
-        font-family: 'Space Grotesk', sans-serif;
-        color: #ffffff;
-        font-size: 1rem;
-    }
-    
-    /* Estilo para el mapa con borde degradado */
-    .gradient-border-map {
-        background: linear-gradient(135deg, #01293d, #0a71ad) padding-box,
-                    linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
-        border: 2px solid transparent;
-        border-radius: 10px;
-        padding: 2px;
-        height: 300px;
-    }
-    /* Contenedor principal del mapa con borde degradado */
-    .map-container-degradado {
-        position: relative;
-        border-radius: 10px;
-        padding: 30px; /* Espacio entre el borde degradado y el mapa */
-        background: transparent;
-        overflow: hidden;
-        width: 100%;
-        height: 400px; /* Ajusta según necesites */
-        margin: 0 auto;
-        z-index: 1;
-    }
-
-    /* Pseudo-elemento para el borde degradado */
-    .map-container-degradado::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border: 3px solid transparent;
-        border-radius: 10px;
-        background: linear-gradient(-135deg, #305e7c, #c0dde4, transparent) border-box;
-        -webkit-mask: 
-            linear-gradient(#fff 0 0) padding-box, 
-            linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out;
-        mask-composite: exclude;
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    /* Estilo para el mapa interno */
-    #contactMap {
-        border-radius: 6px; /* Un poco menos que el contenedor */
-        width: 100%;
-        height: 100%;
-        position: relative;
-        z-index: 1;
-    }
-    .contact-intro-text {
-    font-family: 'Space Grotesk', sans-serif;
-    color: #c0dde4;
-    line-height: 1.6;
-    margin-bottom: 3rem !important;
-    font-size: 1.1rem;
-}
-.social-icons-row {
-    display: flex;
-    margin-left:1rem;
-    gap: 20px;
-    padding: 15px 0;
-}
-
-.social-icon-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.social-icon-circle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    padding: 2px;
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-.social-icon-circle i {
-    font-size: 1.2rem;
-    color: #01293d;
-    z-index: 1;
-}
-
-.social-icon-circle:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Colores específicos para hover */
-.facebook-icon:hover i {
-    color: #1877f2; /* Azul Facebook */
-}
-
-.whatsapp-icon:hover i {
-    color: #25d366; /* Verde WhatsApp */
-}
-@media (max-width: 767px) {
-    #titulo-slide {
-        font-size: 2rem !important; /* Tamaño más apropiado para móvil */
-        line-height: 1.2;
-    }
-    #izqs{
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    .btn-custom {
-        width: 100%; /* Botón más ancho en móvil */
-        max-width: 250px; /* Pero con un límite */
-    }
-    
-    .d-flex.align-items-center {
-        flex-direction: column; /* Opcional: apila botón e ícono verticalmente */
-        gap: 1rem; /* Espacio entre elementos */
-    }
-    
-    .infost {
-        margin-left: 0 !important; /* Elimina margen izquierdo en modo apilado */
-    }
-    .seccion-ti{
-      min-height: 1000px !important;
-    }
-    .logo-circle2{
-      margin-top:3rem !important;
-    }
-    #serv{
-      margin-top:7rem !important;
-    }
-    #eleccion{
-      font-size:3rem !important;
-    }
-    .caracteristicas-titulo{
-      font-size:1.5rem;
-    }
-    #servdist, #servpers{
-      margin-top:2rem;
-    }
-    .h5s{
-      font-size:1.1rem;
-    }
-    .mi-boton{
-      margin-right:2rem;
-    }
-    #rustcont{
-      text-align: center;
-    }
-    #rustrow{
-      justify-content:center !important;
-      align-items: center !important;
-      width:90%;
-    }
-    #rustrow .image-box{
-      width: auto !important;
-      height: auto !important;
-    }
-    .social-icons-row{
-      justify-content:center;
-      margin-bottom:2rem;
-    }
-}
-@media (max-width:426px) {
-  .cursor-dot, .cursor-outline{
-    display: none;
-  }
-  .proyectos-scroll-wrapper{
-    padding: 0 10px !important;
-  }
-  .slogan{
-    font-size: 1.2rem !important;
-  }
-  #slogantext{
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  #contactoh2{
-    font-size:2.5rem !important;
-  }
-}
-.cursor-dot{
-  width: 5px;
-  height: 5px;
-  background-color: #c0dde4;
-}
-.cursor-outline{
-  width: 30px;
-  height: 30px;
-  border: 2px solid hsla(194, 94%, 81%, 0.5);
-}
-.cursor-dot,
-.cursor-outline{
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-
-/* =============== FACEBOOK ============== */
-.facebook-section {
-            position: relative;
-            padding: 80px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            overflow: hidden;
-            background: linear-gradient(135deg, #000000 30%, rgb(4, 23, 59) 70%, #011222 100%);
-            z-index: 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .facebook-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1100px;
-            width: 100%;
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-            align-items: center;
-        }
-
-        /* Columna izquierda */
-        .facebook-info {
-            flex: 1;
-            min-width: 280px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .facebook-icon {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .facebook-icon svg {
-            width: 48px;
-            height: 48px;
-            filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.6));
-        }
-
-        .facebook-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .facebook-subtitle {
-            font-size: 1.1rem;
-            line-height: 1.6em;
-            color: #e1e1e1;
-            max-width: 90%;
-        }
-
-        .facebook-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #1877f2;
-            color: #fff;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center;
-            width: fit-content;
-            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .facebook-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .facebook-button:hover {
-            background: #0f66f0;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(24, 119, 242, 0.6);
-        }
-
-        .facebook-button:hover:before {
-            left: 100%;
-        }
-
-        /* Columna derecha */
-        .facebook-frame {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(24, 119, 242, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 450px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .facebook-frame:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 40px rgba(24, 119, 242, 0.6);
-        }
-
-        .iframe-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .facebook-frame iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Efecto de luz suave */
-        .facebook-glow {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(24, 119, 242, 0.2), transparent 70%);
-            animation: pulseGlow 8s infinite alternate;
-            z-index: 1;
-        }
-
-        @keyframes pulseGlow {
-            from { transform: scale(1); opacity: 0.5; }
-            to { transform: scale(1.2); opacity: 1; }
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .facebook-container {
-                flex-direction: column;
-                gap: 30px;
-                align-items: center;
-            }
-
-            .facebook-info {
-                text-align: center;
-                align-items: center;
-            }
-
-            .facebook-icon {
-                justify-content: center;
-            }
-
-            .facebook-subtitle {
-                max-width: 100%;
-            }
-
-            .facebook-frame {
-                width: 100%;
-                min-height: 400px;
-            }
-
-            .facebook-frame iframe {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .facebook-section {
-                padding: 50px 15px;
-            }
-
-            .facebook-title {
-                font-size: 1.8rem;
-            }
-
-            .facebook-subtitle {
-                font-size: 1rem;
-            }
-
-            .facebook-frame {
-                padding: 15px;
-                min-height: 350px;
-            }
-
-            .facebook-frame iframe {
-                height: 350px;
-            }
-        }
-
-        
-/* ================= WHATSAPP ================== */
- .whatsapp-section {
-            position: relative;
-            padding: 80px 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            overflow: hidden;
-            background: linear-gradient(135deg, #032723 0%, #0b584f 50%, #25d366 100%);
-            z-index: 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            
-            width: 100%;
-        }
-
-        .whatsapp-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-            align-items: center;
-        }
-
-        /* Columna izquierda - Chat simulado */
-.whatsapp-image {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.whatsapp-chat {
-    width: 100%;
-    max-width: 350px;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.whatsapp-chat:hover {
-    box-shadow: 0 0 10px rgba(24, 242, 195, 0.6);
-}
-
-/* Cabecera del chat */
-.chat-header {
-    background: #075e54;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.contact-info2 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.contact-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #128c7e;
-}
-
-.contact-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.contact-details {
-    color: white;
-}
-
-.contact-name {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.contact-status {
-    font-size: 0.8rem;
-    opacity: 0.8;
-}
-
-/* Cuerpo del chat */
-.chat-body {
-    padding: 15px;
-    background: #e5ddd5;
-    min-height: 200px;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23075e54' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-}
-
-.message {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.message.received {
-    align-items: flex-start;
-}
-
-.message-content {
-    background: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    max-width: 80%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    color: #333;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.message-time {
-    font-size: 0.7rem;
-    color: #999;
-    margin-top: 5px;
-    padding: 0 5px;
-}
-
-/* Pie del chat - Input */
-.chat-footer {
-    padding: 15px;
-    background: #f0f0f0;
-    border-top: 1px solid #ddd;
-}
-
-.message-input-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.message-input {
-    flex: 1;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 25px;
-    background: white;
-    font-size: 0.9rem;
-    outline: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.message-input::placeholder {
-    color: #999;
-}
-
-.send-button {
-    background: #25d366;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    box-shadow: 0 2px 5px rgba(37, 211, 102, 0.3);
-}
-
-.send-button:hover {
-    background: #20bd5c;
-}
-
-        /* Columna derecha - Información */
-        .whatsapp-info {
-            flex: 1;
-            min-width: 280px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .whatsapp-icon2 {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .whatsapp-icon2 svg {
-            width: 48px;
-            height: 48px;
-            filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.6));
-        }
-
-        .whatsapp-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-        }
-
-        .whatsapp-subtitle {
-            font-size: 1.1rem;
-            line-height: 1.6em;
-            color: #e1e1e1;
-            max-width: 90%;
-        }
-
-        .whatsapp-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 32px;
-            background: #25d366;
-            color: #fff;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            width: fit-content;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .whatsapp-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .whatsapp-button:hover {
-            background: #20bd5c;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-button:hover:before {
-            left: 100%;
-        }
-
-        .whatsapp-button svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Efecto de luz suave */
-        .whatsapp-glow {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(37, 211, 102, 0.2), transparent 70%);
-            animation: pulseGlow 8s infinite alternate;
-            z-index: 1;
-        }
-
-        @keyframes pulseGlow {
-            from { transform: scale(1); opacity: 0.5; }
-            to { transform: scale(1.2); opacity: 1; }
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .whatsapp-container {
-                flex-direction: column;
-                gap: 30px;
-                align-items: center;
-            }
-
-            .whatsapp-info {
-                text-align: center;
-                align-items: center;
-            }
-
-            .whatsapp-icon2 {
-                justify-content: center;
-            }
-
-            .whatsapp-subtitle {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .whatsapp-section {
-                padding: 50px 15px;
-            }
-
-            .whatsapp-title {
-                font-size: 1.8rem;
-            }
-
-            .whatsapp-subtitle {
-                font-size: 1rem;
-            }
-        }
-
-/* --- Estilos para la Instrucción Móvil --- */
-
-/* La instrucción en sí */
-.proyecto-instruccion-movil {
-    color: #fff;
-    background-color: rgba(3, 107, 185, 0.8); /* Un color de fondo contrastante */
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-align: center;
-    margin: 25px auto 0;
-    display: none; /* Oculto por defecto */
-    width: max-content;
-    border: 1px solid #1480d8;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* La instrucción se hace visible en el umbral móvil */
-@media (max-width: 500px) {
-    .proyecto-instruccion-movil {
-        display: block; /* Muestra el elemento solo en móvil */
-        opacity: 1;
-    }
-}
-
-/* Opcional: Estilo al hacer el primer toque (si quieres indicarlo) */
-.proyecto-item.tapped .proyecto-instruccion-movil {
-    background-color: rgba(255, 193, 7, 0.9); /* Cambia a amarillo/naranja en el primer toque */
-    color: #333;
-}
-    </style>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     
@@ -3539,7 +75,7 @@ body.modal-open {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('https://i.ibb.co/7xL69wdn/fondo3.jpg');
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.801) 0%, rgba(0,0,0,0.9) 80%), url('https://i.ibb.co/7xL69wdn/fondo3.jpg');
     z-index: 1;
     opacity: 1;
     transition: opacity 1s ease-in-out;
@@ -3557,44 +93,46 @@ body.modal-open {
     transition: opacity 1s ease-in-out;
   "></div>
   <!-- Contenido principal -->
-  <div class="container" style="position: relative; z-index: 1;">
-    <div class="row align-items-center" style="min-height: 480px;">
-      <!-- Izquierda: texto y botón -->
-      <div id="izqs" class="col-md-6 text-left text-md-left text-center order-md-1 order-2" style="color: #c0dde4;">
-    <!-- Título -->
-    <h1 id="titulo-slide" class="text-center text-md-left" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; transition: opacity 0.8s ease;">
-        <label>I</label>nnovamos <span style="color:white;">S</span>oluciones<br class="d-none d-md-block"><span style="color:white;">T</span>ecnológicas para tu tranquilidad
-    </h1>
+<div class="container" style="position: relative; z-index: 2;">
+  <div class="row justify-content-center align-items-center" style="min-height: 480px;">
     
-    <!-- Párrafo -->
-    <p class="text-center text-md-left" style="font-size: 1.2rem; color: #e0f7fa; margin-bottom: 2rem;">
-        Utilizamos la tecnología de RustDesk para poder manejar tu equipo a distancia
-    </p>
-    
-    <!-- Contenedor del botón -->
-    <div class="d-flex justify-content-center justify-content-md-start align-items-center" style="margin-top: 1.5rem;">
-        <!-- Botón de descarga -->
+    <div id="izqs" class="col-12 col-lg-12 text-center" style="color: #c0dde4;">
+      
+      <h1 class="ist-hero-title">
+        Innova: Soluciona: Triunfa con <label style="font-family: 'Audiowide', sans-serif">IST</label>
+      </h1>
+      
+      <p class="text-center mx-auto" style="font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #e0f7fa; /* Gris azulado sutil */
+  max-width: 650px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.01em;">
+        Las mejores soluciones tecnológicas ajustadas a tus necesidades
+      </p>
+      
+      <div class="d-flex justify-content-center align-items-center" style="margin-top: 1.5rem;">
         <a id="btn-download" href="#" style="display: none;">
-            <button class="btn btn-primary btn-custom" style="min-width: 200px;">
-                <i id="os-icon" class="bi bi-laptop" style="margin-right:1rem;"></i>
-                Descargar
-            </button>
+          <button class="btn btn-primary btn-custom" style="min-width: 260px;">
+            <i id="os-icon" class="bi bi-laptop" style="margin-right:1rem;"></i>
+            Descargar RustDesk
+          </button>
         </a>
         
-        <!-- Logo informativo -->
-        <img src="https://i.ibb.co/rq9fNnW/infost.png" alt="Logo pequeño" class="infost ms-2"
-             style="margin-left: 1rem;width: 25px; height: auto; cursor: pointer;" 
-             data-toggle="modal" data-target="#infoModal"
-             title="Información">
+        
+      </div>
+      <div style="margin-top:1.5rem">
+  <span class="ist-badge" data-toggle="modal" data-target="#infoModal" title="Información">
+    <iconify-icon icon="simple-icons:rustdesk" class="ist-infoicon"></iconify-icon>
+    <span class="ist-badge-text">Sobre RustDesk</span>
+  </span>
+</div>
+      
+    </div>
+    
     </div>
 </div>
-      <!-- Derecha: imagen centrada -->
-      <div class="col-md-6 d-flex justify-content-center align-items-center order-md-2 order-1"> <div class="logo-circle2" style="margin-bottom: 5rem !important;">
-                <!-- Añade aquí tu imagen del logo -->
-                <img src='https://i.ibb.co/fzVPpQxr/IST2.png' alt='' width='90%' height='auto'>
-            </div></div>
-    </div>
-  </div>
 
   <!-- 
  ===============================
@@ -3624,24 +162,19 @@ body.modal-open {
 <script>
   const slides = [
     {
-      img: "fondo3.jpg",
-      titulo: "<label>I</label>nnovamos <span style='color:white;'>S</span>oluciones<br><span style='color:white;'>T</span>ecnológicas para tu tranquilidad"
-
+      img: "fondo3.jpg"
     },
     {
-      img: "fondo4.jpg",
-      titulo: "<label>I</label>ntegramos <span style='color:white;'>S</span>ervicios<br><span style='color:white;'>T</span>ransformadores e innovadores"
+      img: "fondo4.jpg"
     },
     {
-      img: "fondo5.png",
-      titulo: "<label>I</label>mpulsamos <span style='color:white;'>S</span>istemas<br><span style='color:white;'>T</span>ecnológicos con calidad y soporte"
+      img: "fondo5.png"
     }
   ];
 
   let index = 0;
   const bg1 = document.getElementById("bg-slide-1");
   const bg2 = document.getElementById("bg-slide-2");
-  const titulo = document.getElementById("titulo-slide");
 
   // Para alternar cuál bg está visible
   let showingBg1 = true;
@@ -3649,26 +182,19 @@ body.modal-open {
   function changeSlide() {
   index = (index + 1) % slides.length;
 
-  // Fade out inmediato textos
-  titulo.style.opacity = 0;
 
   // Cambiar fondo y hacer crossfade inmediatamente
   if (showingBg1) {
-    bg2.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('${slides[index].img}')`;
+    bg2.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.650) 0%, rgba(0,0,0,0.9) 80%), url('${slides[index].img}')`;
     bg2.style.opacity = 1;
     bg1.style.opacity = 0;
   } else {
-    bg1.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0.90) 40%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 100%), url('${slides[index].img}')`;
+    bg1.style.backgroundImage = `radial-gradient(circle, rgba(0, 0, 0, 0.650) 0%, rgba(0,0,0,0.9) 80%), url('${slides[index].img}')`;
     bg1.style.opacity = 1;
     bg2.style.opacity = 0;
   }
   showingBg1 = !showingBg1;
 
-  // Después de 1s (duración de la transición de fondo) cambiar textos y hacer fade in
-  setTimeout(() => {
-    titulo.innerHTML = slides[index].titulo;
-    titulo.style.opacity = 1;
-  }, 1000);
 }
 
   // Cambiar cada 15 segundos
@@ -3693,7 +219,7 @@ body.modal-open {
   
 <!-- Modal de Info -->
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
+    <div class="modal-dialog" role="document" style="margin-top:5rem;">
         <div class="modal-content modal-serv">
             <div class="modal-header d-flex flex-column align-items-start">
                 <!-- Título principal -->
@@ -3707,12 +233,13 @@ body.modal-open {
                 <div class="row">
                     <div class="col-md-8">
                         <p>Detectamos que tu sistema operativo es <strong><span id="modal-os-detail">Desconocido</span></strong>.</p>
-                        <p>Siéntete libre de hacer clic en descargar, pues dicha función realizará lo adecuado acorde a tu sistema.</p>
+                        <p>Al hacer clic en el botón de descargar, obtendrás la versión de RustDesk para tu sistema operativo. </p> <p><strong>Rustdesk</strong> es el programa que utilizamos en IST para poder realizar nuestros servicios a distancia en tu equipo.</p>
                     </div>
                     <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             <!-- Iconos o imágenes -->
                             <img id="modal-os-img" src="https://i.ibb.co/Lh6SXfhg/rustdesk.png" alt="OS Image" width="120">
+                            <img src="https://i.ibb.co/GvVMQJt9/rustdesk.png" alt="OS Image" width="120" style="margin-top:1.5rem;">
                         </div>
                     </div>
                 </div>
@@ -3974,10 +501,11 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       <!-- Columna derecha: Información -->
 <div class="ist-info-section">
     <!-- Título pequeño de sección -->
-    <div class="ist-info-heading">
-        <span class="ist-info-line"></span>
-        <span class="ist-info-title">Información</span>
-        <span class="ist-info-line"></span>
+    <div class="ist-info-heading" style="margin-bottom:2rem;">
+        <span class="ist-serv-badge">
+          <iconify-icon icon="material-symbols:info-outline" style="font-size: 22px;"></iconify-icon>
+          INFORMACIÓN
+        </span>
     </div>
 
     <!-- Frase principal -->
@@ -4049,155 +577,310 @@ const contenedor = document.querySelector('.proyectos-contenedor');
  ✏️ Sección: Servicios
  =============================== 
  -->
-<div class="ist-info-heading" style="justify-content: center;" id="serv">
-    <span class="ist-info-line"></span>
-    <span class="ist-info-title">Servicios</span>
-    <span class="ist-info-line"></span>
+<section class="ist-services" id="serv">
+  <div class="ist-serv-header">
+    <span class="ist-serv-badge">
+      <iconify-icon icon="lucide:layers" style="font-size: 14px;"></iconify-icon>
+      SERVICIOS
+    </span>
+    <h1 class="ist-serv-main-title">Todos los servicios en un lugar</h1>
+    <p class="ist-serv-subtitle">Soluciones tecnológicas profesionales para potenciar tu rendimiento.</p>
   </div>
-    <div class="services-section"  style="position: relative; overflow: hidden;">
-<div class="background-image-container" id="particles-js" style="justify-content: center; align-items:center; text-align: center;">
-<!-- Sección dividida en dos partes: izquierda y derecha -->
-<div class="container mt-5 hidden-animate fade-element" style="margin-top: 2rem; position:absolute;" id="servicios-section">
-    <div class="row">
-        <!-- Parte izquierda: cuadro de servicio -->
-        <div class="col-md-6 d-flex flex-column align-items-center" style="margin-bottom: 3rem;">
-            <div id="service-card" class="card" style="width: 100%; max-width: 450px;background: linear-gradient(to bottom, #000c13 70%, #001c2c 100%); border-color:#b0d8f83b;">
-                <img id="service-image" src="https://i.ibb.co/xqT437pv/select.jpg" class="card-img-top" alt="Servicio">
-                <div class="card-body d-flex flex-column">
-                    <h3 id="service-title" class="card-title" style="color:#b0d8f8;">Selecciona un servicio</h3>
-                    <p id="service-description" class="card-text flex-grow-1">Haz clic en alguno de los servicios para ver su descripción aquí.</p>
-                    <!-- Contenedor flex para ícono wifi y botón -->
-    <div class="d-flex justify-content-between align-items-center">
-      <i id="wifi-icon" class="fas fa-wifi" style="color: #008cff; font-size: 24px; visibility: hidden;"></i>
-      <button id="info-button" class="btn" disabled style="background: none; border: none; color: #b0d8f8; font-size: 24px; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; cursor: pointer; padding: 0;">
-        <i class="fas fa-plus"></i>
-      </button>
-    </div>
-                </div>
-            </div>
+
+  <div class="ist-serv-grid">
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Aceleración de equipo"
+         data-type="remote"
+         data-desc="Aumentamos la velocidad y eficiencia de tu computadora optimizando el sistema. Te ofrecemos sugerencias y si deseas, podemos pasar a una mejora de equipo, al actualizar los componentes."
+         data-icon="ph:rocket-launch-duotone"
+         data-flyer="imgs/Aceleracion.png"
+         data-extra1="https://i.ibb.co/f5bhV65/W3.jpg"
+         data-extra2="https://i.ibb.co/PG8SkpfR/is1.jpg">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="ph:rocket-launch-duotone" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:cpu-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Aceleración de equipo</h3>
+      <p class="ist-serv-desc">Optimización avanzada de hardware y software para velocidad máxima.</p>
+    </article>
+
+    <article class="ist-serv-card" 
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Instalación de Office"
+         data-type="remote"
+         data-desc="Te configuramos, estés donde estés, la suite completa de Office con todas las herramientas de productividad activadas y listas para tu flujo de trabajo profesional."
+         data-icon="mi:document"
+         data-flyer="imgs/Office.png"
+         data-extra1="office.png"
+         data-extra2="https://i.ibb.co/KcBxsRKf/P1.jpg">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="mi:document" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:check-circle-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Instalación de Office</h3>
+      <p class="ist-serv-desc">Configuración oficial y completa de herramientas de productividad.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Instalación de software"
+         data-type="remote"
+         data-desc="Instalamos cualquier software que necesites de forma segura y rápida, asegurando compatibilidad y rendimiento óptimo."
+         data-icon="material-symbols:download"
+         data-flyer="imgs/Programas.png"
+         data-extra1="https://i.ibb.co/7xPCxDQC/select.png"
+         data-extra2="https://i.ibb.co/SwjFZBMQ/videov.png">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <!--<iconify-icon icon="ph:app-window-duotone" class="ist-serv-icon"></iconify-icon>-->
+        <iconify-icon icon="material-symbols:download" class="ist-serv-icon"></iconify-icon>
+      </div>
+      <h3 class="ist-serv-name">Instalación de programas</h3>
+      <p class="ist-serv-desc">Software especializado instalado y listo para trabajar.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Diseños publicitarios"
+         data-type="remote"
+         data-desc="Diseñamos creativos visuales totalmente al gusto para promocionar tu negocio y captar la atención de tu audiencia objetivo."
+         data-icon="ph:megaphone-duotone"
+         data-flyer="imgs/Publicidad.png"
+         data-extra1="https://i.ibb.co/YF7CJ9L1/T1.png"
+         data-extra2="https://i.ibb.co/nMvbP5FX/istimg2.png">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <!--<iconify-icon icon="ph:paint-brush-broad-duotone" class="ist-serv-icon"></iconify-icon>-->
+        <iconify-icon icon="ph:megaphone-duotone" class="ist-serv-icon"></iconify-icon>
+      </div>
+      <h3 class="ist-serv-name">Diseños publicitarios</h3>
+      
+      <p class="ist-serv-desc">Creatividad visual que impacta y comunica tu mensaje.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Diseño de sitios web"
+         data-type="remote"
+         data-desc="Diseñamos y desarrollamos la página web que necesites, desde landing pages para tu negocio hasta sistemas con bases de datos. Incluye dominio y host."
+         data-icon="streamline-plump:web"
+         data-flyer="imgs/Web.png"
+         data-extra1="edurosimg.png"
+         data-extra2="persystec.png">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="streamline-plump:web" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:code-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Diseño de sitios web</h3>
+      <p class="ist-serv-desc">Experiencias digitales modernas y optimizadas para SEO.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Edición de videos"
+         data-type="remote"
+         data-desc="Creamos y editamos videos atractivos con narrativa visual, transiciones y efectos de alta calidad para tus proyectos personales o comerciales."
+         data-icon="streamline-ultimate:video-edit-magic-wand-bold"
+         data-flyer="imgs/Video.png"
+         data-extra1="https://i.ibb.co/SwjFZBMQ/videov.png"
+         data-extra2="https://i.ibb.co/m5hkZSyT/vegas.png">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="streamline-ultimate:video-edit-magic-wand-bold" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:magic-wand-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Edición de videos</h3>
+      <p class="ist-serv-desc">Narrativa visual con transiciones y efectos de alta calidad.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Desarrollo de software"
+         data-type="remote"
+         data-desc="Desarrollamos aplicaciones y sistemas personalizados con las especificaciones que necesites, y las tecnologías que necesites."
+         data-icon="ph:code"
+         data-flyer="imgs/Desarrollo.png"
+         data-extra1="https://i.ibb.co/3mw2nxhB/is4.jpg"
+         data-extra2="edukids.png">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="ph:code" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:database-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Desarrollo de software</h3>
+      <p class="ist-serv-desc">Sistemas personalizados que resuelven retos de negocio.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Formateo/Instalación"
+         data-type="onsite"
+         data-desc="Formateamos e instalamos el sistema operativo que estés buscando. Tomamos las decisiones contigo para dejar tu equipo como nuevo."
+         data-icon="ph:arrows-clockwise"
+         data-flyer="imgs/Formateo.png"
+         data-extra1="https://i.ibb.co/2HJ6rxN/P6.jpg"
+         data-extra2="https://i.ibb.co/7xj318Fc/W2.jpg">
+      <div class="ist-serv-badge-card ist-serv-onsite">
+        <iconify-icon icon="mage:users"></iconify-icon>
+        Presencial
+      </div>
+      <div class="ist-serv-icon-box">
+        <!--<iconify-icon icon="ph:hard-drive-duotone" class="ist-serv-icon"></iconify-icon>-->
+        <iconify-icon icon="ph:arrows-clockwise" class="ist-serv-icon"></iconify-icon>
+      </div>
+      <h3 class="ist-serv-name">Formateo / Sistemas</h3>
+      <p class="ist-serv-desc">Instalación limpia de SO para un equipo como nuevo.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Mantenimiento"
+         data-type="onsite"
+         data-desc="Brindamos mantenimiento preventivo o correctivo a tu equipo para asegurar su óptimo funcionamiento y prolongar su vida útil, limpiando y revisando componentes clave."
+         data-icon="hugeicons:repair"
+         data-flyer="imgs/Mantenimiento.png"
+         data-extra1="https://i.ibb.co/PG8SkpfR/is1.jpg"
+         data-extra2="https://i.ibb.co/qYTv5Gr1/W1.jpg">
+      <div class="ist-serv-badge-card ist-serv-onsite">
+        <iconify-icon icon="mage:users"></iconify-icon>
+        Presencial
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="hugeicons:repair" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:broom-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Mantenimiento de equipo</h3>
+      <p class="ist-serv-desc">Cuidado preventivo para evitar fallos y sobrecalentamiento.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
+         data-title="Mejora de equipo"
+         data-type="onsite"
+         data-desc="Evaluamos y actualizamos componentes clave de tu hardware para mejorar el rendimiento general de tu computadora. Te ayudamos a elegir conforme a tus necesidades."
+         data-icon="ph:cpu-duotone"
+         data-flyer="imgs/Mejora.png"
+         data-extra1="https://i.ibb.co/bM9Nkz9x/is5.jpg"
+         data-extra2="https://i.ibb.co/nNxzSGQx/P2.jpg">
+      <div class="ist-serv-badge-card ist-serv-onsite">
+        <iconify-icon icon="mage:users"></iconify-icon>
+        Presencial
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="ph:cpu-duotone" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:plus-circle-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Mejora de equipo</h3>
+      <p class="ist-serv-desc">Actualización estratégica de componentes internos.</p>
+    </article>
+  </div>
+
+<!-- Modal de servicios -->
+<div class="modal fade" id="istModalServicio" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog ist-serv-modal-dialog" role="document">
+    <div class="modal-content ist-serv-modal-content">
+      
+      <div class="ist-serv-modal-body">
+        <div class="ist-serv-modal-left">
+          <button type="button" class="close ist-serv-modal-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+          <div class="ist-serv-modal-header-info">
+            <iconify-icon icon="" id="m-icon" class="ist-serv-modal-main-icon"></iconify-icon>
+            <h2 id="m-title" class="ist-serv-modal-title"></h2>
+          </div>
+
+          <div id="m-badge-container" class="ist-serv-modal-badge-wrapper"></div>
+
+          <p id="m-desc" class="ist-serv-modal-description"></p>
+
+          <div class="ist-serv-modal-extra-imgs">
+            <img id= "extra1" src="https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+1" alt="preview 1">
+            <img id= "extra2" src="https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+2" alt="preview 2">
+          </div>
         </div>
 
-        <!-- Derecha: Lista de servicios en 2 columnas -->
-        <div class="col-md-6" id="listaservices">
-            <div class="row">
-                <!-- Columna izquierda de servicios -->
-                <div class="col-6">
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="aceleracion" style="cursor:pointer;">
-                        <!--<i class="fas fa-wifi text-primary mr-3"></i>-->
-                        <i class="fas fa-tachometer-alt text-primary mr-2"></i>
-                        <span>Aceleración de equipo</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="office" style="cursor:pointer;">
-                        
-                        <i class="fas fa-file-word text-primary mr-2"></i>
-                        <span>Instalación de Office</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="programas" style="cursor:pointer;">
-                        
-                        <i class="fas fa-download text-primary mr-2"></i>
-                        <span>Instalación de software / programas</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="diseno" style="cursor:pointer;">
-                       
-                        <i class="fas fa-bullhorn text-primary mr-2"></i>
-                        <span>Diseños publicitarios</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="sitios" style="cursor:pointer;">
-                        
-                        <i class="fas fa-globe text-primary mr-2"></i>
-                        <span>Diseño de sitios web</span>
-                    </div>
-                </div>
-
-                <!-- Columna derecha de servicios -->
-                <div class="col-6">
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="videos" style="cursor:pointer;">
-                        
-                        <i class="fas fa-film text-primary mr-2"></i>
-                        <span>Edición de videos</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="software" style="cursor:pointer;">
-                        
-                        <i class="fas fa-code text-primary mr-2"></i>
-                        <span>Desarrollo de software</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="formateo" style="cursor:pointer;">
-                        <i class="fas fa-sync-alt text-primary mr-3"></i>
-                        <span>Formateo / Instalación de sistemas</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="mantenimiento" style="cursor:pointer;">
-                        <i class="fas fa-tools text-primary mr-3"></i>
-                        <span>Mantenimiento</span>
-                    </div>
-                    <div class="service-item p-3 mb-3 border rounded d-flex align-items-center" data-service="mejoras" style="cursor:pointer;">
-                        <i class="fas fa-microchip text-primary mr-3"></i>
-                        <span>Mejoras de equipo</span>
-                    </div>
-                </div>
-            </div>
+        <div class="ist-serv-modal-right">
+          <img src="" id="m-flyer" class="ist-serv-modal-flyer" alt="Flyer del servicio">
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
-</div>
-</div>
-<!-- Incluye particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": { "value": "#c2e9fb" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#c2e9fb" }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": { "enable": false }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": { "enable": false }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#a1c4fb",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out"
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        },
-        "modes": {
-          "repulse": { "distance": 100, "duration": 0.4 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
+<script>
+  $('#istModalServicio').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Tarjeta que disparó el modal
+  
+  // Extraer info de los atributos data-*
+  var title = button.data('title');
+  var desc = button.data('desc');
+  var icon = button.data('icon');
+  var flyer = button.data('flyer');
+  var type = button.data('type'); // 'remote' o 'onsite'
+  var extra1 = button.data('extra1');
+  var extra2 = button.data('extra2');
+
+  // Inyectar en el modal
+  var modal = $(this);
+  modal.find('#m-title').text(title);
+  modal.find('#m-desc').text(desc);
+  modal.find('#m-icon').attr('icon', icon);
+  modal.find('#m-flyer').attr('src', flyer);
+  modal.find('#extra1').attr('src', extra1 || 'https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+1');
+  modal.find('#extra2').attr('src', extra2 || 'https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+2');
+
+  // Lógica para el badge dinámico
+    var badgeHtml = '';
+    if (type === 'remote') {
+        badgeHtml = `<div class="ist-serv-badge-card ist-serv-remote" style="position:static; margin: 0 auto 20px auto;">
+                        <iconify-icon icon="fa7-solid:wifi"></iconify-icon> A distancia
+                     </div>`;
+    } else if (type === 'onsite') {
+        badgeHtml = `<div class="ist-serv-badge-card ist-serv-onsite" style="position:static; margin: 0 auto 20px auto;">
+                        <iconify-icon icon="mage:users"></iconify-icon> Presencial
+                     </div>`;
+    }
+    modal.find('#m-badge-container').html(badgeHtml);
+});
+</script>
+</section>
 
 <!-- 
  ===============================
@@ -4252,7 +935,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
                 Ni siquiera la distancia <br>Representa algún<br> Impedimento<br>
                 <span class="custom-br" style="font-size:18px; font-weight: 500;color: #c0dde4;"><br>En IST, nuestra filosofía se resume a la frase:<br>"Soluciones, no problemas." Contáctanos<span class="hide-on-small"><br></span>para atender tus necesidades a distancia.</span>
             </p>
-            <a href="#contacto" class="mi-boton" style="margin-left:2rem;margin-top:2rem;">Contáctanos</a>
+            <a href="#contacto" class="btn-landio" style="margin-left:2rem;margin-top:2rem;"><iconify-icon icon="ix:support" style="font-size: 20px;"></iconify-icon>Contáctanos</a>
             
         </div>
 
@@ -4775,357 +1458,6 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
 </script>
     </section>
 
-<!-- Modal de Aceleración de Equipo -->
-<div class="modal fade" id="modalAceleracion" tabindex="-1" role="dialog" aria-labelledby="modalAceleracionLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalAceleracionLabel">Aceleración de equipo</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>Mejora el rendimiento de tu equipo con nuestro servicio de aceleración, donde optimizamos el sistema del equipo y si
-                            es necesario, se mejoran los componentes del equipo para conseguir la velocidad deseada.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <!-- Iconos o imágenes -->
-                            <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows Logo" class="modal-img">
-                            <img src="https://i.ibb.co/VcWv775Q/macos.png" alt="RAM Upgrade" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal de Instalación de Office -->
-<div class="modal fade" id="modalOffice" tabindex="-1" role="dialog" aria-labelledby="modalOfficeLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalOfficeLabel">Instalación de Office</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>Te ofrecemos la instalación de Microsoft Office, incluyendo Word, Excel, PowerPoint, Access, OneNote y Publisher, para mejorar tu productividad.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/QvhyCkQP/office.png" alt="Office Logo" class="modal-img">
-                            <img src="https://i.ibb.co/XxxJTXK8/office2.png" alt="Windows Logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal de Programas -->
-<div class="modal fade" id="modalProgramas" tabindex="-1" role="dialog" aria-labelledby="modalProgramasLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalProgramasLabel">Instalación de programas</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Necesitas ayuda con la instalación de algun programa? ¡Nosotros te proporcionamos asistencia!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/m5hkZSyT/vegas.png" alt="Vegas Logo" class="modal-img" style="margin-right: 1rem;">
-                            <img src="https://i.ibb.co/CsQ4FHTb/autocad.png" alt="Autocad Logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal de Diseños -->
-<div class="modal fade" id="modalDiseno" tabindex="-1" role="dialog" aria-labelledby="modalDisenoLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalDisenoLabel">Diseños publicitarios</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Necesitas promocionar tus servicios o trabajo por medio de publicidad? ¡Te ayudamos con el diseño de anuncios publicitarios!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/YF7CJ9L1/T1.png" alt="Publicidad" style="height: 70% !important; width: 100% !important;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Sitios Web -->
-<div class="modal fade" id="modalSitios" tabindex="-1" role="dialog" aria-labelledby="modalSitiosLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalSitiosLabel">Diseño de sitios web</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Quisieras un sitio web como en el que estás ahora, o el de la imagen, adaptado a tus necesidades? ¡En IST te mostramos propuestas y traemos tus sueños a la vida!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/V0NdLh28/sitio2.png" alt="EarlyJob" class="modal-img" style="height: 70% !important; width: 100% !important;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Videos -->
-<div class="modal fade" id="modalVideos" tabindex="-1" role="dialog" aria-labelledby="modalVideosLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalVideosLabel">Edición de videos</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>Si necesitas crear o editar un video, ¡No dudes en consultar por nuestro servicio de edición de videos! tendrás a tu alcance obras de arte en formato mp4 y demás.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/m5hkZSyT/vegas.png" alt="Vegas logo" class="modal-img" style="margin-right: 1rem;">
-                            <img src="https://i.ibb.co/yLn2Gtw/proshow.png" alt="Proshow logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Software -->
-<div class="modal fade" id="modalSoftware" tabindex="-1" role="dialog" aria-labelledby="modalSoftwareLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header d-flex flex-column align-items-start">
-                <!-- Título principal -->
-                <h4 class="modal-title text-white" id="modalSoftwareLabel">Desarrollo de software</h4>
-                <!-- Botón de cierre -->
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- Icono de WiFi y leyenda en una nueva línea -->
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-wifi" style="margin-right: 0.5rem; color:#008cff;"></i>
-                    <span class="text-white">Disponible a distancia</span>
-                </div>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>En IST desarrollamos software acorde a tus necesidades. ¿Necesitas sistemas con base de datos para tu empresa?, ¿Requieres un programa con muchas o pocas funcionalidades?<br>Estás en el lugar correcto.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/HTzjvgQd/python.png" alt="Python logo" class="modal-img">
-                            <img src="https://i.ibb.co/NqKw5YG/mysql.png" alt="Mysql logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Formateo -->
-<div class="modal fade" id="modalFormateo" tabindex="-1" role="dialog" aria-labelledby="modalFormateoLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header">
-                <h4 class="modal-title" style="color: #fff;" id="modalFormateoLabel">Formateo e Instalación de sistemas</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Quieres vaciar tu información?, ¿Necesitas restaurar el sistema de tu equipo?, ¿Deseas respaldar tu información?, ¿Buscas tener otro sistema operativo? en IST tenemos la solución.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/dwXHsKt8/windows.png" alt="Windows logo" class="modal-img">
-                            <img src="https://i.ibb.co/VcWv775Q/macos.png" alt="MacOS logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Mantenimiento -->
-<div class="modal fade" id="modalMantenimiento" tabindex="-1" role="dialog" aria-labelledby="modalMantenimientoLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header">
-                <h4 class="modal-title" style="color: #fff;" id="modalMantenimientoLabel">Mantenimiento</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Tu computadora requiere mantenimiento?, ¿Sientes que requiere limpieza interna?, ¿Algún componente se rompió? ¡IST te ofrece soluciones, dejando tu equipo como nuevo!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/3YQkNkqD/win.png" alt="Windows logo" class="modal-img" style="margin-right: 1rem;">
-                            <img src="https://i.ibb.co/HLBXWDyJ/apple.png" alt="Apple logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Mejoras -->
-<div class="modal fade" id="modalMejoras" tabindex="-1" role="dialog" aria-labelledby="modalMejorasLabel" aria-hidden="true">
-    <div class="modal-dialog center" role="document">
-        <div class="modal-content modal-serv">
-            <div class="modal-header">
-                <h4 class="modal-title" style="color: #fff;" id="modalMejorasLabel">Mejoras de equipo</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-body2">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>¿Te hace falta espacio, deseas más velocidad o simplemente quieres mejorar los componentes de tu equipo? ¡Te damos sugerencias y soluciones!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://i.ibb.co/pjsMJS7y/adata.png" alt="Vegas logo" class="modal-img" style="margin-right: 1rem;">
-                            <img src="https://i.ibb.co/RTt3S7c7/ryzen.png" alt="Proshow logo" class="modal-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- 
  ===============================
  ✏️ Sección: Sobre nosotros
@@ -5134,9 +1466,12 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
 <section id="sobre-nosotros" class="py-5" style="margin-top:5rem;">
   <div class="container">
     <!-- Título -->
-    <h2 class="text-center text-white mb-5" style="margin-bottom: 5rem !important;font-family: 'Figtree', sans-serif; font-size: 40px; font-weight: 700;">
-      Sobre nosotros
-    </h2>
+    <div class="ist-info-heading" style="margin-bottom: 5rem !important; justify-content: center;" id="contacto">
+      <span class="ist-serv-badge">
+        <iconify-icon icon="ic:twotone-business" style="font-size: 20px;"></iconify-icon>
+          SOBRE NOSOTROS
+      </span>
+    </div>
     
     <!-- Logo -->
     <div class="text-center mb-4">
@@ -5151,7 +1486,7 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
     <!-- Contenido dividido -->
     <div class="row align-items-center" style="margin-top:7rem;">
       <!-- Columna izquierda - Descripción -->
-      <div class="col-lg-6 mb-4 mb-lg-0">
+      <div class="col-lg-6 mb-4 mb-lg-0 ist-about-card">
         <p id="slogantext"class="text-justify" style="font-family: 'Space Grotesk', sans-serif; color: #c0dde4; line-height: 1.8;">
           <!-- Slogan con degradado -->
           <span class="slogan" style="display: block; margin-bottom: 1.5rem; font-size: 2rem;">
@@ -5216,9 +1551,10 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
 
 <!-- Sección: Contacto -->
 <div class="ist-info-heading" style="margin-top:10rem !important; justify-content: center;" id="contacto">
-    <span class="ist-info-line"></span>
-    <span class="ist-info-title">Contacto</span>
-    <span class="ist-info-line"></span>
+  <span class="ist-serv-badge">
+    <iconify-icon icon="ix:support" style="font-size: 20px;"></iconify-icon>
+      CONTACTO
+  </span>
 </div>
 <!-- Título -->
     <h2 id="contactoh2"class="text-center text-white" style="font-family: 'Figtree', sans-serif; font-size: 3rem; font-weight: 700;">
@@ -5314,28 +1650,14 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
             
             <!-- Contenedor del mapa con borde degradado -->
           <div class="map-container-degradado">
-              <div id="contactMap" style="width: 100%; height: 100%;"></div>
+              <div style="width: 100%; height: 100%;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60715.06148455574!2d-93.41710292151157!3d17.993091633800628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ec2091e19dbb47%3A0x494e27205914e68f!2zQ8OhcmRlbmFzLCBUYWIu!5e0!3m2!1ses-419!2smx!4v1766378830358!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
           </div>
         </div>
     </div>
 </div>
-<script>
-   // Inicialización del mapa de Leaflet
-    var contactMap = L.map('contactMap').setView([17.98849, -93.37667], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 20,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(contactMap);
-    
-    // Añadir marcador
-    var marker = L.marker([17.98849, -93.37667]).addTo(contactMap)
-        .bindPopup('Cárdenas, Tabasco');
-        
-    // Ajustar el mapa cuando se redimensione
-    window.addEventListener('resize', function() {
-        contactMap.invalidateSize();
-    });
-</script>
+
 <a href="#" class="to-top">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} width="30" height="45" stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />
@@ -5369,28 +1691,6 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
             behavior: "smooth"
         });
     });
-});
-</script>
-<!--<div class="cursor-dot" data-cursor-dot></div>
-<div class="cursor-outline" data-cursor-outline></div>-->
-<script>
-const cursorDot = document.querySelector("[data-cursor-dot]");
-const cursorOutline = document.querySelector("[data-cursor-outline]");
-window.addEventListener("mousemove", function(e) {
-  const posX = e.clientX;
-  const posY = e.clientY;
-  
-  cursorDot.style.left = `${posX}px`;
-  cursorDot.style.top = `${posY}px`;
-
-  cursorOutline.style.left = `${posX}px`;
-  cursorOutline.style.top = `${posY}px`;
-
-  cursorOutline.animate({
-    left: `${posX}px`,
-    top: `${posY}px`
-  }, {duration: 500, fill:"forwards"});
-  
 });
 </script>
 
@@ -5461,9 +1761,9 @@ window.addEventListener("mousemove", function(e) {
 
         <div class="footer-bottom">
             <ul class="footer-bottom-links">
-                <li><a href="#">Versión 2.0</a></li>
+                <li><a href="#">Versión 3.0</a></li>
             </ul>
-            <p>© 2025 IST. Todos los derechos reservados.</p>
+            <p>© 2026 IST. Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>
@@ -5748,6 +2048,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
     });
     
     </script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -210,11 +210,11 @@ body.modal-open {
     border-color: #000 !important;
 }
 .black2 {
-    background-color: #000 !important;
+    background: #000 !important;
     border-color: #ffffff !important;
 }
 .green {
-    background-color: #78C257 !important;
+    background: #78C257 !important;
     border-color: #78C257 !important;
 }
 
@@ -290,12 +290,12 @@ body.modal-open {
 }
 .black2:hover {
 	border-color: #ffffff !important;
-    background-color: #ffffff !important; /* Azul muy oscuro, ajusta según sea necesario */
+    background: #ffffff !important; /* Azul muy oscuro, ajusta según sea necesario */
     color: #000 !important;
 }
 .green:hover {
 	border-color: #528f36 !important;
-    background-color: #528f36 !important; /* Azul muy oscuro, ajusta según sea necesario */
+    background: #528f36 !important; /* Azul muy oscuro, ajusta según sea necesario */
     color: #ffffff !important;
 }
 p, label{

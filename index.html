@@ -261,7 +261,7 @@
         const modalOsDetail = document.getElementById('modal-os-detail');
         const modalOsImg = document.getElementById('modal-os-img');
     
-        let os = 'desconocido';
+        let os = 'Desconocido';
         let iconClass = 'bi-question-circle';
         let downloadLink = '#';
         let osImage = 'https://i.ibb.co/Lh6SXfhg/rustdesk.png';
@@ -270,18 +270,18 @@
         if (platform.includes('win')) {
             os = 'Windows';
             iconClass = 'bi-windows';
-            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.exe';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.exe';
             osImage = 'https://cdn-icons-png.flaticon.com/512/732/732225.png';
         } else if (platform.includes('mac')) {
             os = 'macOS';
             iconClass = 'bi-apple';
-            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.0/rustdesk-1.4.0-x86_64.dmg';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.dmg';
             osImage = 'https://i.ibb.co/VcWv775Q/macos.png';
             btnClass = 'black2';
         } else if (userAgent.includes('android')) {
             os = 'Android';
             iconClass = 'bi-android2';
-            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-universal-signed.apk';
+            downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-universal-signed.apk';
             osImage = 'https://cdn-icons-png.flaticon.com/512/888/888857.png';
             btnClass = 'green';
         } else if (/iphone|ipad|ipod/.test(userAgent)) {
@@ -1206,7 +1206,6 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 22, 27, 0.884) 30%,rgba(2, 60, 68, 0.801) 70%, transparent 100%);">
           <h3>Edu-Ros</h3>
           <p>Un sistema web con dashboard/panel de administrador y de padres para un jardín de niños.</p>
-          <a href="http://eduros.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
           <div class="proyecto-instruccion-movil">
             <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
         </div>
@@ -1730,7 +1729,7 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
                 <h5>Proyectos</h5>
                 <ul class="footer-links">
                     <li><a href="https://persystec.com" target="_blank" id="persystec">PerSysTec</a></li>
-                    <li><a href="http://eduros.great-site.net" target="_blank" id="eduros">Edu-Ros</a></li>
+                    <!--<li><a href="http://eduros.great-site.net" target="_blank" id="eduros">Edu-Ros</a></li>-->
                     <li><a href="http://teecreator.infinityfreeapp.com" target="_blank" id="teecreator">TeeCreator</a></li>
                     <li><a href="http://adorate.great-site.net" target="_blank" id="adorarte">Adorarte</a></li>
                     <li><a href="http://edukids.great-site.net" target="_blank" id="edukids">Edukids</a></li>

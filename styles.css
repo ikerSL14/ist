@@ -227,11 +227,11 @@ body.modal-open {
 }
 .btn-primary{
   position: relative;
-  background: #01479c !important;
+  background: #01479c;
   color: #fff !important;
   border-radius: 8px !important;
   padding: 12px 24px !important;
-  border: 2px solid rgba(255,255,255,0.08) !important;
+  border: 2px solid rgba(255,255,255,0.08);
   overflow: hidden !important;
   transition: border .3 ease-in-out, background .3 ease-in-out, box-shadow .3s ease !important;
 }

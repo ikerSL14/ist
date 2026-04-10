@@ -28,8 +28,23 @@
 }
 
 @keyframes spin {
+  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.animate-spin {
+  display: inline-block !important; /* Necesario para que rote */
+  animation: spin 1s linear infinite;
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+/* Evita que el botón se mueva cuando cambie el contenido */
+#inner-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .spinner-box {
   width: 300px;
   height: 300px;
@@ -415,12 +430,37 @@ box-shadow: 0 0px 30px rgba(44, 243, 26, 0.925); /* Ajusta los valores según se
 .info{
     text-align:justify;
 }
-.navbar{
+.navbar {
     background: transparent !important;
+    backdrop-filter: blur(0px) !important;
+    border: 0.1px solid transparent !important;
+    transition: all 0.4s ease-in-out !important; /* Transición suave */
+}
+/* Estado al hacer Scroll */
+.navbar.navbar-scrolled {
+    background: transparent !important;
+
     backdrop-filter: blur(10px) !important;
+
     border: 0.1px solid rgba(255, 255, 255, 0.089) !important;
+
     width: 100% !important;
 }
+@media screen and (max-width:992px){
+  .navbar{
+    background: transparent !important;
+
+    backdrop-filter: blur(10px) !important;
+
+    border: 0.1px solid rgba(255, 255, 255, 0.089) !important;
+
+    width: 100% !important;
+  }
+  .nav-link-socials-wrapper {
+        display: none !important;
+    }
+}
+
 body.modal-open {
     padding-right: 0px !important;
 }
@@ -428,6 +468,165 @@ body.modal-open {
 .navbar {
     padding-right: 16px !important;
 }
+/* Contenedor relativo */
+.links-menu-wrapper {
+    position: relative;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* El Botón Toggle (Estilo IST chico) */
+.btn-nav-links {
+    position: relative;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    /* Fondo base */
+    background: 
+        linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+        linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto de oscurecimiento al Hover */
+.btn-nav-links::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: 
+        linear-gradient(135deg, #000a0f, #043857) padding-box,
+        linear-gradient(135deg, #4a7a99, #d0eef2) border-box;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.btn-nav-links:hover {
+    box-shadow: 0 0 15px rgba(192, 221, 228, 0.4);
+}
+
+.btn-nav-links:hover::before {
+    opacity: 1;
+}
+
+/* El Dropdown con tus colores específicos */
+.links-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: 
+        linear-gradient(135deg, #000a0f, #043857) padding-box,
+        linear-gradient(135deg, #4a7a99, #d0eef2) border-box;
+    padding: 12px;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+.links-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.btn-nav-links.active {
+    transform: scale(1.05); /* Se queda un poquito más grande */
+}
+
+/* Mostramos el fondo oscuro del ::before de forma permanente mientras esté activo */
+.btn-nav-links.active::before {
+    opacity: 1;
+}
+
+/* Opcional: un brillo extra en el borde cuando esté activo */
+.btn-nav-links.active {
+    box-shadow: 0 0 20px rgba(94, 153, 192, 0.4);
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+/* La Flechita (Arrow) */
+.dropdown-arrow {
+    position: absolute;
+    top: -7px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    background: 
+        linear-gradient(to right, #142d3b, #052e46) padding-box,
+        linear-gradient(135deg, #4a7a99, #d0eef200) border-box; /* Color del inicio del degradado */
+    transform: rotate(45deg);
+    border-left: 2px solid rgba(183, 234, 247, 0.904);
+    border-top: 2px solid rgba(183, 234, 247, 0.904);
+}
+
+.dropdown-content {
+    display: flex;
+    gap: 13px;
+}
+
+.social-circle-item {
+    position: relative;
+    z-index: 1;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08); /* Fondo base sutil */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; /* Importante para que el degradado no se salga */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none !important;
+}
+
+/* La capa del degradado que se anima */
+.social-circle-item::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cubre todo el círculo */
+    background: var(--hover-gradient); /* Toma el valor del HTML */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1; /* Se queda detrás del icono SVG */
+}
+
+/* Estado Hover */
+.social-circle-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: white !important;
+
+}
+
+.social-circle-item:hover::before {
+    opacity: 1; /* Aparece el degradado suavemente */
+}
+
+/* Aseguramos que el SVG sea siempre blanco */
+.social-circle-item svg {
+    position: relative;
+    z-index: 2;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+/* 
+.social-circle-item:hover svg {
+    transform: scale(1.1);
+}  */
 
 .infocontainer2{
     background: rgba(255, 255, 255, 0.048); /* Degradado de #00131f a negro */
@@ -501,6 +700,67 @@ body.modal-open {
   font-size:30px !important;
 }
 }
+/* --- Barra de Anuncio (Pill) --- */
+.hero-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.announcement-pill {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05); /* Fondo azul IST muy oscuro y transparente */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(94, 164, 230, 0.808);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Rebote suave */
+    
+    /* El Brillo IST Inicial (Sutil) */
+    box-shadow: 0 0 15px rgba(192, 221, 228, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.05);
+}
+
+.announcement-pill:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(86, 166, 241, 0.904); /* Borde más blanco/cian */
+    transform: translateY(-3px) scale(1.02);
+    
+    /* Brillo intenso IST */
+    box-shadow: 0 0 25px rgba(89, 216, 248, 0.76), inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.pill-tag {
+    background: linear-gradient(135deg, #03a9ce, #245dad);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-right: 12px;
+}
+
+.pill-text {
+    color: #e0f7fa;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pill-icon {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #c0dde4; /* Cian claro IST */
+    transition: transform 0.3s ease;
+}
+
+.announcement-pill:hover .pill-icon {
+    transform: translateX(4px);
+    color: #fff; /* Se ilumina en hover */
+}
+
 .ist-hero-title {
   /* Tipografía profesional: Inter o System-ui son las que usa Framer/Landio */
   font-family: 'Geist', sans-serif;
@@ -517,7 +777,7 @@ body.modal-open {
   text-align: center;
   text-wrap: balance;
   margin-bottom: 1rem;
-  margin-top:2rem;
+  margin-top:3rem;
   
   /* DEGRADADO ISTMX: De blanco a un azul tecnológico brillante */
   background: linear-gradient(to right, #ffffff 30%, #8aaecc 100%);
@@ -1549,7 +1809,7 @@ div.seccion {
   color: #b0d8f8; /* ejemplo */
 }
 
-            .footer {
+.footer {
     background: linear-gradient(to right, #00080c, #022e44);
     color: #ffffff;
     padding: 70px 0 30px;
@@ -3227,12 +3487,16 @@ body.modal-open {
         }
 
         .iframe-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Evita que cualquier resto del iframe se salga */
+}
+
+#facebook-iframe {
+    max-width: 100%; /* Obliga al iframe a no pasarse de su padre */
+}
 
         .facebook-frame iframe {
             width: 100%;
@@ -4026,4 +4290,806 @@ body.modal-open {
   .contact-intro-text{
     text-align: center;
   }
+}
+
+/* Estilos Generales de la Sección */
+.about-2026-title {
+    color: #eaf1f3;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+.about-2026-title .highlight {
+    color: #c0dde4;
+    text-shadow: 0 0 15px rgba(165, 245, 255, 0.4);
+}
+
+.about-2026-logo {
+  height: auto;
+  width: 500px;
+}
+
+.about-2026-slogan {
+    color: #c0dde4;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.about-2026-slogan span {
+    color: #a5f5ff;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Tarjetas con Glassmorphism */
+.about-2026-card {
+    padding: 2rem;
+    transition: transform 0.3s ease;
+
+    /* 1. CAMBIO IMPORTANTE: Definimos el color base por separado */
+  background-color: rgba(1, 20, 27, 0.568);
+
+  /* 2. NUEVO: Agregamos el brillo usando un gradiente radial como imagen de fondo */
+  background-image: radial-gradient(
+    ellipse at top right, /* La luz es una elipse que nace del borde superior central */
+    rgba(147, 219, 252, 0.123) 0%, /* El núcleo de la luz (un azul/blanco muy sutil) */
+    transparent 70% /* Se desvanece hasta ser transparente */
+  );
+
+  /* Borde original */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* He hecho el borde superior un poco más brillante para acompañar la luz */
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px; /* Un poco más redondeado para el look moderno */
+
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  /* El corazón del Glassmorphism */
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  
+  /* Sombra interna muy suave para dar profundidad al cristal */
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.about-2026-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(165, 245, 255, 0.3);
+}
+
+.about-2026-icon {
+    font-size: 2.5rem;
+    color: #c0dde4;
+    margin-right: 1rem;
+}
+
+.about-2026-card-title {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.about-2026-text {
+    color: #c0dde4;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Imágenes Modernas */
+.about-2026-img-wrapper {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 180px;
+}
+
+.about-2026-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-2026-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 71, 156, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-size: 2rem;
+}
+
+.about-2026-img-wrapper:hover img { transform: scale(1.1); }
+.about-2026-img-wrapper:hover .about-2026-img-overlay { opacity: 1; }
+
+/* Stats Grid */
+/* Stats Grid - Actualizado */
+.about-2026-stat {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px); /* Un toque de glassmorphism */
+    border-left: 3px solid #c0dde4;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil arriba */
+    padding: 1.5rem 1rem; /* Un poco más de aire interno */
+    border-radius: 12px; /* Bordes más suaves */
+    text-align: center;
+    transition: all 0.3s ease; /* Para que el efecto sea suave */
+    height: 100%; /* Para que todas midan lo mismo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Efecto al pasar el mouse (opcional, pero se ve genial) */
+.about-2026-stat:hover {
+    background: rgba(165, 245, 255, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-2026-stat h4 {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.8rem; /* Un poco más grandes los números */
+    margin: 0;
+    font-family: 'Figtree', sans-serif;
+}
+
+.about-2026-stat span {
+    color: #c0dde4; /* Color que resalte más */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+
+.about-2026-modal-img {
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* Responsive para celulares */
+@media (max-width: 768px) {
+    .about-2026-img-wrapper {
+        height: 250px; /* Más grandes en móvil como pediste */
+        margin-bottom: 1rem;
+    }
+    .aboutstats{
+      max-width: 100% !important;
+      
+    }
+    
+}
+@media (max-width: 480px) {
+    .about-2026-title {
+      font-size: 1.7rem;
+    }
+    .about-2026-slogan {
+      font-size: 0.6rem;
+      margin-top: 1rem;
+    }
+}
+
+.proyectos-2026-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Figtree', sans-serif;
+    background: #000;
+}
+
+/* Contenedor de Imagen de Fondo */
+.proyectos-2026-bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.proyectos-2026-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.8s ease, transform 1.2s ease;
+}
+
+.proyectos-2026-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 10%, rgba(0, 0, 0, 0.3) 50%, rgba(0,0,0,0.8) 90%);
+    z-index: 2;
+}
+
+/* Contenido Principal */
+.proyectos-2026-main {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    padding: 4rem 6%;
+}
+
+.proyectos-2026-info {
+    max-width: 500px;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.8s ease;
+}
+
+.proyectos-2026-title {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.proyectos-2026-description {
+    color: #c0dde4;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Botones */
+.proyectos-2026-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.proyectos-2026-btn-main {
+    position: relative; /* Necesario para el efecto */
+    z-index: 1;
+    display: inline-flex; /* Mejor que flex para botones */
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none !important; /* Quita la línea siempre */
+    border-radius: 50px;
+    border: 2px solid transparent;
+    overflow: hidden; /* Mantiene el brillo dentro de los bordes */
+    
+    /* Fondo base (Estado Normal) */
+    background: 
+        linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+        linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+    transition: transform 0.3s ease; /* Pequeño rebote opcional */
+}
+
+/* Capa para el efecto de Hover (Degradado más oscuro) */
+.proyectos-2026-btn-main::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cubre todo el botón */
+    z-index: -1; /* Se queda detrás del texto */
+    
+    /* Fondo del Hover (Colores oscurecidos) */
+    background: 
+        linear-gradient(135deg, #000a0f, #043857) padding-box,
+        linear-gradient(135deg, #4a7a99, #d0eef2) border-box;
+    
+    opacity: 0; /* Invisible al inicio */
+    transition: opacity 0.4s ease; /* Aquí ocurre la magia de la transición */
+}
+
+/* Comportamiento al hacer Hover */
+.proyectos-2026-btn-main:hover {
+    color: white; /* Asegura que el texto no cambie */
+    text-decoration: none !important; /* Refuerzo para navegadores móviles */
+}
+
+.proyectos-2026-btn-main:hover::before {
+    opacity: 1; /* Mostramos gradualmente el fondo oscuro */
+}
+
+.proyectos-2026-btn-gallery {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.proyectos-2026-btn-gallery:hover { background: rgba(255,255,255,0.2); }
+
+/* Navegación Derecha (Círculos) */
+.proyectos-2026-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: flex-end;
+    margin-top: 2rem;
+}
+
+.proyectos-2026-item {
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.proyectos-2026-circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #c0dde45d;
+    opacity: 0.4; /* Opacidad para los no seleccionados */
+    filter: grayscale(50%) brightness(0.5);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.proyectos-2026-circle:hover {
+    border: 3px solid #c0dde4d3;
+    opacity: 0.8; /* Opacidad para los no seleccionados */
+    filter: grayscale(20%) brightness(0.5);
+}
+
+.proyectos-2026-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estado Activo */
+.proyectos-2026-item.active .proyectos-2026-circle {
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+    border-color: #c0dde4;
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(192, 221, 228, 0.5);
+}
+
+/* Badges */
+.proyectos-2026-badge {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-right: 15px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.proyectos-2026-item.active .proyectos-2026-badge { opacity: 1; }
+
+.proyectos-2026-badge.highlight { background: #e6f3f7; color: #011c40; }
+.proyectos-2026-badge.dev { background: #9eb5d1; color: #000; top: 80%; }
+
+/* Ajuste para los Badges del segundo proyecto */
+.proyectos-2026-badge-group {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    margin-right: 15px;
+}
+
+/* En el grupo, el badge ya no necesita el position absolute individual */
+.proyectos-2026-badge-group .proyectos-2026-badge {
+    position: static;
+    transform: none;
+    opacity: 0;
+}
+
+.proyectos-2026-item.active .proyectos-2026-badge { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .proyectos-2026-main {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding-bottom: 3rem;
+    }
+    .proyectos-titulo{
+      font-size: 1.8rem;
+    }
+    .proyectos-2026-bg {
+      object-fit: fill;
+    }
+    .proyectos-2026-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.87) 50%, rgba(0, 0, 0, 0.623) 90%);
+    }
+    .proyectos-2026-nav {
+        flex-direction: row;
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+    .proyectos-2026-circle {
+      width: 45px;
+      height: 45px;
+      border: 3px solid #c0dde4d3;
+      opacity: 0.8; /* Opacidad para los no seleccionados */
+      filter: grayscale(20%) brightness(0.5);
+  }
+    .proyectos-2026-title { font-size: 2rem; }
+    .proyectos-2026-badge { display: none; } /* En móvil estorban */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.showcase-2026-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.showcase-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.showcase-slide-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showcase-slide-container img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    user-select: none;
+}
+
+/* Botones de navegación */
+.showcase-prev, .showcase-next {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0 20px;
+    transition: 0.3s ease-in-out;
+}
+.showcase-prev:hover, .showcase-next:hover {
+    color: #c0dde4;
+}
+
+
+/* Puntos */
+.showcase-dots-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.showcase-dot {
+    height: 12px;
+    width: 12px;
+    background-color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.showcase-dot.active { background-color: #c0dde4; transform: scale(1.3); }
+
+.showcase-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Mobile: Ocultar flechas y ajustar ancho */
+@media (max-width: 768px) {
+    .showcase-prev, .showcase-next { display: none; }
+    .showcase-content { width: 100%; }
+    .showcase-slide-container img { border-radius: 0; width: 100%; }
+}
+/* =============== OTHER PROJECTS (BENTO) ============== */
+.other-projects-section {
+    padding: 100px 20px;
+    background: transparent;
+    overflow: hidden;
+}
+
+.other-projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Título Estilo IST */
+.other-projects-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffffff 20%, #5d80a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+/* Grid Bento */
+.other-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 240px; /* Altura base de las filas */
+    gap: 20px;
+}
+
+.other-projects-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #011222;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+/* Tamaños Especiales Bento */
+.bento-big { grid-column: span 2; grid-row: span 2; }
+.bento-tall { grid-row: span 2; }
+.bento-wide { grid-column: span 2; }
+.bento-medium {grid-row: span 1;}
+
+.other-projects-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.4) grayscale(0.2); /* Empiezan oscuras */
+}
+
+/* Degradado Azul IST Inferior */
+.other-projects-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* El degradado cubre la mitad inferior */
+    background: linear-gradient(to top, #000 10%, rgba(0, 0, 0, 0.7) 40%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.other-projects-tag {
+    font-size: 0.75rem;
+    color: #a5f5ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.other-projects-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+/* Hover Effects */
+.other-projects-card:hover {
+    transform: translateY(-5px);
+    /* Borde brillante IST (Azul-Blanco) */
+    border-color: #c0dde4; 
+    box-shadow: 0 0 20px rgba(192, 221, 228, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.other-projects-card:hover img {
+    filter: brightness(1.1) grayscale(0); /* Se iluminan */
+    transform: scale(1.05);
+}
+/* Efecto Scroll (Clase para JS) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Modal Simple para Bento --- */
+
+/* --- Mejoras al Modal (Efecto Fade) --- */
+.bento-modal {
+    display: flex; /* Siempre flex, pero controlado por opacity/visibility */
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bento-modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 20px;
+    transform: scale(0.9); /* Empieza un poco más pequeño */
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 60px rgba(0, 162, 255, 0.2);
+}
+
+.bento-modal.active .bento-modal-content {
+    transform: scale(1); /* Crece suavemente al abrir */
+}
+
+/* --- Sección CTA Estilo IST --- */
+.ist-cta-section {
+    padding: 60px 20px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.ist-cta-card {
+    width: 100%;
+    max-width: 1000px;
+    background: linear-gradient(to right, #00080c, #022e44);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Adorno de luz en el CTA */
+.ist-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(192, 221, 228, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffffff 20%, #c0dde4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.cta-subtitle {
+    color: #a5f5ff;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    opacity: 0.8;
+}
+
+.cta-button {
+    position: relative; /* Necesario para el efecto */
+    display: inline-flex;
+    z-index: 1;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none !important; /* Quita la línea siempre */
+    border-radius: 50px;
+    border: 2px solid transparent;
+    overflow: hidden; /* Mantiene el brillo dentro de los bordes */
+    /* Fondo base (Estado Normal) */
+    background: 
+        linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+        linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Pequeño rebote opcional */
+    padding: 16px 35px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.cta-button::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Cubre todo el botón */
+    z-index: -1; /* Se queda detrás del texto */
+    
+    /* Fondo del Hover (Colores oscurecidos) */
+    background: 
+        linear-gradient(135deg, #000a0f, #043857) padding-box,
+        linear-gradient(135deg, #4a7a99, #d0eef2) border-box;
+    
+    opacity: 0; /* Invisible al inicio */
+    transition: opacity 0.4s ease; /* Aquí ocurre la magia de la transición */
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(192, 221, 228, 0.3);
+    color: white; /* Asegura que el texto no cambie */
+    text-decoration: none !important; /* Refuerzo para navegadores móviles */
+}
+.cta-button:hover::before {
+    opacity: 1; /* Mostramos gradualmente el fondo oscuro */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .other-projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .bento-big, .bento-tall, .bento-wide, .bento-medium { grid-column: span 1; grid-row: span 1; }
+    .other-projects-grid { grid-auto-rows: 300px; }
+}
+
+@media (max-width: 768px) {
+    .bento-modal-content {
+        width: 100%;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .other-projects-grid { grid-template-columns: 1fr; }
+    .other-projects-title { font-size: 2rem; }
+}
+
+/* Quitar el borde de selección en botones de la navbar y sliders */
+.btn-nav-links:focus, 
+.btn-nav-links:active{
+    outline: none !important;
+    border-color: transparent !important; /* En caso de que sea un borde real */
+}
+
+.showcase-prev:focus,
+.showcase-next:focus {
+    outline: none !important;
 }

@@ -32,7 +32,7 @@
  ✏️ Barra de navegación
  =============================== 
  -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" style="background-color: none !important; padding-top: 0 !important; padding-bottom: 0 !important;" >
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: none !important; padding-top: 0 !important; padding-bottom: 0 !important;" >
     <div class="container">
         <a class="navbar-brand" href="#">
             <div class="logo-circle">
@@ -47,9 +47,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#top">Descargar</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#info">Información</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="#serv">Servicios</a>
                 </li>
@@ -59,10 +59,46 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contacto">Contacto</a>
                 </li>
+                <li class="nav-item nav-link-socials-wrapper">
+                  <div class="links-menu-wrapper">
+                      <button class="btn-nav-links" id="btn-links-toggle" aria-label="Redes Sociales">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                      </button>
+                      
+                      <div class="links-dropdown" id="links-dropdown">
+                          <div class="dropdown-arrow"></div>
+                          <div class="dropdown-content">
+                              <a href="https://wa.me/529371280660" target="_blank" class="social-circle-item" style="--hover-gradient: linear-gradient(135deg, #25D366, #128C7E);">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.103 8.103 0 0 1-1.24-4.38c0-4.49 3.66-8.15 8.15-8.15c2.18 0 4.22.85 5.76 2.39a8.046 8.046 0 0 1 2.39 5.76c.01 4.49-3.65 8.15-8.14 8.15m4.47-6.1c-.24-.12-1.45-.71-1.67-.8s-.39-.12-.55.12c-.17.24-.65.82-.8 1c-.14.18-.29.21-.53.09c-.24-.12-1.02-.38-1.94-1.21c-.71-.64-1.2-1.42-1.34-1.66c-.14-.24-.02-.37.11-.49c.11-.11.24-.29.37-.43s.17-.24.25-.41c.08-.17.04-.32-.02-.43s-.55-1.33-.76-1.84c-.2-.51-.42-.44-.55-.44h-.47c-.17 0-.44.06-.67.32c-.23.26-.88.86-.88 2.1s.9 2.43 1.02 2.6c.12.17 1.76 2.69 4.27 3.77c.6.26 1.06.41 1.42.53c.6.19 1.15.16 1.58.1c.48-.07 1.45-.6 1.65-1.17c.2-.57.2-1.07.14-1.17s-.23-.18-.47-.3Z"/></svg>
+                              </a>
+                              <a href="https://www.facebook.com/UMID.Mx" target="_blank" class="social-circle-item" style="--hover-gradient: linear-gradient(135deg, #1877F2, #0A4FA1);">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95Z"/></svg>
+                              </a>
+                              <a href="https://www.instagram.com/umid.mx/" target="_blank" class="social-circle-item" style="--hover-gradient: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8a1.25 1.25 0 0 1-1.25-1.25a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z"/></svg>
+                              </a>
+                              <a href="https://www.youtube.com/@UMIDMX" target="_blank" class="social-circle-item" style="--hover-gradient: linear-gradient(135deg, #FF0000, #990000);">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </li>
             </ul>
         </div>
     </div>
 </nav>
+<script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar');
+    // Si el scroll baja de 50px, añade la clase, si no, la quita
+    if (window.scrollY > 50) {
+        nav.classList.add('navbar-scrolled');
+    } else {
+        nav.classList.remove('navbar-scrolled');
+    }
+});
+</script>
 <!-- 
  ===============================
   ✏️ Sección: inicio
@@ -99,6 +135,17 @@
   <div class="row justify-content-center align-items-center" style="min-height: 480px;">
     
     <div id="izqs" class="col-12 col-lg-12 text-center" style="color: #c0dde4;">
+
+      <div class="hero-badge-container">
+        <div class="announcement-pill" 
+            data-action="modal" 
+            data-target="promo-pill.png" 
+            onclick="handleBadgeClick(this)">
+            <span class="pill-tag">Nueva promoción</span>
+            <span class="pill-text">Canva + Office a solo $350!</span>
+            <iconify-icon icon="lucide:arrow-right" class="pill-icon"></iconify-icon>
+        </div>
+    </div>
       
       <h1 class="ist-hero-title">
         Innova: Soluciona: Triunfa con <label style="font-family: 'Audiowide', sans-serif">IST</label>
@@ -115,15 +162,14 @@
       </p>
       
       <div class="d-flex justify-content-center align-items-center" style="margin-top: 1.5rem;">
-        <a id="btn-download" href="#" style="display: none;">
-          <button class="btn btn-primary btn-custom" style="min-width: 260px;">
-            <i id="os-icon" class="bi bi-laptop" style="margin-right:1rem;"></i>
-            Descargar RustDesk
+        <a id="btn-download" href="#" style="display: flex; text-decoration: none;">
+          <button id="inner-btn" class="btn btn-primary btn-custom" style="min-width: 260px;">
+            <iconify-icon id="os-icon" icon="mingcute:loading-fill" class="animate-spin" style="font-size: 24px; margin-right: 1rem; vertical-align: middle; color:#c0dde4;"></iconify-icon>
+            <span id="btn-text">Detectando sistema</span>
           </button>
         </a>
-        
-        
       </div>
+
       <div style="margin-top:1.5rem">
   <span class="ist-badge" data-toggle="modal" data-target="#infoModal" title="Información">
     <iconify-icon icon="simple-icons:rustdesk" class="ist-infoicon"></iconify-icon>
@@ -153,10 +199,10 @@
       <img src="https://i.ibb.co/HLBXWDyJ/apple.png" alt="Apple" class="tech-icon">
     </div>
     <div class="col-4 col-sm-2 text-center">
-      <img src="https://i.ibb.co/NqKw5YG/mysql.png" alt="MySQL" class="tech-icon">
+      <img src="canva-icon.webp" alt="Canva" class="tech-icon">
     </div>
     <div class="col-4 col-sm-2 text-center">
-      <img src="https://i.ibb.co/HTzjvgQd/python.png" alt="Python" class="tech-icon">
+      <img src="Office-logo.png" alt="Office" class="tech-icon">
     </div>
   </div>
 </div>
@@ -207,7 +253,7 @@
  ===============================
  ✏️ Pantalla de carga
  =============================== 
- -->
+ 
 <div id="loader">
     <div class="loader-content">
         <div class="spinner-box">
@@ -217,7 +263,7 @@
           </div>
       <p id="loading-text" style="font-family: 'Montserrat', serif; font-weight:300; color: #c0dde4;">Cargando... 0%</p>
     </div>
-  </div>
+  </div>-->
   
 <!-- Modal de Info -->
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
@@ -262,6 +308,8 @@
         const modalOsName = document.getElementById('modal-os-name');
         const modalOsDetail = document.getElementById('modal-os-detail');
         const modalOsImg = document.getElementById('modal-os-img');
+        const btnText = document.getElementById('btn-text'); // Nueva referencia
+        const innerBtn = document.getElementById('inner-btn'); // El botón real
     
         let os = 'Desconocido';
         let iconClass = 'bi-question-circle';
@@ -293,13 +341,24 @@
             osImage = 'https://i.ibb.co/HLBXWDyJ/apple.png';
             btnClass = 'black2';
         }
-        // Actualizar clases del botón
-        const btn = btnDownload.querySelector('button');
-        btn.classList.add(btnClass);
-        // Mostrar botón y personalizar
-        btnDownload.href = downloadLink;
-        btnDownload.style.display = 'flex';
-        osIcon.className = `bi ${iconClass}`;
+
+        // Usamos un pequeño delay (800ms) para que la animación de Iconify 
+        // se luzca un poco antes de cambiar, se ve más profesional.
+        setTimeout(() => {
+            // 1. Reemplazamos el tag <iconify-icon> por el <i> de Bootstrap
+            // Esto elimina el cargador y pone el icono final (Windows, Apple, etc.)
+            osIcon.outerHTML = `<i id="os-icon" class="bi ${iconClass}" style="margin-right:1rem; font-size: 1.2rem; vertical-align: middle;"></i>`;
+
+            // Actualizamos el resto de la interfaz
+            btnText.innerText = `Descargar RustDesk`;
+            btnDownload.href = downloadLink;
+
+            // Si el sistema detectado requiere un color diferente (como Android o Mac)
+            if (btnClass !== 'btn-primary') {
+                innerBtn.classList.remove('btn-primary');
+                innerBtn.classList.add(btnClass);
+            }
+        }, 900);
     
         // Llenar contenido del modal
         modalOsName.textContent = os;
@@ -539,7 +598,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <div class="ist-info-separator"></div>
 
         <!-- Botón degradado -->
-        <a id="conoceBtn"href="#sobre-nosotros" class="ist-gradient-btn"><span>Conócenos</span><i class="bi bi-arrow-right"></i>
+        <a id="conoceBtn"href="#sobre-nosotros-2026" class="ist-gradient-btn"><span>Conócenos</span><i class="bi bi-arrow-right"></i>
         </a>
         <script>
     document.getElementById('conoceBtn').addEventListener('click', function(e) {
@@ -748,6 +807,28 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     <article class="ist-serv-card"
          data-toggle="modal" 
          data-target="#istModalServicio"
+         data-title="Diseño de lonas"
+         data-type="remote"
+         data-desc="Creamos diseños de lonas atractivos y al gusto, para que puedas promocionar lo que necesites de forma profesional y efectiva. De todos los tamaños, listas para impresión, para personas o negocios."
+         data-icon="mdi:billboard"
+         data-flyer="imgs/Lonas.png"
+         data-extra1="https://images.unsplash.com/photo-1716471330501-b443b15a716f?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         data-extra2="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      <div class="ist-serv-badge-card ist-serv-remote">
+        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
+        A distancia
+      </div>
+      <div class="ist-serv-icon-box">
+        <iconify-icon icon="mdi:billboard" class="ist-serv-icon"></iconify-icon>
+        <!--<iconify-icon icon="ph:database-duotone" class="ist-serv-icon"></iconify-icon>-->
+      </div>
+      <h3 class="ist-serv-name">Diseño de lonas</h3>
+      <p class="ist-serv-desc">Diseños atractivos y profesionales para lonas publicitarias.</p>
+    </article>
+
+    <article class="ist-serv-card"
+         data-toggle="modal" 
+         data-target="#istModalServicio"
          data-title="Formateo/Instalación"
          data-type="onsite"
          data-desc="Formateamos e instalamos el sistema operativo que estés buscando. Tomamos las decisiones contigo para dejar tu equipo como nuevo."
@@ -905,6 +986,434 @@ const contenedor = document.querySelector('.proyectos-contenedor');
 </script>
 </section>
 
+
+
+<!-- 
+ ===============================
+ ✏️ Sección: Proyectos
+ =============================== 
+ -->
+<div class="ist-info-heading" style="margin-top:5rem;margin-bottom: 3rem !important; justify-content: center;">
+        <span class="ist-serv-badge">
+            <iconify-icon icon="ph:rocket-launch-duotone" style="font-size: 20px;"></iconify-icon>
+            PROYECTOS
+        </span>
+    </div>
+<h2 class="proyectos-titulo">
+      Explora nuestros mejores proyectos
+    </h2>
+
+
+<section class="proyectos-2026-section" id="proyectos">
+    <div class="proyectos-2026-bg-container">
+        <img src="bgumid-2.png" id="pj-bg-image" class="proyectos-2026-bg" alt="Background">
+        <div class="proyectos-2026-overlay"></div>
+    </div>
+
+    <div class="proyectos-2026-main">
+        <div class="proyectos-2026-info">
+            <h2 id="pj-title" class="proyectos-2026-title">UMID</h2>
+            <p id="pj-desc" class="proyectos-2026-description">
+                Sitio web universitario con información académica, blog dinámico y conectividad total con redes sociales.
+            </p>
+            
+            <div class="proyectos-2026-actions">
+                <a href="#" id="pj-link" target="_blank" class="proyectos-2026-btn-main">
+                    <iconify-icon icon="ph:globe-duotone"></iconify-icon> Visitar Sitio
+                </a>
+                <button class="proyectos-2026-btn-gallery" onclick="openGallery()">
+                    <iconify-icon icon="ph:images-duotone"></iconify-icon> Ver Detalles
+                </button>
+            </div>
+        </div>
+
+        <div class="proyectos-2026-nav">
+            <div class="proyectos-2026-item active" onclick="changeProject(0)">
+                <span class="proyectos-2026-badge highlight">PROYECTO DESTACADO</span>
+                <div class="proyectos-2026-circle">
+                    <img src="umidlogo.png" alt="P1">
+                </div>
+            </div>
+
+            <div class="proyectos-2026-item" onclick="changeProject(1)">
+                <div class="proyectos-2026-badge-group">
+                    <span class="proyectos-2026-badge highlight">PROYECTO DESTACADO</span>
+                    <!--<span class="proyectos-2026-badge dev">EN DESARROLLO</span>-->
+                </div>
+                <div class="proyectos-2026-circle">
+                    <img src="frontlogo.png" alt="P2">
+                </div>
+            </div>
+
+            <div class="proyectos-2026-item" onclick="changeProject(2)">
+                <div class="proyectos-2026-circle">
+                    <img src="hydrologo.png" alt="P3">
+                </div>
+            </div>
+
+            <div class="proyectos-2026-item" onclick="changeProject(3)">
+                <div class="proyectos-2026-circle">
+                    <img src="pstpfp.png" alt="P4">
+                </div>
+            </div>
+
+            <div class="proyectos-2026-item" onclick="changeProject(4)">
+                <div class="proyectos-2026-circle">
+                    <img src="roybetlogo.png" alt="P5">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+  let currentProjectImages = []; // Variable global para las fotos del proyecto actual
+  let currentSlideIndex = 0;
+
+  const projectsData = [
+    {
+        title: "UMID",
+        desc: "Sitio web universitario con información académica, blog dinámico y conectividad total con redes sociales.",
+        bg: "bgumid-2.png",
+        bgMobile: "bgumid-mob.jpeg", // Imagen para Mobile (<= 450px)
+        link: "https://umid.edu.mx",
+        showcase: ["showcase/umid/1.png", "showcase/umid/2.png", "showcase/umid/3.png","showcase/umid/4.png","showcase/umid/5.png","showcase/umid/6.png"] // Fotos del proyecto para la galería
+    },
+    {
+        title: "Frontlangu",
+        desc: "Sistema integral para escuela de idiomas con UX/UI avanzada y gestión de cursos en tiempo real.",
+        bg: "bgfrontlangu-2.png",
+        bgMobile: "bgfrontlangu-mob.jpeg", // Imagen para Mobile (<= 450px)
+        link: "https://frontlangu.com",
+        showcase: ["showcase/frontlangu/1.png", "showcase/frontlangu/2.png", "showcase/frontlangu/3.png","showcase/frontlangu/4.png","showcase/frontlangu/5.png","showcase/frontlangu/6.png"]
+    },
+    {
+        title: "HydroFlow",
+        desc: "Sistema de procesamiento de datos ambientales para la optimización de cultivo en la región de Tabasco.",
+        bg: "bghydroflow.png",
+        bgMobile: "bghydroflow-mob.jpeg", // Imagen para Mobile (<= 450px)
+        link: "https://hydroflowp.netlify.app",
+        showcase: ["showcase/hydroflow/1.png", "showcase/hydroflow/2.png", "showcase/hydroflow/3.png","showcase/hydroflow/4.png","showcase/hydroflow/5.png","showcase/hydroflow/6.png"]
+    },
+    {
+        title: "PerSysTec",
+        desc: "Sitio corporativo de alto impacto visual con estética Dark Mode. Diseñado para resaltar la identidad de marca.",
+        bg: "bgpst-2.png",
+        bgMobile: "bgpst-mob.jpeg", // Imagen para Mobile (<= 450px)
+        link: "https://www.persystec.com",
+        showcase: ["showcase/persystec/1.png", "showcase/persystec/2.png", "showcase/persystec/3.png","showcase/persystec/4.png","showcase/persystec/5.png","showcase/persystec/6.png"]
+    },
+    {
+        title: "Ro&bet",
+        desc: "Tarjeta de presentación digital para profesionales. Diseño minimalista para la exposición de servicios y contacto.",
+        bg: "bgroybet-2.png",
+        bgMobile: "bgroybet-mob.jpeg", // Imagen para Mobile (<= 450px)
+        link: "http://roybet.pages.dev",
+        showcase: ["showcase/roybet/1.png", "showcase/roybet/2.png", "showcase/roybet/3.png","showcase/roybet/4.png","showcase/roybet/5.png","showcase/roybet/6.png"]
+    }
+];
+
+function changeProject(index) {
+    const data = projectsData[index];
+    
+    // 1. Actualizar clases de los círculos
+    const items = document.querySelectorAll('.proyectos-2026-item');
+    items.forEach(item => item.classList.remove('active'));
+    items[index].classList.add('active');
+
+    // 2. Transición de fondo
+    const bgImage = document.getElementById('pj-bg-image');
+    const infoContainer = document.querySelector('.proyectos-2026-info');
+
+    // Efecto de salida
+    bgImage.style.opacity = '0';
+    infoContainer.style.opacity = '0';
+    infoContainer.style.transform = 'translateY(10px)';
+    
+    setTimeout(() => {
+        // DETECCIÓN DE ANCHO:
+        // Si el ancho es 450 o menos, usa bgMobile, si no, usa bg normal.
+        const selectedImg = window.innerWidth <= 450 ? data.bgMobile : data.bg;
+        
+        bgImage.src = selectedImg;
+        document.getElementById('pj-title').innerText = data.title;
+        document.getElementById('pj-desc').innerText = data.desc;
+        document.getElementById('pj-link').href = data.link;
+
+        // Efecto de entrada
+        bgImage.style.opacity = '1';
+        infoContainer.style.opacity = '1';
+    }, 400);
+}
+// Ejecutar al cargar la página para setear la imagen correcta del primer proyecto
+window.addEventListener('DOMContentLoaded', () => {
+    const bgImage = document.getElementById('pj-bg-image');
+    if(window.innerWidth <= 450) {
+        bgImage.src = projectsData[0].bgMobile;
+    } else {
+        bgImage.src = projectsData[0].bg;
+    }
+});
+
+let currentProjectIndex = 0; // Para saber qué proyecto estamos viendo
+
+// Esta función debe recibir el index del proyecto (0, 1, 2...)
+function openGallery() {
+    // Obtenemos el index del proyecto que está actualmente activo en la sección
+    // Buscamos cuál tiene la clase .active en tu menú de círculos
+    const activeItem = document.querySelector('.proyectos-2026-item.active');
+    const index = Array.from(activeItem.parentNode.children).indexOf(activeItem);
+    
+    currentProjectImages = projectsData[index].showcase;
+    currentSlideIndex = 0;
+    
+    if(!currentProjectImages || currentProjectImages.length === 0) {
+        alert("Showcase en desarrollo");
+        return;
+    }
+
+    renderDots();
+    updateSlide();
+    document.getElementById('modal-showcase').style.display = 'flex';
+}
+
+function closeGallery() {
+    document.getElementById('modal-showcase').style.display = 'none';
+}
+
+function updateSlide() {
+    const img = document.getElementById('showcase-img');
+    img.style.opacity = "0";
+    setTimeout(() => {
+        img.src = currentProjectImages[currentSlideIndex];
+        img.style.opacity = "1";
+        updateDots();
+    }, 200);
+}
+
+function changeSlide(n) {
+    currentSlideIndex += n;
+    if (currentSlideIndex >= currentProjectImages.length) currentSlideIndex = 0;
+    if (currentSlideIndex < 0) currentSlideIndex = currentProjectImages.length - 1;
+    updateSlide();
+}
+
+function renderDots() {
+    const container = document.getElementById('showcase-dots');
+    container.innerHTML = "";
+    currentProjectImages.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'showcase-dot';
+        dot.onclick = () => { currentSlideIndex = i; updateSlide(); };
+        container.appendChild(dot);
+    });
+}
+
+function updateDots() {
+    const dots = document.querySelectorAll('.showcase-dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlideIndex);
+    });
+}
+
+// --- Lógica de Swipe (Móvil) ---
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeArea = document.getElementById('swipe-area');
+
+swipeArea.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+swipeArea.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (touchStartX - touchEndX > 50) changeSlide(1); // Desliza izquierda -> Siguiente
+    if (touchEndX - touchStartX > 50) changeSlide(-1); // Desliza derecha -> Anterior
+}
+function closeModalExterno(event) {
+    const modal = document.getElementById('modal-showcase');
+    
+    // Si el elemento donde se hizo clic (event.target) es el mismo 
+    // que el contenedor del modal (y no un hijo como la imagen), cerramos.
+    if (event.target === modal) {
+        closeGallery();
+    }
+}
+</script>
+
+<div id="modal-showcase" class="showcase-2026-modal" onclick="closeModalExterno(event)">
+    <span class="showcase-close" onclick="closeGallery()">&times;</span>
+    
+    <div class="showcase-content">
+        <button class="showcase-prev" onclick="changeSlide(-1)">&#10094;</button>
+        
+        <div class="showcase-slide-container" id="swipe-area">
+            <img id="showcase-img" src="" alt="Feature">
+        </div>
+
+        <button class="showcase-next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <div id="showcase-dots" class="showcase-dots-container"></div>
+</div>
+<section class="other-projects-section">
+    <div class="other-projects-container">
+        
+        <div class="other-projects-header">
+            <h2 class="other-projects-title">Innovación y Proyectos Complementarios</h2>
+        </div>
+
+        <div class="other-projects-grid">
+            <div class="other-projects-card bento-big reveal" onclick="openBentoModal('leoweb.png')">
+                <img src="leoweb.png" alt="LeoWeb">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">Negocio</span>
+                    <h3 class="other-projects-name">LeoWeb</h3>
+                </div>
+            </div>
+
+            <div class="other-projects-card bento-tall reveal" onclick="openBentoModal('pi1.png')">
+                <img src="pi1.png" alt="FoodRadar" style="object-position: 20% 20%;">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">MarketPlace</span>
+                    <h3 class="other-projects-name">FoodRadar</h3>
+                </div>
+            </div>
+
+            <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('pescaconectaimg2.jpeg')">
+                <img src="pescaconectaimg2.jpeg" alt="PescaConecta">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">MarketPlace</span>
+                    <h3 class="other-projects-name">PescaConecta</h3>
+                </div>
+            </div>
+
+            
+
+            <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('edurosimg.png')">
+                <img src="edurosimg.png" alt="Edu-Ros" style="object-position: 0% 20%;">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">Preescolar</span>
+                    <h3 class="other-projects-name">Edu-Ros</h3>
+                </div>
+            </div>
+
+            <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('adorarteimg.png')">
+                <img src="adorarteimg.png" alt="Adorarte" style="object-position: 0% 20%;">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">Escolar</span>
+                    <h3 class="other-projects-name">Adorarte</h3>
+                </div>
+            </div>
+
+            <!--
+            <div class="other-projects-card bento-wide reveal">
+                <img src="img_proyecto5.jpg" alt="Proyecto">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">Optimización</span>
+                    <h3 class="other-projects-name">ORBIT_CLOUD_SYSTEM</h3>
+                </div>
+            </div>
+
+            <div class="other-projects-card reveal">
+                <img src="img_proyecto6.jpg" alt="Proyecto">
+                <div class="other-projects-overlay">
+                    <span class="other-projects-tag">Identidad</span>
+                    <h3 class="other-projects-name">BRAND_CORE</h3>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<div id="bento-modal" class="bento-modal" onclick="closeBentoModal()">
+    <img id="bento-modal-img" class="bento-modal-content" src="" alt="Full view">
+</div>
+
+<section class="ist-cta-section">
+    <div class="ist-cta-card reveal">
+        <h2 class="cta-title">¿Listo para la innovación?</h2>
+        <p class="cta-subtitle">Llevemos tu próximo proyecto al siguiente nivel con tecnología de vanguardia.</p>
+        <a href="https://wa.me/529371416282" class="cta-button" target="_blank">
+            <span>Iniciar Proyecto</span>
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        threshold: 0.1 // Se activa cuando el 10% de la card es visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    const targets = document.querySelectorAll(".reveal");
+    targets.forEach((target) => observer.observe(target));
+
+    const btnLinks = document.getElementById('btn-links-toggle');
+    const dropdown = document.getElementById('links-dropdown');
+
+    if(btnLinks && dropdown) {
+        btnLinks.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Togleamos la clase en el menú Y en el botón
+            this.classList.toggle('active');
+            dropdown.classList.toggle('active');
+        });
+
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && !btnLinks.contains(e.target)) {
+                dropdown.classList.remove('active');
+                btnLinks.classList.remove('active'); // También la quitamos aquí
+            }
+        });
+    }
+});
+function handleBadgeClick(element) {
+    const action = element.getAttribute('data-action');
+    const target = element.getAttribute('data-target');
+
+    if (action === 'modal') {
+        openBentoModal(target);
+    } else if (action === 'link') {
+        window.location.href = target;
+    }
+}
+
+function openBentoModal(src) {
+    const modal = document.getElementById('bento-modal');
+    const modalImg = document.getElementById('bento-modal-img');
+    
+    modalImg.src = src;
+    modal.classList.add('active'); // Usamos clases en lugar de .display
+}
+
+function closeBentoModal() {
+    const modal = document.getElementById('bento-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// También cerrar con la tecla Escape
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeBentoModal();
+});
+</script>
 <!-- 
  ===============================
  ✏️ Sección: Parallax imágen de fondo y datos
@@ -1171,25 +1680,21 @@ const contenedor = document.querySelector('.proyectos-contenedor');
 </div>
 
 
-<!-- 
- ===============================
- ✏️ Sección: Proyectos
- =============================== 
- -->
+<!--
 <section id="proyectos" class="proyectos-section">
   <div class="container">
     <h2 class="proyectos-titulo">
       Explora algunos de nuestros proyectos
     </h2>
     <div class="proyectos-scroll-wrapper">
-      <!-- Indicadores dinámicos -->
+
       <div class="scroll-indicator left" aria-hidden="true"></div>
       <div class="scroll-indicator right" aria-hidden="true"></div>
     <div class="proyectos-contenedor">
-      <!-- Proyecto falso para margen inicial -->
+       
   <div class="proyecto-item fake-spacer" aria-hidden="true"></div>
 
-      <!-- Proyecto 1 -->
+      
        <div class="proyecto-item" id="p-persystec">
         <div class="proyecto-logo">
           <img src="pstpfp.png" alt="Logo 1">
@@ -1205,7 +1710,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
 
-      <!-- Proyecto 1 -->
+     
        <div class="proyecto-item" id="p-leoweb" data-modal-img="leoweb2.png">
         <div class="proyecto-logo">
           <img src="leoweblogo.png" alt="Logo 1">
@@ -1220,7 +1725,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
   
-      <!-- Proyecto 1 -->
+      
        <div class="proyecto-item" id="p-eduros" data-modal-img="edurosimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo 1">
@@ -1235,7 +1740,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
 
-      <!-- Proyecto 2-->
+      
       <div class="proyecto-item" id="p-foodradar">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/21sfFSjz/p1-2.png" alt="Logo 1">
@@ -1250,7 +1755,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
       
-      <!-- Proyecto 3 -->
+    
       <div class="proyecto-item" id="p-edukids" data-modal-img="edukids.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/RGYZTZZJ/p4.jpg" alt="Logo 2">
@@ -1266,7 +1771,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
       
-      <!-- Proyecto 4 -->
+      
       <div class="proyecto-item" id="p-teecreator" data-modal-img="teecreator.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/hJJgtYj5/p2-1.png" alt="Logo 3">
@@ -1282,7 +1787,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
       
-      <!-- Proyecto 5 -->
+      
       <div class="proyecto-item" id="p-adorarte" data-modal-img="adorarteimg.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo 4">
@@ -1297,7 +1802,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
         </div>
       </div>
-      <!-- Proyecto 6 -->
+      
       <div class="proyecto-item" id="p-vetpets" data-modal-img="vetpets.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/PZ3D3C2L/pets.jpg" alt="Logo 2">
@@ -1312,7 +1817,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
         </div>
       </div>
-      <!-- Proyecto 7 -->
+      
       <div class="proyecto-item" id="p-juchijobs" data-modal-img="juchijobs.png">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/8Lf5JKyR/juchi.png" alt="Logo 2">
@@ -1327,7 +1832,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </div>
       </div>
 
-      <!-- Proyecto 8 -->
+      
        <div class="proyecto-item" id="p-earlyjob">
         <div class="proyecto-logo">
           <img src="https://i.ibb.co/xtCvJJzv/earlyj.png" alt="Logo 1">
@@ -1352,7 +1857,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     <img id="proyectomodal-img" src="" alt="Vista Previa del Proyecto">
   </div>
 </div>
-</section>
+</section>-->
 
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -1388,6 +1893,44 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <!-- Efecto de luz suave -->
     <div class="facebook-glow"></div>
     </section>
+
+    <script>
+      function ajustarFacebookIframe() {
+    const container = document.querySelector('.facebook-frame');
+    const iframe = document.getElementById('facebook-iframe');
+    
+    if (!container || !iframe) return;
+
+    // 1. Calcular el ancho disponible real
+    // Restamos 40px por el padding (20px de cada lado) que tiene tu .facebook-frame
+    let anchoDisponible = container.offsetWidth - 40;
+
+    // 2. Respetar los límites de Facebook (Mínimo 180px, Máximo 500px)
+    if (anchoDisponible > 500) anchoDisponible = 500;
+    if (anchoDisponible < 180) anchoDisponible = 180;
+
+    // 3. Construir la URL con el nuevo ancho
+    const facebookUrl = "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61579655970484";
+    const settings = `&tabs=timeline&width=${anchoDisponible}&height=450&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId`;
+
+    const nuevaURL = facebookUrl + settings;
+
+    // 4. Solo actualizar si el ancho cambió (evita recargas infinitas al scrollear en algunos móviles)
+    if (iframe.src !== nuevaURL) {
+        iframe.src = nuevaURL;
+    }
+}
+
+// Ejecutar al cargar la página
+window.addEventListener('DOMContentLoaded', ajustarFacebookIframe);
+
+// Ejecutar si cambian la orientación del teléfono o redimensionan
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(ajustarFacebookIframe, 400); // Pequeño delay para estabilidad
+});
+      </script>
 
      <section class="whatsapp-section">
         <div class="whatsapp-container">
@@ -1485,10 +2028,96 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
  ✏️ Sección: Sobre nosotros
  =============================== 
  -->
-<section id="sobre-nosotros" class="py-5" style="margin-top:5rem;">
+ 
+<section id="sobre-nosotros-2026" class="about-2026-section" style="margin-top:5rem;">
+    <div class="ist-info-heading" style="margin-bottom: 3rem !important; justify-content: center;" id="contacto">
+        <span class="ist-serv-badge">
+            <iconify-icon icon="ic:twotone-business" style="font-size: 20px;"></iconify-icon>
+            SOBRE NOSOTROS
+        </span>
+    </div>
+
+    <div class="text-center" style="margin-bottom:7rem;">
+        <img src="ISTLogoLetter.png" alt="IST Logo" class="about-2026-logo img-fluid">
+        <h2 class="about-2026-title">Integración de <span class="highlight">Servicios y Tecnologías</span></h2>
+        <p class="about-2026-slogan">Innovar <span>&gt;</span> Solucionar <span>&gt;</span> Triunfar</p>
+    </div>
+
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="about-2026-card mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <iconify-icon icon="ph:users-three-duotone" class="about-2026-icon"></iconify-icon>
+                        <h3 class="about-2026-card-title">¿Quiénes somos?</h3>
+                    </div>
+                    <p class="about-2026-text">
+                        Somos un equipo especializado en soluciones tecnológicas integrales, operando actualmente desde Cárdenas, Tabasco. Combinando innovación con experiencia para ofrecer servicios de calidad. 
+                    </p>
+                </div>
+
+                <div class="about-2026-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <iconify-icon icon="ph:target-duotone" class="about-2026-icon"></iconify-icon>
+                        <h3 class="about-2026-card-title">Nuestra Misión</h3>
+                    </div>
+                    <p class="about-2026-text">
+                        Ayudar a las personas a transformar sus ideas en realidades digitales y sus problemas tecnológicos en recuerdos, por medio de la experiencia y tecnologías como nuestros servicios a distancia.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="about-2026-img-wrapper" data-toggle="modal" data-target="#modalImagen1">
+                            <img src="ISTLogo2026.png" alt="Equipo IST" class="img-fluid">
+                            <div class="about-2026-img-overlay"><iconify-icon icon="ph:magnifying-glass-plus"></iconify-icon></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="about-2026-img-wrapper" data-toggle="modal" data-target="#modalImagen2">
+                            <img src="PortadaFB_2026.png" alt="Instalaciones IST" class="img-fluid">
+                            <div class="about-2026-img-overlay"><iconify-icon icon="ph:magnifying-glass-plus"></iconify-icon></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gx-3 gy-4">
+                    <div class="col-6 aboutstats" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                        <div class="about-2026-stat">
+                            <h4>500+</h4>
+                            <span>Clientes satisfechos</span>
+                        </div>
+                    </div>
+                    <div class="col-6 aboutstats" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                        <div class="about-2026-stat">
+                            <h4>10+</h4>
+                            <span>Años de experiencia</span>
+                        </div>
+                    </div>
+                    <div class="col-6 aboutstats" style="margin-bottom: 2rem;">
+                        <div class="about-2026-stat">
+                            <h4>24/7</h4>
+                            <span>Soporte disponible</span>
+                        </div>
+                    </div>
+                    <div class="col-6 aboutstats" style="margin-bottom: 2rem;">
+                        <div class="about-2026-stat">
+                            <h4>99%</h4>
+                            <span>Tasa satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre-nosotros" class="py-5" style="margin-top:5rem; display:none;">
   <div class="container">
     <!-- Título -->
-    <div class="ist-info-heading" style="margin-bottom: 5rem !important; justify-content: center;" id="contacto">
+    <div class="ist-info-heading" style="margin-bottom: 5rem !important; justify-content: center;"> <!-- id="contacto"-->
       <span class="ist-serv-badge">
         <iconify-icon icon="ic:twotone-business" style="font-size: 20px;"></iconify-icon>
           SOBRE NOSOTROS
@@ -1876,6 +2505,7 @@ window.addEventListener('load', ajustarAlturaServicios);
 window.addEventListener('resize', ajustarAlturaServicios);
             </script>
 <script>
+    /*PANTALLA DE CARGA
     document.addEventListener("DOMContentLoaded", () => {
         const loader = document.getElementById('loader');
         const loadingText = document.getElementById('loading-text');
@@ -1916,7 +2546,7 @@ window.addEventListener('resize', ajustarAlturaServicios);
                 loader.style.display = 'none';
             }, 500);
         }
-    });
+    });*/
 
     // Referencias a los elementos del modal
     const modal = document.getElementById('proyectomodal-overlay');
@@ -2073,6 +2703,6 @@ window.addEventListener('resize', ajustarAlturaServicios);
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 </body>
 </html>

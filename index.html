@@ -1178,10 +1178,12 @@ function openGallery() {
     renderDots();
     updateSlide();
     document.getElementById('modal-showcase').style.display = 'flex';
+    document.body.classList.add('no-scroll'); // Bloquea el fondo
 }
 
 function closeGallery() {
     document.getElementById('modal-showcase').style.display = 'none';
+    document.body.classList.remove('no-scroll'); // Libera el fondo
 }
 
 function updateSlide() {
@@ -1227,27 +1229,38 @@ let touchEndY = 0;
 
 const swipeArea = document.getElementById('swipe-area');
 
+// Usamos addEventListener con { passive: false } para poder usar preventDefault()
 swipeArea.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].clientX;
     touchStartY = e.changedTouches[0].clientY;
-}, { passive: true });
+}, { passive: false });
 
-// Este evento es clave para que el iPhone no mueva la página mientras deslizas la foto
 swipeArea.addEventListener('touchmove', e => {
-    let moveX = e.changedTouches[0].clientX;
-    let moveY = e.changedTouches[0].clientY;
+    const currentX = e.changedTouches[0].clientX;
+    const currentY = e.changedTouches[0].clientY;
     
-    // Si el movimiento es más horizontal que vertical, bloqueamos el scroll
-    if (Math.abs(moveX - touchStartX) > Math.abs(moveY - touchStartY)) {
-        if (e.cancelable) e.preventDefault();
+    const diffX = Math.abs(currentX - touchStartX);
+    const diffY = Math.abs(currentY - touchStartY);
+
+    // Si el movimiento es más horizontal que vertical, cancelamos CUALQUIER otra acción del navegador
+    if (diffX > diffY) {
+        if (e.cancelable) e.preventDefault(); 
+        e.stopPropagation();
     }
 }, { passive: false });
 
 swipeArea.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].clientX;
-    touchEndY = e.changedTouches[0].clientY;
-    handleSwipe();
-}, { passive: true });
+    const touchEndX = e.changedTouches[0].clientX;
+    const diffX = touchStartX - touchEndX;
+
+    if (Math.abs(diffX) > 50) { // Umbral de 50px
+        if (diffX > 0) {
+            changeSlide(1); // Siguiente
+        } else {
+            changeSlide(-1); // Anterior
+        }
+    }
+}, { passive: false });
 
 function handleSwipe() {
     const swipeThreshold = 50; // Sensibilidad

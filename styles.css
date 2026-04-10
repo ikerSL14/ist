@@ -4780,11 +4780,28 @@ body.modal-open {
 
 .showcase-slide-container {
     width: 100%;
+    min-height: 300px; /* Asegura un área de toque decente */
     display: flex;
     justify-content: center;
     align-items: center;
+    touch-action: pan-y; /* Permite solo gestos que no sean el scroll vertical nativo aquí */
+    -webkit-overflow-scrolling: touch;
+}
+#showcase-img {
+    pointer-events: auto;
+    /* Evita que el dedo "agarre" la imagen para arrastrarla */
+    -webkit-user-drag: none;
+    user-select: none;
+    touch-action: none; /* Desactiva toda acción nativa sobre la imagen misma */
 }
 
+/* Clase para bloquear el scroll de fondo */
+.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    position: fixed !important;
+    width: 100% !important;
+}
 .showcase-slide-container img {
     max-width: 100%;
     max-height: 80vh;

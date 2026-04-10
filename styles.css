@@ -4842,6 +4842,14 @@ body.modal-open {
     .showcase-prev, .showcase-next { display: none; }
     .showcase-content { width: 100%; }
     .showcase-slide-container img { border-radius: 0; width: 100%; }
+    .showcase-dots-container {
+    margin-top:3rem;
+    gap: 25px;
+}
+.showcase-dot {
+    height: 24px;
+    width: 24px;
+}
 }
 /* =============== OTHER PROJECTS (BENTO) ============== */
 .other-projects-section {

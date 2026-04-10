@@ -347,7 +347,8 @@
         setTimeout(() => {
             // 1. Reemplazamos el tag <iconify-icon> por el <i> de Bootstrap
             // Esto elimina el cargador y pone el icono final (Windows, Apple, etc.)
-            osIcon.outerHTML = `<i id="os-icon" class="bi ${iconClass}" style="margin-right:1rem; font-size: 1.2rem; vertical-align: middle;"></i>`;
+            // Cambia esta línea en tu setTimeout
+            osIcon.outerHTML = `<i id="os-icon" class="bi ${iconClass}" style="margin-right:1rem; font-size: 1.2rem; vertical-align: middle; color: white !important;"></i>`;
 
             // Actualizamos el resto de la interfaz
             btnText.innerText = `Descargar RustDesk`;
@@ -1271,6 +1272,9 @@ function closeModalExterno(event) {
 
         <div class="other-projects-grid">
             <div class="other-projects-card bento-big reveal" onclick="openBentoModal('leoweb.png')">
+              <div class="project-card-logo">
+                  <img src="leoweblogo.png" alt="Logo LeoWeb">
+              </div>
                 <img src="leoweb.png" alt="LeoWeb">
                 <div class="other-projects-overlay">
                     <span class="other-projects-tag">Negocio</span>
@@ -1279,6 +1283,9 @@ function closeModalExterno(event) {
             </div>
 
             <div class="other-projects-card bento-tall reveal" onclick="openBentoModal('pi1.png')">
+              <div class="project-card-logo">
+                  <img src="https://i.ibb.co/21sfFSjz/p1-2.png" alt="Logo FoodRadar">
+              </div>
                 <img src="pi1.png" alt="FoodRadar" style="object-position: 20% 20%;">
                 <div class="other-projects-overlay">
                     <span class="other-projects-tag">MarketPlace</span>
@@ -1287,7 +1294,11 @@ function closeModalExterno(event) {
             </div>
 
             <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('pescaconectaimg2.jpeg')">
-                <img src="pescaconectaimg2.jpeg" alt="PescaConecta">
+              <div class="project-card-logo">
+                  <img src="logopescaconecta.png" alt="Logo PescaConecta">
+              </div>
+            
+              <img src="pescaconectaimg2.jpeg" alt="PescaConecta">
                 <div class="other-projects-overlay">
                     <span class="other-projects-tag">MarketPlace</span>
                     <h3 class="other-projects-name">PescaConecta</h3>
@@ -1297,6 +1308,9 @@ function closeModalExterno(event) {
             
 
             <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('edurosimg.png')">
+              <div class="project-card-logo">
+                  <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo Edu-Ros">
+              </div>
                 <img src="edurosimg.png" alt="Edu-Ros" style="object-position: 0% 20%;">
                 <div class="other-projects-overlay">
                     <span class="other-projects-tag">Preescolar</span>
@@ -1305,6 +1319,9 @@ function closeModalExterno(event) {
             </div>
 
             <div class="other-projects-card bento-medium reveal" onclick="openBentoModal('adorarteimg.png')">
+              <div class="project-card-logo">
+                  <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo Adorarte">
+              </div>
                 <img src="adorarteimg.png" alt="Adorarte" style="object-position: 0% 20%;">
                 <div class="other-projects-overlay">
                     <span class="other-projects-tag">Escolar</span>

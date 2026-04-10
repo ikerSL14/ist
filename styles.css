@@ -4791,6 +4791,9 @@ body.modal-open {
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     user-select: none;
+    -webkit-user-drag: none; /* Crucial para Safari */
+    pointer-events: auto; /* Asegura que el contenedor reciba el toque */
+    touch-action: pinch-zoom; /* Permite zoom pero deja el swipe al JS */
 }
 
 /* Botones de navegación */

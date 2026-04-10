@@ -44,6 +44,14 @@
   align-items: center;
   justify-content: center;
   color: white !important;
+  -webkit-appearance: none; /* Quita el look nativo de iOS */
+    appearance: none;
+}
+/* Forzar color blanco en el texto del botón específicamente */
+#btn-text {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important; /* Propiedad específica para Safari */
 }
 
 .spinner-box {
@@ -4868,6 +4876,7 @@ body.modal-open {
 
 .other-projects-card {
     position: relative;
+    isolation: isolate; /* Crea un nuevo contexto de capas para Safari */
     border-radius: 12px;
     overflow: hidden;
     background: #011222;
@@ -4940,8 +4949,8 @@ body.modal-open {
     right: 20px;
     width: 70px;  /* Regresamos al tamaño original que te gustaba */
     height: 70px;
-    z-index: 20;  /* Por encima de overlays y filtros */
-    display: flex;
+    z-index: 99;  /* Por encima de overlays y filtros */
+    display: block;
     align-items: center;
     justify-content: center;
     pointer-events: none; /* Para que el click pase a través del logo a la card */
@@ -4962,6 +4971,16 @@ body.modal-open {
     /* Aseguramos que siempre brille */
     filter: brightness(1.1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* Forzamos a la imagen de fondo a quedarse atrás */
+.other-projects-card > img {
+    position: relative;
+    z-index: 1;
+}
+
+/* El overlay también detrás del logo */
+.other-projects-overlay {
+    z-index: 2;
 }
 
 /* Soporte para imágenes opacas (JPG/Fondos sólidos) */

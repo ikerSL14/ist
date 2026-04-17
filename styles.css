@@ -5653,3 +5653,198 @@ body.modal-open {
     
 }
 }
+
+/* --- ESTILOS CARRUSEL MÓVIL IST --- */
+.proyectos-movil-carrusel-section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.proyectos-movil-badge-top {
+    color: #00d2ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 1px solid #00d2ff;
+    padding: 4px 12px;
+    border-radius: 50px;
+}
+
+.proyectos-movil-title {
+    color: #fff;
+    font-family: 'Geist', sans-serif;
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.proyectos-movil-carrusel-container {
+    position: relative;
+    padding: 0 40px;
+}
+
+/* TRACK CON SCROLL SNAP (Perfecto para iOS) */
+.proyectos-movil-carrusel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.proyectos-movil-carrusel-track::-webkit-scrollbar { display: none; }
+
+.proyectos-movil-carrusel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    perspective: 1000px;
+}
+
+.proyectos-movil-card-inner {
+    position: relative;
+    aspect-ratio: 1/1; /* Cuadrado */
+    background: #050913;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.4s ease;
+}
+
+/* Mockup */
+.proyectos-movil-mockup {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+/* Badge Destacado */
+.proyectos-movil-carrusel-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 210, 255, 0.2);
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+/* Info Inferior con Degradado */
+.proyectos-movil-carrusel-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 20px;
+    background: linear-gradient(to top, rgb(0, 0, 0) 0%, transparent 100%);
+    z-index: 5;
+}
+
+.proyectos-movil-carrusel-info h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.proyectos-movil-carrusel-info p {
+    color: #aacdd6;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+
+/* --- CAPA DE ACCIONES (AZUL IST) --- */
+.proyectos-movil-carrusel-actions {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 98, 255, 0.85); /* Azul IST */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 15;
+    backdrop-filter: blur(4px);
+}
+
+/* Estado activo al click */
+.proyectos-movil-carrusel-item.selected .proyectos-movil-carrusel-actions {
+    opacity: 1;
+    visibility: visible;
+}
+
+.proyectos-movil-carrusel-item.selected .proyectos-movil-card-inner {
+    border: 3px solid #00d2ff;
+    transform: scale(0.98);
+}
+
+.actions-buttons-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.action-btn-ist {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0062ff;
+    font-size: 24px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    text-decoration: none !important;
+}
+
+/* BOTONES NAVEGACIÓN CIRCULARES */
+.proyectos-movil-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.proyectos-movil-nav-btn.prev { left: 5px; }
+.proyectos-movil-nav-btn.next { right: 5px; }
+
+/* THUMBS */
+.proyectos-movil-carrusel-thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.thumb-box {
+    width: 15px;
+    height: 15px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.thumb-box.active {
+    background: #00d2ff;
+    width: 30px; /* Se alarga cuando está activo */
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}

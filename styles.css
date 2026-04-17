@@ -5583,7 +5583,7 @@ body.modal-open {
     margin-top: 2rem;
 }
 
-/* Ajustes Responsive rápidos */
+/*
 @media (max-width: 900px) {
     .proyectos-modern-wrapper { flex-direction: column; }
     .proyectos-modern-gradient-layer { left: 0%; width: 70%; height: 250px; position: relative; }
@@ -5591,21 +5591,15 @@ body.modal-open {
     .proyectos-modern-device { position: relative; left: auto; width: 30%; top:-130px;  display: block; }
     .proyectos-modern-nav {
     position: fixed;
-    /* Al estar en el wrapper, 'right: 0' o un valor negativo lo manda a la orilla derecha */
-    right: 32px; /* Ajusta este número (ej. -40px o 0px) para pegarlo más a la orilla si lo necesitas */
+    
+    right: 32px; 
     top: 50%;
     transform: translateY(-50%);
     gap: 1rem;
-    z-index: 20; /* Nos aseguramos de que siempre esté por encima de todo */
-    /* --- NUEVO: ESTADO OCULTO POR DEFECTO --- */
-        opacity: 0;
-        pointer-events: none; /* Evita que el usuario toque botones invisibles */
-        
-        /* Un pequeño desplazamiento para efecto de entrada */
+    z-index: 20;
         margin-right: -20px;
         transition: all 0.4s ease-in-out;
 }
-/* --- CLASE QUE ACTIVARÁ EL SCRIPT --- */
     .proyectos-modern-nav.nav-visible {
         opacity: 1;
         pointer-events: all;
@@ -5652,11 +5646,12 @@ body.modal-open {
     }
     
 }
-}
+}*/
 
 /* --- ESTILOS CARRUSEL MÓVIL IST --- */
 .proyectos-movil-carrusel-section {
-    padding: 60px 0;
+    padding: 10px 0;
+    max-width: 100vw;
     overflow: hidden;
 }
 
@@ -5720,30 +5715,62 @@ body.modal-open {
     opacity: 0.7;
 }
 
-/* Badge Destacado */
+/* --- NUEVO: LOGO CIRCULAR EN LA ESQUINA --- */
+/* --- LOGO CIRCULAR REPARADO --- */
+.proyectos-movil-client-logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 48px; /* Un pelín más grande para que luzca */
+    height: 48px;
+    border-radius: 50%;
+    background: #050913; 
+    border: 2px solid #d6f8ff; /* Borde IST sólido */
+    padding: 0; /* Quitamos el padding para que la imagen mande */
+    z-index: 12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* <--- ESTO ES LA CLAVE: Corta las esquinas de la imagen */
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); /* Brillo IST */
+}
+
+.proyectos-movil-client-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* <--- Cambia de 'contain' a 'cover' si la imagen ya tiene fondo */
+    display: block;
+}
+
+/* --- BADGE DESTACADO REFORZADO --- */
 .proyectos-movil-carrusel-badge {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(0, 210, 255, 0.2);
-    border: 1px solid #00d2ff;
-    color: #00d2ff;
+    background: rgba(2, 16, 37, 0.603); /* Un poco más de opacidad */
+    border: 1.5px solid #d6f8ff; /* Borde más definido */
+    color: #fff; /* Texto blanco para mejor contraste */
     padding: 5px 12px;
     border-radius: 8px;
     font-size: 10px;
     font-weight: 800;
     z-index: 10;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px); /* Más desenfoque */
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); /* Brillo IST */
 }
 
-/* Info Inferior con Degradado */
+/* --- INFO INFERIOR CON DEGRADADO MÁS ALTO --- */
 .proyectos-movil-carrusel-info {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 20px 20px;
-    background: linear-gradient(to top, rgb(0, 0, 0) 0%, transparent 100%);
+    /* Aumentamos el padding superior y usamos un gradiente que empieza más arriba */
+    padding: 80px 20px 25px; 
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(0, 0, 0, 0.7) 40%, 
+        rgba(0, 0, 0, 0) 100%);
     z-index: 5;
 }
 
@@ -5764,7 +5791,7 @@ body.modal-open {
 .proyectos-movil-carrusel-actions {
     position: absolute;
     inset: 0;
-    background: rgba(0, 98, 255, 0.85); /* Azul IST */
+    background: rgba(1, 31, 46, 0.85); /* Azul IST */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -5782,7 +5809,7 @@ body.modal-open {
 }
 
 .proyectos-movil-carrusel-item.selected .proyectos-movil-card-inner {
-    border: 3px solid #00d2ff;
+    border: 3px solid #c1f4ff;
     transform: scale(0.98);
 }
 
@@ -5794,14 +5821,16 @@ body.modal-open {
 .action-btn-ist {
     width: 60px;
     height: 60px;
-    background: #fff;
+    background: 
+        linear-gradient(135deg, #01293d, #0a71ad) padding-box,
+        linear-gradient(135deg, #5e99c0, #f4fdff) border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #0062ff;
+    color: white;
     font-size: 24px;
-    border: none;
+    border: 2px solid transparent;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     text-decoration: none !important;
 }
@@ -5814,8 +5843,8 @@ body.modal-open {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(8, 79, 146, 0.288);
+    border: 1px solid rgba(216, 243, 255, 0.151);
     color: #fff;
     z-index: 20;
     display: flex;
@@ -5824,8 +5853,8 @@ body.modal-open {
     backdrop-filter: blur(10px);
 }
 
-.proyectos-movil-nav-btn.prev { left: 5px; }
-.proyectos-movil-nav-btn.next { right: 5px; }
+.proyectos-movil-nav-btn.prev { left: 10px; }
+.proyectos-movil-nav-btn.next { right: 10px; }
 
 /* THUMBS */
 .proyectos-movil-carrusel-thumbs {
@@ -5844,7 +5873,27 @@ body.modal-open {
 }
 
 .thumb-box.active {
-    background: #00d2ff;
+    background: #d8f7ff;
     width: 30px; /* Se alarga cuando está activo */
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+/* Forzar ocultar la sección de escritorio en móviles */
+@media (max-width: 991px) {
+    .proyectos-modern-section {
+        display: none !important;
+    }
+    .proyectos-titulo{
+      margin-bottom: 1rem;
+    }
+    .other-projects-title{
+      font-size:1.5rem;
+    }
+}
+
+/* Forzar ocultar la sección móvil en escritorio */
+@media (min-width: 992px) {
+    .proyectos-movil-carrusel-section {
+        display: none !important;
+    }
 }

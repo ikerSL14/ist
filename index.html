@@ -57,7 +57,7 @@
                     <a class="nav-link" href="#proyectos">Proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="carrusel.html">Contacto</a>
+                    <a class="nav-link" href="#contacto">Contacto</a>
                 </li>
                 <li class="nav-item nav-link-socials-wrapper">
                   <div class="links-menu-wrapper">
@@ -375,169 +375,7 @@
             loader.style.display = 'none';
         }, 500); // Esperamos medio segundo para que se desvanezca bonito
     };
-    // Datos de servicios: nombre, descripción e imagen (puedes cambiar las URLs)
-const serviciosData = {
-    aceleracion: {
-        title: "Aceleración de equipo",
-        description: "Optimiza el rendimiento de tu computadora para que funcione más rápido y sin interrupciones.",
-        image: "https://i.ibb.co/f5bhV65/W3.jpg",
-        modalId: "#modalAceleracion"
-    },
-    office: {
-        title: "Instalación de Office",
-        description: "Instalamos y configuramos Microsoft Office para que puedas trabajar con todas sus herramientas.",
-        image: "office.png",
-        modalId: "#modalOffice"
-    },
-    programas: {
-        title: "Instalación de programas",
-        description: "Instalamos cualquier software que necesites de forma segura y rápida.",
-        image: "https://i.ibb.co/7xPCxDQC/select.png",
-        modalId: "#modalProgramas"
-    },
-    diseno: {
-        title: "Diseños publicitarios",
-        description: "Creamos diseños atractivos para promocionar tu negocio y captar más clientes.",
-        image: "https://i.ibb.co/YF7CJ9L1/T1.png",
-        modalId: "#modalDiseno"
-    },
-    sitios: {
-        title: "Diseño de sitios web",
-        description: "Desarrollamos páginas web profesionales, responsivas y fáciles de usar.",
-        image: "https://i.ibb.co/4RqbM97V/P5.jpg",
-        modalId: "#modalSitios"
-    },
-    videos: {
-        title: "Edición de videos",
-        description: "Editamos tus videos para que tengan un acabado profesional y atractivo.",
-        image: "https://i.ibb.co/SwjFZBMQ/videov.png",
-        modalId: "#modalVideos"
-    },
-    software: {
-        title: "Desarrollo de software",
-        description: "Creamos aplicaciones personalizadas para cubrir las necesidades de tu negocio.",
-        image: "https://i.ibb.co/3mw2nxhB/is4.jpg",
-        modalId: "#modalSoftware"
-    },
-    formateo: {
-        title: "Formateo/Instalación",
-        description: "Formateamos tu equipo y reinstalamos sistemas operativos para un rendimiento óptimo.",
-        image: "https://i.ibb.co/2HJ6rxN/P6.jpg",
-        modalId: "#modalFormateo"
-    },
-    mantenimiento: {
-        title: "Mantenimiento",
-        description: "Realizamos mantenimiento preventivo y correctivo para prolongar la vida útil de tus equipos.",
-        image: "https://i.ibb.co/PG8SkpfR/is1.jpg",
-        modalId: "#modalMantenimiento"
-    },
-    mejoras: {
-        title: "Mejoras de equipo",
-        description: "Actualizamos y mejoramos el hardware para que tu equipo rinda mejor.",
-        image: "https://i.ibb.co/bM9Nkz9x/is5.jpg",
-        modalId: "#modalMejoras"
-    }
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-const contenedor = document.querySelector('.proyectos-contenedor');
-  
-  function checkScroll() {
-    // Verificar posición del scroll
-    const canScrollLeft = contenedor.scrollLeft > 0;
-    const canScrollRight = 
-      contenedor.scrollLeft < (contenedor.scrollWidth - contenedor.clientWidth - 1);
     
-    // Actualizar clases
-    contenedor.classList.toggle('can-scroll-left', canScrollLeft);
-    contenedor.classList.toggle('can-scroll-right', canScrollRight);
-  }
-  
-  // Configurar eventos
-  contenedor.addEventListener('scroll', checkScroll);
-  window.addEventListener('resize', checkScroll);
-  
-  // Verificar estado inicial
-  checkScroll();
-  
-  // Arrastre con mouse (mejorado)
-  let isDragging = false;
-  let startX, scrollLeft;
-  
-  contenedor.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.pageX - contenedor.offsetLeft;
-    scrollLeft = contenedor.scrollLeft;
-    contenedor.style.cursor = 'grabbing';
-    contenedor.style.userSelect = 'none';
-  });
-  
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    contenedor.style.cursor = 'grab';
-    contenedor.style.userSelect = '';
-  });
-  
-  document.addEventListener('mousemove', (e) => {
-    if(!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - contenedor.offsetLeft;
-    const walk = (x - startX) * 2;
-    contenedor.scrollLeft = scrollLeft - walk;
-  });
-    const serviceItems = document.querySelectorAll(".service-item");
-    const serviceImage = document.getElementById("service-image");
-    const serviceTitle = document.getElementById("service-title");
-    const serviceDescription = document.getElementById("service-description");
-    const infoButton = document.getElementById("info-button");
-    const wifiIcon = document.getElementById("wifi-icon");
-
-    function clearActive() {
-        serviceItems.forEach(item => item.classList.remove("active"));
-    }
-    let servicioSeleccionado = null;
-    serviceItems.forEach(item => {
-        item.addEventListener("click", () => {
-            const key = item.getAttribute("data-service");
-            const service = serviciosData[key];
-
-            if (service) {
-                // Actualizar contenido del cuadro izquierdo
-                serviceImage.src = service.image;
-                serviceImage.alt = service.title;
-                serviceTitle.textContent = service.title;
-                serviceDescription.textContent = service.description;
-                infoButton.disabled = false;
-
-                servicioSeleccionado = key;
-// Mostrar u ocultar icono wifi según servicio
-            const serviciosConWifi = ["aceleracion", "office", "programas", "diseno", "sitios", "videos", "software"];
-            if (serviciosConWifi.includes(key)) {
-                wifiIcon.style.visibility = "visible";
-            } else {
-                wifiIcon.style.visibility = "hidden";
-            }
-                // Resaltar el servicio seleccionado
-                clearActive();
-                item.classList.add("active");
-            }
-        });
-    });
-    infoButton.addEventListener("click", () => {
-    if (!servicioSeleccionado) return;
-
-    const modalSelector = serviciosData[servicioSeleccionado].modalId;
-    if (modalSelector) {
-        // Usando jQuery y Bootstrap 4/5:
-        $(modalSelector).modal('show');
-
-        // Si usas Bootstrap 5 sin jQuery, sería:
-        // const modalElement = document.querySelector(modalSelector);
-        // const modal = new bootstrap.Modal(modalElement);
-        // modal.show();
-    }
-});
-});
     </script>
 <!-- 
  ===============================
@@ -602,7 +440,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         <!-- Botón degradado -->
         <a id="conoceBtn"href="#sobre-nosotros-2026" class="ist-gradient-btn"><span>Conócenos</span><i class="bi bi-arrow-right"></i>
         </a>
-        <script>
+<script>
     document.getElementById('conoceBtn').addEventListener('click', function(e) {
         e.preventDefault(); // Evita el comportamiento predeterminado
         const target = document.querySelector('#sobre-nosotros');
@@ -651,51 +489,8 @@ const contenedor = document.querySelector('.proyectos-contenedor');
   </div>
 
   <div class="ist-serv-grid">
-    <!--
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Aceleración de equipo"
-         data-type="remote"
-         data-desc="Aumentamos la velocidad y eficiencia de tu computadora optimizando el sistema. Te ofrecemos sugerencias y si deseas, podemos pasar a una mejora de equipo, al actualizar los componentes."
-         data-icon="ph:rocket-launch-duotone"
-         data-flyer="imgs/Aceleracion.png"
-         data-extra1="https://i.ibb.co/f5bhV65/W3.jpg"
-         data-extra2="https://i.ibb.co/PG8SkpfR/is1.jpg">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="ph:rocket-launch-duotone" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Aceleración de equipo</h3>
-      <p class="ist-serv-desc">Optimización avanzada de hardware y software para velocidad máxima.</p>
-    </article>
-
-    <article class="ist-serv-card" 
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Instalación de Office"
-         data-type="remote"
-         data-desc="Te configuramos, estés donde estés, la suite completa de Office con todas las herramientas de productividad activadas y listas para tu flujo de trabajo profesional."
-         data-icon="mi:document"
-         data-flyer="imgs/Office.png"
-         data-extra1="office.png"
-         data-extra2="https://i.ibb.co/KcBxsRKf/P1.jpg">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="mi:document" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Instalación de Office</h3>
-      <p class="ist-serv-desc">Configuración oficial y completa de herramientas de productividad.</p>
-    </article>-->
-
+    
+<!-- SERVICIO 1: Aceleración de equipo -->
     <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -713,7 +508,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="aceleracionpreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/aceleracionpreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -729,6 +524,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 2: Instalación de Office -->
     <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -746,7 +542,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="officepreview8.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/officepreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -762,6 +558,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 3: Programas y servicios -->
  <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -779,7 +576,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="programaspreview4.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/programaspreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -795,6 +592,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 4: Diseños publicitarios -->
  <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -812,7 +610,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="publicidadpreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/publicidadpreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -828,7 +626,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
-
+<!-- SERVICIO 5: Diseño de sitios web -->
  <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -846,7 +644,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="webpreview4.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/webpreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -862,6 +660,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 6: Edición de videos -->
  <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -879,7 +678,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="videopreview2.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/videopreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -895,6 +694,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 7: Desarrollo de software -->
 <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -912,7 +712,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="devpreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/devpreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -928,6 +728,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 8: Diseño de lonas -->
 <article class="ist-services-modern-card" 
           data-toggle="modal" 
          data-target="#istModalServicio"
@@ -945,7 +746,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 
     <div class="ist-modern-image-container">
-        <img src="lonaspreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/lonaspreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -962,6 +763,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 9: Formateo / Instalación de SO -->
 <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -978,7 +780,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
 
     <div class="ist-modern-image-container">
-        <img src="sistemaspreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/sistemaspreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -995,6 +797,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 10: Mantenimiento de equipo -->
 <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -1011,7 +814,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
 
     <div class="ist-modern-image-container">
-        <img src="mantenimientopreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/mantenimientopreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -1028,6 +831,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 11: Mejora de equipo -->
 <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -1044,7 +848,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
 
     <div class="ist-modern-image-container">
-        <img src="mejorapreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/mejorapreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -1061,6 +865,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
     </div>
 </article>
 
+<!-- SERVICIO 12: Recuperación de archivos -->
 <article class="ist-services-modern-card" 
          data-toggle="modal" 
          data-target="#istModalServicio"
@@ -1077,7 +882,7 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       </div>
 
     <div class="ist-modern-image-container">
-        <img src="datospreview.png" alt="Preview" class="ist-modern-img">
+        <img src="imgs/previews/datospreview.png" alt="Preview" class="ist-modern-img">
         <div class="ist-modern-img-overlay"></div>
     </div>
 
@@ -1093,226 +898,6 @@ const contenedor = document.querySelector('.proyectos-contenedor');
         </p>
     </div>
 </article>
-<!--
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Programas y servicios"
-         data-type="remote"
-         data-desc="Cualquier software (programa) o servicio digital que necesites para tu trabajo o proyectos, lo instalamos y configuramos a distancia, o en su defecto, te brindamos asistencia para su activación y uso."
-         data-icon="icon-park-outline:more-app"
-         data-flyer="imgs/Programas.png"
-         data-extra1="https://i.ibb.co/7xPCxDQC/select.png"
-         data-extra2="https://i.ibb.co/SwjFZBMQ/videov.png">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        
-        <iconify-icon icon="icon-park-outline:more-app" class="ist-serv-icon"></iconify-icon>
-      </div>
-      <h3 class="ist-serv-name">Programas y servicios</h3>
-      <p class="ist-serv-desc">Software (programas) y servicios digitales listos para trabajar.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Diseños publicitarios"
-         data-type="remote"
-         data-desc="Diseñamos creativos visuales totalmente al gusto para promocionar tu negocio y captar la atención de tu audiencia objetivo."
-         data-icon="ph:megaphone-duotone"
-         data-flyer="imgs/Publicidad.png"
-         data-extra1="https://i.ibb.co/YF7CJ9L1/T1.png"
-         data-extra2="https://i.ibb.co/nMvbP5FX/istimg2.png">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        
-        <iconify-icon icon="ph:megaphone-duotone" class="ist-serv-icon"></iconify-icon>
-      </div>
-      <h3 class="ist-serv-name">Diseños publicitarios</h3>
-      
-      <p class="ist-serv-desc">Creatividad visual que impacta y comunica tu mensaje.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Diseño de sitios web"
-         data-type="remote"
-         data-desc="Diseñamos y desarrollamos la página web que necesites, desde landing pages para tu negocio hasta sistemas con bases de datos. Incluye dominio y host."
-         data-icon="streamline-plump:web"
-         data-flyer="imgs/Web.png"
-         data-extra1="edurosimg.png"
-         data-extra2="persystec.png">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="streamline-plump:web" class="ist-serv-icon"></iconify-icon>
-      </div>
-      <h3 class="ist-serv-name">Diseño de sitios web</h3>
-      <p class="ist-serv-desc">Experiencias digitales modernas y optimizadas para SEO.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Edición de videos"
-         data-type="remote"
-         data-desc="Creamos y editamos videos atractivos con narrativa visual, transiciones y efectos de alta calidad para tus proyectos personales o comerciales."
-         data-icon="streamline-ultimate:video-edit-magic-wand-bold"
-         data-flyer="imgs/Video.png"
-         data-extra1="https://i.ibb.co/SwjFZBMQ/videov.png"
-         data-extra2="https://images.unsplash.com/photo-1607112812619-182cb1c7bb61?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="streamline-ultimate:video-edit-magic-wand-bold" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Edición de videos</h3>
-      <p class="ist-serv-desc">Narrativa visual con transiciones y efectos de alta calidad.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Desarrollo de software"
-         data-type="remote"
-         data-desc="Desarrollamos aplicaciones y sistemas personalizados con las especificaciones que necesites, y las tecnologías que necesites."
-         data-icon="ph:code"
-         data-flyer="imgs/Desarrollo.png"
-         data-extra1="https://i.ibb.co/3mw2nxhB/is4.jpg"
-         data-extra2="edukids.png">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="ph:code" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Desarrollo de software</h3>
-      <p class="ist-serv-desc">Sistemas personalizados que resuelven retos de negocio.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Diseño de lonas"
-         data-type="remote"
-         data-desc="Creamos diseños de lonas atractivos y al gusto, para que puedas promocionar lo que necesites de forma profesional y efectiva. De todos los tamaños, listas para impresión, para personas o negocios."
-         data-icon="mdi:billboard"
-         data-flyer="imgs/Lonas.png"
-         data-extra1="https://images.unsplash.com/photo-1716471330501-b443b15a716f?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-         data-extra2="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-      <div class="ist-serv-badge-card ist-serv-remote">
-        <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-        A distancia
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="mdi:billboard" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Diseño de lonas</h3>
-      <p class="ist-serv-desc">Diseños atractivos y profesionales para lonas publicitarias.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Formateo/Instalación"
-         data-type="onsite"
-         data-desc="Formateamos e instalamos el sistema operativo que estés buscando. Tomamos las decisiones contigo para dejar tu equipo como nuevo."
-         data-icon="ph:arrows-clockwise"
-         data-flyer="imgs/Formateo.png"
-         data-extra1="https://i.ibb.co/2HJ6rxN/P6.jpg"
-         data-extra2="https://i.ibb.co/7xj318Fc/W2.jpg">
-      <div class="ist-serv-badge-card ist-serv-onsite">
-        <iconify-icon icon="mage:users"></iconify-icon>
-        Presencial
-      </div>
-      <div class="ist-serv-icon-box">
-        
-        <iconify-icon icon="ph:arrows-clockwise" class="ist-serv-icon"></iconify-icon>
-      </div>
-      <h3 class="ist-serv-name">Formateo / Sistemas</h3>
-      <p class="ist-serv-desc">Instalación limpia de SO para un equipo como nuevo.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Mantenimiento"
-         data-type="onsite"
-         data-desc="Brindamos mantenimiento preventivo o correctivo a tu equipo para asegurar su óptimo funcionamiento y prolongar su vida útil, limpiando y revisando componentes clave."
-         data-icon="hugeicons:repair"
-         data-flyer="imgs/Mantenimiento.png"
-         data-extra1="https://i.ibb.co/PG8SkpfR/is1.jpg"
-         data-extra2="https://i.ibb.co/qYTv5Gr1/W1.jpg">
-      <div class="ist-serv-badge-card ist-serv-onsite">
-        <iconify-icon icon="mage:users"></iconify-icon>
-        Presencial
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="hugeicons:repair" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Mantenimiento de equipo</h3>
-      <p class="ist-serv-desc">Cuidado preventivo para evitar fallos y sobrecalentamiento.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Mejora de equipo"
-         data-type="onsite"
-         data-desc="Evaluamos y actualizamos componentes clave de tu hardware para mejorar el rendimiento general de tu computadora. Te ayudamos a elegir conforme a tus necesidades."
-         data-icon="ph:cpu-duotone"
-         data-flyer="imgs/Mejora.png"
-         data-extra1="https://i.ibb.co/bM9Nkz9x/is5.jpg"
-         data-extra2="https://i.ibb.co/nNxzSGQx/P2.jpg">
-      <div class="ist-serv-badge-card ist-serv-onsite">
-        <iconify-icon icon="mage:users"></iconify-icon>
-        Presencial
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="ph:cpu-duotone" class="ist-serv-icon"></iconify-icon>
-        
-      </div>
-      <h3 class="ist-serv-name">Mejora de equipo</h3>
-      <p class="ist-serv-desc">Actualización estratégica de componentes internos.</p>
-    </article>
-
-    <article class="ist-serv-card"
-         data-toggle="modal" 
-         data-target="#istModalServicio"
-         data-title="Recuperación de archivos"
-         data-type="onsite"
-         data-desc="Recuperamos información de unidades de almacenamiento que no permiten ver su contenido, como fotografías, videos o documentos, ya sea por fallos lógicos o físicos. En algunos casos, es posible hacer que tu unidad vuelva a funcionar."
-         data-icon="mdi:file-sync-outline"
-         data-flyer="imgs/Recuperacion.png"
-         data-extra1="https://images.unsplash.com/photo-1477949331575-2763034b5fb5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-         data-extra2="https://images.unsplash.com/photo-1484662020986-75935d2ebc66?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-      <div class="ist-serv-badge-card ist-serv-onsite">
-        <iconify-icon icon="mage:users"></iconify-icon>
-        Presencial
-      </div>
-      <div class="ist-serv-icon-box">
-        <iconify-icon icon="mdi:file-sync-outline" class="ist-serv-icon"></iconify-icon>
-      </div>
-      <h3 class="ist-serv-name">Recuperación de archivos</h3>
-      <p class="ist-serv-desc">Recuperación de datos de unidades dañadas.</p>
-    </article>
-  </div>-->
 
 <!-- Modal de servicios -->
 <div class="modal fade" id="istModalServicio" tabindex="-1" role="dialog" aria-hidden="true">
@@ -1387,7 +972,6 @@ const contenedor = document.querySelector('.proyectos-contenedor');
 </section>
 
 
-
 <!-- 
  ===============================
  ✏️ Sección: Proyectos
@@ -1403,17 +987,204 @@ const contenedor = document.querySelector('.proyectos-contenedor');
       Nuestros mejores trabajos
     </h2>
 
- <section class="proyectos-modern-section">
+<!-- Sección Proyectos: Móviles / Móvil -->
+<section class="proyectos-movil-carrusel-section d-block d-lg-none">
+    
+
+    <div class="proyectos-movil-carrusel-container">
+        <button class="proyectos-movil-nav-btn prev" onclick="moveSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="proyectos-movil-nav-btn next" onclick="moveSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="proyectos-movil-carrusel-track" id="mobileTrack">
+            
+            <div class="proyectos-movil-carrusel-item active" onclick="toggleActions(this)">
+                <div class="proyectos-movil-card-inner">
+                    <div class="proyectos-movil-client-logo">
+                        <img src="umidlogo.png" alt="Logo UMID">
+                    </div>
+                    <div class="proyectos-movil-carrusel-badge">DESTACADO</div>
+                    <img src="umid-carrusel.png" alt="UMID" class="proyectos-movil-mockup">
+                    
+                    <div class="proyectos-movil-carrusel-info">
+                        <h3>UMID</h3>
+                        <p>Plataforma universitaria con blog dinámico y conectividad total.</p>
+                    </div>
+
+                    <div class="proyectos-movil-carrusel-actions">
+                        <div class="actions-buttons-wrapper">
+                            <a href="https://umid.edu.mx" target="_blank" class="action-btn-ist"><iconify-icon icon="akar-icons:link-out"></iconify-icon></a>
+                            <button class="action-btn-ist" onclick="openModernGallery(0)"><iconify-icon icon="ph:images-duotone"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proyectos-movil-carrusel-item" onclick="toggleActions(this)">
+                <div class="proyectos-movil-card-inner">
+                    <div class="proyectos-movil-client-logo">
+                        <img src="frontlogo.png" alt="Logo Frontlangu">
+                    </div>
+                    <div class="proyectos-movil-carrusel-badge">DESTACADO</div>
+                    <img src="frontlangu-carrusel.png" alt="Frontlangu" class="proyectos-movil-mockup">
+                    <div class="proyectos-movil-carrusel-info">
+                        <h3>Frontlangu</h3>
+                        <p>Academia de idiomas online con sistema de gestión de alumnos.</p>
+                    </div>
+                    <div class="proyectos-movil-carrusel-actions">
+                        <div class="actions-buttons-wrapper">
+                            <a href="https://frontlangu.com" target="_blank" class="action-btn-ist"><iconify-icon icon="akar-icons:link-out"></iconify-icon></a>
+                            <button class="action-btn-ist"  onclick="openModernGallery(1)"><iconify-icon icon="ph:images-duotone"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proyectos-movil-carrusel-item" onclick="toggleActions(this)">
+                <div class="proyectos-movil-card-inner">
+                    <div class="proyectos-movil-client-logo">
+                        <img src="hydrologo.png" alt="Logo HydroFlow">
+                    </div>
+                    <div class="proyectos-movil-carrusel-badge">DESTACADO</div>
+                    <img src="hydroflow-carrusel.png" alt="HydroFlow" class="proyectos-movil-mockup">
+                    <div class="proyectos-movil-carrusel-info">
+                        <h3>HydroFlow</h3>
+                        <p>Sistema de visualización de datos ambientales con IA.</p>
+                    </div>
+                    <div class="proyectos-movil-carrusel-actions">
+                        <div class="actions-buttons-wrapper">
+                            <a href="http://hydroflowp.netlify.app" target="_blank" class="action-btn-ist"><iconify-icon icon="akar-icons:link-out"></iconify-icon></a>
+                            <button class="action-btn-ist"  onclick="openModernGallery(2)"><iconify-icon icon="ph:images-duotone"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proyectos-movil-carrusel-item" onclick="toggleActions(this)">
+                <div class="proyectos-movil-card-inner">
+                    <div class="proyectos-movil-client-logo">
+                        <img src="pstpfp.png" alt="Logo Persystec">
+                    </div>
+                    <img src="persystec-carrusel.png" alt="Persystec" class="proyectos-movil-mockup">
+                    <div class="proyectos-movil-carrusel-info">
+                        <h3>Persystec</h3>
+                        <p>Sitio Web Corporativo con diseño Dark Mode.</p>
+                    </div>
+                    <div class="proyectos-movil-carrusel-actions">
+                        <div class="actions-buttons-wrapper">
+                            <a href="https://persystec.com" target="_blank" class="action-btn-ist"><iconify-icon icon="akar-icons:link-out"></iconify-icon></a>
+                            <button class="action-btn-ist"  onclick="openModernGallery(3)"><iconify-icon icon="ph:images-duotone"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proyectos-movil-carrusel-item" onclick="toggleActions(this)">
+                <div class="proyectos-movil-card-inner">
+                    <div class="proyectos-movil-client-logo">
+                        <img src="roybetlogo.png" alt="Logo RoyBet">
+                    </div>
+                    <img src="roybet-carrusel.png" alt="RoyBet" class="proyectos-movil-mockup">
+                    <div class="proyectos-movil-carrusel-info">
+                        <h3>RoyBet</h3>
+                        <p>Sistema Web Profesional para presentación de servicios.</p>
+                    </div>
+                    <div class="proyectos-movil-carrusel-actions">
+                        <div class="actions-buttons-wrapper">
+                            <a href="http://roybet.pages.dev" target="_blank" class="action-btn-ist"><iconify-icon icon="akar-icons:link-out"></iconify-icon></a>
+                            <button class="action-btn-ist"  onclick="openModernGallery(4)"><iconify-icon icon="ph:images-duotone"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+
+    <div class="proyectos-movil-carrusel-thumbs" id="mobileThumbs">
+        <div class="thumb-box active" onclick="goToSlide(0)"></div>
+        <div class="thumb-box" onclick="goToSlide(1)"></div>
+        <div class="thumb-box" onclick="goToSlide(2)"></div>
+        <div class="thumb-box" onclick="goToSlide(3)"></div>
+        <div class="thumb-box" onclick="goToSlide(4)"></div>
+        
+    </div>
+</section>
+
+<!-- SCRIPT de FUNCIONAMIENTO de la sección de proyectos para móviles -->
+<script>
+const track = document.getElementById('mobileTrack');
+const thumbs = document.querySelectorAll('.thumb-box');
+const totalSlides = thumbs.length; // Son 5 en tu caso
+
+// 1. Sincronizar Thumbs al hacer scroll (Para iOS Swipe)
+track.addEventListener('scroll', () => {
+    // Calculamos el índice basado en la posición del scroll
+    const index = Math.round(track.scrollLeft / track.offsetWidth);
+    updateThumbs(index);
+});
+
+function updateThumbs(index) {
+    thumbs.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+    });
+}
+
+// 2. Navegación por botones con RETORNO INFINITO
+function moveSlide(direction) {
+    const currentIndex = Math.round(track.scrollLeft / track.offsetWidth);
+    let nextIndex = currentIndex + direction;
+
+    if (nextIndex >= totalSlides) {
+        // Si estamos en el último y damos "Siguiente", vamos al primero
+        nextIndex = 0;
+    } else if (nextIndex < 0) {
+        // Si estamos en el primero y damos "Atrás", vamos al último
+        nextIndex = totalSlides - 1;
+    }
+
+    track.scrollTo({
+        left: nextIndex * track.offsetWidth,
+        behavior: 'smooth'
+    });
+}
+
+function goToSlide(index) {
+    track.scrollTo({
+        left: index * track.offsetWidth,
+        behavior: 'smooth'
+    });
+}
+
+// 3. Toggle de Acciones (Click para seleccionar)
+function toggleActions(element) {
+    const isSelected = element.classList.contains('selected');
+    
+    // Quitamos la selección de todos
+    document.querySelectorAll('.proyectos-movil-carrusel-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+
+    // Si no estaba seleccionado, lo seleccionamos
+    if (!isSelected) {
+        element.classList.add('selected');
+    }
+}
+</script>
+
+<!-- Sección Proyectos: Desktop / Laptop -->
+<section class="proyectos-modern-section d-none d-lg-block">
     <div class="proyectos-modern-bg-texture"></div>
     <div class="proyectos-modern-glow"></div>
-
-    
 
     <div class="proyectos-modern-wrapper">
         
         <div class="proyectos-modern-gradient-layer" id="pj-modern-gradient"></div>
 
-        <img src="laptop-umid.png" id="pj-modern-device" class="proyectos-modern-device" alt="Project Device">
+        <img src="imgs/laptops/laptop-umid.png" id="pj-modern-device" class="proyectos-modern-device" alt="Project Device">
 
         <div class="proyectos-modern-info-layer">
             <div class="proyectos-modern-card-texture"></div>
@@ -1439,8 +1210,6 @@ const contenedor = document.querySelector('.proyectos-contenedor');
                 </div>
             </div>
 
-            
-
         </div>
 
             <div class="proyectos-modern-nav">
@@ -1462,6 +1231,8 @@ const contenedor = document.querySelector('.proyectos-contenedor');
             </div>
     </div>
 </section>
+
+<!-- SCRIPT de FUNCIONAMIENTO de la sección de proyectos para desktop / laptop -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
     const sectionProyectos = document.querySelector(".proyectos-modern-section");
@@ -1498,7 +1269,7 @@ const modernProjectsData = [
         category: "PLATAFORMA ACADÉMICA",
         desc: "Sitio web universitario con información académica, blog dinámico y conectividad total con redes sociales.",
         gradient: "linear-gradient(135deg, #160ccd 0%, #19083d 100%)", /* Gradiente Azul */
-        laptopImg: "imgs/laptop-umid.png", /* <-- Aquí va tu PNG de la laptop */
+        laptopImg: "imgs/laptops/laptop-umid.png", /* <-- Aquí va tu PNG de la laptop */
         isPremium: true,
         link: "https://umid.edu.mx",
         showcase: ["showcase/umid/1.png", "showcase/umid/2.png", "showcase/umid/3.png", "showcase/umid/4.png", "showcase/umid/5.png", "showcase/umid/6.png"]
@@ -1508,7 +1279,7 @@ const modernProjectsData = [
         category: "SISTEMA ESCOLAR",
         desc: "Sistema integral para escuela de idiomas con UX/UI avanzada y gestión de cursos en tiempo real.",
         gradient: "linear-gradient(135deg, #7b3a96 0%, #4eeaff 100%)", /* Gradiente Rosa/Rojo */
-        laptopImg: "imgs/laptop-frontlangu.png",
+        laptopImg: "imgs/laptops/laptop-frontlangu.png",
         isPremium: true,
         link: "https://frontlangu.com",
         showcase: ["showcase/frontlangu/1.png", "showcase/frontlangu/2.png", "showcase/frontlangu/3.png", "showcase/frontlangu/4.png", "showcase/frontlangu/5.png", "showcase/frontlangu/6.png"]
@@ -1519,7 +1290,7 @@ const modernProjectsData = [
         category: "SISTEMA INTELIGENTE",
         desc: "Sistema Inteligente de visualización y procesamiento de datos ambientales para toma de decisiones.",
         gradient: "linear-gradient(135deg, #0081f9 0%, #152b56 100%)",
-        laptopImg: "imgs/laptop-hydroflow.png",
+        laptopImg: "imgs/laptops/laptop-hydroflow.png",
         isPremium: true,
         link: "https://hydroflowp.netlify.app",
         showcase: ["showcase/hydroflow/1.png", "showcase/hydroflow/2.png", "showcase/hydroflow/3.png", "showcase/hydroflow/4.png", "showcase/hydroflow/5.png", "showcase/hydroflow/6.png"]
@@ -1530,7 +1301,7 @@ const modernProjectsData = [
         category: "SITIO CORPORATIVO",
         desc: "Sitio corporativo de alto impacto visual con estética Dark Mode. Diseñado para resaltar la identidad de marca.",
         gradient: "linear-gradient(135deg, #4d0023 0%, #ff004d 100%)",
-        laptopImg: "imgs/laptop-persystec.png",
+        laptopImg: "imgs/laptops/laptop-persystec.png",
         isPremium: false,
         link: "https://www.persystec.com",
         showcase: ["showcase/persystec/1.png", "showcase/persystec/2.png", "showcase/persystec/3.png","showcase/persystec/4.png","showcase/persystec/5.png","showcase/persystec/6.png"]
@@ -1540,7 +1311,7 @@ const modernProjectsData = [
         category: "SITIO WEB PROFESIONAL",
         desc: "Tarjeta de presentación digital para profesionales. Diseño minimalista para la exposición de servicios y contacto.",
         gradient: "linear-gradient(135deg, #27adaf 0%, #004c73 100%)",
-        laptopImg: "imgs/laptop-roybet.png",
+        laptopImg: "imgs/laptops/laptop-roybet.png",
         isPremium: false,
         link: "http://roybet.pages.dev",
         showcase: ["showcase/roybet/1.png", "showcase/roybet/2.png", "showcase/roybet/3.png","showcase/roybet/4.png","showcase/roybet/5.png","showcase/roybet/6.png"]
@@ -1595,13 +1366,20 @@ window.addEventListener('DOMContentLoaded', () => {
     changeModernProject(0);
 });
 
-// NUEVA FUNCIÓN PARA LA GALERÍA MODERN
-function openModernGallery() {
-    // Buscar el círculo activo en la nueva sección modern
-    const activeItem = document.querySelector('.proyectos-modern-item.active');
-    const index = Array.from(activeItem.parentNode.children).indexOf(activeItem);
+function openModernGallery(index) {
+    let finalIndex;
+
+    // Si pasamos un índice (Móvil), lo usamos. 
+    // Si no (Escritorio), buscamos el círculo activo.
+    if (typeof index !== 'undefined') {
+        finalIndex = index;
+    } else {
+        const activeItem = document.querySelector('.proyectos-modern-item.active');
+        finalIndex = Array.from(activeItem.parentNode.children).indexOf(activeItem);
+    }
     
-    currentProjectImages = modernProjectsData[index].showcase;
+    // Obtenemos las imágenes del array de datos usando el índice final
+    currentProjectImages = modernProjectsData[finalIndex].showcase;
     currentSlideIndex = 0;
     
     if(!currentProjectImages || currentProjectImages.length === 0) {
@@ -1615,158 +1393,8 @@ function openModernGallery() {
 }
     </script>
 
-<!--
-<section class="proyectos-2026-section" id="proyectos">
-    <div class="proyectos-2026-bg-container">
-        <img src="bgumid-2.png" id="pj-bg-image" class="proyectos-2026-bg" alt="Background">
-        <div class="proyectos-2026-overlay"></div>
-    </div>
-
-    <div class="proyectos-2026-main">
-        <div class="proyectos-2026-info">
-            <h2 id="pj-title" class="proyectos-2026-title">UMID</h2>
-            <p id="pj-desc" class="proyectos-2026-description">
-                Sitio web universitario con información académica, blog dinámico y conectividad total con redes sociales.
-            </p>
-            
-            <div class="proyectos-2026-actions">
-                <a href="#" id="pj-link" target="_blank" class="proyectos-2026-btn-main">
-                    <iconify-icon icon="ph:globe-duotone"></iconify-icon> Visitar Sitio
-                </a>
-                <button class="proyectos-2026-btn-gallery" onclick="openGallery()">
-                    <iconify-icon icon="ph:images-duotone"></iconify-icon> Ver Detalles
-                </button>
-            </div>
-        </div>
-
-        <div class="proyectos-2026-nav">
-            <div class="proyectos-2026-item active" onclick="changeProject(0)">
-                <span class="proyectos-2026-badge highlight">PROYECTO DESTACADO</span>
-                <div class="proyectos-2026-circle">
-                    <img src="umidlogo.png" alt="P1">
-                </div>
-            </div>
-
-            <div class="proyectos-2026-item" onclick="changeProject(1)">
-                <div class="proyectos-2026-badge-group">
-                    <span class="proyectos-2026-badge highlight">PROYECTO DESTACADO</span>
-                    
-                </div>
-                <div class="proyectos-2026-circle">
-                    <img src="frontlogo.png" alt="P2">
-                </div>
-            </div>
-
-            <div class="proyectos-2026-item" onclick="changeProject(2)">
-                <div class="proyectos-2026-circle">
-                    <img src="hydrologo.png" alt="P3">
-                </div>
-            </div>
-
-            <div class="proyectos-2026-item" onclick="changeProject(3)">
-                <div class="proyectos-2026-circle">
-                    <img src="pstpfp.png" alt="P4">
-                </div>
-            </div>
-
-            <div class="proyectos-2026-item" onclick="changeProject(4)">
-                <div class="proyectos-2026-circle">
-                    <img src="roybetlogo.png" alt="P5">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>-->
 
 <script>
-
-  let currentProjectImages = []; // Variable global para las fotos del proyecto actual
-  let currentSlideIndex = 0;
-
-  const projectsData = [
-    {
-        title: "UMID",
-        desc: "Sitio web universitario con información académica, blog dinámico y conectividad total con redes sociales.",
-        bg: "bgumid-2.png",
-        bgMobile: "bgumid-mob.jpeg", // Imagen para Mobile (<= 450px)
-        link: "https://umid.edu.mx",
-        showcase: ["showcase/umid/1.png", "showcase/umid/2.png", "showcase/umid/3.png","showcase/umid/4.png","showcase/umid/5.png","showcase/umid/6.png"] // Fotos del proyecto para la galería
-    },
-    {
-        title: "Frontlangu",
-        desc: "Sistema integral para escuela de idiomas con UX/UI avanzada y gestión de cursos en tiempo real.",
-        bg: "bgfrontlangu-2.png",
-        bgMobile: "bgfrontlangu-mob.jpeg", // Imagen para Mobile (<= 450px)
-        link: "https://frontlangu.com",
-        showcase: ["showcase/frontlangu/1.png", "showcase/frontlangu/2.png", "showcase/frontlangu/3.png","showcase/frontlangu/4.png","showcase/frontlangu/5.png","showcase/frontlangu/6.png"]
-    },
-    {
-        title: "HydroFlow",
-        desc: "Sistema de procesamiento de datos ambientales para la optimización de cultivo en la región de Tabasco.",
-        bg: "bghydroflow.png",
-        bgMobile: "bghydroflow-mob.jpeg", // Imagen para Mobile (<= 450px)
-        link: "https://hydroflowp.netlify.app",
-        showcase: ["showcase/hydroflow/1.png", "showcase/hydroflow/2.png", "showcase/hydroflow/3.png","showcase/hydroflow/4.png","showcase/hydroflow/5.png","showcase/hydroflow/6.png"]
-    },
-    {
-        title: "PerSysTec",
-        desc: "Sitio corporativo de alto impacto visual con estética Dark Mode. Diseñado para resaltar la identidad de marca.",
-        bg: "bgpst-2.png",
-        bgMobile: "bgpst-mob.jpeg", // Imagen para Mobile (<= 450px)
-        link: "https://www.persystec.com",
-        showcase: ["showcase/persystec/1.png", "showcase/persystec/2.png", "showcase/persystec/3.png","showcase/persystec/4.png","showcase/persystec/5.png","showcase/persystec/6.png"]
-    },
-    {
-        title: "Ro&bet",
-        desc: "Tarjeta de presentación digital para profesionales. Diseño minimalista para la exposición de servicios y contacto.",
-        bg: "bgroybet-2.png",
-        bgMobile: "bgroybet-mob.jpeg", // Imagen para Mobile (<= 450px)
-        link: "http://roybet.pages.dev",
-        showcase: ["showcase/roybet/1.png", "showcase/roybet/2.png", "showcase/roybet/3.png","showcase/roybet/4.png","showcase/roybet/5.png","showcase/roybet/6.png"]
-    }
-];
-
-function changeProject(index) {
-    const data = projectsData[index];
-    
-    // 1. Actualizar clases de los círculos
-    const items = document.querySelectorAll('.proyectos-2026-item');
-    items.forEach(item => item.classList.remove('active'));
-    items[index].classList.add('active');
-
-    // 2. Transición de fondo
-    const bgImage = document.getElementById('pj-bg-image');
-    const infoContainer = document.querySelector('.proyectos-2026-info');
-
-    // Efecto de salida
-    bgImage.style.opacity = '0';
-    infoContainer.style.opacity = '0';
-    infoContainer.style.transform = 'translateY(10px)';
-    
-    setTimeout(() => {
-        // DETECCIÓN DE ANCHO:
-        // Si el ancho es 450 o menos, usa bgMobile, si no, usa bg normal.
-        const selectedImg = window.innerWidth <= 450 ? data.bgMobile : data.bg;
-        
-        bgImage.src = selectedImg;
-        document.getElementById('pj-title').innerText = data.title;
-        document.getElementById('pj-desc').innerText = data.desc;
-        document.getElementById('pj-link').href = data.link;
-
-        // Efecto de entrada
-        bgImage.style.opacity = '1';
-        infoContainer.style.opacity = '1';
-    }, 400);
-}
-// Ejecutar al cargar la página para setear la imagen correcta del primer proyecto
-window.addEventListener('DOMContentLoaded', () => {
-    const bgImage = document.getElementById('pj-bg-image');
-    if(window.innerWidth <= 450) {
-        bgImage.src = projectsData[0].bgMobile;
-    } else {
-        bgImage.src = projectsData[0].bg;
-    }
-});
 
 let currentProjectIndex = 0; // Para saber qué proyecto estamos viendo
 
@@ -1880,7 +1508,7 @@ function closeModalExterno(event) {
     <div class="other-projects-container">
         
         <div class="other-projects-header">
-            <h2 class="other-projects-title">Innovación y Proyectos Complementarios</h2>
+            <h2 class="other-projects-title">Proyectos Complementarios</h2>
         </div>
 
         <div class="other-projects-grid">
@@ -1942,22 +1570,7 @@ function closeModalExterno(event) {
                 </div>
             </div>
 
-            <!--
-            <div class="other-projects-card bento-wide reveal">
-                <img src="img_proyecto5.jpg" alt="Proyecto">
-                <div class="other-projects-overlay">
-                    <span class="other-projects-tag">Optimización</span>
-                    <h3 class="other-projects-name">ORBIT_CLOUD_SYSTEM</h3>
-                </div>
-            </div>
-
-            <div class="other-projects-card reveal">
-                <img src="img_proyecto6.jpg" alt="Proyecto">
-                <div class="other-projects-overlay">
-                    <span class="other-projects-tag">Identidad</span>
-                    <h3 class="other-projects-name">BRAND_CORE</h3>
-                </div>
-            </div> -->
+           
         </div>
     </div>
 </section>
@@ -1966,6 +1579,7 @@ function closeModalExterno(event) {
     <img id="bento-modal-img" class="bento-modal-content" src="" alt="Full view">
 </div>
 
+<!-- CTA Call to action para Proyectos -->
 <section class="ist-cta-section">
     <div class="ist-cta-card reveal">
         <!-- RAYOS -->
@@ -2063,6 +1677,7 @@ window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeBentoModal();
 });
 </script>
+
 <!-- 
  ===============================
  ✏️ Sección: Parallax imágen de fondo y datos
@@ -2329,188 +1944,10 @@ window.addEventListener('keydown', (e) => {
 </div>
 
 
-<!--
-<section id="proyectos" class="proyectos-section">
-  <div class="container">
-    <h2 class="proyectos-titulo">
-      Explora algunos de nuestros proyectos
-    </h2>
-    <div class="proyectos-scroll-wrapper">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-      <div class="scroll-indicator left" aria-hidden="true"></div>
-      <div class="scroll-indicator right" aria-hidden="true"></div>
-    <div class="proyectos-contenedor">
-       
-  <div class="proyecto-item fake-spacer" aria-hidden="true"></div>
-
-      
-       <div class="proyecto-item" id="p-persystec">
-        <div class="proyecto-logo">
-          <img src="pstpfp.png" alt="Logo 1">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('persystec.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 8, 0.884) 30%,rgba(68, 2, 16, 0.801) 70%, transparent 100%);">
-          <h3>PerSysTec</h3>
-          <p>Página moderna para un negocio con integración de redes sociales.</p>
-          <a href="https://www.persystec.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca otra vez para ver la imagen
-        </div>
-        </div>
-      </div>
-
-     
-       <div class="proyecto-item" id="p-leoweb" data-modal-img="leoweb2.png">
-        <div class="proyecto-logo">
-          <img src="leoweblogo.png" alt="Logo 1">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('leoweb.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
-          <h3>LeoWeb</h3>
-          <p>Un sistema web con página principal, panel de usuarios y de administrador para negocio de comida.</p>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-  
-      
-       <div class="proyecto-item" id="p-eduros" data-modal-img="edurosimg.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/Pz6998qt/pl1.png" alt="Logo 1">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/LzT44WRW/pm1.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 22, 27, 0.884) 30%,rgba(2, 60, 68, 0.801) 70%, transparent 100%);">
-          <h3>Edu-Ros</h3>
-          <p>Un sistema web con dashboard/panel de administrador y de padres para un jardín de niños.</p>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-
-      
-      <div class="proyecto-item" id="p-foodradar">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/21sfFSjz/p1-2.png" alt="Logo 1">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('pi1.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 0, 0.884) 30%,rgba(68, 2, 2, 0.801) 70%, transparent 100%);">
-          <h3>FoodRadar</h3>
-          <p>Una plataforma donde puedes localizar negocios de comida, al registrarte como cliente, y poner tu negocio en el mapa, al registrarte como negocio.</p>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-      
-    
-      <div class="proyecto-item" id="p-edukids" data-modal-img="edukids.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/RGYZTZZJ/p4.jpg" alt="Logo 2">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/1tmbDjx6/edukidsim.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(14, 0, 27, 0.884) 30%,rgba(9, 2, 68, 0.801) 70%, transparent 100%);">
-          <h3>Edu-Kids</h3>
-          <p>Un proyecto educativo diseñado con sistema de usuarios y administradores y lecciones/minijuegos.</p>
-          <a href="http://edukids.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-      
-      
-      <div class="proyecto-item" id="p-teecreator" data-modal-img="teecreator.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/hJJgtYj5/p2-1.png" alt="Logo 3">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/bgsncgvT/teecreatorimg.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 0, 19, 0.884) 30%,rgba(68, 2, 46, 0.801) 70%, transparent 100%);">
-          <h3>TeeCreator</h3>
-          <p>Un proyecto en el que puedes comprar playeras y personalizarlas, utilizando una interfaz intuitiva y amigable, ideal para tu negocio.</p>
-          <a href="https://teecreator.infinityfreeapp.com" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-      
-      
-      <div class="proyecto-item" id="p-adorarte" data-modal-img="adorarteimg.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/rfz5sNmh/p3.png" alt="Logo 4">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/1GdJsDLV/adorarteimg.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(27, 21, 0, 0.884) 30%,rgba(68, 50, 2, 0.801) 70%, transparent 100%);">
-          <h3>Adorarte</h3>
-          <p>Sistema web con funciones de inscripción a cursos musicales y compra de artículos.</p>
-          <a href="http://adorate.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-      
-      <div class="proyecto-item" id="p-vetpets" data-modal-img="vetpets.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/PZ3D3C2L/pets.jpg" alt="Logo 2">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/s9ZF07TS/petsimg.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 15, 27, 0.884) 30%,rgba(2, 36, 68, 0.801) 70%, transparent 100%);">
-          <h3>PETS</h3>
-          <p>Proyecto que cuenta con un sistema de cuentas, administrador y compra de articulos.</p>
-          <a href="http://vetpets.great-site.net" target="_blank" class="proyecto-boton"><i class="bi bi-globe"></i></a>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-      
-      <div class="proyecto-item" id="p-juchijobs" data-modal-img="juchijobs.png">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/8Lf5JKyR/juchi.png" alt="Logo 2">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/RGXvNq2V/juchiimg.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(2, 27, 0, 0.884) 30%,rgba(2, 68, 2, 0.801) 70%, transparent 100%);">
-          <h3>JuchiJobs</h3>
-          <p>Un nexo entre estudiantes egresados de una universidad y empresas con ofertas laborales.</p>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-
-      
-       <div class="proyecto-item" id="p-earlyjob">
-        <div class="proyecto-logo">
-          <img src="https://i.ibb.co/xtCvJJzv/earlyj.png" alt="Logo 1">
-        </div>
-        <div class="proyecto-imagen" style="background-image: url('https://i.ibb.co/3yyNKM0P/earlyimg.png')"></div>
-        <div class="proyecto-info" style="background: linear-gradient(to top, rgba(0, 7, 27, 0.884) 30%,rgba(2, 25, 68, 0.801) 70%, transparent 100%);">
-          <h3>EarlyJob</h3>
-          <p>Sistema web para solicitar/brindar transporte entre empleados de una empresa privada.</p>
-          <div class="proyecto-instruccion-movil">
-            <i class="bi bi-cursor-fill"></i> Toca dos veces para ver la imagen
-        </div>
-        </div>
-      </div>
-    </div>
-    
-    </div>
-  </div>
-
-  <div id="proyectomodal-overlay" class="proyectomodal-overlay">
-  <span class="proyectomodal-close">&times;</span>
-  <div class="proyectomodal-container">
-    <img id="proyectomodal-img" src="" alt="Vista Previa del Proyecto">
-  </div>
-</div>
-</section>-->
-
-
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- ============ SECCIÓN FACEBOOK ============= -->
  <section id="facebook" class="facebook-section">
         <div class="facebook-container">
             <!-- Columna izquierda: Información y icono -->
@@ -2581,6 +2018,7 @@ window.addEventListener('resize', () => {
 });
       </script>
 
+<!-- ============ SECCIÓN WHATSAPP ============= -->
      <section class="whatsapp-section">
         <div class="whatsapp-container">
             <!-- Columna izquierda: Chat simulado -->
@@ -3065,7 +2503,7 @@ document.querySelector('.message-input').addEventListener('keypress', function(e
 
         <div class="footer-bottom">
             <ul class="footer-bottom-links">
-                <li><a href="#">Versión 3.2</a></li>
+                <li><a href="#">Versión 3.3</a></li>
             </ul>
             <p>© 2026 IST. Todos los derechos reservados.</p>
         </div>

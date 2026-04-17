@@ -4053,6 +4053,7 @@ body.modal-open {
   letter-spacing: 0.5px;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  z-index:10
 }
 
 /* Variante A Distancia (Azul Brilloso) */
@@ -4126,6 +4127,115 @@ body.modal-open {
   font-size: 1.05rem;
   line-height: 1.6;
   font-weight: 400;
+}
+
+/* --- NUEVA CARD MODERNA IST --- */
+.ist-services-modern-card {
+    position: relative;
+    background: rgba(1, 20, 27, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 0; /* Quitamos padding para que la imagen mande */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+/* Contenedor de Imagen */
+.ist-modern-image-container {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Ajusta según tus PNGs */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+}
+
+.ist-modern-img {
+    max-width: 85%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+    z-index: 2;
+}
+
+/* Overlay para suavizar el recorte de la imagen hacia abajo */
+.ist-modern-img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(1, 20, 27, 0.8), transparent);
+    z-index: 3;
+}
+
+/* Bloque de Contenido (Izquierda) */
+.ist-modern-content {
+    padding: 25px 30px 40px 30px;
+    text-align: left;
+}
+
+/* Círculo del Icono Moderno */
+.ist-modern-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(59, 187, 246, 0.2) 0%, rgba(14, 50, 105, 0.4) 100%);
+    border: 1px solid rgba(183, 239, 253, 0.3);
+    color: #dbf1f7;
+    font-size: 1.4rem;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.ist-modern-icon-circle iconify-icon {
+  margin-left:0.1rem;
+    
+}
+
+.ist-modern-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+}
+
+.ist-modern-description {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- HOVER EFFECTS --- */
+.ist-services-modern-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(183, 239, 253, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+}
+
+.ist-services-modern-card:hover .ist-modern-img {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.ist-services-modern-card:hover .ist-modern-icon-circle {
+    border-color: #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    color: #fff;
 }
 
 /* Ajuste Responsive para móviles */
@@ -5052,53 +5162,115 @@ body.modal-open {
     transform: scale(1); /* Crece suavemente al abrir */
 }
 
-/* --- Sección CTA Estilo IST --- */
+/* --- SECCIÓN CTA IST --- */
 .ist-cta-section {
-    padding: 60px 20px 100px;
+    padding: 100px 20px;
     display: flex;
     justify-content: center;
 }
 
 .ist-cta-card {
     width: 100%;
-    max-width: 1000px;
-    background: linear-gradient(to right, #00080c, #022e44);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 50px;
+    max-width: 1100px;
+    /* TU FONDO CONTROLADO */
+    background:
+        radial-gradient(circle at center, #000a11 40%, #00101b 70%, #001422 85%, #012a4b 100%);
+    border: 1px solid rgba(0, 210, 255, 0.2); /* Borde sutil cian */
+    border-radius: 32px;
+    padding: 80px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 210, 255, 0.05);
+}
+/* BASE DE LOS RAYOS */
+.ray {
+    position: absolute;
+    top: 0;
+    height: 150%;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Adorno de luz en el CTA */
-.ist-cta-card::before {
+/* IZQUIERDA */
+.ray-left {
+    left: 0;
+    transform:translate(-5%, -12%);
+}
+
+/* DERECHA */
+.ray-right {
+    right: 0;
+    transform:translate(5%, -12%);
+}
+
+/* --- EFECTO DE RAYOS DIAGONALES (ESTILO ARISE) --- */
+.ist-cta-card::before, 
+.ist-cta-card::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(192, 221, 228, 0.05) 0%, transparent 70%);
-    pointer-events: none;
+    width: 2px;
+    height: 150%;
+    top: -25%;
+    filter: blur(1px);
+    opacity: 0.3;
 }
 
+.ist-cta-card::before {
+    left: 20%;
+    transform: rotate(25deg);
+}
+
+.ist-cta-card::after {
+    right: 20%;
+    transform: rotate(25deg);
+}
+/* --- TÍTULO Y SUBTÍTULO --- */
 .cta-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #ffffff 20%, #c0dde4 100%);
+    font-size: 2.7rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
-
 .cta-subtitle {
     color: #a5f5ff;
     font-size: 1.1rem;
-    margin-bottom: 35px;
     opacity: 0.8;
+}
+
+
+/* --- BENEFIT TAGS (BADGES) --- */
+.cta-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 45px;
+    flex-wrap: wrap;
+}
+
+.benefit-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(4, 29, 46, 0.575);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+}
+
+.benefit-tag i {
+    color: #00ff4c; /* Verde éxito para el check */
+    font-size: 0.9rem;
+}
+
+.benefit-tag span {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .cta-button {
@@ -5146,6 +5318,21 @@ body.modal-open {
     opacity: 1; /* Mostramos gradualmente el fondo oscuro */
 }
 
+@media (max-width: 768px) {
+    .ray {
+        height: 120%;
+        opacity: 0.7;
+    }
+
+    .ray-left {
+        transform: translate(-20%, -12%);
+    }
+
+    .ray-right {
+        transform: translate(20%, -12%);
+    }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .other-projects-grid { grid-template-columns: repeat(2, 1fr); }
@@ -5185,4 +5372,284 @@ body.modal-open {
 .showcase-prev:focus,
 .showcase-next:focus {
     outline: none !important;
+}
+
+/* --- CONTENEDOR MAESTRO Y FONDO HEXAGONAL --- */
+.proyectos-modern-section {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: transparent;
+}
+
+/* --- NUEVO: EFECTO DE LUZ (GLOW) --- */
+/* --- GLOW REFINADO --- */
+.proyectos-modern-glow {
+    position: absolute;
+    bottom: -20%;
+    right: 1%;
+    width: 800px;
+    height: 800px;
+    /* Usamos un color más cian-eléctrico pero con menos opacidad */
+    background: radial-gradient(circle, rgba(0, 208, 255, 0.555) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(80px);
+    z-index: 2;
+}
+/* --- NAVEGACIÓN SUPERIOR (HORIZONTAL) --- */
+/* --- NAVEGACIÓN (AHORA VERTICAL Y ANCLADA) --- */
+.proyectos-modern-nav {
+    position: absolute;
+    /* Al estar en el wrapper, 'right: 0' o un valor negativo lo manda a la orilla derecha */
+    right: 0px; /* Ajusta este número (ej. -40px o 0px) para pegarlo más a la orilla si lo necesitas */
+    top: 50%;
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column; 
+    gap: 1.2rem;
+    z-index: 20; /* Nos aseguramos de que siempre esté por encima de todo */
+}
+
+.proyectos-modern-item {
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.proyectos-modern-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #c0dde45d;
+    background: #050913; /* Fondo oscuro por si la imagen tiene transparencias */
+    opacity: 0.4;
+    filter: grayscale(80%) brightness(0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.proyectos-modern-circle:hover {
+    border: 3px solid #c0dde4d3;
+    opacity: 0.8;
+    filter: grayscale(30%) brightness(0.8);
+}
+
+.proyectos-modern-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estado Activo Navegación */
+.proyectos-modern-item.active .proyectos-modern-circle {
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+    border-color: #c0dde4;
+    transform: scale(1.15); /* Crece un poco */
+    box-shadow: 0 0 25px rgba(192, 221, 228, 0.4);
+}
+
+/* --- ESTRUCTURA ASIMÉTRICA DE LA TARJETA --- */
+.proyectos-modern-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 470px; /* Altura base para el rectángulo vertical */
+    z-index: 2;
+}
+
+/* Capa 1: Gradiente (Atrás Izquierda) */
+.proyectos-modern-gradient-layer {
+    position: absolute;
+    left: 2%;
+    top: 0;
+    width: 55%; /* Ocupa el 35% del ancho total */
+    height: 100%;
+    border-radius: 24px;
+    /* Un gradiente por defecto, se sobrescribirá con JS */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    transition: background 0.6s ease, opacity 0.4s;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Capa 2: Imagen Laptop (Centro-Izquierda superpuesta) */
+.proyectos-modern-device {
+    position: absolute;
+    left: 8%; /* Ajusta esto para mover la laptop sobre el gradiente */
+    top: 50%;
+    width: 35%; /* Tamaño de la laptop */
+    z-index: 4; /* Debe estar por encima de los rectángulos */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.6));
+}
+
+/* --- TEXTURA DE FONDO GENERAL --- */
+.proyectos-modern-bg-texture {
+    position: absolute;
+    inset: 0;
+    /* Aquí puedes usar un PNG de ruido o una malla (grid) */
+    background-image: url('fondoproyectos2.png'); 
+    opacity: 1; /* Muy sutil */
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+
+/* --- CONTENIDO TARJETA OSCURA --- */
+.proyectos-modern-premium-badge {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+
+
+    background: rgba(14, 50, 105, 0.4);
+    color: #00d2ff;
+    border: 1px solid #00d2ff; /* Azul brillante */
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0; /* Oculto por defecto, JS lo muestra */
+    transition: opacity 0.3s;
+}
+
+.proyectos-modern-category {
+    display: block;
+    color: #7dd3fc; /* Azul cyan claro */
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* --- LA TARJETA PREMIUM --- */
+.proyectos-modern-info-layer {
+    position: relative;
+    overflow: hidden; /* Importante para que la textura no se salga */
+    margin-left: 30%;
+    width: 60%;
+    /* Color de fondo basado en la imagen 'premium': un azul casi negro */
+    background: linear-gradient(145deg, #030712 0%, #024257 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borde más fino y elegante */
+    border-radius: 28px;
+    padding: 70px 50px 70px 180px;
+    z-index: 3;
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.7),
+        inset 0 0 20px rgba(0, 208, 255, 0.192); /* Sutil brillo interno */
+    transition: all 0.4s ease-in-out;
+}
+
+/* TEXTURA INTERNA DE LA CARD */
+.proyectos-modern-card-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('texturaazul.png'); /* Puede ser la misma o una de puntos */
+    opacity: 0.4;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+/* --- TIPOGRAFÍA REFINADA --- */
+.proyectos-modern-title {
+    color: #ffffff;
+    font-size: 3.2rem; /* Un poco más grande */
+    font-weight: 800;
+    letter-spacing: -1.5px; /* Tracking negativo para verse más "Apple/Premium" */
+    margin-bottom: 20px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.proyectos-modern-desc {
+    color: rgb(155, 204, 233); /* Texto menos brillante para dar jerarquía */
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.proyectos-modern-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+}
+
+/* Ajustes Responsive rápidos */
+@media (max-width: 900px) {
+    .proyectos-modern-wrapper { flex-direction: column; }
+    .proyectos-modern-gradient-layer { left: 0%; width: 70%; height: 250px; position: relative; }
+    .proyectos-modern-info-layer { width: 100%; margin-left: 0; margin-top: -250px; padding: 40px; }
+    .proyectos-modern-device { position: relative; left: auto; width: 30%; top:-130px;  display: block; }
+    .proyectos-modern-nav {
+    position: fixed;
+    /* Al estar en el wrapper, 'right: 0' o un valor negativo lo manda a la orilla derecha */
+    right: 32px; /* Ajusta este número (ej. -40px o 0px) para pegarlo más a la orilla si lo necesitas */
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 1rem;
+    z-index: 20; /* Nos aseguramos de que siempre esté por encima de todo */
+    /* --- NUEVO: ESTADO OCULTO POR DEFECTO --- */
+        opacity: 0;
+        pointer-events: none; /* Evita que el usuario toque botones invisibles */
+        
+        /* Un pequeño desplazamiento para efecto de entrada */
+        margin-right: -20px;
+        transition: all 0.4s ease-in-out;
+}
+/* --- CLASE QUE ACTIVARÁ EL SCRIPT --- */
+    .proyectos-modern-nav.nav-visible {
+        opacity: 1;
+        pointer-events: all;
+        margin-right: 0;
+    }
+.proyectos-modern-circle {
+    width: 50px;
+    height: 50px;
+}
+@media (max-width: 700px) {
+    .proyectos-modern-device{
+      width: 30%;
+      top: -160px;
+    }
+    .proyectos-modern-title{
+      font-size: 1.8rem;
+    }
+    .proyectos-modern-desc{
+      font-size: 1rem;
+    }
+}
+@media (max-width: 500px) {
+    .proyectos-modern-device{
+      width: 40%;
+      top: -165px;
+    }
+}
+@media (max-width: 443px) {
+    .proyectos-modern-text-content{
+      margin-top: 2rem;
+    }
+}
+@media (max-width: 400px) {
+    .proyectos-modern-info-layer{
+      text-align: center;
+    }
+    
+    .proyectos-modern-premium-badge{
+      right: 30%;
+    }
+    .proyectos-modern-device{
+      width: 50%;
+      top: -175px;
+    }
+    
+}
 }

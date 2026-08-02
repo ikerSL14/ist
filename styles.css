@@ -7118,7 +7118,7 @@ body.modal-open {
 .ist-download-btn.black2 .ist-download-subtext,
 .ist-download-btn.black2 .ist-download-arrow i,
 .ist-download-btn.black2 .ist-download-icon i {
-  color: #ffffff !important;
+  color: #f8fbff !important;
 }
 
 .ist-download-btn.black2 .ist-download-subtext {
@@ -7127,8 +7127,8 @@ body.modal-open {
 
 .ist-download-btn.black2 .ist-download-icon,
 .ist-download-btn.black2 .ist-download-arrow {
-  background: rgb(255, 255, 255);
-  border-color: rgb(255, 255, 255);
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.12);
 }
 
 /* Variante Android */

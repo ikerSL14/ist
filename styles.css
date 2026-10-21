@@ -11,6 +11,329 @@
   z-index: 9999;
 }
 
+/* =========================================================
+   HERO PLACEHOLDER IST V2
+   Se muestra mientras carga heronew4.png
+========================================================= */
+
+.hero-bg-loading {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 132, 255, 0.18) 0%,
+            rgba(0, 82, 170, 0.08) 28%,
+            rgba(0, 15, 35, 0.15) 50%,
+            #00050f 78%
+        ),
+        linear-gradient(
+            180deg,
+            #001329 0%,
+            #000b18 48%,
+            #00040c 100%
+        );
+}
+
+
+/* =========================================================
+   CUADRÍCULA TECNOLÓGICA
+========================================================= */
+
+.hero-bg-loading::before {
+    content: "";
+    position: absolute;
+
+    width: 160%;
+    height: 160%;
+
+    left: -30%;
+    top: 18%;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 145, 255, 0.13) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 145, 255, 0.13) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    transform:
+        perspective(500px)
+        rotateX(62deg)
+        translateY(0);
+
+    transform-origin: center top;
+
+    animation: ist-grid-move 7s linear infinite;
+
+    opacity: .85;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0,0,0,.3) 10%,
+        black 35%,
+        rgba(0,0,0,.8) 70%,
+        transparent 100%
+    );
+
+    pointer-events: none;
+}
+
+
+/* Movimiento hacia el usuario */
+@keyframes ist-grid-move {
+
+    0% {
+        background-position:
+            0 0,
+            0 0;
+    }
+
+    100% {
+        background-position:
+            0 70px,
+            70px 0;
+    }
+
+}
+
+
+/* =========================================================
+   DESTELLO / ENERGÍA
+========================================================= */
+
+.hero-bg-loading::after {
+    content: "";
+    position: absolute;
+
+    width: 45%;
+    height: 160%;
+
+    top: -30%;
+    left: -60%;
+
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 132, 255, 0.02) 25%,
+        rgba(0, 174, 255, 0.22) 48%,
+        rgba(70, 205, 255, 0.55) 50%,
+        rgba(0, 174, 255, 0.22) 52%,
+        rgba(0, 132, 255, 0.02) 75%,
+        transparent 100%
+    );
+
+    filter: blur(3px);
+
+    transform: rotate(18deg);
+
+    animation: ist-energy-scan 3.8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* Línea energética recorriendo el escenario */
+@keyframes ist-energy-scan {
+
+    0% {
+        left: -65%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: .7;
+    }
+
+    100% {
+        left: 130%;
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   IMAGEN REAL DEL HERO
+========================================================= */
+
+#hero-real-bg {
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform: scale(1.015);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.8s ease;
+
+    z-index: 2;
+}
+
+
+/* Cuando terminó de cargar */
+#hero-real-bg.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+/* =========================================================
+   LÍNEAS DE ENERGÍA IST
+========================================================= */
+
+.ist-energy-line {
+    position: absolute;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 132, 255, 0),
+        rgba(0, 180, 255, 0.9),
+        rgba(105, 220, 255, 1),
+        rgba(0, 180, 255, 0.9),
+        transparent
+    );
+
+    box-shadow:
+        0 0 5px rgba(0, 162, 255, .9),
+        0 0 14px rgba(0, 132, 255, .6);
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+
+.ist-energy-line-1 {
+    width: 45%;
+    top: 42%;
+
+    animation: ist-line-left 3.1s ease-in-out infinite;
+}
+
+
+.ist-energy-line-2 {
+    width: 35%;
+    top: 67%;
+
+    animation:
+        ist-line-right 4.2s ease-in-out 1s infinite;
+}
+
+
+@keyframes ist-line-left {
+
+    0% {
+        left: -50%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: .9;
+    }
+
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes ist-line-right {
+
+    0% {
+        right: -45%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: .85;
+    }
+
+    100% {
+        right: 110%;
+        opacity: 0;
+    }
+
+}
+
+.ist-hero-glow {
+    position: absolute;
+
+    width: 650px;
+    height: 350px;
+
+    left: 50%;
+    top: 38%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        ellipse,
+        rgba(0, 142, 255, 0.23) 0%,
+        rgba(0, 108, 255, 0.10) 35%,
+        transparent 70%
+    );
+
+    filter: blur(25px);
+
+    animation: ist-glow-pulse 3s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes ist-glow-pulse {
+
+    0%,
+    100% {
+        opacity: .5;
+        transform:
+            translate(-50%, -50%)
+            scale(.92);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
 .loader-content {
   text-align: center;
   color: white;

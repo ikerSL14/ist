@@ -23,6 +23,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="preload"
+      as="image"
+      href="heronew4.png"
+      fetchpriority="high">
 </head>
 <body>
     
@@ -161,17 +166,21 @@
 <div class="seccion-ti" style="position: relative; width: 100%; min-height: 800px; display: flex; align-items: flex-start; padding-top:5.6rem; justify-content: center; overflow: hidden; 
     ">
    <!-- Fondos apilados para transición -->
-  <div id="bg-slide-1" style="
+  <div id="bg-slide-1" class="hero-bg-loading" style="
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-image: radial-gradient(circle, rgb(0, 5, 15) 0%, rgba(0, 5, 15, 0.767) 20%, rgba(0, 5, 15, 0) 60%, rgba(0, 0, 0, 0.212) 100%), url('heronew4.png');
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     z-index: 1;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-  "></div>
+">
+<div class="ist-hero-glow"></div>
+<div class="ist-energy-line ist-energy-line-1"></div>
+<div class="ist-energy-line ist-energy-line-2"></div>
+<div id="hero-real-bg"></div>
+
+</div>
   
   <!-- Contenido principal -->
 <div class="container" style="position: relative; z-index: 2;">
@@ -184,8 +193,8 @@
             data-action="modal" 
             data-target="promo-pill.png" 
             onclick="handleBadgeClick(this)">
-            <span class="pill-tag">Promociones</span>
-            <span class="pill-text">Canva $150, Office y más!</span>
+            <span class="pill-tag">Próximamente</span>
+            <span class="pill-text">ChatGPT, Capcut y más!</span>
             <iconify-icon icon="lucide:arrow-right" class="pill-icon"></iconify-icon>
         </div>
     </div>
@@ -419,6 +428,38 @@
   </div>
 </div>
 <script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const heroBg = document.getElementById('hero-real-bg');
+
+    if (!heroBg) return;
+
+    const heroImage = new Image();
+
+    heroImage.src = 'heronew4.png';
+
+    heroImage.onload = function () {
+
+        heroBg.style.backgroundImage = `
+            radial-gradient(
+                circle,
+                rgb(0, 5, 15) 0%,
+                rgba(0, 5, 15, 0.767) 20%,
+                rgba(0, 5, 15, 0) 60%,
+                rgba(0, 0, 0, 0.212) 100%
+            ),
+            url('heronew4.png')
+        `;
+
+        requestAnimationFrame(() => {
+            heroBg.classList.add('loaded');
+        });
+
+    };
+
+});
+
 window.onload = function () {
     const platform = navigator.platform.toLowerCase();
     const userAgent = navigator.userAgent.toLowerCase();
@@ -704,6 +745,117 @@ window.onload = function () {
           class="ist-action-v2-slide is-active"
           data-index="0"
         >
+          <img src="proyectos/galeria/milla/hero.png" style="object-position: 50% 0%;" alt="Proyecto MILLA" class="ist-action-v2-img">
+
+          <div class="ist-action-v2-overlay">
+            <div class="ist-action-v2-content">
+              <span class="ist-action-v2-kicker">Sitio Web Corporativo</span>
+
+              <h3>Milla</h3>
+
+              <p>
+                Diseño y desarrollo web del sitio oficial de Milla, empresa dedicada a la ingeniería y construcción.
+              </p>
+
+              <div class="ist-action-v2-tags">
+                <span>
+                  <iconify-icon icon="fa6-solid:helmet-safety"></iconify-icon>
+                  Ingeniería
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:code"></iconify-icon>
+                  Desarrollo
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:globe"></iconify-icon>
+                  Sitio Web
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article 
+          class="ist-action-v2-slide"
+          data-index="1"
+        >
+          <img src="proyectos/galeria/persystec2026/hero.png" style="object-position: 50% 0%;" alt="Proyecto PerSysTec" class="ist-action-v2-img">
+
+          <div class="ist-action-v2-overlay">
+            <div class="ist-action-v2-content">
+              <span class="ist-action-v2-kicker">Identidad Digital</span>
+
+              <h3>PerSysTec</h3>
+
+              <p>
+                Renovación y actualización del sitio web oficial de PerSysTec: Soluciones Tecnológicas.
+              </p>
+
+              <div class="ist-action-v2-tags">
+                <span>
+                  <iconify-icon icon="lucide:cpu"></iconify-icon>
+                  Tecnología
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:code"></iconify-icon>
+                  Desarrollo
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:globe"></iconify-icon>
+                  Sitio Web
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article 
+          class="ist-action-v2-slide"
+          data-index="2"
+        >
+          <img src="proyectos/galeria/nexis/hero.png" style="object-position: 50% 0%;" alt="Proyecto NEXIS" class="ist-action-v2-img">
+
+          <div class="ist-action-v2-overlay">
+            <div class="ist-action-v2-content">
+              <span class="ist-action-v2-kicker">Landing Page</span>
+
+              <h3>NEXIS</h3>
+
+              <p>
+                Diseño y desarrollo web del sitio oficial de NEXIS: empresa dedicada a soluciones digitales y red de colaboradores.
+              </p>
+
+              <div class="ist-action-v2-tags">
+                <span>
+                  <iconify-icon icon="lucide:wifi"></iconify-icon>
+                  Soluciones digitales
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:code"></iconify-icon>
+                  Desarrollo
+                </span>
+
+                <span>
+                  <iconify-icon icon="lucide:globe"></iconify-icon>
+                  Sitio Web
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 4 -->
+        <article 
+          class="ist-action-v2-slide is-active"
+          data-index="3"
+        >
           <img src="action_t1.jpeg" alt="Mantenimiento a PC gamer" class="ist-action-v2-img">
 
           <div class="ist-action-v2-overlay">
@@ -736,10 +888,10 @@ window.onload = function () {
           </div>
         </article>
 
-        <!-- Slide 2 -->
+        <!-- Slide 5 -->
         <article 
           class="ist-action-v2-slide"
-          data-index="1"
+          data-index="4"
         >
           <img src="hoc-hero.png" alt="HOC Construcciones" class="ist-action-v2-img">
 
@@ -773,10 +925,10 @@ window.onload = function () {
           </div>
         </article>
 
-        <!-- Slide 3 -->
+        <!-- Slide 6 -->
         <article 
           class="ist-action-v2-slide"
-          data-index="2"
+          data-index="5"
         >
           <img src="cti-hero.png" alt="CTI Soluciones" class="ist-action-v2-img">
 
@@ -810,10 +962,10 @@ window.onload = function () {
           </div>
         </article>
 
-        <!-- Slide 4 -->
+        <!-- Slide 7 -->
         <article 
           class="ist-action-v2-slide"
-          data-index="3"
+          data-index="6"
         >
           <img src="action_t4.jpeg" alt="Mejora de equipo con SSD" class="ist-action-v2-img">
 
@@ -847,116 +999,6 @@ window.onload = function () {
           </div>
         </article>
 
-        <!-- Slide 5 -->
-        <article 
-          class="ist-action-v2-slide"
-          data-index="4"
-        >
-          <img src="action_t5.jpeg" alt="Soporte a negocios" class="ist-action-v2-img">
-
-          <div class="ist-action-v2-overlay">
-            <div class="ist-action-v2-content">
-              <span class="ist-action-v2-kicker">Soporte a negocios</span>
-
-              <h3>Diagnóstico y asistencia con Office</h3>
-
-              <p>
-                Reinstalación de Office permanente a domicilio en una versión más compatible al equipo.
-              </p>
-
-              <div class="ist-action-v2-tags">
-                <span>
-                  <iconify-icon icon="lucide:user-round"></iconify-icon>
-                  Presencial
-                </span>
-
-                <span>
-                  <iconify-icon icon="iconoir:shop"></iconify-icon>
-                  Soporte a negocios
-                </span>
-
-                <span>
-                  <iconify-icon icon="lucide:laptop"></iconify-icon>
-                  Diagnóstico
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Slide 6 -->
-        <article 
-          class="ist-action-v2-slide"
-          data-index="5"
-        >
-          <img src="action_t6.png" alt="Instalación de Office" class="ist-action-v2-img">
-
-          <div class="ist-action-v2-overlay">
-            <div class="ist-action-v2-content">
-              <span class="ist-action-v2-kicker">Desde casa</span>
-
-              <h3>Instalación de Office</h3>
-
-              <p>
-                Configuración e instalación de Office Permanente vía AnyDesk como alternativa a RustDesk
-              </p>
-
-              <div class="ist-action-v2-tags">
-                <span>
-                  <iconify-icon icon="lucide:wifi"></iconify-icon>
-                  A distancia
-                </span>
-
-                <span>
-                  <iconify-icon icon="simple-icons:anydesk"></iconify-icon>
-                  AnyDesk
-                </span>
-
-                <span>
-                  <iconify-icon icon="lucide:file"></iconify-icon>
-                  Instalación de Office
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Slide 7 -->
-        <article 
-          class="ist-action-v2-slide"
-          data-index="6"
-        >
-          <img src="action_t7.png" alt="Instalación de Office" class="ist-action-v2-img">
-
-          <div class="ist-action-v2-overlay">
-            <div class="ist-action-v2-content">
-              <span class="ist-action-v2-kicker">Distancia cero</span>
-
-              <h3>Instalación de Office</h3>
-
-              <p>
-                Office permanente vía AnyDesk con configuración personalizada para uso inmediato y sin complicaciones.
-              </p>
-
-              <div class="ist-action-v2-tags">
-                <span>
-                  <iconify-icon icon="lucide:wifi"></iconify-icon>
-                  A distancia
-                </span>
-
-                <span>
-                  <iconify-icon icon="simple-icons:anydesk"></iconify-icon>
-                  AnyDesk
-                </span>
-
-                <span>
-                  <iconify-icon icon="lucide:file"></iconify-icon>
-                  Instalación de Office
-                </span>
-              </div>
-            </div>
-          </div>
-        </article>
 
       </div>
 
@@ -975,31 +1017,31 @@ window.onload = function () {
 
       <div class="ist-action-v2-thumbs" id="istActionThumbs">
         <button class="ist-action-v2-thumb is-active" type="button" aria-label="Ver trabajo 1">
-          <img src="action_t1.jpeg" alt="">
+          <img src="proyectos/galeria/milla/hero.png" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 2">
-          <img src="hoc-hero.png" alt="">
+          <img src="proyectos/galeria/persystec2026/hero.png" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 3">
-          <img src="cti-hero.png" alt="">
+          <img src="proyectos/galeria/nexis/hero.png" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 4">
-          <img src="action_t4.jpeg" alt="">
+          <img src="action_t1.jpeg" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 5">
-          <img src="action_t5.jpeg" alt="">
+          <img src="hoc-hero.png" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 6">
-          <img src="action_t6.png" alt="">
+          <img src="cti-hero.png" alt="">
         </button>
 
         <button class="ist-action-v2-thumb" type="button" aria-label="Ver trabajo 7">
-          <img src="action_t7.png" alt="">
+          <img src="action_t4.jpeg" alt="">
         </button>
       </div>
 
@@ -1095,15 +1137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 1: Aceleración de equipo -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Aceleración de equipo"
-      data-type="remote"
-      data-desc="Aumentamos la velocidad y eficiencia de tu computadora optimizando el sistema. Te ofrecemos sugerencias y si deseas, podemos pasar a una mejora de equipo, al actualizar los componentes."
-      data-icon="ph:rocket-launch-duotone"
-      data-flyer="imgs/Aceleracion.png"
-      data-extra1="https://i.ibb.co/f5bhV65/W3.jpg"
-      data-extra2="https://i.ibb.co/PG8SkpfR/is1.jpg">
+      data-flyer="imgs/Aceleracion.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1129,15 +1163,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 2: Instalación de Office -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Instalación de Office"
-      data-type="remote"
-      data-desc="Te configuramos la suite completa de Office con todas las herramientas de productividad activadas."
-      data-icon="mi:document"
-      data-flyer="imgs/Office.png"
-      data-extra1="office.png"
-      data-extra2="https://i.ibb.co/KcBxsRKf/P1.jpg">
+      data-flyer="imgs/Office.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1163,15 +1189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 3: Programas y servicios -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Programas y servicios"
-      data-type="remote"
-      data-desc="Cualquier software (programa) o servicio digital que necesites para tu trabajo o proyectos, lo instalamos y configuramos a distancia, o en su defecto, te brindamos asistencia para su activación y uso."
-      data-icon="icon-park-outline:more-app"
-      data-flyer="imgs/Programas.png"
-      data-extra1="https://i.ibb.co/7xPCxDQC/select.png"
-      data-extra2="https://i.ibb.co/SwjFZBMQ/videov.png">
+      data-flyer="imgs/Programas.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1197,15 +1215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 4: Diseños publicitarios -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Diseños publicitarios"
-      data-type="remote"
-      data-desc="Diseñamos creativos visuales totalmente al gusto para promocionar tu negocio y captar la atención de tu audiencia objetivo."
-      data-icon="ph:megaphone-duotone"
-      data-flyer="imgs/Publicidad.png"
-      data-extra1="https://i.ibb.co/YF7CJ9L1/T1.png"
-      data-extra2="https://i.ibb.co/nMvbP5FX/istimg2.png">
+      data-flyer="imgs/Publicidad.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1231,15 +1241,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 5: Diseño de sitios web -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Diseño de sitios web"
-      data-type="remote"
-      data-desc="Diseñamos y desarrollamos la página web que necesites, desde landing pages para tu negocio hasta sistemas con bases de datos. Incluye dominio y host."
-      data-icon="streamline-plump:web"
-      data-flyer="imgs/Web.png"
-      data-extra1="edurosimg.png"
-      data-extra2="persystec.png">
+      data-flyer="imgs/Web.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1265,15 +1267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 6: Edición de videos -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Edición de videos"
-      data-type="remote"
-      data-desc="Creamos y editamos videos atractivos con narrativa visual, transiciones y efectos de alta calidad para tus proyectos personales o comerciales."
-      data-icon="streamline-ultimate:video-edit-magic-wand-bold"
-      data-flyer="imgs/Video.png"
-      data-extra1="https://i.ibb.co/SwjFZBMQ/videov.png"
-      data-extra2="https://images.unsplash.com/photo-1607112812619-182cb1c7bb61?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      data-flyer="imgs/Video.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1299,15 +1293,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 7: Desarrollo de software -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Desarrollo de software"
-      data-type="remote"
-      data-desc="Desarrollamos aplicaciones y sistemas personalizados con las especificaciones que necesites, y las tecnologías que necesites."
-      data-icon="ph:code"
-      data-flyer="imgs/Desarrollo.png"
-      data-extra1="https://i.ibb.co/3mw2nxhB/is4.jpg"
-      data-extra2="edurosimg.png">
+      data-flyer="imgs/Desarrollo.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1333,15 +1319,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 8: Diseño de lonas -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Diseño de lonas"
-      data-type="remote"
-      data-desc="Creamos diseños de lonas atractivos y al gusto, para que puedas promocionar lo que necesites de forma profesional y efectiva. De todos los tamaños, listas para impresión, para personas o negocios."
-      data-icon="mdi:billboard"
-      data-flyer="imgs/Lonas.png"
-      data-extra1="https://images.unsplash.com/photo-1716471330501-b443b15a716f?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      data-extra2="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      data-flyer="imgs/Lonas.png">
 
       <div class="ist-serv-badge-card ist-serv-remote">
         <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
@@ -1367,15 +1345,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 9: Formateo / Instalación de SO -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Formateo/Instalación"
-      data-type="onsite"
-      data-desc="Formateamos e instalamos el sistema operativo que estés buscando. Tomamos las decisiones contigo para dejar tu equipo como nuevo."
-      data-icon="ph:arrows-clockwise"
-      data-flyer="imgs/Formateo.png"
-      data-extra1="https://i.ibb.co/2HJ6rxN/P6.jpg"
-      data-extra2="https://i.ibb.co/7xj318Fc/W2.jpg">
+      data-flyer="imgs/Formateo.png">
 
       <div class="ist-serv-badge-card ist-serv-onsite">
         <iconify-icon icon="mage:users"></iconify-icon>
@@ -1401,15 +1371,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 10: Mantenimiento de equipo -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Mantenimiento"
-      data-type="onsite"
-      data-desc="Brindamos mantenimiento preventivo o correctivo a tu equipo para asegurar su óptimo funcionamiento y prolongar su vida útil, limpiando y revisando componentes clave."
-      data-icon="hugeicons:repair"
-      data-flyer="imgs/Mantenimiento.png"
-      data-extra1="https://i.ibb.co/PG8SkpfR/is1.jpg"
-      data-extra2="https://i.ibb.co/qYTv5Gr1/W1.jpg">
+      data-flyer="imgs/Mantenimiento.png">
 
       <div class="ist-serv-badge-card ist-serv-onsite">
         <iconify-icon icon="mage:users"></iconify-icon>
@@ -1435,15 +1397,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 11: Mejora de equipo -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Mejora de equipo"
-      data-type="onsite"
-      data-desc="Evaluamos y actualizamos componentes clave de tu hardware para mejorar el rendimiento general de tu computadora. Te ayudamos a elegir conforme a tus necesidades."
-      data-icon="ph:cpu-duotone"
-      data-flyer="imgs/Mejora.png"
-      data-extra1="https://i.ibb.co/bM9Nkz9x/is5.jpg"
-      data-extra2="https://i.ibb.co/nNxzSGQx/P2.jpg">
+      data-flyer="imgs/Mejora.png">
 
       <div class="ist-serv-badge-card ist-serv-onsite">
         <iconify-icon icon="mage:users"></iconify-icon>
@@ -1469,15 +1423,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- SERVICIO 12: Recuperación de archivos -->
     <article class="ist-service-card-v2"
-      data-toggle="modal"
-      data-target="#istModalServicio"
-      data-title="Recuperación de archivos"
-      data-type="onsite"
-      data-desc="Recuperamos información de unidades de almacenamiento que no permiten ver su contenido, como fotografías, videos o documentos, ya sea por fallos lógicos o físicos. En algunos casos, es posible hacer que tu unidad vuelva a funcionar."
-      data-icon="mdi:file-sync-outline"
-      data-flyer="imgs/Recuperacion.png"
-      data-extra1="https://images.unsplash.com/photo-1477949331575-2763034b5fb5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      data-extra2="https://images.unsplash.com/photo-1484662020986-75935d2ebc66?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      data-flyer="imgs/Recuperacion.png">
 
       <div class="ist-serv-badge-card ist-serv-onsite">
         <iconify-icon icon="mage:users"></iconify-icon>
@@ -1503,85 +1449,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   </div>
 
-  <!-- Modal de servicios -->
-  <div class="modal fade" id="istModalServicio" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog ist-serv-modal-dialog" role="document">
-      <div class="modal-content ist-serv-modal-content">
-
-        <div class="ist-serv-modal-body">
-
-          <div class="ist-serv-modal-left">
-            <button type="button" class="close ist-serv-modal-close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-            <div class="ist-serv-modal-header-info">
-              <iconify-icon icon="" id="m-icon" class="ist-serv-modal-main-icon"></iconify-icon>
-              <h2 id="m-title" class="ist-serv-modal-title"></h2>
-            </div>
-
-            <div id="m-badge-container" class="ist-serv-modal-badge-wrapper"></div>
-
-            <p id="m-desc" class="ist-serv-modal-description"></p>
-
-            <div class="ist-serv-modal-extra-imgs">
-              <img id="extra1" src="https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+1" alt="preview 1">
-              <img id="extra2" src="https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+2" alt="preview 2">
-            </div>
-          </div>
-
-          <div class="ist-serv-modal-right">
-            <img src="" id="m-flyer" class="ist-serv-modal-flyer" alt="Flyer del servicio">
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-    $('#istModalServicio').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
-
-      var title = button.data('title');
-      var desc = button.data('desc');
-      var icon = button.data('icon');
-      var flyer = button.data('flyer');
-      var type = button.data('type');
-      var extra1 = button.data('extra1');
-      var extra2 = button.data('extra2');
-
-      var modal = $(this);
-
-      modal.find('#m-title').text(title);
-      modal.find('#m-desc').text(desc);
-      modal.find('#m-icon').attr('icon', icon);
-      modal.find('#m-flyer').attr('src', flyer);
-      modal.find('#extra1').attr('src', extra1 || 'https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+1');
-      modal.find('#extra2').attr('src', extra2 || 'https://via.placeholder.com/150x100/1e293b/ffffff?text=Feature+2');
-
-      var badgeHtml = '';
-
-      if (type === 'remote') {
-        badgeHtml = `
-          <div class="ist-serv-badge-card ist-serv-remote" style="position:static; margin: 0 auto 20px auto;">
-            <iconify-icon icon="fa7-solid:wifi"></iconify-icon>
-            A distancia
-          </div>
-        `;
-      } else if (type === 'onsite') {
-        badgeHtml = `
-          <div class="ist-serv-badge-card ist-serv-onsite" style="position:static; margin: 0 auto 20px auto;">
-            <iconify-icon icon="mage:users"></iconify-icon>
-            Presencial
-          </div>
-        `;
-      }
-
-      modal.find('#m-badge-container').html(badgeHtml);
-    });
-  </script>
 
 </section>
 
@@ -1658,7 +1525,7 @@ document.addEventListener("DOMContentLoaded", function () {
           class="ist-project-card is-active"
           data-index="1"
           data-title="UMID"
-          data-category="Plataforma académica"
+          data-category="Sitio Web Institucional"
           data-desc="Sitio web universitario con información académica, blog dinámico y conectividad con redes sociales."
           data-live-url="https://umid.edu.mx"
           data-detail-url="proyectos/umid.html">
@@ -1670,33 +1537,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- Proyecto 3 -->
         <article 
-          class="ist-project-card is-far-next"
+          class="ist-project-card is-far-prev"
           data-index="2"
-          data-title="Frontlangu"
-          data-category="Plataforma académica"
-          data-desc="Diseño web orientado a marca, presencia digital y comunicación visual para negocio."
-          data-live-url="https://frontlangu.com"
-          data-detail-url="proyectos/frontlangu.html">
+          data-title="MILLA"
+          data-category="Sitio Web Corporativo"
+          data-desc="Sitio web oficial de empresa especializada en ingeniería y construcción con diseño profesional."
+          data-live-url="https://millaconstr.com"
+          data-detail-url="proyectos/milla.html">
           
-          <a href="proyectos/frontlangu.html" class="ist-project-card-link" aria-label="Ver proyecto Frontlangu">
-            <img src="frontlangu-hero.png" alt="Proyecto Frontlangu" class="ist-project-img">
+          <a href="proyectos/milla.html" class="ist-project-card-link" aria-label="Ver proyecto MILLA">
+            <img src="proyectos/galeria/milla/hero.png" style="object-position: 50% 0%;" alt="Proyecto MILLA" class="ist-project-img">
           </a>
         </article>
 
         <!-- Proyecto 4 -->
         <article 
-          class="ist-project-card is-far-prev"
+          class="ist-project-card is-far-next"
           data-index="3"
-          data-title="HydroFlow Precision"
-          data-category="Sistema inteligente"
-          data-desc="Sitio desarrollado para presentar servicios, captar clientes y fortalecer presencia online."
-          data-live-url="https://hydroflowp.netlify.app"
-          data-detail-url="proyectos/hydroflow.html">
+          data-title="NEXIS"
+          data-category="Landing Page"
+          data-desc="Página corporativa para presentar servicios, captar clientes y fortalecer presencia online."
+          data-live-url="https://nexismx.com"
+          data-detail-url="proyectos/nexis.html">
           
-          <a href="proyectos/hydroflow.html" class="ist-project-card-link" aria-label="Ver proyecto HydroFlow Precision">
-            <img src="hydroflow-hero.png" alt="Proyecto HydroFlow Precision" class="ist-project-img">
+          <a href="proyectos/nexis.html" class="ist-project-card-link" aria-label="Ver proyecto NEXIS">
+            <img src="proyectos/galeria/nexis/hero.png" style="object-position: 50% 0%;" alt="Proyecto NEXIS" class="ist-project-img">
           </a>
         </article>
+
 
         <!-- Proyecto 5 -->
         <article 
@@ -1709,7 +1577,7 @@ document.addEventListener("DOMContentLoaded", function () {
           data-detail-url="proyectos/persystec.html">
           
           <a href="proyectos/persystec.html" class="ist-project-card-link" aria-label="Ver proyecto PerSysTec">
-            <img src="persystec-hero.png" alt="Proyecto PerSysTec" class="ist-project-img">
+            <img src="proyectos/galeria/persystec2026/hero.png" style="object-position: 50% 0%;" alt="Proyecto PerSysTec" class="ist-project-img">
           </a>
         </article>
 
@@ -1723,7 +1591,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="ist-projects-info">
       <span class="ist-project-current-category" id="istProjectCategory">
-        Plataforma académica
+        Sitio Web Institucional
       </span>
 
       <h3 class="ist-project-current-title" id="istProjectTitle">
@@ -1963,6 +1831,16 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
     });
   }
+
+  document.querySelectorAll('.ist-service-card-v2').forEach(card => {
+  card.addEventListener('click', () => {
+    const flyer = card.dataset.flyer;
+
+    if (flyer) {
+      openBentoModal(flyer);
+    }
+  });
+});
 
   const conoceBtn = document.getElementById('conoceBtn2026');
 

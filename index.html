@@ -26,7 +26,7 @@
 
     <link rel="preload"
       as="image"
-      href="heronew4.png"
+      href="hero3.webp"
       fetchpriority="high">
 </head>
 <body>
@@ -191,10 +191,10 @@
       <div class="hero-badge-container">
         <div class="announcement-pill" 
             data-action="modal" 
-            data-target="promo-pill.png" 
+            data-target="promos/destacado/chatgpt.png" 
             onclick="handleBadgeClick(this)">
-            <span class="pill-tag">Próximamente</span>
-            <span class="pill-text">ChatGPT, Capcut y más!</span>
+            <span class="pill-tag">Promoción</span>
+            <span class="pill-text">ChatGPT a $150 y más!</span>
             <iconify-icon icon="lucide:arrow-right" class="pill-icon"></iconify-icon>
         </div>
     </div>
@@ -210,7 +210,7 @@
   line-height: 1.6;
   font-weight: 400;
   letter-spacing: -0.01em;">
-        Soporte técnico, desarrollo web, diseño y soluciones a tu medida. Dondequiera que estés.
+        Desarrollamos e integramos soluciones tecnológicas para organizaciones, negocios y personas.
       </p>
       
       <div class="hero-download-wrap">
@@ -240,7 +240,7 @@
       <div style="margin-top:1.5rem">
   <span class="ist-badge" data-toggle="modal" data-target="#infoModal" title="Información">
     <iconify-icon icon="simple-icons:rustdesk" class="ist-infoicon"></iconify-icon>
-    <span class="ist-badge-text">Sobre RustDesk</span>
+    <span class="ist-badge-text">Sobre el Soporte Remoto</span>
   </span>
 </div>
       
@@ -352,10 +352,10 @@
 
           <div>
             <h4 class="ist-modal-title" id="infoModalLabel">
-              Sobre RustDesk
+              Sobre el Soporte Remoto
             </h4>
             <p class="ist-modal-subtitle">
-              Soporte remoto rápido, seguro y compatible con tu equipo.
+              Utilizamos RustDesk para brindarte nuestros servicios a distancia.
             </p>
           </div>
         </div>
@@ -379,7 +379,7 @@
                 <span class="ist-blue">RustDesk</span> para soporte remoto
               </h5>
               <p>
-                RustDesk es el programa que utilizamos en IST para poder realizar nuestros servicios a distancia en tu equipo de forma segura.
+                Es un programa compatible con cualquier sistema para conectarnos a distancia a tu equipo de forma rápida y segura. 
               </p>
             </div>
           </div>
@@ -437,7 +437,7 @@
 
     const heroImage = new Image();
 
-    heroImage.src = 'heronew4.png';
+    heroImage.src = 'hero3.webp';
 
     heroImage.onload = function () {
 
@@ -449,7 +449,7 @@
                 rgba(0, 5, 15, 0) 60%,
                 rgba(0, 0, 0, 0.212) 100%
             ),
-            url('heronew4.png')
+            url('hero3.webp')
         `;
 
         requestAnimationFrame(() => {
@@ -492,21 +492,21 @@ window.onload = function () {
     if (platform.includes('win')) {
         os = 'Windows';
         iconClass = 'bi-windows';
-        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-x86_64.exe';
+        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.exe';
         
         btnClass = 'windows';
         infoLink = 'https://rustdesk.com';
     } else if (platform.includes('mac')) {
         os = 'macOS';
         iconClass = 'bi-apple';
-        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-x86_64.dmg';
+        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.dmg';
         osImage = 'https://i.ibb.co/VcWv775Q/macos.png';
         btnClass = 'black2';
         infoLink = 'https://rustdesk.com';
     } else if (userAgent.includes('android')) {
         os = 'Android';
         iconClass = 'bi-android2';
-        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.4.7/rustdesk-1.4.7-universal-signed.apk';
+        downloadLink = 'https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-universal-signed.apk';
         osImage = 'https://cdn-icons-png.flaticon.com/512/888/888857.png';
         btnClass = 'green';
         infoLink = 'https://rustdesk.com';
@@ -558,7 +558,7 @@ window.onload = function () {
     }
 
     if (btnText) {
-        btnText.innerText = 'Descargar RustDesk';
+        btnText.innerText = 'Descargar Soporte Remoto';
         btnText.style.color = '#ffffff';
     }
 

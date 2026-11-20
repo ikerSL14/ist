@@ -1,0 +1,5348 @@
+
+/* =========================================================
+   IST · 01 — PRESENTACIÓN INSTITUCIONAL
+   QUIÉNES SOMOS
+========================================================= */
+
+.ist-about-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: clamp(78px, 8vw, 112px) 0
+           clamp(82px, 8vw, 108px);
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 83% 43%,
+      rgba(0, 100, 220, .13),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #030914 0%,
+      #040d1a 52%,
+      #030812 100%
+    );
+
+  border-top: 1px solid rgba(78, 162, 235, .12);
+}
+
+
+/* LÍNEA PREMIUM SUPERIOR */
+
+.ist-about-intro::before {
+  content: "";
+
+  position: absolute;
+  z-index: 3;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 108, 255, .25) 12%,
+    #087cff 34%,
+    #00c8ff 50%,
+    #087cff 66%,
+    rgba(0, 108, 255, .25) 88%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 132, 255, .38),
+    0 0 24px rgba(0, 132, 255, .16);
+
+  pointer-events: none;
+}
+
+
+/* RETÍCULA AMBIENTAL */
+
+.ist-about-intro__grid {
+  position: absolute;
+  z-index: 0;
+
+  inset: 0;
+
+  opacity: .17;
+
+  background-image:
+    linear-gradient(
+      rgba(90, 160, 220, .035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(90, 160, 220, .035) 1px,
+      transparent 1px
+    );
+
+  background-size: 78px 78px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    #000,
+    transparent 85%
+  );
+
+  pointer-events: none;
+}
+
+
+/* ILUMINACIÓN AMBIENTAL */
+
+.ist-about-intro__ambient {
+  position: absolute;
+  z-index: 0;
+
+  width: 480px;
+  height: 480px;
+
+  border-radius: 50%;
+
+  filter: blur(115px);
+
+  opacity: .12;
+
+  pointer-events: none;
+}
+
+.ist-about-intro__ambient--left {
+  top: 100px;
+  left: -330px;
+
+  background: #006dff;
+}
+
+.ist-about-intro__ambient--right {
+  right: -260px;
+  bottom: -180px;
+
+  background: #008dff;
+}
+
+
+/* CONTENEDOR */
+
+.ist-about-intro__shell {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 48px));
+
+  margin-inline: auto;
+}
+
+
+/* IDENTIFICADOR SUPERIOR */
+
+.ist-about-intro__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: clamp(44px, 5.5vw, 70px);
+}
+
+.ist-about-intro__index {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #84b8df;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+.ist-about-intro__index-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+
+  background: #12baff;
+
+  box-shadow:
+    0 0 9px rgba(0, 184, 255, .8),
+    0 0 17px rgba(0, 130, 255, .4);
+}
+
+.ist-about-intro__index-divider {
+  width: 1px;
+  height: 13px;
+
+  background: rgba(111, 174, 224, .28);
+}
+
+.ist-about-intro__topline-note {
+  color: #587995;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .16em;
+}
+
+
+/* COMPOSICIÓN PRINCIPAL */
+
+.ist-about-intro__layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(0, .92fr);
+
+  align-items: center;
+
+  gap: clamp(42px, 7vw, 100px);
+}
+
+
+/* =========================================================
+   COLUMNA IZQUIERDA
+========================================================= */
+
+.ist-about-intro__copy {
+  min-width: 0;
+
+  max-width: 680px;
+}
+
+
+/* ETIQUETA */
+
+.ist-about-intro__eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0 0 19px;
+
+  color: #63c5ff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+}
+
+.ist-about-intro__eyebrow::before {
+  content: "";
+
+  width: 24px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #087cff,
+    #00c8ff
+  );
+
+  box-shadow: 0 0 9px rgba(0, 151, 255, .4);
+}
+
+
+/* TÍTULO */
+
+.ist-about-intro__title {
+  max-width: 700px;
+
+  margin: 0;
+
+  color: #f4f8ff;
+
+  font-size: clamp(2.5rem, 4.3vw, 4.1rem);
+  font-weight: 800;
+
+  letter-spacing: -.065em;
+  line-height: 1.08;
+
+  text-wrap: balance;
+}
+
+.ist-about-intro__title span {
+  color: #4dbfff;
+
+  background: linear-gradient(
+    100deg,
+    #eaf8ff 0%,
+    #62cfff 48%,
+    #087cff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* TEXTO PRINCIPAL */
+
+.ist-about-intro__lead {
+  max-width: 640px;
+
+  margin: 25px 0 0;
+
+  color: #d2e0ef;
+
+  font-size: clamp(14px, 1.4vw, 16px);
+
+  line-height: 1.85;
+  letter-spacing: -.012em;
+}
+
+
+/* TEXTO SECUNDARIO */
+
+.ist-about-intro__description {
+  max-width: 620px;
+
+  margin: 16px 0 0;
+
+  color: #91a9c2;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+}
+
+
+/* FIRMA CONCEPTUAL */
+
+.ist-about-intro__signature {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 27px;
+
+  color: #a9c9e5;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .025em;
+}
+
+.ist-about-intro__signature-line {
+  width: 34px;
+  height: 1px;
+
+  flex: 0 0 34px;
+
+  background: linear-gradient(
+    90deg,
+    #087cff,
+    #61d5ff
+  );
+
+  box-shadow: 0 0 10px rgba(0, 145, 255, .4);
+}
+
+
+/* ATRIBUTOS INSTITUCIONALES */
+
+.ist-about-intro__principles {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-top: 39px;
+  padding-top: 23px;
+
+  border-top: 1px solid rgba(104, 174, 255, .14);
+}
+
+.ist-about-intro__principle {
+  display: grid;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+.ist-about-intro__principle > span {
+  color: #419cdb;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .13em;
+}
+
+.ist-about-intro__principle strong {
+  color: #dceafa;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   COLUMNA DERECHA
+   IDENTIDAD VISUAL IST
+========================================================= */
+
+.ist-about-intro__visual {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 10px 0 22px 12px;
+}
+
+
+/* PANEL PRINCIPAL */
+
+.ist-about-intro__visual-frame {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 475px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(83, 166, 227, .23);
+
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 50% 43%,
+      rgba(0, 126, 255, .18),
+      transparent 43%
+    ),
+    linear-gradient(
+      145deg,
+      #0a2038,
+      #04101f 70%
+    );
+
+  box-shadow:
+    0 30px 85px rgba(0, 0, 0, .3),
+    inset 0 1px 0 rgba(255, 255, 255, .045);
+}
+
+
+/* RETÍCULA INTERNA */
+
+.ist-about-intro__visual-frame::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  inset: 0;
+
+  opacity: .28;
+
+  background-image:
+    linear-gradient(
+      rgba(104, 174, 255, .035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(104, 174, 255, .035) 1px,
+      transparent 1px
+    );
+
+  background-size: 43px 43px;
+
+  pointer-events: none;
+}
+
+
+/* LÍNEA INTERNA */
+
+.ist-about-intro__visual-frame::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: 9%;
+
+  width: 38%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #4bcaff,
+    transparent
+  );
+
+  box-shadow: 0 0 13px rgba(0, 164, 255, .5);
+}
+
+
+/* CABECERA DEL PANEL */
+
+.ist-about-intro__visual-top {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 20px 22px;
+
+  border-bottom: 1px solid rgba(104, 174, 255, .13);
+}
+
+.ist-about-intro__visual-label {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #a6c5df;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+}
+
+.ist-about-intro__visual-label span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #13baff;
+
+  box-shadow: 0 0 10px rgba(0, 184, 255, .7);
+}
+
+.ist-about-intro__visual-code {
+  color: #537997;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+}
+
+
+/* ESCENARIO CENTRAL */
+.ist-about-intro__visual-stage {
+  position: relative;
+  isolation: isolate;
+
+  flex: 1;
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 42px 24px;
+
+  text-align: center;
+  
+}
+
+.ist-about-intro__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.ist-about-intro__logo-image {
+  display: block;
+
+  width: clamp(160px, 52%, 250px);
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 16px rgba(0, 145, 255, .16))
+    drop-shadow(0 0 34px rgba(0, 115, 255, .08));
+}
+
+.ist-about-intro__descriptor {
+  position: relative;
+  z-index: 1;
+
+  margin: 22px 0 0;
+
+  color: #83b6dc;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+  line-height: 1.8;
+
+  text-align: center;
+}
+
+
+.ist-about-intro__mark img {
+  display: block;
+
+  width: 76px;
+  height: 76px;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 0 15px rgba(0, 153, 255, .48)
+  );
+}
+
+
+
+
+/* DESCRIPTOR */
+
+.ist-about-intro__descriptor {
+  position: relative;
+  z-index: 1;
+
+  margin: 15px 0 0;
+
+  color: #83b6dc;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+  line-height: 1.8;
+
+  text-align: center;
+}
+
+
+/* PIE DEL PANEL */
+
+.ist-about-intro__visual-bottom {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 18px 22px;
+
+  border-top: 1px solid rgba(104, 174, 255, .13);
+
+  color: #668ba9;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .12em;
+}
+
+.ist-about-intro__visual-bottom-line {
+  height: 1px;
+
+  flex: 1;
+
+  background: linear-gradient(
+    90deg,
+    rgba(67, 159, 224, .3),
+    transparent
+  );
+}
+
+
+/* ELEMENTO FLOTANTE */
+
+.ist-about-intro__floating-note {
+  position: absolute;
+  z-index: 4;
+
+  left: -20px;
+  bottom: 4px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 15px;
+
+  border: 1px solid rgba(84, 175, 244, .3);
+
+  border-radius: 12px;
+
+  background: rgba(4, 17, 33, .94);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, .35),
+    0 0 22px rgba(0, 113, 255, .1);
+
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+.ist-about-intro__floating-icon {
+  width: 37px;
+  height: 37px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 37px;
+
+  border: 1px solid rgba(78, 177, 255, .24);
+
+  border-radius: 10px;
+
+  color: #70d1ff;
+
+  background: rgba(0, 113, 204, .15);
+
+  font-size: 20px;
+}
+
+.ist-about-intro__floating-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.ist-about-intro__floating-copy small {
+  color: #6da6cd;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .13em;
+}
+
+.ist-about-intro__floating-copy strong {
+  color: #edf6ff;
+
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.ist-about-intro__floating-arrow {
+  margin-left: 7px;
+
+  color: #55bdff;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 980px) {
+
+  .ist-about-intro__layout {
+    grid-template-columns: 1fr;
+
+    gap: 52px;
+  }
+
+  .ist-about-intro__copy {
+    max-width: 790px;
+  }
+
+  .ist-about-intro__visual {
+    width: min(100%, 620px);
+
+    margin-inline: auto;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .ist-about-intro {
+    padding: 70px 0 78px;
+  }
+
+  .ist-about-intro__shell {
+    width: min(100% - 32px, 560px);
+    text-align:center;
+  }
+
+  .ist-about-intro__topline {
+    margin-bottom: 39px;
+    justify-content:center;
+  }
+
+  .ist-about-intro__signature{
+    justify-content:center;
+  }
+
+  .ist-about-intro__topline-note {
+    display: none;
+  }
+
+  .ist-about-intro__layout {
+    gap: 43px;
+  }
+
+  .ist-about-intro__eyebrow {
+    margin-bottom: 16px;
+
+    font-size: 9px;
+  }
+
+  .ist-about-intro__title {
+    font-size: clamp(2.35rem, 9.5vw, 3.2rem);
+  }
+
+  .ist-about-intro__lead {
+    margin-top: 20px;
+
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .ist-about-intro__description {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .ist-about-intro__principles {
+    gap: 10px;
+
+    margin-top: 29px;
+    padding-top: 19px;
+  }
+
+  .ist-about-intro__principle strong {
+    font-size: 10px;
+  }
+
+  .ist-about-intro__visual {
+    padding: 0 0 20px;
+  }
+
+  .ist-about-intro__visual-frame {
+    min-height: 405px;
+
+    border-radius: 17px;
+  }
+
+  .ist-about-intro__visual-top {
+    padding: 17px 16px;
+  }
+
+  .ist-about-intro__visual-stage {
+    min-height: 295px;
+  }
+
+  .ist-about-intro__orbit--outer {
+    width: 275px;
+    height: 185px;
+  }
+
+  .ist-about-intro__orbit--inner {
+    width: 215px;
+    height: 145px;
+  }
+
+  .ist-about-intro__mark {
+    width: 88px;
+    height: 88px;
+
+    border-radius: 22px;
+  }
+
+  .ist-about-intro__mark img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .ist-about-intro__wordmark {
+    font-size: 59px;
+  }
+
+  .ist-about-intro__visual-bottom {
+    gap: 8px;
+
+    padding: 16px 13px;
+
+    font-size: 7px;
+  }
+
+  .ist-about-intro__floating-note {
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    width: fit-content;
+
+    margin: 0 auto;
+    margin-top:2rem;
+  }
+
+}
+
+
+@media (max-width: 390px) {
+
+  .ist-about-intro__principles {
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+  }
+
+  .ist-about-intro__principle {
+    display: flex;
+    align-items: baseline;
+
+    gap: 12px;
+  }
+
+  .ist-about-intro__floating-note {
+    gap: 9px;
+
+    padding: 11px;
+  }
+
+}
+
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-about-intro *,
+  .ist-about-intro *::before,
+  .ist-about-intro *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
+
+/* FIRMA VISUAL IST */
+
+.ist-about-intro__brand-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 100%;
+}
+
+.ist-about-intro__brand-symbol {
+  display: block;
+
+  width: clamp(155px, 10vw, 112px);
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 12px rgba(0, 140, 255, .28));
+}
+
+.ist-about-intro__brand-wordmark {
+  display: block;
+
+  width: clamp(130px, 19vw, 205px);
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* DESCRIPTOR */
+
+.ist-about-intro__descriptor {
+  margin: 28px 0 0;
+
+  color: #83b6dc;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+  line-height: 1.8;
+
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+
+  .ist-about-intro__brand-lockup {
+    gap: 17px;
+  }
+
+  .ist-about-intro__brand-symbol {
+    width: 75px;
+  }
+
+  .ist-about-intro__brand-wordmark {
+    width: 135px;
+  }
+
+}
+
+
+/* =========================================================
+   IST · 02 — NUESTRAS CAPACIDADES
+   SOLUCIONES
+========================================================= */
+
+.ist-about-solutions {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: clamp(82px, 8vw, 112px) 0
+           clamp(85px, 8vw, 110px);
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 12% 35%,
+      rgba(0, 100, 220, .10),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 92% 66%,
+      rgba(0, 120, 255, .09),
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      #030812 0%,
+      #06101e 55%,
+      #040b16 100%
+    );
+}
+
+/* ACENTO SUPERIOR · SOLUCIONES IST */
+
+.ist-about-solutions::before {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  right: 0;
+
+  width: 40%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    
+    transparent,
+    rgba(0, 200, 255, .65),
+    rgba(8, 124, 255, .95)
+  );
+
+  box-shadow: 0 0 12px rgba(0, 145, 255, .28);
+
+  pointer-events: none;
+}
+
+
+/* ILUMINACIÓN AMBIENTAL */
+
+.ist-about-solutions__ambient {
+  position: absolute;
+  z-index: 0;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: .10;
+
+  pointer-events: none;
+}
+
+.ist-about-solutions__ambient--left {
+  top: 180px;
+  left: -340px;
+
+  background: #006dff;
+}
+
+.ist-about-solutions__ambient--right {
+  right: -100px;
+  top: 0;
+
+  background: #007dff;
+}
+
+
+/* CONTENEDOR */
+
+.ist-about-solutions__shell {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 48px));
+
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.ist-about-solutions__header {
+  margin-bottom: 48px;
+}
+
+.ist-about-solutions__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+
+  color: #68bdf0;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+}
+
+.ist-about-solutions__eyebrow-line {
+  width: 27px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #087cff,
+    #00c8ff
+  );
+
+  box-shadow: 0 0 9px rgba(0, 145, 255, .45);
+}
+
+
+/* DISTRIBUCIÓN DEL TÍTULO */
+
+.ist-about-solutions__heading {
+  display: grid;
+
+  grid-template-columns: 1.1fr .9fr;
+
+  align-items: end;
+
+  gap: 60px;
+}
+
+
+/* TÍTULO */
+
+.ist-about-solutions__heading h2 {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #f2f7ff;
+
+  font-size: clamp(2.3rem, 4vw, 3.55rem);
+  font-weight: 800;
+
+  letter-spacing: -.065em;
+  line-height: 1.12;
+
+  text-wrap: balance;
+}
+
+.ist-about-solutions__heading h2 span {
+  display: block;
+
+  color: #64c5ff;
+}
+
+
+/* DESCRIPCIÓN */
+
+.ist-about-solutions__intro {
+  max-width: 470px;
+
+  margin: 0 0 5px;
+
+  color: #9cb2c9;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.ist-about-solutions__grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* TARJETA INDIVIDUAL */
+
+.ist-about-solutions__card {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 345px;
+
+  padding: 25px 25px 21px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(105, 164, 220, .15);
+
+  border-radius: 17px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(13, 35, 58, .83),
+    rgba(5, 16, 30, .94)
+  );
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, .13),
+    inset 0 1px 0 rgba(255, 255, 255, .025);
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+
+/* BRILLO SUPERIOR */
+
+.ist-about-solutions__card::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  top: 0;
+  left: 12%;
+
+  width: 76%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 148, 255, .48),
+    transparent
+  );
+
+  opacity: .6;
+}
+
+
+/* LUZ AMBIENTAL DE TARJETA */
+
+.ist-about-solutions__card::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  right: -110px;
+  bottom: -140px;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 103, 255, .09);
+
+  filter: blur(65px);
+
+  pointer-events: none;
+}
+
+
+/* HOVER */
+
+@media (hover: hover) {
+
+  .ist-about-solutions__card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(52, 160, 255, .38);
+
+    background: linear-gradient(
+      145deg,
+      rgba(15, 43, 72, .94),
+      rgba(5, 18, 34, .98)
+    );
+
+    box-shadow:
+      0 24px 55px rgba(0, 0, 0, .22),
+      0 0 24px rgba(0, 115, 255, .07);
+  }
+
+}
+
+
+/* CABECERA DE TARJETA */
+
+.ist-about-solutions__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.ist-about-solutions__number {
+  color: #5687ad;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .14em;
+}
+
+
+/* ETIQUETAS */
+
+.ist-about-solutions__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 24px;
+
+  padding: 5px 10px;
+
+  border-radius: 5px;
+
+  font-size: 8px;
+  font-weight: 850;
+
+  letter-spacing: .13em;
+}
+
+
+/* SOFTWARE · AZUL IST */
+
+.ist-about-solutions__tag--software {
+  color: #fff;
+
+  border: 1px solid rgba(54, 161, 255, .5);
+
+  background: linear-gradient(
+    105deg,
+    #087cff,
+    #0755bc
+  );
+
+  box-shadow: 0 0 15px rgba(0, 113, 255, .15);
+}
+
+
+/* PLATAFORMAS · NEUTRO */
+
+.ist-about-solutions__tag--digital {
+  color: #8ac9ef;
+
+  border: 1px solid rgba(80, 159, 215, .25);
+
+  background: rgba(29, 91, 137, .12);
+}
+
+
+/* HARDWARE · BLANCO */
+
+.ist-about-solutions__tag--hardware {
+  color: #0a1b2b;
+
+  border: 1px solid rgba(255, 255, 255, .8);
+
+  background: #eaf3fc;
+}
+
+
+/* =========================================================
+   ICONOGRAFÍA
+========================================================= */
+
+.ist-about-solutions__icon {
+  width: 57px;
+  height: 57px;
+
+  display: grid;
+  place-items: center;
+
+  margin-top: 35px;
+  margin-bottom: 22px;
+
+  border: 1px solid rgba(74, 161, 231, .23);
+
+  border-radius: 14px;
+
+  background: rgba(0, 105, 204, .10);
+
+  font-size: 29px;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
+
+.ist-about-solutions__icon--software {
+  color: #37baff;
+}
+
+.ist-about-solutions__icon--digital {
+  color: #72caff;
+}
+
+.ist-about-solutions__icon--hardware {
+  color: #eaf5ff;
+
+  border-color: rgba(200, 224, 245, .23);
+
+  background: rgba(180, 208, 235, .07);
+}
+
+
+/* =========================================================
+   CONTENIDO DE TARJETAS
+========================================================= */
+
+.ist-about-solutions__card h3 {
+  margin: 0;
+
+  color: #edf5ff;
+
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 750;
+
+  letter-spacing: -.035em;
+  line-height: 1.35;
+}
+
+.ist-about-solutions__card p {
+  margin: 13px 0 25px;
+
+  color: #91a9c2;
+
+  font-size: 12px;
+
+  line-height: 1.85;
+}
+
+
+/* PIE DE TARJETA */
+
+.ist-about-solutions__card-bottom {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: auto;
+  padding-top: 17px;
+
+  border-top: 1px solid rgba(106, 169, 220, .12);
+
+  color: #668ba9;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .13em;
+}
+
+.ist-about-solutions__card-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #128bff;
+
+  box-shadow: 0 0 9px rgba(0, 132, 255, .55);
+}
+
+
+/* =========================================================
+   BOTÓN INFERIOR
+========================================================= */
+
+.ist-about-solutions__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-top: 31px;
+}
+
+.ist-about-solutions__footer p {
+  margin: 0;
+
+  color: #7896b1;
+
+  font-size: 11px;
+
+  letter-spacing: .015em;
+}
+
+
+/* BOTÓN */
+
+.ist-about-solutions__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  min-height: 45px;
+
+  padding: 0 19px;
+
+  
+  border-radius: 999px;
+
+
+  font-size: 11px;
+  font-weight: 750;
+
+  text-decoration: none;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+
+  color: #fff;
+  border: 1px solid rgba(62, 180, 255, .72);
+  background: linear-gradient(110deg, #076edb 0%, #0241a7 100%);
+  box-shadow: 0 9px 32px rgba(0, 91, 255, .24), inset 0 1px 0 rgba(255, 255, 255, .19);
+
+    
+}
+
+.ist-about-solutions__button iconify-icon {
+  color: #fbfdff;
+
+  font-size: 17px;
+
+  transition: transform .25s ease;
+}
+
+@media (hover: hover) {
+
+  .ist-about-solutions__button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 38px rgba(0, 117, 255, .38), inset 0 1px 0 rgba(255, 255, 255, .23);
+  }
+
+  .ist-about-solutions__button:hover iconify-icon {
+    transform: translate(2px, -2px);
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .ist-about-solutions__heading {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .ist-about-solutions__intro {
+    max-width: 650px;
+  }
+
+  .ist-about-solutions__grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .ist-about-solutions__card {
+    min-height: 0;
+
+    padding: 23px 24px;
+  }
+
+  .ist-about-solutions__icon {
+    margin-top: 25px;
+  }
+
+  .ist-about-solutions__card p {
+    max-width: 600px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .ist-about-solutions {
+    padding: 73px 0 78px;
+  }
+
+  .ist-about-solutions__shell {
+    width: min(100% - 32px, 560px);
+  }
+
+  .ist-about-solutions__header {
+    margin-bottom: 34px;
+  }
+
+  .ist-about-solutions__eyebrow {
+    margin-bottom: 18px;
+
+    font-size: 9px;
+  }
+
+  .ist-about-solutions__heading {
+    gap: 16px;
+  }
+
+  .ist-about-solutions__heading h2 {
+    font-size: clamp(2.15rem, 9vw, 3rem);
+  }
+
+  .ist-about-solutions__intro {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .ist-about-solutions__card {
+    padding: 21px 20px;
+  }
+
+  .ist-about-solutions__icon {
+    width: 51px;
+    height: 51px;
+
+    margin-top: 26px;
+    margin-bottom: 18px;
+
+    font-size: 26px;
+  }
+
+  .ist-about-solutions__card h3 {
+    font-size: 18px;
+  }
+
+  .ist-about-solutions__card p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    font-size: 12px;
+  }
+
+  .ist-about-solutions__footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 17px;
+
+    margin-top: 25px;
+  }
+
+  .ist-about-solutions__footer p {
+    font-size: 10px;
+  }
+
+  .ist-about-solutions__button {
+    width: 100%;
+  }
+
+}
+
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-about-solutions *,
+  .ist-about-solutions *::before,
+  .ist-about-solutions *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
+
+
+/* =========================================================
+   IST · 03 — PROYECTOS
+   LO QUE CONSTRUIMOS
+========================================================= */
+
+.ist-about-projects {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: clamp(85px, 9vw, 120px) 0;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 20% 50%,
+      rgba(0, 105, 220, .11),
+      transparent 39%
+    ),
+    linear-gradient(
+      180deg,
+      #040b16 0%,
+      #071426 55%,
+      #040c18 100%
+    );
+}
+
+.ist-about-projects::before {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  left: 0;
+
+  width: 40%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    
+    rgba(8, 124, 255, .95),
+    rgba(0, 200, 255, .65),
+    transparent
+  );
+
+  box-shadow: 0 0 12px rgba(0, 145, 255, .28);
+
+  pointer-events: none;
+}
+
+/* ILUMINACIÓN */
+
+.ist-about-projects__ambient {
+  position: absolute;
+  z-index: -1;
+
+  top: 20%;
+  left: 12%;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 110, 255, .10);
+
+  filter: blur(125px);
+
+  pointer-events: none;
+}
+
+
+/* CONTENEDOR */
+
+.ist-about-projects__shell {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 48px));
+
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   IDENTIFICADOR
+========================================================= */
+
+.ist-about-projects__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: clamp(35px, 4.5vw, 58px);
+
+  color: #68bdf0;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+}
+
+.ist-about-projects__eyebrow > span:first-child {
+  width: 27px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #087cff,
+    #00c8ff
+  );
+
+  box-shadow: 0 0 9px rgba(0, 145, 255, .45);
+}
+
+
+/* =========================================================
+   DISTRIBUCIÓN
+========================================================= */
+
+.ist-about-projects__layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.12fr)
+    minmax(0, .88fr);
+
+  align-items: center;
+
+  gap: clamp(45px, 7vw, 95px);
+}
+
+
+/* =========================================================
+   VISUAL IZQUIERDO
+========================================================= */
+
+.ist-about-projects__visual {
+  position: relative;
+  isolation: isolate;
+
+  min-width: 0;
+  min-height: 470px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* LUZ DETRÁS DE LA COMPOSICIÓN */
+
+.ist-about-projects__visual-glow {
+  position: absolute;
+  z-index: -2;
+
+  width: 75%;
+  height: 70%;
+
+  border-radius: 50%;
+
+  background: rgba(0, 111, 255, .17);
+
+  filter: blur(90px);
+}
+
+
+/* RETÍCULA */
+
+.ist-about-projects__visual-grid {
+  position: absolute;
+  z-index: -2;
+
+  inset: 5% 0;
+
+  opacity: .27;
+
+  background-image:
+    linear-gradient(
+      rgba(91, 165, 225, .06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(91, 165, 225, .06) 1px,
+      transparent 1px
+    );
+
+  background-size: 42px 42px;
+
+  mask-image: radial-gradient(
+    ellipse,
+    #000 15%,
+    transparent 73%
+  );
+}
+
+
+/* IMAGEN PNG */
+
+.ist-about-projects__image {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  max-width: 620px;
+
+  height: auto;
+  max-height: 440px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 22px 35px rgba(0, 0, 0, .32));
+
+  transition: transform .45s ease;
+}
+
+@media (hover: hover) {
+
+  .ist-about-projects__visual:hover
+  .ist-about-projects__image {
+    transform: translateY(-5px) scale(1.015);
+  }
+
+}
+
+
+/* =========================================================
+   CHIPS FLOTANTES
+========================================================= */
+
+.ist-about-projects__chip {
+  position: absolute;
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px 13px;
+
+  border: 1px solid rgba(88, 173, 242, .29);
+
+  border-radius: 9px;
+
+  color: #dceeff;
+
+  background: rgba(5, 22, 42, .94);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, .28),
+    0 0 17px rgba(0, 111, 255, .07);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.ist-about-projects__chip iconify-icon {
+  color: #54bfff;
+
+  font-size: 17px;
+}
+
+
+/* POSICIONES */
+
+.ist-about-projects__chip--web {
+  top: -2%;
+  left: -5%;
+}
+
+.ist-about-projects__chip--landing {
+  top: 8%;
+  right: 0;
+}
+
+.ist-about-projects__chip--systems {
+  bottom: 22%;
+  right: -2%;
+}
+
+.ist-about-projects__chip--templates {
+  left: 2%;
+  bottom: 3%;
+}
+
+
+/* =========================================================
+   FIRMA VISUAL
+========================================================= */
+
+.ist-about-projects__visual-caption {
+  position: absolute;
+  z-index: 2;
+
+  left: 50%;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  transform: translateX(-50%);
+
+  color: #668ba9;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+
+  white-space: nowrap;
+}
+
+.ist-about-projects__caption-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #168fff;
+
+  box-shadow: 0 0 10px rgba(0, 135, 255, .7);
+}
+
+
+/* =========================================================
+   CONTENIDO DERECHO
+========================================================= */
+
+.ist-about-projects__content {
+  min-width: 0;
+}
+
+
+/* ETIQUETA */
+
+.ist-about-projects__label {
+  margin: 0 0 18px;
+
+  color: #62bfff;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .18em;
+}
+
+
+/* TÍTULO */
+
+.ist-about-projects__title {
+  max-width: 490px;
+
+  margin: 0;
+
+  color: #f2f7ff;
+
+  font-size: clamp(2.45rem, 4vw, 3.65rem);
+  font-weight: 800;
+
+  letter-spacing: -.065em;
+  line-height: 1.1;
+
+  text-wrap: balance;
+}
+
+.ist-about-projects__title span {
+  display: block;
+
+  color: #59bfff;
+}
+
+
+/* DESCRIPCIÓN */
+
+.ist-about-projects__description {
+  max-width: 490px;
+
+  margin: 20px 0 30px;
+
+  color: #9cb2c9;
+
+  font-size: 12px;
+
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   COLECCIONES
+========================================================= */
+
+.ist-about-projects__collections {
+  display: grid;
+
+  border-top: 1px solid rgba(100, 165, 220, .17);
+}
+
+
+/* FILA INDIVIDUAL */
+
+.ist-about-projects__collection {
+  display: grid;
+
+  grid-template-columns: 30px minmax(0, 1fr) 23px;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 17px 2px;
+
+  border-bottom: 1px solid rgba(100, 165, 220, .15);
+}
+
+
+/* NÚMERO */
+
+.ist-about-projects__collection-number {
+  align-self: start;
+
+  padding-top: 3px;
+
+  color: #438fca;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .1em;
+}
+
+
+/* INFORMACIÓN */
+
+.ist-about-projects__collection-info {
+  min-width: 0;
+}
+
+.ist-about-projects__collection-info > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #57b6ef;
+
+  font-size: 8px;
+  font-weight: 850;
+
+  letter-spacing: .14em;
+}
+
+.ist-about-projects__collection-info h3 {
+  margin: 0;
+
+  color: #edf5ff;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  letter-spacing: -.015em;
+}
+
+.ist-about-projects__collection-info p {
+  margin: 5px 0 0;
+
+  color: #829cb7;
+
+  font-size: 10px;
+
+  line-height: 1.65;
+}
+
+
+/* ICONOS */
+
+.ist-about-projects__collection-icon {
+  color: #57b9f5;
+
+  font-size: 19px;
+
+  opacity: .8;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.ist-about-projects__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  min-height: 46px;
+
+  margin-top: 26px;
+  padding: 0 19px;
+
+  border-radius:999px;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  text-decoration: none;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+
+    
+  color: #fff;
+  border: 1px solid rgba(62, 180, 255, .72);
+  background: linear-gradient(110deg, #076edb 0%, #0241a7 100%);
+  box-shadow: 0 9px 32px rgba(0, 91, 255, .24), inset 0 1px 0 rgba(255, 255, 255, .19);
+}
+
+.ist-about-projects__button iconify-icon {
+  color: #effaff;
+
+  font-size: 17px;
+
+  transition: transform .25s ease;
+}
+
+@media (hover: hover) {
+
+  .ist-about-projects__button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 38px rgba(0, 117, 255, .38), inset 0 1px 0 rgba(255, 255, 255, .23);
+  }
+
+  .ist-about-projects__button:hover iconify-icon {
+    transform: translate(2px, -2px);
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .ist-about-projects__layout {
+    grid-template-columns: 1fr;
+
+    gap: 48px;
+  }
+
+  .ist-about-projects__visual {
+    width: min(100%, 700px);
+
+    margin-inline: auto;
+  }
+
+  .ist-about-projects__content {
+    width: min(100%, 700px);
+
+    margin-inline: auto;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .ist-about-projects {
+    padding: 75px 0 80px;
+  }
+
+  .ist-about-projects__shell {
+    width: min(100% - 32px, 560px);
+  }
+
+  .ist-about-projects__eyebrow {
+    margin-bottom: 28px;
+
+    font-size: 9px;
+  }
+
+  .ist-about-projects__layout {
+    gap: 35px;
+  }
+
+  .ist-about-projects__visual {
+    min-height: 310px;
+  }
+
+  .ist-about-projects__image {
+    max-height: 300px;
+  }
+
+  .ist-about-projects__chip {
+    gap: 6px;
+
+    padding: 8px 9px;
+
+    font-size: 8px;
+  }
+
+  .ist-about-projects__chip iconify-icon {
+    font-size: 14px;
+  }
+
+  .ist-about-projects__chip--web {
+    top: 4%;
+    left: 0;
+  }
+
+  .ist-about-projects__chip--landing {
+    top: 17%;
+    right: 0;
+  }
+
+  .ist-about-projects__chip--systems {
+    bottom: 19%;
+    right: 0;
+  }
+
+  .ist-about-projects__chip--templates {
+    left: 0;
+    bottom: 7%;
+  }
+
+  .ist-about-projects__visual-caption {
+    font-size: 7px;
+  }
+
+  .ist-about-projects__title {
+    font-size: clamp(2.35rem, 9vw, 3.1rem);
+  }
+
+  .ist-about-projects__description {
+    margin-top: 17px;
+
+    font-size: 12px;
+  }
+
+  .ist-about-projects__collection {
+    grid-template-columns: 25px minmax(0, 1fr) 20px;
+
+    gap: 10px;
+
+    padding: 16px 0;
+  }
+
+  .ist-about-projects__collection-info h3 {
+    font-size: 12px;
+  }
+
+  .ist-about-projects__collection-info p {
+    font-size: 10px;
+  }
+
+  .ist-about-projects__button {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 380px) {
+
+  .ist-about-projects__visual {
+    min-height: 270px;
+  }
+
+  .ist-about-projects__image {
+    max-height: 255px;
+  }
+
+  .ist-about-projects__chip {
+    padding: 7px 8px;
+
+    font-size: 7px;
+  }
+
+}
+
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-about-projects *,
+  .ist-about-projects *::before,
+  .ist-about-projects *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
+
+
+/* =========================================================
+   IST · REALIDADES
+   INTERACTIVE EXPERIENCE
+========================================================= */
+
+.ist-about-realities {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(82px, 8vw, 112px)
+    0
+    clamp(90px, 9vw, 125px);
+
+  background: linear-gradient(180deg,
+  #040b16 0%,
+      #071426 55%,
+      #040c18 100%);
+      
+  color: var(--text);
+}
+
+
+/* ILUMINACIÓN AMBIENTAL */
+
+.ist-about-realities::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 650px;
+  height: 550px;
+
+  top: 15%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 102, 255, .075),
+    transparent 68%
+  );
+
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+
+/* ACENTO SUPERIOR · REALIDADES IST */
+
+.ist-about-realities::after {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    270deg,
+    rgba(0, 200, 255, .65),
+    rgba(8, 124, 255, .95),
+    transparent,
+    transparent,
+    rgba(8, 124, 255, .95),
+    rgba(0, 200, 255, .65)
+  );
+
+  box-shadow: 0 0 12px rgba(0, 145, 255, .28);
+
+  pointer-events: none;
+}
+
+
+
+/* CONTENEDOR */
+
+.ist-about-realities__container {
+  width: min(1220px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.ist-about-realities__header {
+  max-width: 790px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+/* BADGE INSTITUCIONAL */
+
+.ist-about-realities__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 21px;
+
+  color: #68bdf0;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.ist-about-realities__eyebrow > span:first-child {
+  display: block;
+
+  flex: 0 0 27px;
+
+  width: 27px;
+  height: 1px;
+
+  border-radius: 0;
+
+  background: linear-gradient(
+    90deg,
+    #087cff,
+    #00c8ff
+  );
+
+  box-shadow: 0 0 10px rgba(0, 145, 255, .35);
+}
+
+
+.ist-about-realities__header h2 {
+  margin: 0;
+
+  color: #f4f8ff;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -.065em;
+
+  text-wrap: balance;
+}
+
+
+.ist-about-realities__header h2 span {
+  color: #2bbfff;
+
+  background: linear-gradient(
+    100deg,
+    #e9f7ff,
+    #55d5ff 48%,
+    #087cff
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.ist-about-realities__header > p {
+  max-width: 620px;
+
+  margin: 19px auto 0;
+
+  color: #a9bad0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  text-wrap: balance;
+}
+
+
+/* =========================================================
+   CHIPS / SELECTOR
+========================================================= */
+
+.ist-about-realities__selector {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 11px;
+
+  margin: 39px auto 0;
+}
+
+
+.ist-about-realities__chip {
+  position: relative;
+
+  min-height: 47px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 0 19px;
+
+  border: 1px solid rgba(105, 157, 213, .19);
+  border-radius: 999px;
+
+  color: #a9bad0;
+
+  background: rgba(9, 23, 42, .53);
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 650;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color .25s ease,
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.ist-about-realities__chip iconify-icon {
+  display: block;
+
+  font-size: 17px;
+
+  color: #70a9d7;
+
+  transition: color .25s ease;
+}
+
+
+.ist-about-realities__chip:hover {
+  color: #fff;
+
+  border-color: rgba(0, 166, 255, .43);
+
+  background: rgba(0, 107, 205, .12);
+
+  transform: translateY(-2px);
+}
+
+
+.ist-about-realities__chip:hover iconify-icon {
+  color: #48caff;
+}
+
+
+/* CHIP ACTIVO */
+
+.ist-about-realities__chip.is-active {
+  color: #fff;
+
+  border-color: rgba(40, 173, 255, .66);
+
+  background: linear-gradient(
+    110deg,
+    rgba(0, 116, 255, .24),
+    rgba(0, 174, 255, .10)
+  );
+
+  box-shadow:
+    0 0 24px rgba(0, 112, 255, .10),
+    inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+
+.ist-about-realities__chip.is-active iconify-icon {
+  color: #49caff;
+}
+
+
+.ist-about-realities__chip:focus-visible {
+  outline: 2px solid #35bfff;
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+.ist-about-realities__layout {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+gap: clamp(35px, 5vw, 72px);
+
+  align-items: center;
+
+
+  min-height: 405px;
+
+  margin-top: 45px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN IZQUIERDA
+========================================================= */
+
+.ist-about-realities__copy {
+  position: relative;
+  z-index: 2;
+
+  max-width: 490px;
+
+  padding: 12px 0;
+}
+
+
+.ist-about-realities__index {
+  display: inline-block;
+
+  margin-bottom: 22px;
+
+  color: #45c4ff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+}
+
+
+.ist-about-realities__copy h3 {
+  max-width: 470px;
+
+  margin: 0;
+
+  color: #f3f7ff;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
+  font-weight: 800;
+
+  line-height: 1.13;
+  letter-spacing: -.06em;
+
+  text-wrap: balance;
+}
+
+
+.ist-about-realities__description {
+  max-width: 450px;
+
+  margin: 21px 0 0;
+
+  color: #a9bad0;
+
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* ÁREAS DE ENFOQUE */
+
+.ist-about-realities__focus {
+  margin-top: 27px;
+}
+
+
+.ist-about-realities__focus > span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #6e8aa9;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+}
+
+
+.ist-about-realities__focus p {
+  margin: 0;
+
+  color: #d0e2f5;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.7;
+}
+
+
+/* BOTÓN */
+
+.ist-about-realities__cta {
+  width: fit-content;
+
+  min-height: 49px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 32px;
+  padding: 0 21px;
+
+  border: 1px solid rgba(42, 170, 255, .62);
+  border-radius: 9px;
+
+  color: #fff;
+
+  background: linear-gradient(
+    110deg,
+    #087cff,
+    #0759d7
+  );
+
+  box-shadow:
+    0 8px 26px rgba(0, 104, 255, .19),
+    inset 0 1px 0 rgba(255, 255, 255, .17);
+
+  font-size: 12px;
+  font-weight: 750;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.ist-about-realities__cta:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 34px rgba(0, 112, 255, .3),
+    inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+
+
+.ist-about-realities__cta iconify-icon {
+  font-size: 17px;
+
+  transition: transform .25s ease;
+}
+
+
+.ist-about-realities__cta:hover iconify-icon {
+  transform: translate(3px, -3px);
+}
+
+
+
+
+.ist-about-realities__visual img.is-unavailable {
+  opacity: 0;
+}
+
+
+/* ANIMACIÓN DE CAMBIO */
+
+.ist-about-realities__copy.is-entering {
+  animation: istRealityCopyIn .42s ease both;
+}
+
+
+.ist-about-realities__visual img.is-entering {
+  animation: istRealityImageIn .5s ease both;
+}
+
+
+@keyframes istRealityCopyIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes istRealityImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(17px) scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .ist-about-realities__container {
+    width: calc(100% - 48px);
+  }
+
+  .ist-about-realities__layout {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+gap: clamp(35px, 5vw, 72px);
+  }
+
+  .ist-about-realities__visual {
+    min-height: 340px;
+  }
+
+  .ist-about-realities__visual img {
+    height: 360px;
+  }
+
+  .ist-about-realities__copy h3 {
+    font-size: 2.35rem;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 680px) {
+
+  .ist-about-realities {
+    padding: 76px 0 85px;
+  }
+
+  .ist-about-realities__container {
+    width: calc(100% - 38px);
+  }
+
+  .ist-about-realities__header h2 {
+    font-size: clamp(2.35rem, 9vw, 3.2rem);
+  }
+
+  .ist-about-realities__header > p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+
+  /* SELECTOR DESLIZABLE */
+
+  .ist-about-realities__selector {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    width: 100%;
+
+    margin-top: 29px;
+    padding: 5px 2px 12px;
+
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ist-about-realities__selector::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ist-about-realities__chip {
+    flex: 0 0 auto;
+
+    min-height: 43px;
+
+    padding: 0 15px;
+
+    font-size: 11px;
+  }
+
+
+  /* CONTENIDO */
+
+  .ist-about-realities__layout {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+    margin-top: 30px;
+  }
+
+  .ist-about-realities__copy {
+    max-width: 100%;
+  }
+
+  .ist-about-realities__copy h3 {
+    max-width: 520px;
+
+    font-size: clamp(2.1rem, 8vw, 2.8rem);
+  }
+
+  .ist-about-realities__description {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .ist-about-realities__focus {
+    margin-top: 22px;
+  }
+
+  .ist-about-realities__cta {
+    margin-top: 25px;
+  }
+
+
+  /* IMAGEN DEBAJO DEL TEXTO */
+
+  .ist-about-realities__visual {
+    min-height: 280px;
+    margin-top: 0;
+  }
+
+  .ist-about-realities__visual img {
+    height: 310px;
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 390px) {
+
+  .ist-about-realities__chip {
+    gap: 7px;
+    padding: 0 12px;
+  }
+
+  .ist-about-realities__chip iconify-icon {
+    font-size: 15px;
+  }
+
+  .ist-about-realities__visual {
+    min-height: 240px;
+  }
+
+  .ist-about-realities__visual img {
+    height: 270px;
+  }
+
+}
+
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-about-realities *,
+  .ist-about-realities *::before,
+  .ist-about-realities *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
+
+
+/* =========================================================
+   IST · REALIDADES — BALANCE 50 / 50
+========================================================= */
+
+/* DISTRIBUCIÓN EQUILIBRADA */
+
+.ist-about-realities__layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: clamp(32px, 4vw, 58px);
+
+  align-items: center;
+  width: 100%;
+}
+
+/* COLUMNA IZQUIERDA */
+
+.ist-about-realities__copy {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin-left:2rem;
+}
+
+.ist-about-realities__copy h3 {
+  max-width: 100%;
+}
+
+.ist-about-realities__description {
+  max-width: 100%;
+}
+
+
+/* TABLET Y MÓVIL */
+
+@media (max-width: 680px) {
+
+  .ist-about-realities__layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .ist-about-realities__visual {
+    min-height: 280px;
+  }
+
+  .ist-about-realities__visual img {
+    height: 310px;
+    max-width: 100%;
+  }
+
+  .ist-about-realities__visual-glow {
+    width: 100%;
+    height: 84%;
+
+    filter: blur(38px);
+  }
+  .ist-about-realities__copy {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin-left:0;
+  text-align:center;
+}
+
+}
+
+
+/* =========================================================
+   IMAGEN DERECHA · REALIDADES
+========================================================= */
+
+.ist-about-realities__visual {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 430px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PNG */
+
+.ist-about-realities__visual img {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  max-width: 640px;
+
+  height: 430px;
+  max-height: none;
+
+  margin: 0 auto;
+
+  object-fit: contain;
+  object-position: center;
+
+  filter:
+    drop-shadow(0 18px 35px rgba(0, 0, 0, .30))
+    drop-shadow(0 0 24px rgba(0, 115, 255, .14))
+    drop-shadow(0 0 42px rgba(0, 170, 255, .10));
+}
+
+/* GLOW PRINCIPAL DETRÁS DEL PNG */
+
+.ist-about-realities__visual-glow {
+  position: absolute;
+  z-index: 0;
+
+  left: 50%;
+  top: 52%;
+
+  transform: translate(-50%, -50%);
+
+  width: 92%;
+  height: 82%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 180, 255, .28) 0%,
+      rgba(0, 119, 255, .18) 28%,
+      rgba(0, 119, 255, .10) 48%,
+      rgba(0, 90, 220, .05) 62%,
+      transparent 78%
+    );
+
+  filter: blur(46px);
+
+  opacity: .95;
+
+  pointer-events: none;
+}
+
+/* GLOW EXTRA SUAVE PARA AMPLIAR EL HALO */
+
+.ist-about-realities__visual::before {
+  content: "";
+
+  position: absolute;
+  z-index: 0;
+
+  left: 50%;
+  top: 54%;
+
+  transform: translate(-50%, -50%);
+
+  width: 78%;
+  height: 62%;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 145, 255, .26) 0%,
+    rgba(0, 145, 255, .12) 35%,
+    rgba(0, 145, 255, .05) 58%,
+    transparent 76%
+  );
+
+  filter: blur(70px);
+
+  opacity: .95;
+
+  pointer-events: none;
+}
+
+/* SI EL PNG NO CARGA */
+
+.ist-about-realities__visual img.is-unavailable {
+  opacity: 0;
+}
+
+
+/* =========================================================
+   IST · BRAND FILM
+   MÁS ALLÁ DE RESOLVER
+========================================================= */
+
+.ist-brand-film {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  width: 100%;
+
+  height: clamp(460px, 56.25vw, 760px);
+
+  background: #030914;
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.ist-brand-film__video {
+  position: absolute;
+  z-index: 0;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  pointer-events: none;
+}
+
+
+
+
+
+/* =========================================================
+   LÍNEA PREMIUM SUPERIOR
+========================================================= */
+
+.ist-brand-film::before {
+  content: "";
+
+  position: absolute;
+  z-index: 4;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(8, 124, 255, .65) 15%,
+    #087cff 34%,
+    #00c8ff 50%,
+    #087cff 66%,
+    rgba(8, 124, 255, .65) 85%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 132, 255, .42),
+    0 0 26px rgba(0, 132, 255, .18);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LÍNEA PREMIUM INFERIOR
+========================================================= */
+
+.ist-brand-film::after {
+  content: "";
+
+  position: absolute;
+  z-index: 4;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(8, 124, 255, .65) 15%,
+    #087cff 34%,
+    #00c8ff 50%,
+    #087cff 66%,
+    rgba(8, 124, 255, .65) 85%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 132, 255, .42),
+    0 0 26px rgba(0, 132, 255, .18);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .ist-brand-film {
+    height: 540px;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 680px) {
+
+  .ist-brand-film {
+    height: clamp(380px, 58svh, 520px);
+  }
+
+  .ist-brand-film__video {
+    object-position: center;
+  }
+
+}
+
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-brand-film__video {
+    visibility: hidden;
+  }
+
+}
+
+
+/* =========================================================
+   IST · BRAND FILM
+   CONTENIDO CENTRAL
+========================================================= */
+
+.ist-brand-film__shade {
+  position: absolute;
+  z-index: 1;
+
+  inset: 0;
+
+  background:
+
+    /* OSCURIDAD CENTRAL PRINCIPAL */
+
+    radial-gradient(
+      ellipse 48% 55% at 50% 50%,
+      rgba(1, 6, 16, .88) 0%,
+      rgba(2, 9, 21, .76) 36%,
+      rgba(2, 9, 21, .48) 62%,
+      transparent 100%
+    ),
+
+    /* OSCURECIMIENTO GENERAL */
+
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 18, .18) 0%,
+      rgba(2, 8, 18, .08) 25%,
+      rgba(2, 8, 18, .08) 75%,
+      rgba(2, 8, 18, .22) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.ist-brand-film__content {
+  position: absolute;
+  z-index: 2;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+
+.ist-brand-film__message {
+  position: relative;
+
+  width: min(100%, 1050px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0;
+}
+
+
+/* =========================================================
+   BADGE · ESENCIA IST
+========================================================= */
+
+.ist-brand-film__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 28px;
+  padding: 9px 15px;
+
+  border: 1px solid rgba(66, 166, 255, .30);
+  border-radius: 999px;
+
+  color: #8ecfff;
+
+  background: rgba(3, 24, 48, .48);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: .21em;
+
+  text-transform: uppercase;
+
+  box-shadow:
+    0 0 22px rgba(0, 112, 255, .09),
+    inset 0 1px 0 rgba(255, 255, 255, .045);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* PUNTO LUMINOSO */
+
+.ist-brand-film__badge-dot {
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: #20baff;
+
+  box-shadow:
+    0 0 7px #00aaff,
+    0 0 15px rgba(0, 170, 255, .65);
+}
+
+
+/* =========================================================
+   LEMA PRINCIPAL
+========================================================= */
+
+.ist-brand-film__title {
+  max-width: 100%;
+
+  margin: 0;
+
+  color: transparent;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f0f5fc 45%,
+    #a9c5df 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  font-size: clamp(2.5rem, 4.1vw, 5.7rem);
+
+  font-weight: 300;
+
+  line-height: 1.08;
+
+  letter-spacing: -.055em;
+
+  text-transform: uppercase;
+
+  text-wrap: balance;
+
+  filter:
+    drop-shadow(0 3px 12px rgba(0, 0, 0, .65))
+    drop-shadow(0 0 25px rgba(0, 115, 255, .14));
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.ist-brand-film__description {
+  max-width: 680px;
+
+  margin: 25px auto 0;
+
+  color: rgba(221, 234, 249, .88);
+
+  font-size: clamp(12px, 1.15vw, 15px);
+
+  font-weight: 400;
+
+  line-height: 1.9;
+
+  letter-spacing: .015em;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, .8),
+    0 0 18px rgba(0, 0, 0, .45);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .ist-brand-film__title {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+  }
+
+  .ist-brand-film__description {
+    max-width: 570px;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 680px) {
+
+  .ist-brand-film__content {
+    padding: 22px;
+  }
+
+  .ist-brand-film__badge {
+    margin-bottom: 23px;
+
+    padding: 8px 13px;
+
+    font-size: 9px;
+  }
+
+  .ist-brand-film__title {
+    font-size: clamp(2.15rem, 9.5vw, 3.3rem);
+
+    letter-spacing: -.045em;
+
+    line-height: 1.13;
+  }
+
+  .ist-brand-film__description {
+    max-width: 370px;
+
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+  }
+
+  .ist-brand-film__shade {
+    background:
+      radial-gradient(
+        ellipse 85% 58% at 50% 50%,
+        rgba(1, 6, 16, .91) 0%,
+        rgba(2, 9, 21, .76) 55%,
+        rgba(2, 9, 21, .25) 100%
+      );
+  }
+
+}
+
+
+/* =========================================================
+   IST · 05 FILOSOFÍA
+   INNOVAR · SOLUCIONAR · TRANSFORMAR
+========================================================= */
+
+.ist-philosophy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(95px, 9vw, 135px)
+    0
+    clamp(90px, 8vw, 115px);
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(0, 103, 255, .075),
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #040b16 0%,
+      #071426 52%,
+      #040b16 100%
+    );
+}
+
+
+/* =========================================================
+   ACENTO SUPERIOR · LADO IZQUIERDO
+========================================================= */
+
+.ist-philosophy::before {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  left: 0;
+
+  width: 32%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 200, 255, .9),
+    #087cff 38%,
+    rgba(0, 115, 255, .12) 100%
+  );
+
+  box-shadow:
+    0 0 10px rgba(0, 145, 255, .4),
+    0 0 22px rgba(0, 120, 255, .16);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ILUMINACIÓN AMBIENTAL
+========================================================= */
+
+.ist-philosophy__ambient {
+  position: absolute;
+  z-index: -1;
+
+  width: 750px;
+  height: 570px;
+
+  top: 12%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(0, 105, 255, .075);
+
+  filter: blur(125px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.ist-philosophy__container {
+  width: min(1160px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.ist-philosophy__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: clamp(43px, 5vw, 65px);
+
+  color: #65caff;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.ist-philosophy__dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16baff;
+
+  box-shadow:
+    0 0 9px #00aaff,
+    0 0 18px rgba(0, 170, 255, .6);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.ist-philosophy__header {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.ist-philosophy__overline {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: #829bb8;
+
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .2em;
+}
+
+.ist-philosophy__header h2 {
+  margin: 0;
+
+  color: #f3f7ff;
+
+  font-family: var(--font-heading, 'Geist', sans-serif);
+
+  font-size: clamp(48px, 6.2vw, 79px);
+  font-weight: 650;
+
+  letter-spacing: -.065em;
+  line-height: 1.05;
+
+  text-wrap: balance;
+}
+
+.ist-philosophy__header h2 span {
+  color: #52c4ff;
+
+  background: linear-gradient(
+    105deg,
+    #effaff 0%,
+    #80d8ff 48%,
+    #138aff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ist-philosophy__intro {
+  max-width: 760px;
+
+  margin: 25px auto 0;
+
+  color: #b4c5d9;
+
+  font-size: clamp(14px, 1.3vw, 16px);
+  font-weight: 400;
+
+  line-height: 1.9;
+  letter-spacing: -.012em;
+}
+
+
+/* =========================================================
+   PRINCIPIOS IST
+========================================================= */
+
+.ist-philosophy__principles {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  margin-top: clamp(65px, 8vw, 100px);
+
+  border-top: 1px solid rgba(100, 158, 215, .18);
+  border-bottom: 1px solid rgba(100, 158, 215, .18);
+}
+
+
+/* CADA PRINCIPIO */
+
+.ist-philosophy__item {
+  position: relative;
+
+  min-width: 0;
+
+  padding:
+    clamp(30px, 4vw, 48px)
+    clamp(20px, 3.4vw, 42px);
+
+  text-align: center;
+}
+
+.ist-philosophy__item + .ist-philosophy__item {
+  border-left: 1px solid rgba(100, 158, 215, .16);
+}
+
+
+/* LETRAS I S T */
+
+.ist-philosophy__symbol {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  margin-bottom: 22px;
+}
+
+.ist-philosophy__symbol > span {
+  color: #57bfff;
+
+  font-family: var(--font-heading, 'Geist', sans-serif);
+
+  font-size: clamp(65px, 7vw, 88px);
+  font-weight: 650;
+
+  line-height: 1;
+
+  background: linear-gradient(
+    145deg,
+    #f0faff 0%,
+    #d8e0ff 48%,
+    #0475f7 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 5px 18px rgba(0, 112, 255, .12));
+}
+
+
+/* ICONOS */
+
+.ist-philosophy__symbol iconify-icon {
+  position: absolute;
+
+  right: 12%;
+  top: 8px;
+
+  color: rgba(68, 185, 255, .75);
+
+  font-size: 22px;
+
+  filter: drop-shadow(0 0 9px rgba(0, 145, 255, .3));
+}
+
+
+/* TÍTULOS */
+
+.ist-philosophy__item h3 {
+  margin: 0;
+
+  color: #f0f6ff;
+
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 650;
+
+  letter-spacing: -.035em;
+}
+
+
+/* DESCRIPCIONES */
+
+.ist-philosophy__item p {
+  max-width: 290px;
+
+  margin: 13px auto 0;
+
+  color: #9eb2ca;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   CIERRE
+========================================================= */
+
+.ist-philosophy__closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 24px;
+
+  max-width: 850px;
+
+  margin: clamp(48px, 6vw, 72px) auto 0;
+}
+
+.ist-philosophy__closing p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #dcecff;
+
+  font-size: clamp(16px, 1.8vw, 21px);
+  font-weight: 500;
+
+  line-height: 1.55;
+  letter-spacing: -.025em;
+
+  text-align: center;
+  text-wrap: balance;
+}
+
+.ist-philosophy__closing-line {
+  width: 35px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 173, 255, .8)
+  );
+
+  box-shadow: 0 0 9px rgba(0, 145, 255, .3);
+}
+
+.ist-philosophy__closing-line:last-child {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .ist-philosophy__container {
+    width: calc(100% - 48px);
+  }
+
+  .ist-philosophy__item {
+    padding: 32px 18px;
+  }
+
+  .ist-philosophy__symbol iconify-icon {
+    right: 4%;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .ist-philosophy {
+    padding: 82px 0 85px;
+  }
+
+  .ist-philosophy__container {
+    width: calc(100% - 40px);
+  }
+
+  .ist-philosophy__eyebrow {
+    margin-bottom: 42px;
+    font-size: 9px;
+  }
+
+  .ist-philosophy__overline {
+    font-size: 9px;
+    line-height: 1.7;
+  }
+
+  .ist-philosophy__header h2 {
+    font-size: clamp(43px, 11.5vw, 58px);
+  }
+
+  .ist-philosophy__intro {
+    margin-top: 22px;
+
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .ist-philosophy__principles {
+    grid-template-columns: 1fr;
+
+    margin-top: 48px;
+  }
+
+  .ist-philosophy__item {
+    padding: 29px 18px 31px;
+
+    border-left: none !important;
+  }
+
+  .ist-philosophy__item + .ist-philosophy__item {
+    border-top: 1px solid rgba(100, 158, 215, .16);
+  }
+
+  .ist-philosophy__symbol {
+    margin-bottom: 14px;
+  }
+
+  .ist-philosophy__symbol > span {
+    font-size: 70px;
+  }
+
+  .ist-philosophy__symbol iconify-icon {
+    right: 22%;
+    top: 7px;
+  }
+
+  .ist-philosophy__item h3 {
+    font-size: 22px;
+  }
+
+  .ist-philosophy__item p {
+    max-width: 300px;
+    font-size: 13px;
+  }
+
+  .ist-philosophy__closing {
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .ist-philosophy__closing-line {
+    width: 17px;
+  }
+
+  .ist-philosophy__closing p {
+    font-size: 16px;
+  }
+
+}
+
+
+/* =========================================================
+   IST · 06 — UNIVERSO IST
+   ESENCIA DE MARCA
+========================================================= */
+
+.ist-universe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(90px, 9vw, 125px)
+    0
+    clamp(85px, 8vw, 110px);
+
+  color: var(--text);
+
+  /* CONTINUIDAD CON FILOSOFÍA IST */
+
+  background: linear-gradient(
+    180deg,
+    #040b16 0%,
+    #061326 55%,
+    #030a14 100%
+  );
+}
+
+
+/* =========================================================
+   ACENTO SUPERIOR · LADO DERECHO
+========================================================= */
+
+.ist-universe::before {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  right: 0;
+
+  width: 32%;
+  height: 2px;
+
+  background: linear-gradient(
+    270deg,
+    rgba(0, 200, 255, .9),
+    #087cff 38%,
+    rgba(0, 115, 255, .12) 100%
+  );
+
+  box-shadow:
+    0 0 10px rgba(0, 145, 255, .4),
+    0 0 22px rgba(0, 120, 255, .16);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ILUMINACIÓN AMBIENTAL
+========================================================= */
+
+.ist-universe__ambient {
+  position: absolute;
+  z-index: -1;
+
+  width: 650px;
+  height: 550px;
+
+  top: 5%;
+  right: -300px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 105, 255, .095);
+
+  filter: blur(125px);
+
+  pointer-events: none;
+}
+
+
+/* SEGUNDO PUNTO DE LUZ */
+
+.ist-universe__ambient::after {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  left: -850px;
+  top: 200px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 91, 255, .065);
+
+  filter: blur(100px);
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.ist-universe__container {
+  width: min(1160px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   IDENTIFICADOR
+========================================================= */
+
+.ist-universe__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: clamp(48px, 6vw, 78px);
+
+  color: #65caff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.ist-universe__dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16baff;
+
+  box-shadow:
+    0 0 9px #00aaff,
+    0 0 18px rgba(0, 170, 255, .6);
+}
+
+
+/* =========================================================
+   COMPOSICIÓN PRINCIPAL
+========================================================= */
+
+.ist-universe__main {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: clamp(45px, 7vw, 95px);
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.ist-universe__heading {
+  min-width: 0;
+}
+
+.ist-universe__overline {
+  display: block;
+
+  margin-bottom: 21px;
+
+  color: #7898b9;
+
+  font-size: 10px;
+  font-weight: 750;
+
+  letter-spacing: .19em;
+}
+
+.ist-universe__heading h2 {
+  margin: 0;
+
+  color: #f1f7ff;
+
+  font-size: clamp(39px, 4.5vw, 59px);
+  font-weight: 620;
+
+  letter-spacing: -.06em;
+  line-height: 1.13;
+
+  text-wrap: balance;
+}
+
+.ist-universe__heading h2 span {
+  display: block;
+
+  color: #54c5ff;
+
+  background: linear-gradient(
+    105deg,
+    #f0f9ff 0%,
+    #83d9ff 48%,
+    #168bff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.ist-universe__description {
+  position: relative;
+
+  min-width: 0;
+
+  padding-left: clamp(22px, 3vw, 38px);
+
+  border-left: 1px solid rgba(48, 164, 255, .36);
+}
+
+.ist-universe__description p {
+  margin: 0;
+
+  color: #afc1d7;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.95;
+  letter-spacing: -.008em;
+}
+
+.ist-universe__description p + p {
+  margin-top: 19px;
+}
+
+.ist-universe__description strong {
+  color: #dff2ff;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PIE EDITORIAL
+========================================================= */
+
+.ist-universe__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+
+  margin-top: clamp(65px, 7vw, 90px);
+
+  padding-top: 27px;
+
+  border-top: 1px solid rgba(105, 158, 210, .16);
+}
+
+
+/* =========================================================
+   FIRMA ESENCIA IST
+========================================================= */
+
+.ist-universe__signature {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.ist-universe__signature-line {
+  display: block;
+
+  width: 3px;
+  height: 37px;
+
+  flex-shrink: 0;
+
+  border-radius: 3px;
+
+  background: linear-gradient(
+    180deg,
+    #00c5ff,
+    #087cff
+  );
+
+  box-shadow:
+    0 0 10px rgba(0, 145, 255, .4);
+}
+
+.ist-universe__signature div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.ist-universe__signature strong {
+  color: #eaf5ff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: .13em;
+}
+
+.ist-universe__signature div span {
+  color: #7893af;
+
+  font-size: 9px;
+  font-weight: 650;
+
+  letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   REDES SOCIALES
+========================================================= */
+
+.ist-universe__socials {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 13px;
+}
+
+.ist-universe__social-label {
+  color: #7895b4;
+
+  font-size: 9px;
+  font-weight: 750;
+
+  letter-spacing: .16em;
+}
+
+.ist-universe__social-links {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* ENLACES */
+
+.ist-universe__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 10px 14px;
+
+  color: #c6d9ec;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  text-decoration: none;
+
+  border: 1px solid rgba(104, 162, 220, .19);
+  border-radius: 999px;
+
+  background: rgba(6, 23, 43, .35);
+
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    background .25s ease,
+    transform .25s ease;
+}
+
+.ist-universe__social > iconify-icon:first-child {
+  color: #52baff;
+
+  font-size: 17px;
+}
+
+.ist-universe__external {
+  color: #6688a8;
+
+  font-size: 13px;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+.ist-universe__social:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 163, 255, .55);
+
+  background: rgba(5, 39, 72, .65);
+
+  transform: translateY(-2px);
+}
+
+.ist-universe__social:hover .ist-universe__external {
+  color: #52caff;
+
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .ist-universe__container {
+    width: calc(100% - 48px);
+  }
+
+  .ist-universe__main {
+    gap: 35px;
+  }
+
+  .ist-universe__heading h2 {
+    font-size: clamp(36px, 5vw, 48px);
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .ist-universe {
+    padding: 82px 0 78px;
+  }
+
+  .ist-universe__container {
+    width: calc(100% - 40px);
+  }
+
+  .ist-universe__eyebrow {
+    margin-bottom: 43px;
+    font-size: 9px;
+  }
+
+  .ist-universe__main {
+    grid-template-columns: 1fr;
+    gap: 31px;
+  }
+
+  .ist-universe__overline {
+    font-size: 9px;
+  }
+
+  .ist-universe__heading h2 {
+    font-size: clamp(39px, 10.5vw, 52px);
+  }
+
+  .ist-universe__description {
+    padding-left: 19px;
+  }
+
+  .ist-universe__description p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .ist-universe__footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 29px;
+
+    margin-top: 48px;
+    padding-top: 24px;
+  }
+
+  .ist-universe__socials {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .ist-universe__social-links {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   IST · 07 — ALCANCE
+   DE TABASCO AL MUNDO
+========================================================= */
+
+.ist-reach {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(95px, 9vw, 130px)
+    0
+    clamp(85px, 8vw, 110px);
+
+  color: var(--text);
+
+  /* CONTINUIDAD CON UNIVERSO IST */
+
+  background: linear-gradient(
+    180deg,
+    #030a14 0%,
+    #061326 48%,
+    #030812 100%
+  );
+}
+
+
+/* =========================================================
+   ACENTO SUPERIOR · LADO IZQUIERDO
+========================================================= */
+
+.ist-reach::before {
+  content: "";
+
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  left: 0;
+
+  width: 32%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 200, 255, .9),
+    #087cff 38%,
+    rgba(0, 115, 255, .12) 100%
+  );
+
+  box-shadow:
+    0 0 10px rgba(0, 145, 255, .4),
+    0 0 22px rgba(0, 120, 255, .16);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ILUMINACIÓN AMBIENTAL
+========================================================= */
+
+.ist-reach__ambient {
+  position: absolute;
+  z-index: -1;
+
+  width: 800px;
+  height: 570px;
+
+  top: 10%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(0, 104, 255, .075);
+
+  filter: blur(135px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.ist-reach__container {
+  width: min(1160px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   IDENTIFICADOR
+========================================================= */
+
+.ist-reach__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: clamp(45px, 5vw, 65px);
+
+  color: #65caff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.ist-reach__dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16baff;
+
+  box-shadow:
+    0 0 9px #00aaff,
+    0 0 18px rgba(0, 170, 255, .6);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.ist-reach__header {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.ist-reach__overline {
+  display: block;
+
+  margin-bottom: 20px;
+
+  color: #829bb8;
+
+  font-size: 10px;
+  font-weight: 750;
+
+  letter-spacing: .19em;
+}
+
+.ist-reach__header h2 {
+  margin: 0;
+
+  color: #f2f7ff;
+
+  font-size: clamp(52px, 4vw, 86px);
+  font-weight: 650;
+
+  letter-spacing: -.075em;
+  line-height: 1.05;
+
+  text-wrap: balance;
+}
+
+.ist-reach__header h2 span {
+  color: #55c7ff;
+
+  background: linear-gradient(
+    105deg,
+    #effaff 0%,
+    #83d9ff 48%,
+    #168bff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ist-reach__header > p {
+  max-width: 740px;
+
+  margin: 25px auto 0;
+
+  color: #afc2d8;
+
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.9;
+
+  letter-spacing: -.01em;
+}
+
+
+/* =========================================================
+   CONEXIÓN VISUAL
+========================================================= */
+
+.ist-reach__connection {
+  display: flex;
+  align-items: center;
+
+  width: min(680px, 85%);
+
+  margin: clamp(60px, 7vw, 85px) auto 0;
+}
+
+.ist-reach__endpoint {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  color: #9ec6e8;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+.ist-reach__endpoint-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #16baff;
+
+  box-shadow:
+    0 0 8px #00aaff,
+    0 0 17px rgba(0, 170, 255, .6);
+}
+
+
+/* LÍNEA CONECTORA */
+
+.ist-reach__connection-line {
+  position: relative;
+
+  flex: 1;
+
+  height: 1px;
+
+  margin: 0 20px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 148, 255, .15),
+    rgba(0, 174, 255, .85),
+    rgba(0, 148, 255, .15)
+  );
+}
+
+.ist-reach__connection-line span {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #8de5ff;
+
+  box-shadow:
+    0 0 9px #00baff,
+    0 0 20px rgba(0, 170, 255, .6);
+}
+
+
+/* =========================================================
+   ÁREAS DE ALCANCE
+========================================================= */
+
+.ist-reach__areas {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  margin-top: 40px;
+
+  border-top: 1px solid rgba(105, 158, 210, .17);
+  border-bottom: 1px solid rgba(105, 158, 210, .17);
+}
+
+.ist-reach__area {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 24px;
+
+  min-width: 0;
+
+  padding:
+    clamp(30px, 4vw, 48px)
+    clamp(22px, 3.5vw, 42px);
+}
+
+.ist-reach__area + .ist-reach__area {
+  border-left: 1px solid rgba(105, 158, 210, .17);
+}
+
+
+/* =========================================================
+   ICONOS
+========================================================= */
+
+.ist-reach__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 52px;
+  height: 52px;
+
+  border: 1px solid rgba(69, 161, 235, .23);
+  border-radius: 15px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(12, 52, 91, .55),
+    rgba(3, 19, 39, .35)
+  );
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, .15),
+    inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.ist-reach__icon iconify-icon {
+  color: #54c4ff;
+
+  font-size: 26px;
+
+  filter: drop-shadow(0 0 8px rgba(0, 145, 255, .3));
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.ist-reach__content {
+  min-width: 0;
+}
+
+.ist-reach__label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #54baff;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+.ist-reach__content h3 {
+  margin: 0;
+
+  color: #f0f6ff;
+
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-weight: 650;
+
+  letter-spacing: -.04em;
+}
+
+.ist-reach__content > p {
+  margin: 13px 0 20px;
+
+  color: #a6bad1;
+
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+
+/* UBICACIÓN / ALCANCE */
+
+.ist-reach__location {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #d3e7f8;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ist-reach__location iconify-icon {
+  color: #43baff;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   CIERRE
+========================================================= */
+
+.ist-reach__closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+
+  margin-top: clamp(48px, 6vw, 70px);
+}
+
+.ist-reach__closing p {
+  margin: 0;
+
+  color: #c5d8eb;
+
+  font-size: clamp(15px, 1.7vw, 19px);
+  font-weight: 500;
+
+  letter-spacing: -.025em;
+
+  text-align: center;
+}
+
+.ist-reach__closing p span {
+  color: #55c5ff;
+  font-weight: 700;
+}
+
+.ist-reach__closing-line {
+  width: 35px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 174, 255, .8)
+  );
+
+  box-shadow: 0 0 9px rgba(0, 145, 255, .3);
+}
+
+.ist-reach__closing-line:last-child {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .ist-reach__container {
+    width: calc(100% - 48px);
+  }
+
+  .ist-reach__area {
+    gap: 17px;
+    padding: 30px 20px;
+  }
+
+  .ist-reach__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .ist-reach {
+    padding: 82px 0 78px;
+  }
+
+  .ist-reach__container {
+    width: calc(100% - 40px);
+  }
+
+  .ist-reach__eyebrow {
+    margin-bottom: 42px;
+    font-size: 9px;
+  }
+
+  .ist-reach__overline {
+    font-size: 9px;
+    line-height: 1.7;
+  }
+
+  .ist-reach__header h2 {
+    font-size: clamp(47px, 12vw, 61px);
+  }
+
+  .ist-reach__header > p {
+    margin-top: 21px;
+
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .ist-reach__connection {
+    width: 92%;
+
+    margin-top: 48px;
+  }
+
+  .ist-reach__endpoint {
+    gap: 7px;
+    font-size: 8px;
+    letter-spacing: .10em;
+  }
+
+  .ist-reach__connection-line {
+    margin: 0 12px;
+  }
+
+  .ist-reach__areas {
+    grid-template-columns: 1fr;
+
+    margin-top: 30px;
+  }
+
+  .ist-reach__area {
+    gap: 19px;
+
+    padding: 29px 5px;
+  }
+
+  .ist-reach__area + .ist-reach__area {
+    border-left: none;
+    border-top: 1px solid rgba(105, 158, 210, .17);
+  }
+
+  .ist-reach__icon {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+  }
+
+  .ist-reach__icon iconify-icon {
+    font-size: 23px;
+  }
+
+  .ist-reach__content h3 {
+    font-size: 21px;
+  }
+
+  .ist-reach__content > p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .ist-reach__closing {
+    gap: 10px;
+    margin-top: 42px;
+  }
+
+  .ist-reach__closing-line {
+    width: 15px;
+  }
+
+  .ist-reach__closing p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+}

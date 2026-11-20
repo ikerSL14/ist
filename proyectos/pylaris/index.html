@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <title>IST | Plantilla: PYLARIS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030812">
+  <meta name="description" content="IST integra servicios y tecnologías para empresas, instituciones, negocios y personas. Más allá de resolver.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="hero.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../styles-proyectos-individuales.css">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+  <link rel="shortcut icon" href="../../assets/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script src="../../script.js" defer></script>
+
+<style>
+@media (min-width: 761px) {
+
+  .brand::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    /* Mayor extensión ambiental */
+    inset: -40px -62.5px -47.5px -40px;
+
+    /* Mancha oscura con degradado radial */
+    background: radial-gradient(
+      ellipse 72% 78% at 34% 45%,
+
+      rgba(1, 7, 18, .94) 0%,
+
+      rgba(1, 9, 22, .82) 30%,
+
+      rgba(1, 10, 24, .58) 48%,
+
+      rgba(1, 10, 24, .24) 66%,
+
+      transparent 84%
+    );
+
+    /* Integración con el fondo */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    filter: blur(18px);
+
+    /* Evitar conservar la máscara anterior */
+    mask-image: none;
+    -webkit-mask-image: none;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+      opacity .3s ease,
+      visibility .3s ease;
+
+  }
+
+}
+</style>
+</head>
+<body class="home-page">
+  <header class="site-header" data-header>
+    <div class="nav-shell">
+      
+<a class="brand" href="../../index.html" aria-label="IST, inicio">
+
+  <span class="brand-symbol-wrap">
+    <img
+      class="brand-symbol"
+      src="../../assets/istlogov2.png"
+      alt=""
+      width="48"
+      height="48"
+    >
+  </span>
+
+  <span class="brand-wordmark-wrap">
+    <img
+      class="brand-wordmark"
+      src="https://i.ibb.co/hFwZH5PT/ISTlogoazul.png"
+      alt="IST"
+      onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+    >
+
+    <span class="brand-wordmark-fallback" hidden>IST</span>
+  </span>
+
+</a>
+
+<!-- REGRESAR AL PORTAFOLIO IST -->
+
+<a
+  href="../../proyectos.html#project-pylaris"
+  class="project-back"
+  aria-label="Volver a proyectos"
+  data-project-back
+>
+
+  <iconify-icon
+    class="project-back__arrow"
+    icon="lucide:arrow-left"
+    aria-hidden="true">
+  </iconify-icon>
+
+  <span class="project-back__divider"></span>
+
+  <iconify-icon
+    class="project-back__layers"
+    icon="boxicons:layers-down-left"
+    aria-hidden="true">
+  </iconify-icon>
+
+  <span class="project-back__label">
+    Proyectos
+  </span>
+
+</a>
+
+
+      <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-content" data-mobile-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-content" id="nav-content" data-nav-content>
+        <nav class="primary-nav" aria-label="Navegación principal">
+          <a class="nav-link" href="../../index.html">Inicio</a>
+          <a class="nav-link" href="../../proyectos.html">Proyectos</a>
+          <div class="nav-dropdown" data-dropdown>
+            <button class="nav-link dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true" data-dropdown-trigger>
+              Soluciones
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+            </button>
+            <div class="dropdown-panel" data-dropdown-panel>
+              <a href="../../herramientas.html">Herramientas <span>›</span></a>
+              <a href="../../promociones.html">Promociones <span>›</span></a>
+            </div>
+          </div>
+          <a class="nav-link" href="../../nosotros.html">Nosotros</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="social-dropdown" data-dropdown>
+            <button class="social-button" type="button" aria-expanded="false" aria-haspopup="true" data-dropdown-trigger>
+              <iconify-icon icon="solar:share-bold" style="font-size:1.1rem;"></iconify-icon>
+              <span>Redes sociales</span>
+            </button>
+            <div class="social-panel" data-dropdown-panel>
+              <a href="https://wa.me/529371416282" target="_blank" rel="noopener noreferrer">
+                <span class="social-icon whatsapp-icon" aria-hidden="true">
+                  <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+                </span>
+                <span><strong>WhatsApp</strong><small>Hablemos de tu proyecto</small></span>
+              </a>
+              <a href="https://www.facebook.com/istmxoficial" target="_blank" rel="noopener noreferrer">
+                <span class="social-icon facebook-icon" aria-hidden="true">
+                  <iconify-icon icon="logos:facebook"></iconify-icon></span>
+                <span><strong>Facebook</strong><small>@istmxoficial</small></span>
+              </a>
+              <a href="https://www.instagram.com/istmxoficial" target="_blank" rel="noopener noreferrer">
+                <span class="social-icon instagram-icon" aria-hidden="true">
+                  <iconify-icon icon="skill-icons:instagram"></iconify-icon></span>
+                <span><strong>Instagram</strong><small>@istmxoficial</small></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<main class="" id="inicio">
+
+
+<main class="template-page" id="inicio">
+
+  <div class="template-shell">
+
+    <!-- =====================================================
+         01 · PRODUCT HEADER
+    ====================================================== -->
+
+    <header class="template-header">
+
+      <div class="template-eyebrow">
+        <span class="template-eyebrow__dot"></span>
+        IST TEMPLATES
+        <span class="template-eyebrow__separator">/</span>
+        COLECCIÓN DISPONIBLE
+      </div>
+
+      <div class="template-header__main">
+
+        <div class="template-header__copy">
+
+          <h1>PYLARIS</h1>
+
+          <p>
+            Una identidad digital diseñada para despachos
+            jurídicos y profesionales del derecho.
+          </p>
+
+        </div>
+
+        <div class="template-tags">
+
+          <span class="template-tag template-tag--family">
+            <iconify-icon icon="lucide:layout-template"></iconify-icon>
+            IST Template
+          </span>
+
+          <span class="template-tag">
+            <iconify-icon icon="lucide:rocket"></iconify-icon>
+            IST Launch
+          </span>
+
+          <span class="template-tag">
+            <iconify-icon icon="lucide:panels-top-left"></iconify-icon>
+            Landing Page
+          </span>
+
+          <span class="template-tag">
+            <iconify-icon icon="lucide:scale"></iconify-icon>
+            Jurídico
+          </span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         02 · PRODUCT SHOWCASE + PURCHASE PANEL
+    ====================================================== -->
+
+    <section class="template-product-layout"
+             aria-label="Presentación y adquisición de PYLARIS">
+
+
+      <!-- IMAGEN PROMOCIONAL -->
+
+      <div class="template-showcase">
+
+        <a
+          class="template-preview"
+          href="../../plantillas/pylaris/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Explorar PYLARIS en línea"
+        >
+
+          <img
+            class="template-preview__image"
+            src="presentacion.webp"
+            alt="Presentación completa de la plantilla web PYLARIS"
+            fetchpriority="high"
+            onerror="this.onerror=null;this.src='hero.webp';"
+          >
+
+          <div class="template-preview__overlay">
+
+            <span class="template-preview__action">
+
+              <iconify-icon icon="lucide:external-link"></iconify-icon>
+
+              Explorar plantilla
+
+            </span>
+
+            <span class="template-preview__hint">
+              VISTA PREVIA INTERACTIVA
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <div class="template-preview-caption">
+
+          <span>
+            <iconify-icon icon="lucide:image"></iconify-icon>
+            PRESENTACIÓN DEL PRODUCTO
+          </span>
+
+          <span>
+            <span class="template-caption-dot"></span>
+            LIVE PREVIEW
+          </span>
+
+        </div>
+
+
+        <p class="template-showcase-note">
+
+          Explora la presentación visual y descubre cómo
+          funciona la plantilla en su versión publicada.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- PANEL COMERCIAL -->
+
+      <aside class="template-purchase">
+
+        <div class="template-purchase__top">
+
+          <span class="template-purchase__eyebrow">
+
+            <span></span>
+            IST ORIGINAL TEMPLATE
+
+          </span>
+
+          <h2>Adquiere esta plantilla</h2>
+
+          <p>
+            Una base profesional para construir la presencia
+            digital de tu marca.
+          </p>
+
+        </div>
+
+
+        <!-- PRECIO -->
+
+        <div class="template-price">
+
+          <span class="template-price__label">
+            PRECIO DE LA PLANTILLA
+          </span>
+
+          <!-- EDITAR PRECIO SEGÚN CADA PRODUCTO -->
+
+          <div class="template-price__value">
+
+            <span class="template-price__currency">$</span>
+
+            <strong>999</strong>
+
+            <span class="template-price__unit">
+              MXN
+            </span>
+
+          </div>
+
+          <span class="template-price__note">
+            Precio de adquisición
+          </span>
+
+        </div>
+
+
+        <!-- QUÉ INCLUYE -->
+
+        <div class="template-includes">
+
+          <h3>Tu plantilla incluye</h3>
+
+          <ul>
+
+            <li>
+              <iconify-icon icon="lucide:check-circle-2"></iconify-icon>
+              Diseño web adaptable
+            </li>
+
+            <li>
+              <iconify-icon icon="lucide:check-circle-2"></iconify-icon>
+              1 año de dominio gratis
+            </li>
+
+            <li>
+              <iconify-icon icon="lucide:check-circle-2"></iconify-icon>
+              11 secciones y componentes del diseño
+            </li>
+
+            <li>
+              <iconify-icon icon="lucide:check-circle-2"></iconify-icon>
+              Personalización para marca y colores
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <!-- CONDICIONES -->
+
+        <div class="template-purchase__conditions">
+
+          <iconify-icon icon="lucide:info"></iconify-icon>
+
+          <p>
+            Dominio, alojamiento, publicación y alcance
+            de personalización sujetos a las condiciones
+            de adquisición.
+          </p>
+
+        </div>
+
+
+        <!-- CTA COMPRA -->
+
+        <a
+          class="template-buy-button"
+          href="https://wa.me/529371416282?text=Hola%20IST%2C%20me%20interesa%20adquirir%20la%20plantilla%20PYLARIS.%20Quisiera%20conocer%20el%20precio%2C%20lo%20que%20incluye%20y%20las%20opciones%20de%20personalizaci%C3%B3n."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+
+          <span>Comprar plantilla</span>
+
+          <iconify-icon
+            class="template-buy-button__arrow"
+            icon="lucide:arrow-up-right">
+          </iconify-icon>
+
+        </a>
+
+
+        <!-- CTA DEMOSTRACIÓN -->
+
+        <a
+          class="template-live-button"
+          href="../../plantillas/pylaris/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <iconify-icon icon="lucide:external-link"></iconify-icon>
+
+          Ver plantilla en línea
+
+        </a>
+
+
+        <div class="template-purchase__security">
+
+          <iconify-icon icon="lucide:shield-check"></iconify-icon>
+
+          Atención directa con IST
+
+        </div>
+
+      </aside>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         03 · DESCRIPCIÓN
+    ====================================================== -->
+
+    <section class="template-description template-section"
+             id="descripcion">
+
+      <div class="template-section__main">
+
+        <span class="template-section__eyebrow">
+          <span></span>
+          CONOCE LA PLANTILLA
+        </span>
+
+        <h2>
+          Una identidad digital para
+          <span>el sector jurídico.</span>
+        </h2>
+
+        <p>
+          PYLARIS es una plantilla web de identidad jurídica,
+          diseñada para despachos y profesionales del derecho
+          que buscan proyectar una presencia digital sólida,
+          profesional y coherente con su actividad.
+        </p>
+
+        <p>
+          Su estructura combina una presentación institucional,
+          espacios para comunicar servicios y herramientas de
+          contacto, dentro de una experiencia visual pensada
+          para generar confianza.
+        </p>
+
+      </div>
+
+
+      <aside class="template-description__aside">
+
+        <div class="template-audience">
+
+          <iconify-icon icon="lucide:scale"></iconify-icon>
+
+          <span>DISEÑADA PARA</span>
+
+          <h3>Profesionales del derecho</h3>
+
+          <ul>
+            <li>Despachos jurídicos</li>
+            <li>Abogados independientes</li>
+            <li>Firmas profesionales</li>
+            <li>Consultorías legales</li>
+          </ul>
+
+        </div>
+
+      </aside>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         04 · ESTRUCTURA DE LA PLANTILLA
+    ====================================================== -->
+
+    <section class="template-structure template-section"
+             id="estructura">
+
+      <div class="template-section__heading">
+
+        <span class="template-section__eyebrow">
+          <span></span>
+          ESTRUCTURA DEL PRODUCTO
+        </span>
+
+        <h2>
+          Todo lo que compone
+          <span>PYLARIS.</span>
+        </h2>
+
+        <p>
+          Conoce las secciones que forman parte de esta
+          experiencia web.
+        </p>
+
+      </div>
+
+
+      <div class="template-sections-grid">
+
+
+        <!-- SECCIONES -->
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">01</span>
+
+          <div>
+            <h3>Inicio / Hero</h3>
+            <p>
+              Presentación principal e identidad visual
+              del despacho.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:layout-dashboard"></iconify-icon>
+
+        </article>
+
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">02</span>
+
+          <div>
+            <h3>Nosotros</h3>
+            <p>
+              Presentación institucional y trayectoria
+              profesional.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:building-2"></iconify-icon>
+
+        </article>
+
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">03</span>
+
+          <div>
+            <h3>Áreas de práctica</h3>
+            <p>
+              Espacio para presentar servicios y
+              especialidades jurídicas.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:scale"></iconify-icon>
+
+        </article>
+
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">04</span>
+
+          <div>
+            <h3>Derecho civil</h3>
+            <p>
+              Detalles sobre servicios relacionados
+              a lo civil que ofrece la marca.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:file-text"></iconify-icon>
+
+        </article>
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">05</span>
+
+          <div>
+            <h3>Guarda y custodia</h3>
+            <p>
+              Detalles sobre servicios relacionados
+              a la guarda y custodia que ofrece la marca.
+            </p>
+          </div>
+
+          <iconify-icon icon="mdi:human-male-female-child"></iconify-icon>
+
+        </article>
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">06</span>
+
+          <div>
+            <h3>Divorcios</h3>
+            <p>
+              Detalles sobre servicios relacionados
+              a los divorcios que ofrece la marca.
+            </p>
+          </div>
+
+          <iconify-icon icon="mdi:heart-broken"></iconify-icon>
+
+        </article>
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">07</span>
+
+          <div>
+            <h3>¿Por qué elegirnos?</h3>
+            <p>
+              Razones sólidas que distinguen a la marca
+              por encima de otras.
+            </p>
+          </div>
+
+          <iconify-icon icon="mdi:shield-check-outline"></iconify-icon>
+
+        </article>
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">08</span>
+
+          <div>
+            <h3>Llamado a la acción</h3>
+            <p>
+              Descanso visual con eslogan, invitación y botón para
+              contactar al número principal.
+            </p>
+          </div>
+
+          <iconify-icon icon="ic:baseline-whatsapp"></iconify-icon>
+
+        </article>
+
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">09</span>
+
+          <div>
+            <h3>Contacto</h3>
+            <p>
+              Información de contacto y canales
+              de comunicación.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:message-circle"></iconify-icon>
+
+        </article>
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">10</span>
+
+          <div>
+            <h3>Ubicación</h3>
+            <p>
+              Información y mapa de google maps con la ubicación
+              principal.
+            </p>
+          </div>
+
+          <iconify-icon icon="at-icons:location"></iconify-icon>
+
+        </article>
+
+
+        <article class="template-section-item">
+
+          <span class="template-section-item__number">11</span>
+
+          <div>
+            <h3>Footer institucional</h3>
+            <p>
+              Cierre de navegación e información
+              complementaria.
+            </p>
+          </div>
+
+          <iconify-icon icon="lucide:panel-bottom"></iconify-icon>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         05 · FUNCIONALIDADES
+    ====================================================== 
+
+    <section class="template-features template-section"
+             id="funcionalidades">
+
+      <div class="template-section__heading">
+
+        <span class="template-section__eyebrow">
+          <span></span>
+          EXPERIENCIA Y FUNCIONALIDAD
+        </span>
+
+        <h2>
+          Diseñada para funcionar
+          <span>en cualquier pantalla.</span>
+        </h2>
+
+        <p>
+          Una experiencia web que combina presentación,
+          navegación y accesibilidad.
+        </p>
+
+      </div>
+
+
+      <div class="template-features-grid">
+
+
+        <article class="template-feature">
+
+          <div class="template-feature__icon">
+            <iconify-icon icon="lucide:monitor-smartphone"></iconify-icon>
+          </div>
+
+          <h3>Diseño adaptable</h3>
+
+          <p>
+            Experiencia optimizada para computadoras,
+            tablets y dispositivos móviles.
+          </p>
+
+        </article>
+
+
+        <article class="template-feature">
+
+          <div class="template-feature__icon">
+            <iconify-icon icon="lucide:mouse-pointer-click"></iconify-icon>
+          </div>
+
+          <h3>Navegación intuitiva</h3>
+
+          <p>
+            Organización visual que facilita el acceso
+            a las diferentes secciones.
+          </p>
+
+        </article>
+
+
+        <article class="template-feature">
+
+          <div class="template-feature__icon">
+            <iconify-icon icon="lucide:message-circle"></iconify-icon>
+          </div>
+
+          <h3>Contacto directo</h3>
+
+          <p>
+            Espacios para facilitar la comunicación
+            con potenciales clientes.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>-->
+
+
+
+    <!-- =====================================================
+         06 · PERSONALIZACIÓN
+    ====================================================== -->
+
+    <section class="template-customization template-section"
+             id="personalizacion">
+
+      <div class="template-section__heading">
+
+        <span class="template-section__eyebrow">
+          <span></span>
+          ADAPTACIÓN DE MARCA
+        </span>
+
+        <h2>
+          Una plantilla.
+          <span>Tu propia identidad.</span>
+        </h2>
+
+        <p>
+          PYLARIS puede adaptarse a la identidad visual
+          y las necesidades de tu negocio, según el
+          alcance de personalización contratado.
+        </p>
+
+      </div>
+
+
+      <div class="template-customization-grid">
+
+
+        <article class="template-custom-card">
+
+          <iconify-icon icon="lucide:palette"></iconify-icon>
+
+          <h3>Identidad visual</h3>
+
+          <p>
+            Colores, logotipo y elementos gráficos
+            de tu marca.
+          </p>
+
+          <span>Según alcance contratado</span>
+
+        </article>
+
+
+        <article class="template-custom-card">
+
+          <iconify-icon icon="lucide:text"></iconify-icon>
+
+          <h3>Contenido</h3>
+
+          <p>
+            Textos, información institucional,
+            servicios y datos de contacto.
+          </p>
+
+          <span>Según alcance contratado</span>
+
+        </article>
+
+
+        <article class="template-custom-card">
+
+          <iconify-icon icon="lucide:sliders-horizontal"></iconify-icon>
+
+          <h3>Ajustes adicionales</h3>
+
+          <p>
+            Modificaciones de estructura,
+            funcionalidades y contenido.
+          </p>
+
+          <span>Cotización según requerimiento</span>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         07 · PROCESO DE ADQUISICIÓN
+    ====================================================== -->
+
+    <section class="template-process template-section"
+             id="adquisicion">
+
+      <div class="template-section__heading">
+
+        <span class="template-section__eyebrow">
+          <span></span>
+          ADQUIERE TU PLANTILLA
+        </span>
+
+        <h2>
+          De la elección
+          <span>a tu sitio web.</span>
+        </h2>
+
+        <p>
+          Un proceso sencillo, acompañado directamente
+          por el equipo de IST.
+        </p>
+
+      </div>
+
+
+      <div class="template-process-grid">
+
+
+        <article class="template-process-item">
+
+          <span>01</span>
+
+          <iconify-icon icon="lucide:search"></iconify-icon>
+
+          <h3>Explora</h3>
+
+          <p>
+            Conoce la plantilla y comprueba
+            si se adapta a tu negocio.
+          </p>
+
+        </article>
+
+
+        <article class="template-process-item">
+
+          <span>02</span>
+
+          <iconify-icon icon="lucide:message-circle"></iconify-icon>
+
+          <h3>Contacta con IST</h3>
+
+          <p>
+            Consulta precio, disponibilidad
+            y condiciones de adquisición.
+          </p>
+
+        </article>
+
+
+        <article class="template-process-item">
+
+          <span>03</span>
+
+          <iconify-icon icon="lucide:settings-2"></iconify-icon>
+
+          <h3>Personalizamos</h3>
+
+          <p>
+            Definimos los ajustes de identidad
+            y el alcance contratado.
+          </p>
+
+        </article>
+
+
+        <article class="template-process-item">
+
+          <span>04</span>
+
+          <iconify-icon icon="lucide:globe"></iconify-icon>
+
+          <h3>Publicamos</h3>
+
+          <p>
+            Configuramos y publicamos tu
+            sitio según el servicio acordado.
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         08 · CTA FINAL
+    ====================================================== -->
+
+    <section class="template-final-cta">
+
+      <div class="template-final-cta__ambient"></div>
+
+      <div class="template-final-cta__content">
+
+        <span class="template-final-cta__eyebrow">
+
+          <span></span>
+          IST TEMPLATES
+
+        </span>
+
+        <h2>
+          Tu próxima presencia digital
+          <span>comienza aquí.</span>
+        </h2>
+
+        <p>
+          Encuentra una plantilla que represente tu marca.
+          Nosotros te ayudamos a llevarla a tu entorno digital.
+        </p>
+
+        <a
+          href="https://wa.me/529371416282?text=Hola%20IST%2C%20quiero%20adquirir%20la%20plantilla%20PYLARIS."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="template-final-cta__button"
+        >
+
+          <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+
+          Quiero adquirir esta plantilla
+
+          <iconify-icon
+            class="template-final-cta__arrow"
+            icon="lucide:arrow-up-right">
+          </iconify-icon>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+</main>
+
+  
+<!-- =========================================================
+     IST · DIGITAL SIGNATURE
+     FOOTER CORPORATIVO PREMIUM
+========================================================= -->
+
+<footer class="ist-footer" id="footer">
+
+  <!-- AMBIENT LIGHTING -->
+
+  <div class="ist-footer__ambient ist-footer__ambient--blue"
+       aria-hidden="true"></div>
+
+  <div class="ist-footer__ambient ist-footer__ambient--cyan"
+       aria-hidden="true"></div>
+
+
+  <div class="ist-footer__shell">
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <div class="ist-footer__main">
+
+
+      <!-- ===================================================
+           01 · IDENTIDAD IST
+      ==================================================== -->
+
+      <div class="ist-footer__brand">
+
+
+        <!-- LOGOTIPO -->
+
+        <a href="#inicio"
+           class="ist-footer__lockup"
+           aria-label="IST, volver al inicio">
+
+          <img
+            class="ist-footer__symbol"
+            src="../../assets/istlogov2.png"
+            alt="Símbolo IST"
+          >
+
+          <img
+            class="ist-footer__wordmark"
+            src="https://i.ibb.co/hFwZH5PT/ISTlogoazul.png"
+            alt="IST"
+          >
+
+        </a>
+
+
+
+        <!-- SLOGAN -->
+
+        <div class="ist-footer__slogan">
+
+          Más allá de
+          <span>resolver.</span>
+
+        </div>
+
+
+        <!-- DESCRIPCIÓN -->
+
+        <p class="ist-footer__description">
+
+          Integramos servicios, tecnología e innovación para
+          desarrollar soluciones que conectan ideas con
+          posibilidades reales.
+
+        </p>
+
+
+
+        <!-- SELLO -->
+
+        <div class="ist-footer__identity-tag">
+
+          <span></span>
+
+          INTEGRACIÓN DE SERVICIOS Y TECNOLOGÍAS
+
+        </div>
+
+
+
+        <!-- REDES -->
+
+        <div class="ist-footer__social">
+
+          <a
+            href="https://www.facebook.com/ISTMXOficial/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook IST"
+          >
+            <iconify-icon icon="logos:facebook"></iconify-icon>
+          </a>
+
+
+          <a
+            href="https://www.instagram.com/istmxoficial/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram IST"
+          >
+            <iconify-icon icon="selfhst:instagram"></iconify-icon>
+          </a>
+
+
+          <a
+            href="https://wa.me/529371416282"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp IST"
+          >
+            <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+          </a>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- ===================================================
+           02 · PÁGINAS
+      ==================================================== -->
+
+      <nav class="ist-footer__nav ist-footer__pages"
+           aria-label="Páginas principales">
+
+        <h3 class="ist-footer__heading">
+
+          <span>01</span>
+
+          EXPLORA
+
+        </h3>
+
+
+        <ul class="ist-footer__link-list">
+
+          <li><a href="../../index.html">Inicio</a></li>
+
+          <li><a href="../../proyectos.html">Proyectos</a></li>
+
+          <li><a href="../../herramientas.html">Herramientas</a></li>
+
+          <li><a href="../../promociones.html">Promociones</a></li>
+
+          <li><a href="../../nosotros.html">Nosotros</a></li>
+
+        </ul>
+
+      </nav>
+
+
+
+      <!-- ===================================================
+           03 · SECCIONES
+      ==================================================== -->
+
+      <nav class="ist-footer__nav ist-footer__sections"
+           aria-label="Secciones de la página principal">
+
+        <h3 class="ist-footer__heading">
+
+          <span>02</span>
+
+          SECCIONES: PROYECTOS
+
+        </h3>
+
+
+        <ul class="ist-footer__section-links">
+
+          <li><a href="#inicio">Bienvenida</a></li>
+
+        </ul>
+
+      </nav>
+
+
+
+      <!-- ===================================================
+           04 · PROYECTOS
+      ==================================================== -->
+
+      <nav class="ist-footer__nav ist-footer__projects"
+           aria-label="Proyectos destacados">
+
+        <h3 class="ist-footer__heading">
+
+          <span>03</span>
+
+          PROYECTOS
+
+        </h3>
+
+
+        <ul class="ist-footer__link-list">
+
+          <li>
+            <a href="../../proyectos/cti/index.html">
+              <span>CTI</span>
+              Soluciones
+            </a>
+          </li>
+
+          <li>
+            <a href="../../proyectos/umid/index.html">
+              UMID
+            </a>
+          </li>
+
+          <li>
+            <a href="../../proyectos/cti/index.html">
+              MILLA
+            </a>
+          </li>
+
+          <li>
+            <a href="../../proyectos/nexis/index.html">
+              NEXIS
+            </a>
+          </li>
+
+          <li>
+            <a href="../../proyectos/persystec/index.html">
+              PerSysTec
+            </a>
+          </li>
+
+        </ul>
+
+
+        <a href="../../proyectos.html"
+           class="ist-footer__all-projects">
+
+          Explorar portafolio
+
+          <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+
+        </a>
+
+      </nav>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CTA FINAL
+    ====================================================== -->
+
+    <div class="ist-footer__cta">
+
+
+      <div class="ist-footer__cta-copy">
+
+        <span class="ist-footer__cta-eyebrow">
+
+          <span></span>
+
+          EL SIGUIENTE PASO COMIENZA CONTIGO
+
+        </span>
+
+
+        <h3>
+
+          ¿Tienes una idea?
+
+          <span>Hagámosla realidad.</span>
+
+        </h3>
+
+
+        <p>
+          Estamos listos para conocer tu proyecto y ayudarte
+          a encontrar el camino adecuado.
+        </p>
+
+      </div>
+
+
+
+      <a
+        href="https://wa.me/529371416282?text=Hola%20IST,%20quiero%20comenzar%20un%20proyecto."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ist-footer__cta-button"
+      >
+
+        <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+
+        <span>Hablemos con IST</span>
+
+        <iconify-icon
+          class="ist-footer__cta-arrow"
+          icon="solar:arrow-up-right-linear"
+        ></iconify-icon>
+
+      </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BOTTOM BAR
+    ====================================================== -->
+
+    <div class="ist-footer__bottom">
+
+
+      <div class="ist-footer__copyright">
+
+        © 2026
+
+        <strong>IST</strong>
+
+        <span>·</span>
+
+        Todos los derechos reservados.
+
+      </div>
+
+
+
+      <div class="ist-footer__bottom-slogan">
+
+        MÁS ALLÁ DE RESOLVER.
+
+      </div>
+
+
+
+      <a href="#inicio" class="ist-footer__back-top">
+
+        Volver arriba
+
+        <span>
+          <iconify-icon icon="solar:arrow-up-linear"></iconify-icon>
+        </span>
+
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+<script src="../script-proyectos-individuales.js" defer></script>
+</body>
+</html>

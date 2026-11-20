@@ -3484,18 +3484,6 @@ gap: clamp(35px, 5vw, 72px);
 }
 
 
-/* =========================================================
-   MOVIMIENTO REDUCIDO
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .ist-brand-film__video {
-    visibility: hidden;
-  }
-
-}
-
 
 /* =========================================================
    IST · BRAND FILM

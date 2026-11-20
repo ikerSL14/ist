@@ -1098,3 +1098,151 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+/* =========================================================
+   IST V2 · ESSENCE LOADING SYSTEM
+   Precarga y decodificación de imágenes de los heroes
+========================================================= */
+
+(() => {
+
+  const initEssenceLoaders = () => {
+
+    const heroes = document.querySelectorAll(
+      '.index2-hero[data-essence-image]'
+    );
+
+    heroes.forEach(hero => {
+
+      const imageURL = hero.dataset.essenceImage;
+
+      const video = hero.querySelector(
+        '.index2-hero__video'
+      );
+
+      let revealed = false;
+
+
+      /* REVELAR HERO */
+
+      const revealHero = () => {
+
+        if (revealed) return;
+
+        revealed = true;
+
+        hero.classList.remove('is-image-loading');
+
+        hero.classList.add('is-image-ready');
+
+      };
+
+
+      /* PREPARAR IMAGEN */
+
+      if (!imageURL) {
+
+        revealHero();
+        return;
+
+      }
+
+      const image = new Image();
+
+      image.decoding = 'async';
+
+
+      /* IMAGEN CARGADA Y DECODIFICADA */
+
+      const decodeImage = async () => {
+
+        if (revealed) return;
+
+        try {
+
+          if (typeof image.decode === 'function') {
+            await image.decode();
+          }
+
+        } catch (error) {
+
+          // La carga terminó.
+          // Continuamos con el recurso disponible.
+
+        }
+
+        revealHero();
+
+      };
+
+
+      /* EVENTOS DE CARGA */
+
+      image.addEventListener(
+        'load',
+        decodeImage,
+        { once: true }
+      );
+
+      image.addEventListener(
+        'error',
+        revealHero,
+        { once: true }
+      );
+
+
+      /* INICIAR PRECARGA */
+
+      image.src = imageURL;
+
+
+      /* COMPROBAR CACHÉ */
+
+      if (image.complete) {
+
+        if (image.naturalWidth > 0) {
+
+          decodeImage();
+
+        } else {
+
+          revealHero();
+
+        }
+
+      }
+
+
+      /* EL VIDEO TAMBIÉN PUEDE REVELAR EL HERO */
+
+      if (video) {
+
+        video.addEventListener(
+          'playing',
+          revealHero,
+          { once: true }
+        );
+
+      }
+
+    });
+
+  };
+
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initEssenceLoaders,
+      { once: true }
+    );
+
+  } else {
+
+    initEssenceLoaders();
+
+  }
+
+})();

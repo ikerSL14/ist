@@ -271,7 +271,7 @@
       active: true,
       order: 2,
       language: "CMD · WINDOWS",
-      systems: ["windows"]
+      systems: ["windows", "macos", "linux", "android", "ios"]
     },
     {
       id: "ipconfig",

@@ -1,0 +1,1063 @@
+
+/* ========================================
+   IST · PROYECTOS DESTACADOS V2
+========================================= */
+
+.ist-projects-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  width: 100%;
+
+  padding:
+    clamp(76px, 7vw, 105px)
+    24px
+    clamp(38px, 5vw, 65px);
+  padding-top:8rem;
+
+  color: #f2f7ff;
+
+  background:
+    radial-gradient(
+      ellipse 58% 38% at 50% 42%,
+      rgba(0, 125, 255, .15),
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 15% 56%,
+      rgba(0, 74, 255, .12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 58%,
+      rgba(0, 183, 255, .09),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #03070e 0%,
+      #020914 48%,
+      #03070e 100%
+    );
+}
+
+/* Línea superior */
+
+.ist-projects-showcase::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 130, 255, .4),
+    rgba(0, 190, 255, .8),
+    rgba(0, 130, 255, .4),
+    transparent
+  );
+
+  box-shadow: 0 0 15px rgba(0, 145, 255, .3);
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   DECORACIÓN DE FONDO
+========================================= */
+
+.ist-projects-bg-grid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 183, 255, .027) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 183, 255, .027) 1px,
+      transparent 1px
+    );
+
+  background-size: 54px 54px;
+
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    transparent 76%
+  );
+
+  mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    transparent 76%
+  );
+}
+
+
+.ist-projects-bg-orb {
+  position: absolute;
+  z-index: 0;
+
+  border-radius: 999px;
+
+  pointer-events: none;
+
+  filter: blur(100px);
+  opacity: .34;
+}
+
+
+.ist-projects-bg-orb-left {
+  width: 420px;
+  height: 420px;
+
+  left: -210px;
+  top: 22%;
+
+  background: rgba(0, 74, 255, .34);
+}
+
+
+.ist-projects-bg-orb-right {
+  width: 430px;
+  height: 430px;
+
+  right: -220px;
+  top: 30%;
+
+  background: rgba(0, 183, 255, .24);
+}
+
+
+/* Anillos tecnológicos inferiores */
+
+.ist-projects-bg-ring {
+  position: absolute;
+  z-index: 0;
+
+  left: 50%;
+  bottom: 7%;
+
+  width: min(920px, 90vw);
+  height: 260px;
+
+  transform:
+    translateX(-50%)
+    perspective(900px)
+    rotateX(68deg);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  border: 1px solid rgba(0, 183, 255, .22);
+
+  box-shadow:
+    0 0 38px rgba(0, 183, 255, .13),
+    inset 0 0 45px rgba(0, 110, 255, .09);
+
+  opacity: .65;
+}
+
+
+.ist-projects-bg-ring::before,
+.ist-projects-bg-ring::after {
+  content: "";
+
+  position: absolute;
+  inset: 24px;
+
+  border-radius: inherit;
+
+  border: 1px solid rgba(0, 183, 255, .15);
+}
+
+
+.ist-projects-bg-ring::after {
+  inset: 58px;
+  opacity: .7;
+}
+
+
+/* ========================================
+   CONTENEDOR
+========================================= */
+
+.ist-projects-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1220px;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   ENCABEZADO
+========================================= */
+
+.ist-projects-header {
+  max-width: 850px;
+
+  margin: 0 auto clamp(42px, 5vw, 65px);
+
+  text-align: center;
+}
+
+
+/* Indicador de sección */
+
+.ist-projects-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: #69caff;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+
+.ist-projects-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+
+  background: #00baff;
+
+  box-shadow:
+    0 0 7px rgba(0, 186, 255, .9),
+    0 0 15px rgba(0, 145, 255, .5);
+}
+
+
+/* Título */
+
+.ist-projects-title {
+  margin: 18px 0 0;
+
+  color: #f4f8ff;
+
+  font-family: var(--font-heading, 'Geist', sans-serif);
+
+  font-size: clamp(32px, 4.2vw, 52px);
+  font-weight: 750;
+
+  letter-spacing: -.055em;
+  line-height: 1.12;
+
+  text-wrap: balance;
+}
+
+
+.ist-projects-title span {
+  background: linear-gradient(
+    100deg,
+    #b9e8ff 0%,
+    #53baff 48%,
+    #087cff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Descripción */
+
+.ist-projects-subtitle {
+  max-width: 760px;
+
+  margin: 19px auto 0;
+
+  color: #a7b9ce;
+
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.8;
+
+  font-weight: 400;
+}
+
+
+/* ========================================
+   ESCENARIO 3D
+========================================= */
+
+.ist-projects-stage {
+  position: relative;
+
+  height: clamp(310px, 38vw, 460px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1200px;
+
+  touch-action: pan-y;
+}
+
+
+.ist-projects-stage:focus-visible {
+  outline: 2px solid rgba(0, 183, 255, .6);
+  outline-offset: 8px;
+  border-radius: 20px;
+}
+
+
+.ist-projects-gallery {
+  position: relative;
+
+  width: min(920px, 88vw);
+  height: 100%;
+
+  transform-style: preserve-3d;
+}
+
+
+/* ========================================
+   TARJETAS DEL CARRUSEL
+========================================= */
+
+.ist-project-card {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: min(640px, 72vw);
+
+  aspect-ratio: 16 / 9;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: rgba(0, 8, 18, .95);
+
+  border: 1px solid rgba(0, 183, 255, .34);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .025) inset,
+    0 24px 70px rgba(0, 0, 0, .56),
+    0 0 42px rgba(0, 110, 255, .18);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform .72s cubic-bezier(.2, .85, .18, 1),
+    opacity .52s ease,
+    filter .52s ease,
+    box-shadow .52s ease,
+    border-color .52s ease;
+}
+
+
+/* Cristal y profundidad */
+
+.ist-project-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, .075),
+      transparent 18%
+    ),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 183, 255, .16),
+      transparent 42%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, .20),
+      transparent 24%,
+      transparent 76%,
+      rgba(0, 0, 0, .22)
+    );
+
+  opacity: .75;
+}
+
+
+/* Línea luminosa superior */
+
+.ist-project-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 12%;
+  right: 12%;
+  top: 0;
+
+  height: 1px;
+
+  z-index: 4;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(190, 245, 255, .95),
+    transparent
+  );
+
+  box-shadow: 0 0 16px rgba(0, 183, 255, .68);
+
+  pointer-events: none;
+}
+
+
+.ist-project-card-link {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.ist-project-img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+/* ========================================
+   POSICIONES 3D
+========================================= */
+
+/* Pantalla central */
+
+.ist-project-card.is-active {
+  z-index: 5;
+
+  opacity: 1;
+
+  filter: brightness(1.04) saturate(1.08);
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(160px)
+    rotateY(0deg)
+    scale(1);
+
+  border-color: rgba(0, 183, 255, .78);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .045) inset,
+    0 30px 90px rgba(0, 0, 0, .66),
+    0 0 36px rgba(0, 183, 255, .28),
+    0 0 76px rgba(0, 110, 255, .18);
+}
+
+
+/* Pantalla izquierda */
+
+.ist-project-card.is-prev {
+  z-index: 4;
+
+  opacity: .76;
+
+  filter: brightness(.72) saturate(.82);
+
+  transform:
+    translate(-92%, -50%)
+    translateZ(-60px)
+    rotateY(38deg)
+    scale(.78);
+}
+
+
+/* Pantalla derecha */
+
+.ist-project-card.is-next {
+  z-index: 4;
+
+  opacity: .76;
+
+  filter: brightness(.72) saturate(.82);
+
+  transform:
+    translate(-8%, -50%)
+    translateZ(-60px)
+    rotateY(-38deg)
+    scale(.78);
+}
+
+
+/* Pantalla lejana izquierda */
+
+.ist-project-card.is-far-prev {
+  z-index: 2;
+
+  opacity: .26;
+
+  filter: brightness(.42) blur(1.2px);
+
+  transform:
+    translate(-118%, -50%)
+    translateZ(-220px)
+    rotateY(48deg)
+    scale(.58);
+}
+
+
+/* Pantalla lejana derecha */
+
+.ist-project-card.is-far-next {
+  z-index: 2;
+
+  opacity: .26;
+
+  filter: brightness(.42) blur(1.2px);
+
+  transform:
+    translate(18%, -50%)
+    translateZ(-220px)
+    rotateY(-48deg)
+    scale(.58);
+}
+
+
+/* Proyectos adicionales */
+
+.ist-project-card.is-hidden {
+  z-index: 0;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%)
+    translateZ(-360px)
+    scale(.4);
+}
+
+
+/* ========================================
+   FLECHAS DE NAVEGACIÓN
+========================================= */
+
+.ist-projects-nav {
+  position: absolute;
+
+  top: 50%;
+  z-index: 8;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  color: #fff;
+
+  border: 1px solid rgba(0, 183, 255, .72);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 183, 255, .14),
+      transparent 62%
+    ),
+    rgba(0, 8, 18, .88);
+
+  box-shadow:
+    inset 0 0 14px rgba(0, 183, 255, .08),
+    0 0 18px rgba(0, 183, 255, .22);
+
+  transform: translateY(-50%);
+
+  transition:
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background .28s ease;
+}
+
+
+.ist-projects-nav:hover {
+  border-color: rgba(150, 238, 255, 1);
+
+  box-shadow:
+    inset 0 0 18px rgba(0, 183, 255, .14),
+    0 0 26px rgba(0, 183, 255, .38);
+}
+
+
+.ist-projects-nav iconify-icon {
+  font-size: 22px;
+}
+
+
+.ist-projects-nav-prev {
+  left: 0;
+}
+
+
+.ist-projects-nav-next {
+  right: 0;
+}
+
+
+.ist-projects-nav:focus-visible {
+  outline: 2px solid #61caff;
+  outline-offset: 4px;
+}
+
+
+/* ========================================
+   INFORMACIÓN DEL PROYECTO
+========================================= */
+
+.ist-projects-info {
+  max-width: 780px;
+
+  margin: clamp(28px, 4vw, 45px) auto 0;
+
+  text-align: center;
+}
+
+
+/* Categoría */
+
+.ist-project-current-category {
+  display: inline-block;
+
+  color: #62cfff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+
+/* Nombre */
+
+.ist-project-current-title {
+  margin: 11px 0 0;
+
+  color: #f5f9ff;
+
+  font-family: var(--font-heading, 'Geist', sans-serif);
+
+  font-size: clamp(30px, 4.4vw, 52px);
+  font-weight: 750;
+
+  letter-spacing: -.045em;
+  line-height: 1.1;
+}
+
+
+/* Descripción */
+
+.ist-project-current-desc {
+  max-width: 700px;
+
+  min-height: 3.4em;
+
+  margin: 15px auto 0;
+
+  color: #aabbd0;
+
+  font-size: clamp(15px, 1.35vw, 17px);
+  line-height: 1.75;
+}
+
+
+/* ========================================
+   BOTONES DE ACCIÓN
+========================================= */
+
+.ist-projects-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 13px;
+
+  margin-top: 25px;
+}
+
+
+.ist-project-action {
+  min-width: 155px;
+  min-height: 52px;
+
+  text-decoration: none;
+}
+
+
+.ist-project-action iconify-icon {
+  font-size: 19px;
+  flex: 0 0 auto;
+}
+
+
+/* ========================================
+   INDICADORES
+========================================= */
+
+.ist-projects-dots {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 27px;
+}
+
+
+.ist-project-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  background: rgba(180, 230, 255, .25);
+
+  transition:
+    width .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.ist-project-dot:hover {
+  background: rgba(0, 183, 255, .7);
+}
+
+
+.ist-project-dot.is-active {
+  width: 28px;
+
+  background: #00b7ff;
+
+  box-shadow: 0 0 14px rgba(0, 183, 255, .7);
+}
+
+
+.ist-project-dot:focus-visible {
+  outline: 2px solid #8bdfff;
+  outline-offset: 4px;
+}
+
+
+/* ========================================
+   EXPLORAR TODOS LOS PROYECTOS
+========================================= */
+
+.ist-projects-archive {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  padding:
+    0 24px
+    clamp(55px, 7vw, 85px);
+
+  background: #03070e;
+  padding-bottom:10rem;
+}
+
+
+.ist-projects-archive-line {
+  width: min(110px, 13vw);
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 183, 255, .62),
+    transparent
+  );
+
+  box-shadow: 0 0 12px rgba(0, 145, 255, .3);
+}
+
+
+.ist-projects-archive-button {
+  min-height: 52px;
+
+  padding-inline: 23px;
+
+  text-decoration: none;
+}
+
+
+.ist-projects-archive-button iconify-icon {
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+
+
+/* ========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+  .ist-projects-stage {
+    height: 330px;
+  }
+
+  .ist-project-card {
+    width: min(560px, 78vw);
+  }
+
+  .ist-project-card.is-prev {
+    transform:
+      translate(-88%, -50%)
+      translateZ(-80px)
+      rotateY(32deg)
+      scale(.72);
+  }
+
+  .ist-project-card.is-next {
+    transform:
+      translate(-12%, -50%)
+      translateZ(-80px)
+      rotateY(-32deg)
+      scale(.72);
+  }
+
+  .ist-projects-nav-prev {
+    left: -.4rem;
+  }
+
+  .ist-projects-nav-next {
+    right: -.4rem;
+  }
+
+}
+
+
+/* ========================================
+   MÓVILES
+========================================= */
+
+@media (max-width: 640px) {
+
+  .ist-projects-showcase {
+    padding: 70px 16px 35px;
+  }
+
+  .ist-projects-header {
+    margin-bottom: 35px;
+  }
+
+  .ist-projects-title {
+    font-size: clamp(29px, 8vw, 37px);
+    line-height: 1.16;
+  }
+
+  .ist-projects-subtitle {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 15px;
+  }
+
+  .ist-projects-stage {
+    height: clamp(225px, 67vw, 290px);
+    margin-top: 0;
+  }
+
+  .ist-projects-gallery {
+    width: 100%;
+  }
+
+  .ist-project-card {
+    width: min(92vw, 440px);
+    border-radius: 18px;
+  }
+
+  .ist-project-card.is-active {
+    transform:
+      translate(-50%, -50%)
+      translateZ(80px)
+      rotateY(0deg)
+      scale(1);
+  }
+
+  .ist-project-card.is-prev,
+  .ist-project-card.is-next,
+  .ist-project-card.is-far-prev,
+  .ist-project-card.is-far-next {
+    opacity: 0;
+    pointer-events: none;
+
+    transform:
+      translate(-50%, -50%)
+      translateZ(-180px)
+      scale(.8);
+  }
+
+  .ist-projects-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ist-projects-nav-prev {
+    left: .1rem;
+  }
+
+  .ist-projects-nav-next {
+    right: .1rem;
+  }
+
+  .ist-projects-nav iconify-icon {
+    font-size: 20px;
+  }
+
+  .ist-projects-info {
+    margin-top: 25px;
+  }
+
+  .ist-project-current-title {
+    font-size: 34px;
+  }
+
+  .ist-project-current-desc {
+    min-height: 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .ist-projects-actions {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .ist-project-action {
+    min-height: 49px;
+    min-width: 140px;
+    font-size: 13px;
+    padding-inline: 16px;
+  }
+
+  .ist-projects-dots {
+    margin-top: 24px;
+  }
+
+  .ist-projects-bg-ring {
+    width: 110vw;
+    height: 180px;
+    bottom: 4%;
+    opacity: .35;
+  }
+
+  .ist-projects-archive {
+    padding: 0 16px 55px;
+    gap: 0;
+  }
+
+  .ist-projects-archive-line {
+    display: none;
+  }
+
+  .ist-projects-archive-button {
+    width: 100%;
+    max-width: 340px;
+    min-height: 50px;
+    font-size: 13px;
+    padding-inline: 15px;
+  }
+
+}
+
+
+/* ========================================
+   TELÉFONOS PEQUEÑOS
+========================================= */
+
+@media (max-width: 420px) {
+
+  .ist-projects-actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    width: min(100%, 320px);
+
+    margin-inline: auto;
+    margin-top: 22px;
+  }
+
+  .ist-project-action {
+    width: 100%;
+  }
+
+}
+
+
+/* ========================================
+   REDUCIR MOVIMIENTO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-project-card,
+  .ist-projects-nav,
+  .ist-project-dot {
+    transition: none !important;
+  }
+
+}

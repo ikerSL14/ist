@@ -1100,9 +1100,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 /* =========================================================
    IST V2 · ESSENCE LOADING SYSTEM
-   Precarga y decodificación de imágenes de los heroes
+   Controlador global de imágenes de los heroes
 ========================================================= */
 
 (() => {
@@ -1110,18 +1111,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const initEssenceLoaders = () => {
 
     const heroes = document.querySelectorAll(
-      '.index2-hero[data-essence-image]'
+      '.hero[data-essence-image]'
     );
 
     heroes.forEach(hero => {
 
-      const imageURL = hero.dataset.essenceImage;
+      const imageURL = hero.dataset.essenceImage?.trim();
 
-      const video = hero.querySelector(
-        '.index2-hero__video'
-      );
+      if (!imageURL) return;
+
+      const video = hero.querySelector('video');
 
       let revealed = false;
+
+
+      /* ACTIVAR LOADER */
+
+      hero.classList.add('is-image-loading');
 
 
       /* REVELAR HERO */
@@ -1141,19 +1147,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /* PREPARAR IMAGEN */
 
-      if (!imageURL) {
-
-        revealHero();
-        return;
-
-      }
-
       const image = new Image();
 
       image.decoding = 'async';
 
+      if ('fetchPriority' in image) {
+        image.fetchPriority = 'high';
+      }
 
-      /* IMAGEN CARGADA Y DECODIFICADA */
+
+      /* DECODIFICAR IMAGEN */
 
       const decodeImage = async () => {
 
@@ -1167,8 +1170,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (error) {
 
-          // La carga terminó.
-          // Continuamos con el recurso disponible.
+          // Continuar si la decodificación
+          // no está disponible o falla.
 
         }
 
@@ -1177,13 +1180,16 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
 
-      /* EVENTOS DE CARGA */
+      /* CARGA COMPLETADA */
 
       image.addEventListener(
         'load',
         decodeImage,
         { once: true }
       );
+
+
+      /* ERROR DE IMAGEN */
 
       image.addEventListener(
         'error',
@@ -1192,7 +1198,20 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-      /* INICIAR PRECARGA */
+      /* VIDEO DISPONIBLE */
+
+      if (video) {
+
+        video.addEventListener(
+          'playing',
+          revealHero,
+          { once: true }
+        );
+
+      }
+
+
+      /* INICIAR DESCARGA */
 
       image.src = imageURL;
 
@@ -1213,23 +1232,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-
-      /* EL VIDEO TAMBIÉN PUEDE REVELAR EL HERO */
-
-      if (video) {
-
-        video.addEventListener(
-          'playing',
-          revealHero,
-          { once: true }
-        );
-
-      }
-
     });
 
   };
 
+
+  /* INICIALIZACIÓN */
 
   if (document.readyState === 'loading') {
 

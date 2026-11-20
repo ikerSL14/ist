@@ -14785,3 +14785,273 @@ iconify-icon {
   left: 10px;
 }
 }
+
+
+/* =========================================================
+   IST V2 · ESSENCE LOADING SYSTEM
+   Sistema global de revelación audiovisual
+========================================================= */
+
+
+/* =========================================================
+   CAPAS GENERALES
+========================================================= */
+
+/* Mantener el contenido por encima del loader */
+
+.hero > .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero > .hero-scroll {
+  z-index: 1;
+}
+
+
+/* =========================================================
+   CAPA DE REVELACIÓN
+========================================================= */
+
+.hero .ist-essence-loader {
+
+  position: absolute;
+  z-index: 0;
+
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  padding:
+    0
+    clamp(24px, 5vw, 68px)
+    clamp(48px, 7vh, 76px);
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  opacity: 0;
+  visibility: hidden;
+
+  background:
+
+    radial-gradient(
+      ellipse 65% 65% at 72% 68%,
+      rgba(0, 91, 190, .19),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 40% 55% at 15% 25%,
+      rgba(0, 126, 255, .09),
+      transparent 75%
+    ),
+
+    linear-gradient(
+      125deg,
+      #06172b 0%,
+      #030d1c 55%,
+      #020814 100%
+    );
+
+  transition:
+    opacity .75s cubic-bezier(.22, 1, .36, 1),
+    visibility 0s linear .75s;
+
+}
+
+
+/* ACTIVACIÓN */
+
+.hero.is-image-loading .ist-essence-loader {
+
+  opacity: 1;
+  visibility: visible;
+
+  transition-delay: 0s;
+
+}
+
+
+/* =========================================================
+   FIRMA VISUAL IST
+========================================================= */
+
+.ist-essence-loader__signature {
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  width: min(100%, 240px);
+
+}
+
+
+/* IDENTIFICADOR */
+
+.ist-essence-loader__label {
+
+  color: rgba(172, 205, 239, .68);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .25em;
+  text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   LÍNEA DE ESENCIA
+========================================================= */
+
+.ist-essence-loader__line {
+
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    90deg,
+    rgba(34, 126, 220, .06),
+    rgba(34, 151, 255, .42),
+    rgba(34, 126, 220, .08)
+  );
+
+  box-shadow:
+    0 0 10px rgba(0, 125, 255, .12);
+
+}
+
+
+/* HAZ LUMINOSO */
+
+.ist-essence-loader__beam {
+
+  position: absolute;
+
+  top: 0;
+  left: -35%;
+
+  width: 35%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(115, 220, 255, .95) 48%,
+    #168eff 65%,
+    transparent
+  );
+
+  box-shadow:
+    0 0 9px rgba(0, 156, 255, .8),
+    0 0 20px rgba(0, 121, 255, .38);
+
+  animation:
+    ist-essence-travel 2.1s
+    cubic-bezier(.45, 0, .35, 1)
+    infinite;
+
+}
+
+
+/* FIRMA INFERIOR */
+
+.ist-essence-loader__caption {
+
+  color: rgba(133, 167, 203, .63);
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: .19em;
+
+}
+
+
+/* =========================================================
+   ANIMACIÓN
+========================================================= */
+
+@keyframes ist-essence-travel {
+
+  0% {
+    left: -35%;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 105%;
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 680px) {
+
+  .hero .ist-essence-loader {
+
+    padding:
+      0
+      24px
+      40px;
+
+  }
+
+  .ist-essence-loader__signature {
+
+    width: 175px;
+    gap: 10px;
+
+  }
+
+  .ist-essence-loader__label {
+    font-size: 8px;
+  }
+
+  .ist-essence-loader__caption {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ist-essence-loader__beam {
+    animation: none;
+    left: 35%;
+    width: 25%;
+  }
+
+}

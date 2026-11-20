@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="promociones/hero.webp">
+  <link rel="preload" as="image" href="promociones/hero.webp" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,8 +137,31 @@
   </header>
 
   <main>
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <section class="hero" id="inicio" aria-labelledby="hero-title" data-essence-image="promociones/hero.webp">
       <div class="hero-background" aria-hidden="true"></div>
+      <!-- =====================================================
+     IST V2 · ESSENCE LOADER
+===================================================== -->
+
+<div class="ist-essence-loader" aria-hidden="true">
+
+  <div class="ist-essence-loader__signature">
+
+    <span class="ist-essence-loader__label">
+      IST / ESENCIA
+    </span>
+
+    <span class="ist-essence-loader__line">
+      <span class="ist-essence-loader__beam"></span>
+    </span>
+
+    <span class="ist-essence-loader__caption">
+      MÁS ALLÁ DE RESOLVER
+    </span>
+
+  </div>
+
+</div>
       <div class="hero-content">
         <p class="hero-eyebrow"><span class="eyebrow-dot"></span> Nuestras promociones</p>
         <h1 id="hero-title">Haz más, paga <span>menos</span></h1>

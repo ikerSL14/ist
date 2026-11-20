@@ -1,0 +1,745 @@
+/* =========================================================
+   IST · PROMOCIONES
+   Archivo: promociones/styles.css
+
+   Estética:
+   - Azul IST controlado.
+   - Fondo oscuro y elegante.
+   - Tecnología sutil, sin recursos visuales genéricos de IA.
+   - Componentes aislados bajo .ist-promos.
+========================================================= */
+
+
+/* =========================================================
+   01 · SECCIÓN PRINCIPAL
+========================================================= */
+
+.ist-promos {
+  --ist-promos-bg: #030914;
+  --ist-promos-panel: #081a2c;
+  --ist-promos-line: rgba(111, 169, 218, 0.16);
+  --ist-promos-text: #edf6ff;
+  --ist-promos-muted: #91a9c2;
+  --ist-promos-blue: #087fff;
+  --ist-promos-cyan: #75dcff;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(76px, 8vw, 112px) 0 clamp(86px, 9vw, 124px);
+  border-top: 1px solid rgba(80, 157, 224, 0.12);
+  color: var(--ist-promos-text);
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 111, 210, 0.12),
+      transparent 43%
+    ),
+    radial-gradient(
+      ellipse at 4% 54%,
+      rgba(0, 91, 180, 0.07),
+      transparent 31%
+    ),
+    linear-gradient(
+      180deg,
+      #030914 0%,
+      #040d19 52%,
+      #030914 100%
+    );
+}
+
+
+/* Línea superior premium azul IST. */
+
+.ist-promos::before {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 108, 255, 0.25) 12%,
+    #087fff 34%,
+    #75dcff 50%,
+    #087fff 66%,
+    rgba(0, 108, 255, 0.25) 88%,
+    transparent 100%
+  );
+  box-shadow: 0 0 18px rgba(0, 132, 255, 0.42);
+}
+
+
+/* Trama tecnológica apenas perceptible. */
+
+.ist-promos::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(
+      rgba(90, 160, 220, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(90, 160, 220, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 76px 76px;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    transparent 76%
+  );
+}
+
+
+.ist-promos__ambient {
+  position: absolute;
+  z-index: -1;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(115px);
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.ist-promos__ambient--left {
+  top: 340px;
+  left: -300px;
+  background: #006dff;
+}
+
+.ist-promos__ambient--right {
+  top: 980px;
+  right: -300px;
+  background: #00aaff;
+}
+
+
+.ist-promos__shell {
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   02 · ENCABEZADO
+========================================================= */
+
+.ist-promos__heading {
+  max-width: 780px;
+  margin: 0 auto clamp(54px, 6vw, 76px);
+  text-align: center;
+}
+
+.ist-promos__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 17px;
+  color: #80cfff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.ist-promos__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #29bfff;
+  box-shadow: 0 0 11px rgba(41, 191, 255, 0.62);
+}
+
+.ist-promos__heading h2 {
+  margin: 0;
+  color: #f4f8ff;
+  font-size: clamp(31px, 4.5vw, 49px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+
+.ist-promos__heading h2 span {
+  color: #50c4ff;
+}
+
+.ist-promos__description {
+  max-width: 660px;
+  margin: 18px auto 0;
+  color: #a2b8ce;
+  font-size: clamp(13px, 1.35vw, 15px);
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   03 · COLECCIONES
+========================================================= */
+
+.ist-promos__collection {
+  position: relative;
+  margin-top: clamp(52px, 6vw, 76px);
+  padding-top: 29px;
+  border-top: 1px solid var(--ist-promos-line);
+}
+
+.ist-promos__collection:first-of-type {
+  margin-top: 0;
+}
+
+.ist-promos__collection-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+.ist-promos__collection-copy {
+  min-width: 0;
+}
+
+.ist-promos__collection-index {
+  margin: 0 0 9px;
+  color: #6da9d6;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+}
+
+.ist-promos__collection-copy h3 {
+  margin: 0;
+  color: #f0f6ff;
+  font-family: "Manrope", "DM Sans", sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.ist-promos__collection-copy > p:last-child {
+  margin: 9px 0 0;
+  color: var(--ist-promos-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.ist-promos__collection-count {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border: 1px solid rgba(99, 161, 212, 0.15);
+  border-radius: 9px;
+  background: rgba(8, 28, 48, 0.56);
+}
+
+.ist-promos__collection-count strong {
+  color: #8ddaff;
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  font-weight: 850;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ist-promos__collection-count span {
+  color: #7893ad;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   04 · CUADRÍCULA DE FLYERS
+========================================================= */
+
+.ist-promos__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(13px, 1.8vw, 21px);
+}
+
+.ist-promos__item {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  justify-self: start;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(107, 164, 211, 0.19);
+  border-radius: 12px;
+  outline: none;
+  background: #071626;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.ist-promos__item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(83, 184, 255, 0.56);
+  box-shadow:
+    0 19px 42px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(0, 117, 220, 0.11);
+}
+
+.ist-promos__item:focus-visible {
+  border-color: rgba(117, 220, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(48, 158, 255, 0.2),
+    0 15px 38px rgba(0, 0, 0, 0.24);
+}
+
+.ist-promos__item-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(0, 124, 220, 0.16),
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      #0b2238,
+      #061321 72%
+    );
+}
+
+.ist-promos__item-media img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s ease;
+}
+
+.ist-promos__item.is-ready .ist-promos__item-media img {
+  opacity: 1;
+}
+
+.ist-promos__item:hover .ist-promos__item-media img {
+  transform: scale(1.025);
+}
+
+
+/* Estado provisional mientras se incorporan los flyers. */
+
+.ist-promos__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: #82bfe7;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(12, 48, 78, 0.42),
+      rgba(3, 15, 28, 0.72)
+    );
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.ist-promos__item.is-ready .ist-promos__placeholder {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ist-promos__placeholder-mark {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border: 1px solid rgba(117, 220, 255, 0.34);
+  border-radius: 15px;
+  color: #a3e3ff;
+  background: rgba(0, 113, 204, 0.13);
+  box-shadow: 0 0 28px rgba(0, 126, 255, 0.12);
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.ist-promos__placeholder-label {
+  color: #d8eafa;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.ist-promos__placeholder-note {
+  color: #718da8;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   05 · VISOR MODAL
+   Sin tarjeta, panel ni contenedor visible alrededor del flyer.
+========================================================= */
+
+.ist-promos__viewer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  color: #ffffff;
+  background: transparent;
+}
+
+.ist-promos__viewer[open] {
+  display: grid;
+  place-items: center;
+}
+
+.ist-promos__viewer::backdrop {
+  background: rgba(1, 6, 14, 0.91);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+}
+
+.ist-promos__viewer-stage {
+  position: relative;
+  display: grid;
+  width: fit-content;
+  max-width: min(82vw, 570px);
+  max-height: 89dvh;
+  place-items: center;
+  margin: auto;
+}
+
+.ist-promos__viewer-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(82vw, 570px);
+  max-height: 89dvh;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58);
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pan-y;
+}
+
+
+/* Contador circular sobre una esquina del flyer. */
+
+.ist-promos__viewer-counter {
+  position: absolute;
+  top: 13px;
+  left: -43px;
+  display: grid;
+  width: 57px;
+  height: 57px;
+  place-items: center;
+  border: 1px solid rgba(145, 213, 255, 0.43);
+  border-radius: 50%;
+  color: #f1f8ff;
+  background: rgba(3, 18, 34, 0.72);
+  box-shadow:
+    0 5px 22px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Botón de cierre. */
+
+.ist-promos__viewer-close {
+  position: fixed;
+  z-index: 5;
+  top: clamp(15px, 3vw, 27px);
+  right: clamp(15px, 3vw, 27px);
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(150, 190, 224, 0.23);
+  border-radius: 50%;
+  color: #d9eaff;
+  background: rgba(8, 26, 44, 0.74);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ist-promos__viewer-close:hover {
+  transform: rotate(90deg);
+  border-color: rgba(117, 220, 255, 0.55);
+  color: #ffffff;
+  background: rgba(11, 48, 78, 0.9);
+}
+
+.ist-promos__viewer-close svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+
+/* Flechas laterales. */
+
+.ist-promos__viewer-nav {
+  position: fixed;
+  z-index: 4;
+  top: 50%;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 1px solid rgba(150, 190, 224, 0.22);
+  border-radius: 50%;
+  color: #e4f4ff;
+  background: rgba(7, 24, 42, 0.76);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ist-promos__viewer-nav:hover {
+  border-color: rgba(117, 220, 255, 0.6);
+  color: #ffffff;
+  background: rgba(9, 53, 88, 0.92);
+}
+
+.ist-promos__viewer-nav--prev {
+  left: clamp(14px, 3vw, 34px);
+}
+
+.ist-promos__viewer-nav--next {
+  right: clamp(14px, 3vw, 34px);
+}
+
+.ist-promos__viewer-nav svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ist-promos__viewer-nav--prev:hover {
+  transform: translate(-2px, -50%);
+}
+
+.ist-promos__viewer-nav--next:hover {
+  transform: translate(2px, -50%);
+}
+
+
+/* Bloqueo del desplazamiento de fondo al abrir el visor. */
+
+body.ist-promos-viewer-open {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   06 · RESPONSIVE
+========================================================= */
+
+@media (max-width: 980px) {
+  .ist-promos__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ist-promos__item {
+    max-width: 270px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .ist-promos {
+    padding: 68px 0 78px;
+  }
+
+  .ist-promos__shell {
+    width: min(100% - 32px, 560px);
+  }
+
+  .ist-promos__heading {
+    margin-bottom: 52px;
+  }
+
+  .ist-promos__collection {
+    margin-top: 54px;
+    padding-top: 24px;
+  }
+
+  .ist-promos__collection-header {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .ist-promos__collection-count {
+    margin-top: 3px;
+    padding: 9px 10px;
+  }
+
+  .ist-promos__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .ist-promos__item {
+    max-width: none;
+    border-radius: 10px;
+  }
+
+  .ist-promos__viewer-stage {
+    max-width: 80vw;
+  }
+
+  .ist-promos__viewer-image {
+    max-width: 80vw;
+    max-height: 86dvh;
+  }
+
+  .ist-promos__viewer-nav {
+    width: 41px;
+    height: 41px;
+  }
+
+  .ist-promos__viewer-nav--prev {
+    left: 9px;
+  }
+
+  .ist-promos__viewer-nav--next {
+    right: 9px;
+  }
+
+  .ist-promos__viewer-counter {
+    top: 9px;
+    right: 9px;
+    width: 49px;
+    height: 49px;
+    font-size: 9px;
+  }
+
+  .ist-promos__viewer-close {
+    top: 12px;
+    right: 12px;
+    width: 39px;
+    height: 39px;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .ist-promos__heading h2 {
+    font-size: 30px;
+  }
+
+  .ist-promos__collection-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ist-promos__collection-count {
+    margin-top: 0;
+  }
+
+  .ist-promos__collection-copy > p:last-child {
+    font-size: 11px;
+  }
+
+  .ist-promos__viewer-nav {
+    width: 37px;
+    height: 37px;
+  }
+
+  .ist-promos__viewer-nav--prev {
+    left: 7px;
+  }
+
+  .ist-promos__viewer-nav--next {
+    right: 7px;
+  }
+}
+
+
+/* =========================================================
+   07 · ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ist-promos *,
+  .ist-promos *::before,
+  .ist-promos *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
